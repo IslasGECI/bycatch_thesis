@@ -41,10 +41,11 @@ jobs:
       uses: actions/checkout@main
     - name: Build draft
       run: |
-        cat ??.md > draft.md
-        docker run -v $PWD:/workdir islasgeci/base:latest pandoc --include-in-header=options.sty --table-of-contents --citeproc --output=draft.pdf draft.md
+        docker run -v $PWD:/workdir islasgeci/base:latest pandoc --metadata-file=00.md --citeproc --output=anteproyecto.pdf 01.md
+        cat 0[1-9].md > draft.md
+        docker run -v $PWD:/workdir islasgeci/base:latest pandoc --include-in-header=options.sty --metadata-file=00.md --metadata=documentclass:book --table-of-contents --citeproc --output=tesis.pdf draft.md
     - name: Upload draft
       uses: actions/upload-artifact@main
       with:
         name: draft
-        path: draft.pdf
+        path: *.pdf
