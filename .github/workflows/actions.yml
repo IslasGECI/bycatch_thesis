@@ -47,5 +47,5 @@ jobs:
     - name: Upload draft
       uses: actions/upload-artifact@main
       with:
-        name: draft
+        name: bycatch
         path: '*.pdf'
