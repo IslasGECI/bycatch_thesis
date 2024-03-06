@@ -42,7 +42,7 @@ jobs:
     - name: Build draft
       run: |
         cat ??.md > draft.md
-        docker run -v $PWD:/workdir islasgeci/base:latest pandoc --include-in-header=options.sty --table-of-contents --output=draft.pdf draft.md
+        docker run -v $PWD:/workdir islasgeci/base:latest pandoc --include-in-header=options.sty --table-of-contents --citeproc --output=draft.pdf draft.md
     - name: Upload draft
       uses: actions/upload-artifact@main
       with:
