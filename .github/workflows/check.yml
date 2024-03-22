@@ -21,34 +21,14 @@ jobs:
       uses: actions/checkout@main
     - name: Line ends with a period
       run: |
-        cat 0[1-9].md > draft.md
-        echo $(egrep "[^\.]$" draft.md | egrep "^\w" | egrep -v ":$" | egrep -v "^1\. ") > lines_without_period.tmp
+        cat ??.md > draft.md
+        echo $(egrep -v "\.$" draft.md | egrep -v "^\W" | egrep -v ":$" | egrep -v "^1\. ") > lines_without_period.tmp
         cat lines_without_period.tmp
         [[ $(cat lines_without_period.tmp | wc -w) -eq 0 ]]
     - name: Sentences are short
       run: |
-        cat 0[1-9].md > draft.md
+        cat ??.md > draft.md
         IFS=$'\n' && for line in $(egrep "\.$" draft.md);   do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
         IFS=$'\n' && for line in $(egrep "^\W" draft.md);   do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
         IFS=$'\n' && for line in $(egrep ":$" draft.md);    do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
         IFS=$'\n' && for line in $(egrep "^1\. " draft.md); do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
-
-  render-draft:
-    name: Render draft
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repo
-      uses: actions/checkout@main
-    - name: Build draft
-      run: |
-        docker run -v $PWD:/workdir islasgeci/base:latest pandoc --metadata-file=metadata.yaml --citeproc --output=anteproyecto.pdf 01.md
-        docker run -v $PWD:/workdir islasgeci/base:latest pandoc --metadata-file=metadata.yaml --citeproc --output=anteproyecto.docx 01.md
-        cat 0[1-9].md > draft.md
-        docker run -v $PWD:/workdir islasgeci/base:latest pandoc --include-in-header=options.sty --metadata-file=metadata.yaml --metadata=documentclass:book --table-of-contents --citeproc --output=tesis.pdf draft.md
-    - name: Upload draft
-      uses: actions/upload-artifact@main
-      with:
-        name: bycatch
-        path: |
-          ./*.pdf
-          ./*.docx

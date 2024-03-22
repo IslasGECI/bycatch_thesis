@@ -1,0 +1,23 @@
+name: Check style
+on: push
+jobs:
+
+  render-draft:
+    name: Render draft
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@main
+    - name: Build draft
+      run: |
+        docker run -v $PWD:/workdir islasgeci/base:latest pandoc --metadata-file=metadata.yaml --citeproc --output=anteproyecto.pdf 01.md
+        docker run -v $PWD:/workdir islasgeci/base:latest pandoc --metadata-file=metadata.yaml --citeproc --output=anteproyecto.docx 01.md
+        cat ??.md > draft.md
+        docker run -v $PWD:/workdir islasgeci/base:latest pandoc --include-in-header=options.sty --metadata-file=metadata.yaml --metadata=documentclass:book --table-of-contents --citeproc --output=tesis.pdf draft.md
+    - name: Upload draft
+      uses: actions/upload-artifact@main
+      with:
+        name: bycatch
+        path: |
+          ./*.pdf
+          ./*.docx
