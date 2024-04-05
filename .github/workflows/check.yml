@@ -32,3 +32,7 @@ jobs:
         IFS=$'\n' && for line in $(egrep "^\W" draft.md);   do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
         IFS=$'\n' && for line in $(egrep ":$" draft.md);    do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
         IFS=$'\n' && for line in $(egrep "^1\. " draft.md); do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
+    - name: Paragraphs are short
+      run: |
+        cat ??.md > draft.md
+        awk -v RS= '{print "Párrafo " NR ": " NF " palabras"}' draft.md
