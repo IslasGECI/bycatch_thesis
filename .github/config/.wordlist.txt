@@ -16,6 +16,7 @@ book
 buddy
 CD
 cerqueros
+checklist
 CI
 Clarión
 clics
@@ -71,6 +72,7 @@ lang
 LaTeX
 Laysan
 lead
+lint
 Looker
 markdown
 MATLAB
@@ -108,6 +110,7 @@ programming
 pt
 pull
 Python
+QA
 RAP
 redituable
 refactoriza
