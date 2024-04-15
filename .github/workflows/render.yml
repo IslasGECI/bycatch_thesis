@@ -1,4 +1,4 @@
-name: Check style
+name: Render
 on: push
 jobs:
 
