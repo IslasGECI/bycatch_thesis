@@ -13,8 +13,8 @@ jobs:
         config_path: .github/config/.spellcheck.yml
         task_name: Markdown
 
-  stylecheck:
-    name: Check style
+  sentence_length:
+    name: Check sentence length
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repo
@@ -32,7 +32,16 @@ jobs:
         IFS=$'\n' && for line in $(egrep "^\W" draft.md);   do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
         IFS=$'\n' && for line in $(egrep ":$" draft.md);    do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
         IFS=$'\n' && for line in $(egrep "^1\. " draft.md); do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
+
+  paragraph_length:
+    name: Check paragraph length
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@main
     - name: Paragraphs are short
       run: |
         cat ??.md > draft.md
         awk -v RS= '{print "Párrafo " NR ": " NF " palabras"}' draft.md
+    - name: Paragraphs are short
+      run: for file in ??.md ; do awk -v RS= '{print "Párrafo " NR ": " NF " palabras"}' $file
