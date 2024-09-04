@@ -21,17 +21,24 @@ jobs:
       uses: actions/checkout@main
     - name: Line ends with a period
       run: |
-        cat ??.md > draft.md
-        echo $(egrep -v "\.$" draft.md | egrep -v "^\W" | egrep -v ":$" | egrep -v "^1\. ") > lines_without_period.tmp
-        cat lines_without_period.tmp
-        [[ $(cat lines_without_period.tmp | wc -w) -eq 0 ]]
+        for file in ??.md
+        do
+            echo $file
+            echo $(egrep -v ":$" $file | egrep -v "\.$" | egrep -v "\?$" | egrep -v "^1\. " | egrep -v "^\W" ) > lines_without_period.tmp
+            cat lines_without_period.tmp
+            [[ $(cat lines_without_period.tmp | wc -w) -eq 0 ]]
+        done
     - name: Sentences are short
       run: |
-        cat ??.md > draft.md
-        IFS=$'\n' && for line in $(egrep "\.$" draft.md);   do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
-        IFS=$'\n' && for line in $(egrep "^\W" draft.md);   do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
-        IFS=$'\n' && for line in $(egrep ":$" draft.md);    do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
-        IFS=$'\n' && for line in $(egrep "^1\. " draft.md); do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
+        for file in ??.md
+        do
+            echo $file
+            IFS=$'\n' && for line in $(egrep ":$" $file);    do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
+            IFS=$'\n' && for line in $(egrep "\.$" $file);   do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
+            IFS=$'\n' && for line in $(egrep "\?$" $file);   do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
+            IFS=$'\n' && for line in $(egrep "^1\. " $file); do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
+            IFS=$'\n' && for line in $(egrep "^\W" $file);   do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
+        done
 
   paragraph_length:
     name: Check paragraph length
@@ -43,5 +50,10 @@ jobs:
       run: |
         cat ??.md > draft.md
         awk -v RS= '{print "Párrafo " NR ": " NF " palabras"}' draft.md
-    - name: Paragraphs are short
-      run: for file in ??.md ; do awk -v RS= '{print "Párrafo " NR ": " NF " palabras"}' $file
+    - name: Short paragraphs
+      run: |
+        for filename in ??.md
+        do
+            echo $filename
+            awk -v RS= '{print "Párrafo " NR ": " NF " palabras"}' $filename
+        done
