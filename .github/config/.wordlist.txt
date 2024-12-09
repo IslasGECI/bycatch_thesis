@@ -96,6 +96,7 @@ Jupyter
 kaizen
 kanban
 kernels
+Kunming
 lang
 LaTeX
 Laysan
@@ -114,6 +115,7 @@ microgestión
 monitoreamos
 monitorear
 monitoreo
+Montreal
 morfometría
 morfométricas
 nebouxii
