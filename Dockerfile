@@ -8,5 +8,6 @@ RUN apt update && apt install --yes \
     netcdf-bin
 
 RUN R -e "remotes::install_github('BirdLifeInternational/track2kba')"
-RUN R -e "remotes::install_github('IslasGECI/bycatch_code')"
-RUN R -e "remotes::install_github('IslasGECI/seabird_tracking')"
+RUN R -e "remotes::install_github('IslasGECI/bycatch_code', ref='latest')"
+RUN R -e "remotes::install_github('IslasGECI/seabird_tracking', ref='latest')"
+RUN R -e "remotes::install_github('IslasGECI/optparse', ref='latest')"
