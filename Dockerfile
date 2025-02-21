@@ -9,3 +9,4 @@ RUN apt update && apt install --yes \
 
 RUN R -e "remotes::install_github('BirdLifeInternational/track2kba')"
 RUN R -e "remotes::install_github('IslasGECI/bycatch_code')"
+RUN R -e "remotes::install_github('IslasGECI/seabird_tracking')"
