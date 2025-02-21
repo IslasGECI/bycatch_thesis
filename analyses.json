@@ -1,0 +1,34 @@
+[
+    {
+        "image_tag": "",
+        "name": "First article",
+        "description": "This is the first article",
+        "report": "first_article.pdf",
+        "results": [],
+        "scripts": [],
+        "data": [
+            {
+                "source": "tabular_data_packages",
+                "version": "37a9ec50da96f28464b7e57936e8ac46e85dd3b8",
+                "path": "seabird_tracking",
+                "type": "csv",
+                "filename": "gps-albatros-guadalupe.csv"
+            },
+            {
+                "source": "tabular_data_packages",
+                "version": "37a9ec50da96f28464b7e57936e8ac46e85dd3b8",
+                "path": "seabird_tracking",
+                "type": "csv",
+                "filename": "breeding_status_albatross_guadalupe.csv"
+            },
+            {
+                "source": "tabular_data_packages",
+                "version": "37a9ec50da96f28464b7e57936e8ac46e85dd3b8",
+                "path": "seabird_tracking",
+                "type": "csv",
+                "filename": "datapackage.json"
+            }
+        ],
+        "requirements": []
+    }
+]
