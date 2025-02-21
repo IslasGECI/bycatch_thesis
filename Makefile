@@ -13,6 +13,13 @@ reports/non-tabular/results.json:
 	$(checkDirectories)
 	echo '{"A":2 , "B":3 , "total":5}' > reports/non-tabular/results.json
 
+data/processed/trips_summary.csv: \
+	data/processed/bl_gps_albatross_guadalupe.csv
+	$(checkDirectories)
+	Rscript -e "bycatch::write_trips_summary(geci.optparse::get_options())" \
+		--data_path data/processed/bl_gps_albatross_guadalupe.csv \
+		--output_path $@
+
 data/processed/bl_gps_albatross_guadalupe.csv: \
 	data/raw/datapackage.json \
 	data/raw/gps-albatros-guadalupe.csv \
