@@ -1,0 +1,9 @@
+services:
+  islasgeci:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: islasgeci/bycatch_thesis:latest
+    command: bash
+    volumes:
+      - $PWD:/workdir
