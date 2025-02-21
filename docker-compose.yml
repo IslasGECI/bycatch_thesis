@@ -5,5 +5,8 @@ services:
       dockerfile: Dockerfile
     image: islasgeci/bycatch_thesis:latest
     command: bash
+    environment:
+      BITBUCKET_USERNAME: $BITBUCKET_USERNAME
+      BITBUCKET_PASSWORD: $BITBUCKET_PASSWORD
     volumes:
       - $PWD:/workdir
