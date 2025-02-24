@@ -1,5 +1,29 @@
-all: dummy_report.pdf
+all: reports/anteproyecto.docx \
+	reports/anteproyecto.pdf \
+	reports/tesis.pdf
 
+
+reports/tesis.pdf: \
+	reports/draft.md \
+	metadata.yaml
+	$(checkDirectories)
+	pandoc --include-in-header=options.sty --metadata-file=metadata.yaml --metadata=documentclass:book --table-of-contents --citeproc --output=$@ reports/draft.md
+
+reports/draft.md:
+	$(checkDirectories)
+	cat 1?_*.md > $@
+
+reports/anteproyecto.pdf: \
+	metadata.yaml \
+	01.md
+	$(checkDirectories)
+	pandoc --metadata-file=metadata.yaml --citeproc --output=$@ 01.md
+
+reports/anteproyecto.docx: \
+	metadata.yaml \
+	01.md
+	$(checkDirectories)
+	pandoc --metadata-file=metadata.yaml --citeproc --output=$@ 01.md
 
 reports/dummy_report.pdf: reports/dummy_report.tex
 	$(renderLatex)

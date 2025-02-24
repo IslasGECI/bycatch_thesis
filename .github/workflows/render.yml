@@ -8,16 +8,19 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@main
+    - name: Build and export
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        tags: islasgeci/bycatch_thesis:latest
+        outputs: type=docker,dest=/tmp/image.tar
     - name: Build draft
       run: |
-        docker run -v $PWD:/workdir islasgeci/base:latest pandoc --metadata-file=metadata.yaml --citeproc --output=anteproyecto.pdf 01.md
-        docker run -v $PWD:/workdir islasgeci/base:latest pandoc --metadata-file=metadata.yaml --citeproc --output=anteproyecto.docx 01.md
-        cat ??.md > draft.md
-        docker run -v $PWD:/workdir islasgeci/base:latest pandoc --include-in-header=options.sty --metadata-file=metadata.yaml --metadata=documentclass:book --table-of-contents --citeproc --output=tesis.pdf draft.md
+        docker run islasgeci/bycatch_thesis make all
     - name: Upload draft
       uses: actions/upload-artifact@main
       with:
         name: bycatch
         path: |
-          ./*.pdf
-          ./*.docx
+          reports/*.pdf
+          reports/*.docx
