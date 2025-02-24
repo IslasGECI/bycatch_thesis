@@ -25,18 +25,6 @@ reports/anteproyecto.docx: \
 	$(checkDirectories)
 	pandoc --metadata-file=metadata.yaml --citeproc --output=$@ 01.md
 
-reports/dummy_report.pdf: reports/dummy_report.tex
-	$(renderLatex)
-
-reports/dummy_report.tex: reports/non-tabular/results.json
-	jinja-render \
-	--report-name "dummy_report" \
-	--summary-path "reports/non-tabular/results.json"
-
-reports/non-tabular/results.json:
-	$(checkDirectories)
-	echo '{"A":2 , "B":3 , "total":5}' > reports/non-tabular/results.json
-
 data/processed/trips_summary.csv: \
 	data/processed/bl_gps_albatross_guadalupe.csv
 	$(checkDirectories)
@@ -94,9 +82,7 @@ endef
 	tests_r
 
 clean:
-	rm --force --recursive reports/figures/
-	rm --force --recursive reports/non-tabular/
-	rm --force --recursive reports/tables/
+	rm --force --recursive reports
 	rm --force --recursive data
 	rm --force *.pdf
 
