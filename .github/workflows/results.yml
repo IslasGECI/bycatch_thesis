@@ -1,0 +1,18 @@
+name: Results
+on: push
+jobs:
+
+  generate-results:
+    name: Generate results
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@main
+    - name: Build docker image
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        tags: islasgeci/bycatch_thesis:latest
+    - name: Generate trips summary
+      run: |
+        docker run islasgeci/bycatch_thesis make data/processed/trips_summary.csv
