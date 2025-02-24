@@ -15,7 +15,7 @@ jobs:
         tags: islasgeci/bycatch_thesis:latest
     - name: Build draft
       run: |
-        docker run islasgeci/bycatch_thesis make all
+        docker run -v $PWD:/workdir islasgeci/bycatch_thesis make all
     - name: Upload draft
       uses: actions/upload-artifact@main
       with:

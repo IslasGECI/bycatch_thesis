@@ -15,4 +15,10 @@ jobs:
         tags: islasgeci/bycatch_thesis:latest
     - name: Generate trips summary
       run: |
-        docker run islasgeci/bycatch_thesis make data/processed/trips_summary.csv
+        docker run -v $PWD:/workdir islasgeci/bycatch_thesis make data/processed/trips_summary.csv
+    - name: Upload results
+      uses: actions/upload-artifact@main
+      with:
+        name: results
+        path: |
+          data/processed/*.csv
