@@ -9,7 +9,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@main
     - name: Build and export
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       with:
         context: .
         tags: islasgeci/bycatch_thesis:latest
