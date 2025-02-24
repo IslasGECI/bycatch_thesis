@@ -13,7 +13,6 @@ jobs:
       with:
         context: .
         tags: islasgeci/bycatch_thesis:latest
-        outputs: type=docker,dest=/tmp/image.tar
     - name: Build draft
       run: |
         docker run islasgeci/bycatch_thesis make all
