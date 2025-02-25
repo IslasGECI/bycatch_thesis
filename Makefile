@@ -25,6 +25,17 @@ reports/anteproyecto.docx: \
 	$(checkDirectories)
 	pandoc --metadata-file=metadata.yaml --citeproc --output=$@ 01.md
 
+results: \
+	data/processed/trips_geographic_points.csv \
+	data/processed/trips_summary.csv
+
+data/processed/trips_geographic_points.csv: \
+	data/processed/bl_gps_albatross_guadalupe.csv
+	$(checkDirectories)
+	Rscript -e "bycatch::write_trips(geci.optparse::get_options())" \
+		--data_path data/processed/bl_gps_albatross_guadalupe.csv \
+		--output_path $@
+
 data/processed/trips_summary.csv: \
 	data/processed/bl_gps_albatross_guadalupe.csv
 	$(checkDirectories)
@@ -77,6 +88,7 @@ endef
 	init \
 	red \
 	refactor \
+	results \
 	setup \
 	tests \
 	tests_r
