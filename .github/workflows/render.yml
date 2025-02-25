@@ -53,6 +53,9 @@ jobs:
     name: Generate results
     needs: build-image
     runs-on: ubuntu-latest
+    env:
+      BITBUCKET_USERNAME: ${{ secrets.BITBUCKET_USERNAME }}
+      BITBUCKET_PASSWORD: ${{ secrets.BITBUCKET_PASSWORD }}
     steps:
     - name: Checkout repo
       uses: actions/checkout@main
@@ -65,12 +68,9 @@ jobs:
       run: |
         docker load --input /tmp/image.tar
         docker image ls -a
-    - name: Generate trips summary
-      env:
-        BITBUCKET_USERNAME: ${{ secrets.BITBUCKET_USERNAME }}
-        BITBUCKET_PASSWORD: ${{ secrets.BITBUCKET_PASSWORD }}
+    - name: Generate trip results
       run: |
-        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make data/processed/trips_summary.csv
+        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make results
     - name: Upload results
       uses: actions/upload-artifact@main
       with:
