@@ -8,14 +8,16 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@main
-    - name: Build docker image
-      uses: docker/build-push-action@v6
+    - name: Build
+      uses: hoverkraft-tech/compose-action@v2.0.1
       with:
-        context: .
-        tags: islasgeci/bycatch_thesis:latest
+        compose-file: "./docker-compose.yml"
+      env:
+        BITBUCKET_USERNAME: ${{ secrets.BITBUCKET_USERNAME }}
+        BITBUCKET_PASSWORD: ${{ secrets.BITBUCKET_PASSWORD }}
     - name: Generate trips summary
       run: |
-        docker run -v $PWD:/workdir islasgeci/bycatch_thesis make data/processed/trips_summary.csv
+        docker compose run islasgeci make data/processed/trips_summary.csv
     - name: Upload results
       uses: actions/upload-artifact@main
       with:
