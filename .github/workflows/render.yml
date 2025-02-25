@@ -2,17 +2,42 @@ name: Render
 on: push
 jobs:
 
-  render-draft:
-    name: Render draft
+  build-image:
+    name: Build Docker image 🐋
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repo
       uses: actions/checkout@main
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
     - name: Build and export
-      uses: docker/build-push-action@v6
+      uses: docker/build-push-action@v5
       with:
         context: .
         tags: islasgeci/bycatch_thesis:latest
+        outputs: type=docker,dest=/tmp/image.tar
+    - name: Upload artifact
+      uses: actions/upload-artifact@main
+      with:
+        name: image
+        path: /tmp/image.tar
+
+  render-draft:
+    name: Render draft
+    needs: build-image
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@main
+    - name: Download artifact
+      uses: actions/download-artifact@main
+      with:
+        name: image
+        path: /tmp
+    - name: Load image
+      run: |
+        docker load --input /tmp/image.tar
+        docker image ls -a
     - name: Build draft
       run: |
         docker run -v $PWD:/workdir islasgeci/bycatch_thesis make all
@@ -23,3 +48,33 @@ jobs:
         path: |
           reports/*.pdf
           reports/*.docx
+
+  generate-results:
+    name: Generate results
+    needs: build-image
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@main
+    - name: Download artifact
+      uses: actions/download-artifact@main
+      with:
+        name: image
+        path: /tmp
+    - name: Load image
+      run: |
+        docker load --input /tmp/image.tar
+        docker image ls -a
+    - name: Generate trips summary
+      env:
+        BITBUCKET_USERNAME: ${{ secrets.BITBUCKET_USERNAME }}
+        BITBUCKET_PASSWORD: ${{ secrets.BITBUCKET_PASSWORD }}
+      run: |
+        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make data/processed/trips_summary.csv
+    - name: Upload results
+      uses: actions/upload-artifact@main
+      with:
+        name: results
+        path: |
+          data/processed/*.csv
+
