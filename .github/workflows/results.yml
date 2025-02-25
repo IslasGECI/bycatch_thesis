@@ -15,7 +15,7 @@ jobs:
       env:
         BITBUCKET_USERNAME: ${{ secrets.BITBUCKET_USERNAME }}
         BITBUCKET_PASSWORD: ${{ secrets.BITBUCKET_PASSWORD }}
-        PWD: ${{ vars.GITHUB_WORKSPACE }}
+        PWD: ${{ github.workspace }}
     - name: Generate trips summary
       run: |
         docker compose run islasgeci make data/processed/trips_summary.csv
