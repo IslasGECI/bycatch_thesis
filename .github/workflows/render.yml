@@ -77,4 +77,30 @@ jobs:
         name: results
         path: |
           data/processed/*.csv
-
+  update-docker:
+    name: Push image to Docker Hub
+    needs: [generate-results, render-draft]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@main
+    - name: Docker log-in
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+    - name: Download artifact
+      uses: actions/download-artifact@main
+      with:
+        name: image
+        path: /tmp
+    - name: Load image
+      run: |
+        docker load --input /tmp/image.tar
+        docker image ls -a          
+    - name: Push latest Docker image to Docker Hub
+      run: docker push islasgeci/bycatch_thesis:latest
+    - name: Push SHA tag to Docker Hub
+      run: |
+        docker tag islasgeci/bycatch_thesis:latest islasgeci/bycatch_thesis:${GITHUB_SHA:0:4}
+        docker push islasgeci/bycatch_thesis:${GITHUB_SHA:0:4}
