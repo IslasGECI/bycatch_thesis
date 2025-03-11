@@ -15,15 +15,15 @@ reports/draft.md:
 
 reports/anteproyecto.pdf: \
 	metadata.yaml \
-	01.md
+	01_proposal.md
 	$(checkDirectories)
-	pandoc --metadata-file=metadata.yaml --citeproc --output=$@ 01.md
+	pandoc --metadata-file=metadata.yaml --citeproc --output=$@ 01_proposal.md
 
 reports/anteproyecto.docx: \
 	metadata.yaml \
-	01.md
+	01_proposal.md
 	$(checkDirectories)
-	pandoc --metadata-file=metadata.yaml --citeproc --output=$@ 01.md
+	pandoc --metadata-file=metadata.yaml --citeproc --output=$@ 01_proposal.md
 
 results: \
 	data/processed/trips_geographic_points.csv \
@@ -110,5 +110,4 @@ init_git:
 
 
 setup: clean init_git
-
 

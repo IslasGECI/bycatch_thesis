@@ -21,7 +21,7 @@ jobs:
       uses: actions/checkout@main
     - name: Line ends with a period
       run: |
-        for file in ??.md
+        for file in ??_*.md
         do
             echo $file
             echo $(egrep -v ":$" $file | egrep -v "\.$" | egrep -v "\?$" | egrep -v "^1\. " | egrep -v "^\W" ) > lines_without_period.tmp
@@ -30,7 +30,7 @@ jobs:
         done
     - name: Sentences are short
       run: |
-        for file in ??.md
+        for file in ??_*.md
         do
             echo $file
             IFS=$'\n' && for line in $(egrep ":$" $file);    do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
@@ -48,11 +48,11 @@ jobs:
       uses: actions/checkout@main
     - name: Paragraphs are short
       run: |
-        cat ??.md > draft.md
+        cat ??_*.md > draft.md
         awk -v RS= '{print "Párrafo " NR ": " NF " palabras"}' draft.md
     - name: Short paragraphs
       run: |
-        for filename in ??.md
+        for filename in ??_*.md
         do
             echo $filename
             awk -v RS= '{print "Párrafo " NR ": " NF " palabras"}' $filename
