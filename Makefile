@@ -1,9 +1,16 @@
 all: reports/anteproyecto.docx \
 	reports/anteproyecto.pdf \
-	reports/tesis.pdf
+	reports/articulo_uno.docx \
+	reports/articulo_uno.pdf
 
 
-reports/tesis.pdf: \
+reports/articulo_uno.pdf: \
+	reports/draft.md \
+	metadata.yaml
+	$(checkDirectories)
+	pandoc --include-in-header=options.sty --metadata-file=metadata.yaml --metadata=documentclass:book --table-of-contents --citeproc --output=$@ reports/draft.md
+
+reports/articulo_uno.docx: \
 	reports/draft.md \
 	metadata.yaml
 	$(checkDirectories)
