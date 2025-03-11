@@ -21,6 +21,7 @@ jobs:
       with:
         name: image
         path: /tmp/image.tar
+        retention-days: 1
 
   render-draft:
     name: Render draft
