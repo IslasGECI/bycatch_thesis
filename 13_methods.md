@@ -87,6 +87,7 @@ Les pegamos los GPS a los albatros.
 - List the experiments or analyses that you conducted to answer each specific question.
 
 For each experiment or analysis, fill out the following:
+
 - Treatments
   - What experimental treatments did you establish?
   - How were the treatments designed to address the research question?
@@ -121,19 +122,24 @@ La variable dependiente es el índice de superposición.
 - What previous studies or literature can be referenced to explain particular steps, analyses, or experiments in your methodology?
 - How do these studies inform or justify the methods you chose for your experiment?
 
-## Data analysis
+# Data analysis
 
-- Data processing
-  - How was the data processed before analysis?
-  - Were any transformations, normalizations, or cleaning procedures applied to the data?
-- Statistical analyses
-  - What statistical tests were used to analyze the data?
-  - Why were these specific tests chosen?
-  - How do the statistical methods align with your study objectives and research questions?
-  - What statistical assumptions were necessary for the analyses you performed (e.g., normality and homogeneity of variance)?
-  - How were these assumptions tested, and what steps did you take if the assumptions were violated?
-  - How did you establish statistical significance?
-- Limitations and assumptions
-  - What limitations exist in your data collection and analyses?
-  - How do these limitations and assumptions influence the interpretation of your findings?
-  - What assumptions were made during the study, and how could they affect the results?
+## Data processing
+
+- How was the data processed before analysis?
+- Were any transformations, normalizations, or cleaning procedures applied to the data?
+
+## Statistical analyses
+
+- What statistical tests were used to analyze the data?
+- Why were these specific tests chosen?
+- How do the statistical methods align with your study objectives and research questions?
+- What statistical assumptions were necessary for the analyses you performed (e.g., normality and homogeneity of variance)?
+- How were these assumptions tested, and what steps did you take if the assumptions were violated?
+- How did you establish statistical significance?
+
+## Limitations and assumptions
+
+- What limitations exist in your data collection and analyses?
+- How do these limitations and assumptions influence the interpretation of your findings?
+- What assumptions were made during the study, and how could they affect the results?
