@@ -120,6 +120,7 @@ morfometría
 morfométricas
 nebouxii
 NOM
+nororiental
 notebook
 notebooks
 occidentalis
@@ -141,6 +142,7 @@ pimpón
 Pipelines
 pizarrón
 platicarle
+poblacional
 posentrega
 posteriori
 predictivas

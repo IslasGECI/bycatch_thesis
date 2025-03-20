@@ -5,7 +5,7 @@ Las interacciones son diversas y pueden ser beneficiosas o perjudiciales [@duffy
 Una de estas interacciones se conoce como “captura incidental” en la que los pescadores descartan formas de vida marina con poco o nulo valor comercial.
 En las pesquerías comerciales a nivel mundial, una de cada cuatro capturas de animales en el mar es incidental.
 La captura incidental involucra una variedad de técnicas, e incluyen especies de invertebrados y vertebrados, incluso especies en peligro de extinción.
-Especies de mamíferos marinos y aves marinas descartados pueden no sobrevivir y ponen en riesgo la viabilidad de sus poblaciones [@safina1995world], riesgo agudizado cuando son especies con tasas reproductivas  baja y tiempos de madurez sexual tardíos.
+Especies de mamíferos marinos y aves marinas descartados pueden no sobrevivir y ponen en riesgo la viabilidad de sus poblaciones [@safina1995world], riesgo agudizado cuando son especies con tasas reproductivas baja y tiempos de madurez sexual tardíos.
 
 Las aves marinas son el grupo de aves más amenazado.
 Con un ciclo de vida asociado al medio marino, en búsqueda de sus presas y la reproducción, incrementan el riesgo de interactuar con la actividad pesquera [@ministry2013national].
@@ -18,8 +18,8 @@ En este plan, el grupo pretende identificar acciones para afrontar los impactos 
 Este grupo de trabajo es parte del Comité Trilateral México-Canadá-EUA para la Conservación y Manejo de la Vida Silvestre y los Ecosistemas [@trilateral2023meeting].
 Así mismo, en México, el gobierno federal está desarrollando una estrategia para la conservación de aves marinas.
 Sin embargo, esta estrategia presenta vacíos de información sobre el riesgo de captura incidental sobre las especies de aves marinas y la viabilidad de sus poblaciones.
-La adopción de medidas de mitigación proporcionan información esencial para conservar y utilizar nuestreos oceanos, sobre todo si consideramos la Agenda 2030 de Desarrollo Sostenible de las Naciones Unidas.
-La agenda incluye entre sus objetivos la adopción de prácticas de pesca sostenibles y la conservación del 10&nbsp;%  de las zonas costeras y marinas.
+La adopción de medidas de mitigación proporcionan información esencial para conservar y utilizar nuestros océanos, sobre todo si consideramos la Agenda 2030 de Desarrollo Sostenible de las Naciones Unidas.
+La agenda incluye entre sus objetivos la adopción de prácticas de pesca sostenibles y la conservación del 10&nbsp;% de las zonas costeras y marinas.
 Además, México es signatario del Marco Mundial Kunming-Montreal de la Diversidad Biológica.
 Este marco incluye meta 30x30, la cual nos conmina a proteger el 30&nbsp;% del territorio nacional, marino y terrestre, para el año 2030.
 Estas metas deben lograrse con base en la mejor información científica disponible.
@@ -34,8 +34,7 @@ Para conservar al albatros de Laysan y mitigar su captura incidental, es esencia
 # Antecedentes
 
 A nivel mundial, el albatros de Laysan es una especie “casi amenazada” según la lista roja de La Unión Internacional para la Conservación de la Naturaleza (IUCN).
-Esta categorización toma el principio precautorio, debido a la dificultad de predecir las tendencias de largo plazo (1992-2078) en su población frente a las diferentes amenazas documentadas actuales (p.
-ej., la introducción de especies), pero también futuras del cambio climático y la contaminación.
+Esta categorización toma el principio precautorio, debido a la dificultad de predecir las tendencias de largo plazo (1992-2078) en su población frente a las diferentes amenazas documentadas actuales (por ej., la introducción de especies), pero también futuras del cambio climático y la contaminación.
 En México, es una especie amenazada según la NOM-059-ECOL-2001.
 El tamaño de su población mundial es mayor a 1,600,000 individuos maduros.
 Esta ave marina se reproduce principalmente en las islas del noroeste de Hawái y las islas Ultramarinas Menores de los Estados Unidos.
@@ -51,14 +50,14 @@ Sin embargo, las interacciones entre el albatros de Laysan y la pesca comercial 
 
 En el Pacífico mexicano, la pesca con palangre pelágico puede tener un impacto sobre el albatros de Laysan (datos no publicados de American Bird Conservancy).
 Este arte de pesca se utiliza principalmente en México para la pesca de tiburón y captura de picudos y dorado, entre los sectores industrial y deportivo.
-Para mitigar conflictos entre estos dos sectores económicos, las embarcaciones industriales de altura y mediana altura trabajan más allá de las 50 mn (~93 km) en casi todo el Pacífico (NOM–029, 2007).
-Sin embargo, los individuos de la colonia de Isla Guadalupe, ubicada a 130 mn (241 km) de la costa peninsular de Baja California, viajan a alimentarse hacia las aguas costeras de la península de Baja California [@hernandez2019sexual].
+Para mitigar conflictos entre estos dos sectores económicos, las embarcaciones industriales de altura y mediana altura trabajan más allá de las 50 millas náuticas (~93 km) en casi todo el Pacífico (NOM–029, 2007).
+Sin embargo, los individuos de la colonia de Isla Guadalupe, ubicada a 241 km de la costa peninsular de Baja California, viajan a alimentarse hacia las aguas costeras de la península de Baja California [@hernandez2019sexual].
 En estas aguas se traslapan las áreas de alimentación de la especie y las zonas de pesca comercial de barcos cerqueros y palangreros.
 En la región de traslape, las interacciones entre la pesca comercial y el albatros de Laysan pueden ocasionar su captura incidental.
 
 Durante las últimas dos décadas, México ha implementado acciones para proteger y restaurar las poblaciones de albatros de Laysan.
 En Isla Guadalupe, la principal zona de reproducción del albatros de Laysan se mantiene libre de la depredación de gato feral.
-Una mamífero introducido que incremento la mortalidad de adultos de albatros y causó la disminucción en el éxito reproductivo de la colonia descubierta desde 1986.
+Una mamífero introducido que incremento la mortalidad de adultos de albatros y causó la disminución en el éxito reproductivo de la colonia descubierta desde 1986.
 La protección de las parejas reproductoras se logró gracias a la instalación de un cerco de exclusión y a un proyecto de erradicación iniciado en 2003 y que se mantiene en curso.
 Estas acciones de conservación han mitigado la principal amenaza para el albatros de Laysan en la parte terrestre [@mendez2022population].
 Lamentablemente, existe una enorme brecha en cuanto al entendimiento y mitigación de las amenazas en el mar, principalmente por la captura incidental.
