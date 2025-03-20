@@ -2,63 +2,73 @@
 
 En prácticamente todos los tipos de pesquerías existen interacciones entre la actividad pesquera y especies no objetivo.
 Las interacciones son diversas y pueden ser beneficiosas o perjudiciales [@duffy1994seabird].
-Una de estas interacciones se conoce como “captura incidental” en la que los pescadores capturan inadvertidamente formas de vida marina.
+Una de estas interacciones se conoce como “captura incidental” en la que los pescadores descartan formas de vida marina con poco o nulo valor comercial.
 En las pesquerías comerciales a nivel mundial, una de cada cuatro capturas de animales en el mar es incidental.
-La captura incidental involucra una variedad de vida marina.
-La mortandad de varias especies de mamíferos marinos y aves marinas ponen en riesgo la supervivencia de esas especies [@safina1995world].
+La captura incidental involucra una variedad de técnicas, e incluyen especies de invertebrados y vertebrados, incluso especies en peligro de extinción.
+Especies de mamíferos marinos y aves marinas descartados pueden no sobrevivir y ponen en riesgo la viabilidad de sus poblaciones [@safina1995world], riesgo agudizado cuando son especies con tasas reproductivas  baja y tiempos de madurez sexual tardíos.
 
 Las aves marinas son el grupo de aves más amenazado.
-La principal amenaza para las aves marinas es la captura incidental y mortandad provocada por interacciones con la actividad pesquera [@ministry2013national].
+Con un ciclo de vida asociado al medio marino, en búsqueda de sus presas y la reproducción, incrementan el riesgo de interactuar con la actividad pesquera [@ministry2013national].
 La captura incidental por interacciones con la actividad pesquera afecta a albatros, pingüinos, cormoranes, pelícanos, petreles grandes y pardelas grandes.
 En particular, para el 90&nbsp;% de las especies de albatros, la principal amenaza es la captura incidental por pesquerías de palangre y arrastre [@dias2019threats].
 
 Existen iniciativas nacionales e internacionales para abordar las amenazas asociadas a las interacciones de las actividades de pesca comercial y las aves marinas.
-Por ejemplo, desde 2022 existen esfuerzos por parte de un grupo de trabajo de captura incidental para desarrollar un plan de trabajo de colaboración trinacional.
+Por ejemplo, desde 2022 existen esfuerzos por parte de un grupo de trabajo de captura incidental para desarrollar un plan de trabajo de colaboración trinacional en el Pacífico Nororiental.
 En este plan, el grupo pretende identificar acciones para afrontar los impactos de la captura incidental sobre las aves marinas.
 Este grupo de trabajo es parte del Comité Trilateral México-Canadá-EUA para la Conservación y Manejo de la Vida Silvestre y los Ecosistemas [@trilateral2023meeting].
+Así mismo, en México, el gobierno federal está desarrollando una estrategia para la conservación de aves marinas.
+Sin embargo, esta estrategia presenta vacíos de información sobre el riesgo de captura incidental sobre las especies de aves marinas y la viabilidad de sus poblaciones.
+La adopción de medidas de mitigación proporcionan información esencial para conservar y utilizar nuestreos oceanos, sobre todo si consideramos la Agenda 2030 de Desarrollo Sostenible de las Naciones Unidas.
+La agenda incluye entre sus objetivos la adopción de prácticas de pesca sostenibles y la conservación del 10&nbsp;%  de las zonas costeras y marinas.
 Además, México es signatario del Marco Mundial Kunming-Montreal de la Diversidad Biológica.
 Este marco incluye meta 30x30, la cual nos conmina a proteger el 30&nbsp;% del territorio nacional, marino y terrestre, para el año 2030.
-Estos objetivos deben lograrse con base en la mejor información científica disponible.
+Estas metas deben lograrse con base en la mejor información científica disponible.
 
-A nivel mundial, el albatros de Laysan es una especie “casi amenazada” según la lista roja de la IUCN.
+En México, se han documentado las interacciones entre varias especies de aves marinas y las actividades de pesca comercial.
+En el golfo de California, observadores en embarcaciones de pesca comercial de pelágicos menores registran a pelícanos (_Pelecanus occidentalis_) y bobos (_Sula nebouxii_), como las aves marinas más afectadas por las capturas incidentales en esta pesquería [@morgan2016fourth].
+En la costa occidental de la península de Baja California, la pesca artesanal captura incidentalmente a cormoranes (_Phalacrocorax spp._) principalmente [@brito2011captura].
+Sin embargo, el impacto de la captura incidental sobre el albatros de Laysan (_Phoebastria immutabilis_) no está formalmente documentado.
+El albatros de Laysan es una de las aves marinas de mayor tamaño en el mundo y se distribuye en el país.
+Para conservar al albatros de Laysan y mitigar su captura incidental, es esencial comprender cómo interactúan estas aves marinas y la flota pesquera comercial mexicana.
+
+# Antecedentes
+
+A nivel mundial, el albatros de Laysan es una especie “casi amenazada” según la lista roja de La Unión Internacional para la Conservación de la Naturaleza (IUCN).
+Esta categorización toma el principio precautorio, debido a la dificultad de predecir las tendencias de largo plazo (1992-2078) en su población frente a las diferentes amenazas documentadas actuales (p.
+ej., la introducción de especies), pero también futuras del cambio climático y la contaminación.
 En México, es una especie amenazada según la NOM-059-ECOL-2001.
 El tamaño de su población mundial es mayor a 1,600,000 individuos maduros.
 Esta ave marina se reproduce principalmente en las islas del noroeste de Hawái y las islas Ultramarinas Menores de los Estados Unidos.
 Adicionalmente, hay pequeñas colonias de albatros de Laysan en Japón y México [@birdlife2018phoebastria].
 El albatros de Laysan llegó a México por primera vez en la historia en la década de los ochenta del siglo pasado.
-La primera isla mexicana en la que el albatros de Laysan se reprodujo fue Isla Guadalupe [@pitman2004population].
-El tamaño actual de la colonia en Isla Guadalupe es mayor de 3,000 individuos maduros, siendo esta colonia la de mayor tamaño en México [@mendez2022population].
+La primera isla mexicana en la que el albatros de Laysan se reprodujo fue Isla Guadalupe [@pitman2004population], zona insular designada en 2005 como Reserva de la Biosfera.
+El tamaño actual de la colonia en Isla Guadalupe es mayor de 3,000 individuos maduros {indicar cuánto representa esta colonia del tamaño poblacional, por ejemplo 5%}, siendo esta colonia la de mayor tamaño en México [@mendez2022population].
 
 Estudios previos sugieren que los albatros son capturados incidentalmente en las pesquerías de arrastre y palangre en todo el Pacífico Norte.
 Los albatros son particularmente vulnerables debido a sus movimientos de amplio alcance, su longevidad y su propensión de alimentarse alrededor de los barcos pesqueros [@clay2023adjustment].
 La captura incidental del albatros de Laysan está ampliamente documentada para el Pacífico Norte.
 Sin embargo, las interacciones entre el albatros de Laysan y la pesca comercial en el Pacífico mexicano no se han documentado formalmente [@brothers1999incidental].
 
-En México, se han documentado las interacciones entre varias especies de aves marinas y las actividades de pesca comercial.
-En el golfo de California, observadores en embarcaciones de pesca comercial de pelágicos menores registran la interacción entre las aves marinas y la actividad pesquera.
-Los pelícanos (_Pelecanus occidentalis_) y bobos (_Sula nebouxii_) son las aves marinas más afectadas por las capturas incidentales en esta pesquería [@morgan2016fourth].
-En la costa occidental de la península de Baja California, la pesca artesanal captura incidentalmente a cormoranes (_Phalacrocorax spp._) principalmente [@brito2011captura].
-Sin embargo, el impacto de la captura incidental sobre el albatros de Laysan (_Phoebastria immutabilis_) no está formalmente documentado.
-El albatros de Laysan es una de las aves marinas de mayor tamaño en el mundo y se distribuye en el país.
-Para conservar al albatros de Laysan y mitigar su captura incidental, es esencial comprender cómo interactúan estas aves marinas y la flota pesquera comercial mexicana.
+En el Pacífico mexicano, la pesca con palangre pelágico puede tener un impacto sobre el albatros de Laysan (datos no publicados de American Bird Conservancy).
+Este arte de pesca se utiliza principalmente en México para la pesca de tiburón y captura de picudos y dorado, entre los sectores industrial y deportivo.
+Para mitigar conflictos entre estos dos sectores económicos, las embarcaciones industriales de altura y mediana altura trabajan más allá de las 50 mn (~93 km) en casi todo el Pacífico (NOM–029, 2007).
+Sin embargo, los individuos de la colonia de Isla Guadalupe, ubicada a 130 mn (241 km) de la costa peninsular de Baja California, viajan a alimentarse hacia las aguas costeras de la península de Baja California [@hernandez2019sexual].
+En estas aguas se traslapan las áreas de alimentación de la especie y las zonas de pesca comercial de barcos cerqueros y palangreros.
+En la región de traslape, las interacciones entre la pesca comercial y el albatros de Laysan pueden ocasionar su captura incidental.
 
 Durante las últimas dos décadas, México ha implementado acciones para proteger y restaurar las poblaciones de albatros de Laysan.
 En Isla Guadalupe, la principal zona de reproducción del albatros de Laysan se mantiene libre de la depredación de gato feral.
-La protección de las parejas reproductoras se logró gracias a la instalación de un cerco de exclusión y a un proyecto de erradicación en curso.
+Una mamífero introducido que incremento la mortalidad de adultos de albatros y causó la disminucción en el éxito reproductivo de la colonia descubierta desde 1986.
+La protección de las parejas reproductoras se logró gracias a la instalación de un cerco de exclusión y a un proyecto de erradicación iniciado en 2003 y que se mantiene en curso.
 Estas acciones de conservación han mitigado la principal amenaza para el albatros de Laysan en la parte terrestre [@mendez2022population].
-Lamentablemente, existe una enorme brecha en cuanto al entendimiento y mitigación de las amenazas en el mar sobre la especie, principalmente por la captura incidental.
+Lamentablemente, existe una enorme brecha en cuanto al entendimiento y mitigación de las amenazas en el mar, principalmente por la captura incidental.
 Por lo tanto, el siguiente paso en la conservación del albatros de Laysan en México es evaluar su interacción con las actividades de pesca comercial.
-
-En el Pacífico mexicano, la pesca con palangre pelágico puede tener un impacto sobre el albatros de Laysan (datos no publicados de American Bird Conservancy).
-Los individuos de la población de Isla Guadalupe viajan a alimentarse hacia las aguas costeras de la península de Baja California [@hernandez2019sexual].
-En estas aguas se traslapan las áreas de alimentación de la especie y las zonas de pesca comercial de barcos cerqueros y palangreros.
-En la región de traslape, las interacciones entre la pesca comercial y el albatros de Laysan pueden ocasionar su captura incidental.
 
 Este estudio proporcionará información sobre los posibles efectos de la captura incidental del albatros de Laysan en el Pacífico mexicano.
 De esta manera, podremos evaluar el riesgo que representa la pesca comercial mexicana para esta especie.
 Además, esta investigación proporcionará información requerida para fortalecer la estrategia nacional de conservación de aves marinas.
 Los resultados obtenidos complementarán las medidas actuales de conservación del albatros de Laysan en México.
-Finalmente, este estudio proveerá información que sustentará acciones requeridas para alcanzar la meta 30x30.
+Finalmente, este estudio proveerá información que sustentará acciones requeridas para alcanzar los objetivos establecidos en la agenda 2030 sobre el Desarrollo Sostenible y la meta 30x30 del Marco Mundial Kunming-Montreal de la Diversidad Biológica.
 
 # Preguntas de investigación
 
@@ -66,7 +76,7 @@ Finalmente, este estudio proveerá información que sustentará acciones requeri
 
 # Hipótesis
 
-En el Pacífico mexicano, las áreas de alimentación del albatros de Laysan se traslapan con zonas de pesca comercial, propiciando un riesgo de captura incidental.
+En el Pacífico mexicano, las áreas de alimentación del albatros de Laysan se traslapan con zonas de pesca comercial, propiciando el riesgo de captura incidental.
 
 # Objetivo general
 
