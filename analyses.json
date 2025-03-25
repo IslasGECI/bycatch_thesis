@@ -27,6 +27,27 @@
                 "path": "seabird_tracking",
                 "type": "csv",
                 "filename": "datapackage.json"
+            },
+            {
+                "source": "archivos_binarios",
+                "version": "de0e47e0b821a81d152e985b77c8750a6a24bd28",
+                "path": "img/rosa_vientos",
+                "type": "png",
+                "filename": "rosewind.png"
+            },
+            {
+                "source": "archivos_binarios",
+                "version": "de0e47e0b821a81d152e985b77c8750a6a24bd28",
+                "path": "shp/division_politica_paises",
+                "type": "shx",
+                "filename": "division_politica_paises.shx"
+            },
+            {
+                "source": "archivos_binarios",
+                "version": "de0e47e0b821a81d152e985b77c8750a6a24bd28",
+                "path": "shp/division_politica_paises",
+                "type": "shp",
+                "filename": "division_politica_paises.shp"
             }
         ],
         "requirements": []
