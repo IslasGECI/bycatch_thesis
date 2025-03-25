@@ -15,12 +15,12 @@ jobs:
       uses: actions/checkout@main
     - name: Build image
       run: docker build --tag islasgeci/bycatch_thesis:latest .
-    - name: Build draft
-      run: |
-        docker run -v $PWD:/workdir islasgeci/bycatch_thesis:latest make all
     - name: Generate trip results
       run: |
         docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make results
+    - name: Build draft
+      run: |
+        docker run -v $PWD:/workdir islasgeci/bycatch_thesis:latest make all
     - name: Docker log-in
       run: echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
     - name: Push latest Docker image to Docker Hub
