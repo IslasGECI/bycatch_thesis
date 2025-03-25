@@ -7,6 +7,9 @@ RUN apt update && apt install --yes \
     libudunits2-dev \
     netcdf-bin
 
+RUN pip install --upgrade pip && pip install \
+    git+https://github.com/IslasGECI/geci_plots.git
+
 RUN R -e "remotes::install_github('r-quantities/units')"
 RUN R -e "remotes::install_github('BirdLifeInternational/track2kba')"
 RUN R -e "remotes::install_github('IslasGECI/bycatch_code', ref='latest')"
