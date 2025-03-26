@@ -82,16 +82,18 @@ reports/figures/gps_albatross_geographic_points.png: \
 data/processed/trips_geographic_points.csv: \
 	data/processed/bl_gps_albatross_guadalupe.csv
 	$(checkDirectories)
-	Rscript -e "bycatch::write_trips(geci.optparse::get_options())" \
-		--data_path data/processed/bl_gps_albatross_guadalupe.csv \
-		--output_path $@
+	Rscript -e "bycatch::write_trips(bycatch::get_domain_specific_options())" \
+		--data-path data/processed/bl_gps_albatross_guadalupe.csv \
+		--config-path trips_config.json \
+		--output-path $@
 
 data/processed/trips_summary.csv: \
 	data/processed/bl_gps_albatross_guadalupe.csv
 	$(checkDirectories)
-	Rscript -e "bycatch::write_trips_summary(geci.optparse::get_options())" \
-		--data_path data/processed/bl_gps_albatross_guadalupe.csv \
-		--output_path $@
+	Rscript -e "bycatch::write_trips_summary(bycatch::get_domain_specific_options())" \
+		--data-path data/processed/bl_gps_albatross_guadalupe.csv \
+		--config-path trips_config.json \
+		--output-path $@
 
 data/processed/bl_gps_albatross_guadalupe.csv: \
 	data/raw/datapackage.json \
