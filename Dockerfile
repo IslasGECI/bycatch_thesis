@@ -12,6 +12,6 @@ RUN pip install --upgrade pip && pip install \
 
 RUN R -e "remotes::install_github('r-quantities/units')"
 RUN R -e "remotes::install_github('BirdLifeInternational/track2kba')"
+RUN R -e "remotes::install_github('IslasGECI/optparse', ref='latest')"
 RUN R -e "remotes::install_github('IslasGECI/bycatch_code', ref='latest')"
 RUN R -e "remotes::install_github('IslasGECI/seabird_tracking', ref='latest')"
-RUN R -e "remotes::install_github('IslasGECI/optparse', ref='latest')"
