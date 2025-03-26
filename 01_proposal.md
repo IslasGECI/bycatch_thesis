@@ -49,7 +49,7 @@ La captura incidental del albatros de Laysan está ampliamente documentada para 
 Sin embargo, las interacciones entre el albatros de Laysan y la pesca comercial en el Pacífico mexicano no se han documentado formalmente [@brothers1999incidental].
 
 En el Pacífico mexicano, la pesca con palangre pelágico puede tener un impacto sobre el albatros de Laysan (datos no publicados de American Bird Conservancy).
-Este arte de pesca se utiliza principalmente en México para la pesca de tiburón y captura de picudos y dorado, entre los sectores industrial y deportivo.
+Este arte de pesca se utiliza principalmente en México para la pesca de tiburón y captura de picudos y dorado, entre los sectores industrial y deportivo.
 Para mitigar conflictos entre estos dos sectores económicos, las embarcaciones industriales de altura y mediana altura trabajan más allá de las 50 millas náuticas (~93 km) en casi todo el Pacífico (NOM–029, 2007).
 Sin embargo, los individuos de la colonia de Isla Guadalupe, ubicada a 241 km de la costa peninsular de Baja California, viajan a alimentarse hacia las aguas costeras de la península de Baja California [@hernandez2019sexual].
 En estas aguas se traslapan las áreas de alimentación de la especie y las zonas de pesca comercial de barcos cerqueros y palangreros.
