@@ -36,6 +36,8 @@ results: \
 	data/processed/trips_geographic_points.csv \
 	data/processed/trips_summary.csv \
 	reports/figures/gps_albatross_geographic_points.png \
+	reports/figures/gps_albatross_geographic_points_by_trip.png \
+	reports/figures/gps_albatross_kernel_density.png \
 	reports/figures/gps_albatross_50_percent_kernel_density.png
 
 reports/figures/gps_albatross_50_percent_kernel_density.png: \
@@ -78,6 +80,17 @@ reports/figures/gps_albatross_geographic_points.png: \
 		--path-rose-wind data/raw/rosewind.png \
 		--result-map-path $@
 
+reports/figures/gps_albatross_geographic_points_by_trip.png: \
+	data/processed/trips_geographic_points.csv \
+	data/raw/division_politica_paises.shp \
+	data/raw/division_politica_paises.shx \
+	data/raw/rosewind.png
+	$(checkDirectories)
+	geci-plot-cli plot-geographic-points-by-trip \
+		--geographic-data-path data/processed/trips_geographic_points.csv \
+		--global-shapefile-data-path data/raw/division_politica_paises.shp \
+		--path-rose-wind data/raw/rosewind.png \
+		--result-map-path $@
 
 data/processed/trips_geographic_points.csv: \
 	data/processed/bl_gps_albatross_guadalupe.csv
