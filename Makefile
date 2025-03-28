@@ -116,6 +116,28 @@ data/processed/bl_gps_albatross_guadalupe.csv: \
 	cd data/raw && R -e "seabird.tracking::write_bl_table()"
 	mv data/raw/bl_gps_albatross_guadalupe.csv $@
 
+reports/figures/gps_fisheries_geographic_points.png: \
+	data/processed/fisheries_gps_points.csv \
+	data/raw/division_politica_paises.shp \
+	data/raw/division_politica_paises.shx \
+	data/raw/rosewind.png
+	$(checkDirectories)
+	geci-plot-cli plot-geographic-points \
+		--geographic-data-path data/processed/fisheries_gps_points.csv \
+		--global-shapefile-data-path data/raw/division_politica_paises.shp \
+		--path-rose-wind data/raw/rosewind.png \
+		--result-map-path $@
+
+data/processed/fisheries_gps_points.csv:
+	$(checkDirectories)
+	geci-zenodo download-from-geci-zenodo --doi "10.5281/zenodo.15102444"
+	unzip *.zip -d data/raw/
+	Rscript src/concatenate_fishery_data.R
+	iconv -c -f ascii -t utf-8 -o data/processed/fisheries_gps_points_ascii.csv data/processed/fisheries_gps_points.csv
+	sed -i "s/,Latitud,/,Latitude,/" data/processed/fisheries_gps_points.csv
+	sed -i "s/,Longitud,/,Longitude,/" data/processed/fisheries_gps_points.csv
+
+
 data/raw/gps-albatros-guadalupe.csv:
 	$(checkDirectories)
 	descarga_datos $(@F) $(@D) seabird_tracking
