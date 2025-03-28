@@ -8,7 +8,8 @@ RUN apt update && apt install --yes \
     netcdf-bin
 
 RUN pip install --upgrade pip && pip install \
-    git+https://github.com/IslasGECI/geci_plots.git
+    git+https://github.com/IslasGECI/geci_plots.git \
+    zenodo-api
 
 RUN R -e "remotes::install_github('r-quantities/units')"
 RUN R -e "remotes::install_github('BirdLifeInternational/track2kba')"
