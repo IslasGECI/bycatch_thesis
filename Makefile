@@ -123,7 +123,7 @@ reports/figures/gps_fisheries_geographic_points.png: \
 	data/raw/division_politica_paises.shx \
 	data/raw/rosewind.png
 	$(checkDirectories)
-	geci-plot-cli plot-geographic-points \
+	geci-plot-cli plot-geographic-points-by-vessel \
 		--geographic-data-path data/processed/fisheries_gps_points.csv \
 		--global-shapefile-data-path data/raw/division_politica_paises.shp \
 		--path-rose-wind data/raw/rosewind.png \
