@@ -49,7 +49,7 @@ Para conservar al albatros de Laysan y mitigar su captura incidental, es esencia
 
 A nivel mundial, el albatros de Laysan es una especie “casi amenazada” según la lista roja de La Unión Internacional para la Conservación de la Naturaleza (IUCN).
 Esta categorización toma el principio precautorio, debido a la dificultad de predecir las tendencias de largo plazo (1992-2078) en su población frente a las diferentes amenazas documentadas actuales (por ejemplo, la introducción de especies), pero también futuras del cambio climático y la contaminación.
-En México, es una especie amenazada según la NOM-059-ECOL-2001.
+En México, es una especie amenazada según la NOM-059-ECOL-2010.
 El tamaño de su población mundial es mayor a 1,600,000 individuos maduros.
 Esta ave marina se reproduce principalmente en las islas del noroeste de Hawái y las islas Ultramarinas Menores de los Estados Unidos.
 Adicionalmente, hay pequeñas colonias de albatros de Laysan en Japón y México [@birdlife2018phoebastria].
