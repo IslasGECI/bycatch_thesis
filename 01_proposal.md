@@ -101,9 +101,9 @@ Evaluar el riesgo de captura incidental del albatros de Laysan asociado a las ac
 
 - Identificar el hábitat crítico del albatros de Laysan en el Pacífico mexicano.
 - Identificar las zonas de pesca comercial en el Pacífico mexicano.
-- Caracterizar la interacción entre el albatros de Laysan y las actividades de pesca comercial en el Pacífico mexicano.
+- Caracterizar la interacción espacial y temporal entre el albatros de Laysan y las actividades de pesca comercial en el Pacífico mexicano, mediante el cálculo del Índice de Superposición de Distribución de Utilización (UDOI)
 - Evaluar el riesgo de captura incidental del albatros de Laysan debido a la pesca comercial en el Pacífico mexicano.
-- Identificar las áreas y pesquerías de mayor riesgo para el albatros de Laysan por captura incidental en el Pacífico mexicano.
+- Identificar las zonas y pesquerías de mayor riesgo de captura incidental para el albatros de Laysan en el Pacífico mexicano, clasificando el riesgo en tres niveles (medio, alto y muy alto) con base en el porcentaje de superposición (>25%, >50%, >75%) entre las distribuciones kernel del albatros y las distintas pesquerías.
 - Proponer medidas para mitigar la captura incidental del albatros de Laysan.
 
 # Metodología
