@@ -12,6 +12,20 @@ Con un ciclo de vida asociado al medio marino, en búsqueda de sus presas y la r
 La captura incidental por interacciones con la actividad pesquera afecta a albatros, pingüinos, cormoranes, pelícanos, petreles grandes y pardelas grandes.
 En particular, para el 90&nbsp;% de las especies de albatros, la principal amenaza es la captura incidental por pesquerías de palangre y arrastre [@dias2019threats].
 
+El palangre es una línea principal que puede extenderse por decenas de kilómetros, de la cual cuelgan numerosas líneas secundarias con anzuelos cebados.
+Dependiendo de la especie objetivo, estos anzuelos se colocan cerca de la superficie o a mayor profundidad.
+Se colocan desde embarcaciones en movimiento, generalmente durante el amanecer o atardecer.
+Los albatros, atraídos por los cebos, se lanzan al agua para capturarlos durante la maniobra de lanzamiento.
+Al morder el anzuelo, quedan enganchados y son arrastrados bajo el agua cuando la línea se hunde, ahogándose antes de que comience la pesca efectiva.
+Los albatros son especialmente vulnerables porque siguen a los barcos esperando restos de pesca y son diurnos, como la mayoría de las operaciones de palangre.
+
+En la pesca de arrastre, una red en forma de embudo es arrastrada por una o dos embarcaciones.
+Dependiendo de la especie objetivo, el arrastre puede hacerse en el fondo o en aguas medias o superficiales.
+Suele implicar largos periodos de navegación con la red extendida y operaciones de descarga periódicas.
+Los albatros, son atraídas por los descartes de pesca arrojados al mar durante el virado de la red o el proceso de clasificación a bordo.
+Durante estas maniobras, las aves vuelan cerca de las embarcaciones y pueden chocar con cables que conectan la red al barco.
+Estas colisiones pueden causar la muerte inmediata o heridas letales.
+
 Existen iniciativas nacionales e internacionales para abordar las amenazas asociadas a las interacciones de las actividades de pesca comercial y las aves marinas.
 Por ejemplo, desde 2022 existen esfuerzos por parte de un grupo de trabajo de captura incidental para desarrollar un plan de trabajo de colaboración trinacional en el Pacífico Nororiental.
 En este plan, el grupo pretende identificar acciones para afrontar los impactos de la captura incidental sobre las aves marinas.
