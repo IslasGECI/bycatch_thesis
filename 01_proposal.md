@@ -30,8 +30,11 @@ Existen iniciativas nacionales e internacionales para abordar las amenazas asoci
 Por ejemplo, desde 2022 existen esfuerzos por parte de un grupo de trabajo de captura incidental para desarrollar un plan de trabajo de colaboración trinacional en el Pacífico Nororiental.
 En este plan, el grupo pretende identificar acciones para afrontar los impactos de la captura incidental sobre las aves marinas.
 Este grupo de trabajo es parte del Comité Trilateral México-Canadá-EUA para la Conservación y Manejo de la Vida Silvestre y los Ecosistemas [@trilateral2023meeting].
-Así mismo, en México, el gobierno federal está desarrollando una estrategia para la conservación de aves marinas.
-Sin embargo, esta estrategia presenta vacíos de información sobre el riesgo de captura incidental sobre las especies de aves marinas y la viabilidad de sus poblaciones.
+
+En México, el albatros de Laysan es una especie amenazada según la NOM-059-ECOL-2010.
+De acuerdo con el método numérico establecido por dicha norma, el impacto de actividades humanas (Criterio D) puede modificar la categoría de riesgo de una especie.
+Por ejemplo, si se demuestra que la captura incidental por pesquerías representa una amenaza significativa, el albatros de Laysan podría reclasificarse de ‘Amenazada’ a ‘En Peligro’.
+
 La adopción de medidas de mitigación proporcionan información esencial para conservar y utilizar nuestros océanos, sobre todo si consideramos la Agenda 2030 de Desarrollo Sostenible de las Naciones Unidas.
 La agenda incluye entre sus objetivos la adopción de prácticas de pesca sostenibles y la conservación del 10&nbsp;% de las zonas costeras y marinas.
 Además, México es signatario del Marco Mundial Kunming-Montreal de la Diversidad Biológica.
@@ -49,7 +52,6 @@ Para conservar al albatros de Laysan y mitigar su captura incidental, es esencia
 
 A nivel mundial, el albatros de Laysan es una especie “casi amenazada” según la lista roja de La Unión Internacional para la Conservación de la Naturaleza (IUCN).
 Esta categorización toma el principio precautorio, debido a la dificultad de predecir las tendencias de largo plazo (1992-2078) en su población frente a las diferentes amenazas documentadas actuales (por ejemplo, la introducción de especies), pero también futuras del cambio climático y la contaminación.
-En México, es una especie amenazada según la NOM-059-ECOL-2010.
 El tamaño de su población mundial es mayor a 1,600,000 individuos maduros.
 Esta ave marina se reproduce principalmente en las islas del noroeste de Hawái y las islas Ultramarinas Menores de los Estados Unidos.
 Adicionalmente, hay pequeñas colonias de albatros de Laysan en Japón y México [@birdlife2018phoebastria].
@@ -79,7 +81,7 @@ Por lo tanto, el siguiente paso en la conservación del albatros de Laysan en M�
 
 Este estudio proporcionará información sobre los posibles efectos de la captura incidental del albatros de Laysan en el Pacífico mexicano.
 De esta manera, podremos evaluar el riesgo que representa la pesca comercial mexicana para esta especie.
-Además, esta investigación proporcionará información requerida para fortalecer la estrategia nacional de conservación de aves marinas.
+Además, esta investigación proporcionará información que podría tener implicaciones directas en al categorización legal del albatros y en las acciones de conservación asociadas
 Los resultados obtenidos complementarán las medidas actuales de conservación del albatros de Laysan en México.
 Finalmente, este estudio proveerá información que sustentará acciones requeridas para alcanzar los objetivos establecidos en la agenda 2030 sobre el Desarrollo Sostenible y la meta 30x30 del Marco Mundial Kunming-Montreal de la Diversidad Biológica.
 
