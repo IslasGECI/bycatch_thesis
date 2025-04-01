@@ -60,17 +60,16 @@ La primera isla mexicana en la que el albatros de Laysan se reprodujo fue Isla G
 El tamaño actual de la colonia en Isla Guadalupe es mayor de 3,000 individuos maduros {indicar cuánto representa esta colonia del tamaño poblacional, por ejemplo 5%}, siendo esta colonia la de mayor tamaño en México [@mendez2022population].
 
 El albatros de Laysan es una especie longeva y de maduración tardía, con una esperanza de vida que puede superar los 40 años.
-Esta especie alcanza su madurez sexual entre los 5 y 9 años de edad.
-Su comportamiento reproductivo es altamente especializado: forman vínculos monógamos y retornan anualmente a la misma colonia para anidar, como en la Isla Guadalupe y Clarión.
-Las parejas generalmente producen un solo huevo por temporada y el éxito reproductivo suele ser cercano al 50&nbsp;%.
-Este bajo éxito reproductivo los hace particularmente vulnerables a amenazas que alteren la supervivencia adulta, como la captura incidental.
+Alcanza la madurez sexual entre los 5 y 9 años de edad.
+Su comportamiento reproductivo es altamente especializado: forma vínculos monógamos y regresa anualmente a la misma colonia para anidar, como en las islas Guadalupe y Clarión.
+Las parejas producen generalmente un solo huevo por temporada, y el éxito reproductivo suele rondar el 50&nbsp;%.
+Esta baja tasa de éxito los hace particularmente vulnerables a amenazas que afecten la supervivencia adulta, como la captura incidental.
 
-El albatros de Laysan es un forrajeador oportunista que se alimenta de calamares, peces pelágicos y crustáceos, y suele aprovechar descartes pesqueros.
-Captura sus presas mayoritariamente durante el día, aunque algunos estudios sugieren actividad nocturna dependiendo del recurso.
+Se trata de un forrajeador oportunista que se alimenta principalmente de calamares, peces pelágicos y crustáceos, y que también aprovecha los descartes pesqueros.
+Captura sus presas mayoritariamente durante el día, aunque algunos estudios sugieren actividad nocturna dependiendo del tipo de recurso.
 Durante la temporada reproductiva, sus vuelos de forrajeo varían en distancia y duración.
-Durante la crianza de pollos pequeños los viajes de alimentación son más cortos.
-Cuando los pollos son más grandes, los vuelos de alimentación son más largos.
-Así, su dinámica trófica y de movimiento condiciona una exposición variable a las amenazas pesqueras a lo largo de la temporada reproductiva.
+Cuando los polluelos son pequeños, realiza viajes cortos para alimentarlos con mayor frecuencia; a medida que crecen, los vuelos se hacen más largos.
+Esta dinámica trófica y de movimiento determina una exposición variable a las amenazas pesqueras a lo largo del periodo reproductivo.
 
 Estudios previos sugieren que los albatros son capturados incidentalmente en las pesquerías de arrastre y palangre en todo el Pacífico Norte.
 Los albatros son particularmente vulnerables debido a sus movimientos de amplio alcance, su longevidad y su propensión de alimentarse alrededor de los barcos pesqueros [@clay2023adjustment].
