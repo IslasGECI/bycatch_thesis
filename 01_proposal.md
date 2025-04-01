@@ -71,10 +71,12 @@ Durante la temporada reproductiva, sus vuelos de forrajeo varían en distancia y
 Cuando los polluelos son pequeños, realiza viajes cortos para alimentarlos con mayor frecuencia; a medida que crecen, los vuelos se hacen más largos.
 Esta dinámica trófica y de movimiento determina una exposición variable a las amenazas pesqueras a lo largo del periodo reproductivo.
 
-Estudios previos sugieren que los albatros son capturados incidentalmente en las pesquerías de arrastre y palangre en todo el Pacífico Norte.
-Los albatros son particularmente vulnerables debido a sus movimientos de amplio alcance, su longevidad y su propensión de alimentarse alrededor de los barcos pesqueros [@clay2023adjustment].
-La captura incidental del albatros de Laysan está ampliamente documentada para el Pacífico Norte.
-Sin embargo, las interacciones entre el albatros de Laysan y la pesca comercial en el Pacífico mexicano no se han documentado formalmente [@brothers1999incidental].
+Estudios previos sugieren que los albatros son capturados incidentalmente en pesquerías de arrastre y palangre a lo largo de todo el Pacífico Norte.
+Estas aves son particularmente vulnerables debido a sus movimientos de amplio alcance, su longevidad y su propensión a alimentarse en torno a embarcaciones pesqueras [@clay2023adjustment].
+En Estados Unidos, especialmente en Hawái, las tasas de captura incidental alcanzaron durante la década de 1990 un promedio de 0.113 albatros por cada 1000 anzuelos, con estimaciones anuales que superaban las 1900 aves muertas.
+Por su parte, Japón ha tenido una participación histórica significativa desde la década de 1960, cuando sus flotas de palangre dirigidas a atún y pez espada capturaban cientos de albatros de Laysan y de patas negras en alta mar.
+De manera similar, la antigua Unión Soviética, en colaboración con Japón, operó flotas de palangre de altura que también provocaron una elevada mortalidad incidental de estas aves.
+No obstante, las interacciones entre el albatros de Laysan y la pesca comercial en el Pacífico mexicano no han sido documentadas formalmente [@brothers1999incidental].
 
 En el Pacífico mexicano, la pesca con palangre pelágico puede tener un impacto sobre el albatros de Laysan (datos no publicados de American Bird Conservancy).
 Este arte de pesca se utiliza principalmente en México para la pesca de tiburón y captura de picudos y dorado, entre los sectores industrial y deportivo.
