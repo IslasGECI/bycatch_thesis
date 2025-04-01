@@ -59,6 +59,19 @@ El albatros de Laysan llegó a México por primera vez en la historia en la déc
 La primera isla mexicana en la que el albatros de Laysan se reprodujo fue Isla Guadalupe [@pitman2004population], zona insular designada en 2005 como Reserva de la Biosfera.
 El tamaño actual de la colonia en Isla Guadalupe es mayor de 3,000 individuos maduros {indicar cuánto representa esta colonia del tamaño poblacional, por ejemplo 5%}, siendo esta colonia la de mayor tamaño en México [@mendez2022population].
 
+El albatros de Laysan es una especie longeva y de maduración tardía, con una esperanza de vida que puede superar los 40 años.
+Esta especie alcanza su madurez sexual entre los 5 y 9 años de edad.
+Su comportamiento reproductivo es altamente especializado: forman vínculos monógamos y retornan anualmente a la misma colonia para anidar, como en la Isla Guadalupe y Clarión.
+Las parejas generalmente producen un solo huevo por temporada y el éxito reproductivo suele ser cercano al 50&nbsp;%.
+Este bajo éxito reproductivo los hace particularmente vulnerables a amenazas que alteren la supervivencia adulta, como la captura incidental.
+
+El albatros de Laysan es un forrajeador oportunista que se alimenta de calamares, peces pelágicos y crustáceos, y suele aprovechar descartes pesqueros.
+Captura sus presas mayoritariamente durante el día, aunque algunos estudios sugieren actividad nocturna dependiendo del recurso.
+Durante la temporada reproductiva, sus vuelos de forrajeo varían en distancia y duración.
+Durante la crianza de pollos pequeños los viajes de alimentación son más cortos.
+Cuando los pollos son más grandes, los vuelos de alimentación son más largos.
+Así, su dinámica trófica y de movimiento condiciona una exposición variable a las amenazas pesqueras a lo largo de la temporada reproductiva.
+
 Estudios previos sugieren que los albatros son capturados incidentalmente en las pesquerías de arrastre y palangre en todo el Pacífico Norte.
 Los albatros son particularmente vulnerables debido a sus movimientos de amplio alcance, su longevidad y su propensión de alimentarse alrededor de los barcos pesqueros [@clay2023adjustment].
 La captura incidental del albatros de Laysan está ampliamente documentada para el Pacífico Norte.
