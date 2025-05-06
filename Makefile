@@ -39,7 +39,40 @@ results: \
 	reports/figures/gps_albatross_geographic_points_by_trip.png \
 	reports/figures/gps_albatross_kernel_density.png \
 	reports/figures/gps_albatross_50_percent_kernel_density.png \
+	reports/figures/gps_albatross_95_percent_individuals_kernel.png \
+	reports/figures/gps_albatross_75_percent_individuals_kernel.png \
+	reports/figures/gps_albatross_50_percent_individuals_kernel.png \
 	reports/figures/gps_fisheries_geographic_points.png
+
+reports/figures/gps_albatross_95_percent_individuals_kernel.png: \
+	data/processed/bl_gps_albatross_guadalupe.csv \
+	trips_config.json
+	$(checkDirectories)
+	Rscript -e "bycatch::plot_individual_kernels(bycatch::get_domain_specific_options())" \
+		--data-path data/processed/bl_gps_albatross_guadalupe.csv \
+		--config-path trips_config.json \
+		--percentage-distribution 95 \
+		--output-path $@
+
+reports/figures/gps_albatross_75_percent_individuals_kernel.png: \
+	data/processed/bl_gps_albatross_guadalupe.csv \
+	trips_config.json
+	$(checkDirectories)
+	Rscript -e "bycatch::plot_individual_kernels(bycatch::get_domain_specific_options())" \
+		--data-path data/processed/bl_gps_albatross_guadalupe.csv \
+		--config-path trips_config.json \
+		--percentage-distribution 75 \
+		--output-path $@
+
+reports/figures/gps_albatross_50_percent_individuals_kernel.png: \
+	data/processed/bl_gps_albatross_guadalupe.csv \
+	trips_config.json
+	$(checkDirectories)
+	Rscript -e "bycatch::plot_individual_kernels(bycatch::get_domain_specific_options())" \
+		--data-path data/processed/bl_gps_albatross_guadalupe.csv \
+		--config-path trips_config.json \
+		--percentage-distribution 50 \
+		--output-path $@
 
 reports/figures/gps_albatross_50_percent_kernel_density.png: \
 	data/processed/trips_geographic_points.csv \
