@@ -37,11 +37,10 @@ results: \
 	data/processed/trips_summary.csv \
 	reports/figures/gps_albatross_geographic_points.png \
 	reports/figures/gps_albatross_geographic_points_by_trip.png \
-	reports/figures/gps_albatross_kernel_density.png \
-	reports/figures/gps_albatross_50_percent_kernel_density.png \
 	reports/figures/gps_albatross_95_percent_individuals_kernel.png \
 	reports/figures/gps_albatross_75_percent_individuals_kernel.png \
 	reports/figures/gps_albatross_50_percent_individuals_kernel.png \
+	reports/figures/gps_albatross_50_percent_representative_assess.png \
 	reports/figures/gps_fisheries_geographic_points.png
 
 reports/figures/gps_albatross_95_percent_individuals_kernel.png: \
