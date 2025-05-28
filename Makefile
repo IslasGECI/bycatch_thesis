@@ -41,6 +41,7 @@ results: \
 	reports/figures/gps_albatross_75_percent_individuals_kernel.png \
 	reports/figures/gps_albatross_50_percent_individuals_kernel.png \
 	reports/figures/gps_albatross_50_percent_representative_assess.png \
+	reports/figures/gps_albatross_50_percent_usage_area.png \
 	reports/figures/gps_fisheries_geographic_points.png
 
 reports/figures/gps_albatross_95_percent_individuals_kernel.png: \
@@ -63,6 +64,17 @@ reports/figures/gps_albatross_75_percent_individuals_kernel.png: \
 		--percentage-distribution 75 \
 		--output-path $@
 
+reports/figures/gps_albatross_50_percent_usage_area.png: \
+	data/processed/bl_gps_albatross_guadalupe.csv \
+	trips_config.json
+	$(checkDirectories)
+	Rscript -e "bycatch::plot_usage_area_by_individual(bycatch::get_domain_specific_options())" \
+		--data-path data/processed/bl_gps_albatross_guadalupe.csv \
+		--config-path trips_config.json \
+		--percentage-distribution 50 \
+		--n-iterations 100 \
+		--output-path $@
+
 reports/figures/gps_albatross_50_percent_representative_assess.png: \
 	data/processed/bl_gps_albatross_guadalupe.csv \
 	trips_config.json
@@ -71,6 +83,7 @@ reports/figures/gps_albatross_50_percent_representative_assess.png: \
 		--data-path data/processed/bl_gps_albatross_guadalupe.csv \
 		--config-path trips_config.json \
 		--percentage-distribution 50 \
+		--n-iterations 100 \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_individuals_kernel.png: \
