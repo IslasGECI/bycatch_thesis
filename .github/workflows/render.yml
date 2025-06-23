@@ -13,23 +13,23 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@main
-    - name: Build image
+    - name: 🏗️🐋 Build image
       run: docker build --tag islasgeci/bycatch_thesis:latest .
-    - name: Generate trip results
+    - name: 🌎 Generate trip results
       run: |
         docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make results
-    - name: Build draft
+    - name: ✍🏼 Build draft
       run: |
         docker run -v $PWD:/workdir islasgeci/bycatch_thesis:latest make all
-    - name: Docker log-in
+    - name: 🐋🔏 Docker log-in
       run: echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
-    - name: Push latest Docker image to Docker Hub
+    - name: 🐋⏫ Push latest Docker image to Docker Hub
       run: docker push islasgeci/bycatch_thesis:latest
     - name: Push SHA tag to Docker Hub
       run: |
         docker tag islasgeci/bycatch_thesis:latest islasgeci/bycatch_thesis:${GITHUB_SHA:0:4}
         docker push islasgeci/bycatch_thesis:${GITHUB_SHA:0:4}
-    - name: Upload draft
+    - name: ⏫🏛️ Upload draft
       uses: actions/upload-artifact@main
       with:
         name: reports
