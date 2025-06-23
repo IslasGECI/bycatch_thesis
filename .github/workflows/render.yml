@@ -1,47 +1,34 @@
-name: Render
+name: Render one job
 on: push
 jobs:
 
-  build-image:
-    name: Build Docker image 🐋
+  render-report:
+    name: Render results and draft
     runs-on: ubuntu-latest
+    env:
+      BITBUCKET_USERNAME: ${{ secrets.BITBUCKET_USERNAME }}
+      BITBUCKET_PASSWORD: ${{ secrets.BITBUCKET_PASSWORD }}
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     steps:
     - name: Checkout repo
       uses: actions/checkout@main
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
-    - name: Build and export
-      uses: docker/build-push-action@v5
-      with:
-        context: .
-        tags: islasgeci/bycatch_thesis:latest
-        outputs: type=docker,dest=/tmp/image.tar
-    - name: Upload artifact
-      uses: actions/upload-artifact@main
-      with:
-        name: image
-        path: /tmp/image.tar
-        retention-days: 1
-
-  render-draft:
-    name: Render draft
-    needs: build-image
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repo
-      uses: actions/checkout@main
-    - name: Download artifact
-      uses: actions/download-artifact@main
-      with:
-        name: image
-        path: /tmp
-    - name: Load image
+    - name: Build image
+      run: docker build --tag islasgeci/bycatch_thesis:latest .
+    - name: Generate trip results
       run: |
-        docker load --input /tmp/image.tar
-        docker image ls -a
+        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make results
     - name: Build draft
       run: |
-        docker run -v $PWD:/workdir islasgeci/bycatch_thesis make all
+        docker run -v $PWD:/workdir islasgeci/bycatch_thesis:latest make all
+    - name: Docker log-in
+      run: echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+    - name: Push latest Docker image to Docker Hub
+      run: docker push islasgeci/bycatch_thesis:latest
+    - name: Push SHA tag to Docker Hub
+      run: |
+        docker tag islasgeci/bycatch_thesis:latest islasgeci/bycatch_thesis:${GITHUB_SHA:0:4}
+        docker push islasgeci/bycatch_thesis:${GITHUB_SHA:0:4}
     - name: Upload draft
       uses: actions/upload-artifact@main
       with:
@@ -49,71 +36,5 @@ jobs:
         path: |
           reports/*.pdf
           reports/*.docx
-
-  generate-results:
-    name: Generate results
-    needs: build-image
-    runs-on: ubuntu-latest
-    env:
-      BITBUCKET_USERNAME: ${{ secrets.BITBUCKET_USERNAME }}
-      BITBUCKET_PASSWORD: ${{ secrets.BITBUCKET_PASSWORD }}
-    steps:
-    - name: Checkout repo
-      uses: actions/checkout@main
-    - name: Download artifact
-      uses: actions/download-artifact@main
-      with:
-        name: image
-        path: /tmp
-    - name: Load image
-      run: |
-        docker load --input /tmp/image.tar
-        docker image ls -a
-    - name: Generate trip results
-      run: |
-        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make results
-    - name: Upload results
-      uses: actions/upload-artifact@main
-      with:
-        name: results
-        path: |
-          data/processed/*.csv
+          data/processed/data/processed/trips_summary.csv
           reports/figures/*.png
-
-  update-docker:
-    name: Push image to Docker Hub
-    needs: [generate-results, render-draft]
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repo
-      uses: actions/checkout@main
-    - name: Docker log-in
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      run: echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
-    - name: Download artifact
-      uses: actions/download-artifact@main
-      with:
-        name: image
-        path: /tmp
-    - name: Load image
-      run: |
-        docker load --input /tmp/image.tar
-        docker image ls -a
-    - name: Push latest Docker image to Docker Hub
-      run: docker push islasgeci/bycatch_thesis:latest
-    - name: Push SHA tag to Docker Hub
-      run: |
-        docker tag islasgeci/bycatch_thesis:latest islasgeci/bycatch_thesis:${GITHUB_SHA:0:4}
-        docker push islasgeci/bycatch_thesis:${GITHUB_SHA:0:4}
-
-  delete-docker-image:
-    name: Delete docker image as artifact
-    needs: [render-draft, generate-results, update-docker]
-    runs-on: ubuntu-latest
-    if: always()
-    steps:
-      - uses: geekyeggo/delete-artifact@v5
-        with:
-          name: image
