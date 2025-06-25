@@ -172,6 +172,20 @@ data/processed/bl_gps_albatross_guadalupe.csv: \
 	cd data/raw && R -e "seabird.tracking::write_bl_table()"
 	mv data/raw/bl_gps_albatross_guadalupe.csv $@
 
+reports/figures/gps_fisheries_50_percent_kernel_density.png: \
+	data/processed/fisheries_gps_points_2014.csv \
+	data/raw/division_politica_paises.shp \
+	data/raw/division_politica_paises.shx \
+	data/raw/rosewind.png
+	$(checkDirectories)
+	geci-plot-cli plot-kernel-density \
+		--geographic-data-path data/processed/fisheries_gps_points_2014.csv \
+		--global-shapefile-data-path data/raw/division_politica_paises.shp \
+		--path-rose-wind data/raw/rosewind.png \
+		--selected-contour "50_contour" \
+		--bandwidth 0.005 \
+		--result-map-path $@
+
 reports/figures/gps_fisheries_geographic_points.png: \
 	data/processed/fisheries_gps_points.csv \
 	data/raw/division_politica_paises.shp \
@@ -183,6 +197,26 @@ reports/figures/gps_fisheries_geographic_points.png: \
 		--global-shapefile-data-path data/raw/division_politica_paises.shp \
 		--path-rose-wind data/raw/rosewind.png \
 		--result-map-path $@
+
+reports/figures/gps_fisheries_geographic_points_2014.png: \
+	data/processed/fisheries_gps_points_2014.csv \
+	data/raw/division_politica_paises.shp \
+	data/raw/division_politica_paises.shx \
+	data/raw/rosewind.png
+	$(checkDirectories)
+	geci-plot-cli plot-geographic-points-by-vessel \
+		--geographic-data-path data/processed/fisheries_gps_points_2014.csv \
+		--global-shapefile-data-path data/raw/division_politica_paises.shp \
+		--path-rose-wind data/raw/rosewind.png \
+		--result-map-path $@
+
+data/processed/fisheries_gps_points_2014.csv:
+	$(checkDirectories)
+	Rscript -e "dafishr::vms_download(2014,'data/raw/')"
+	Rscript src/concatenate_fishery_data_dafishr.R
+	iconv -c -f ascii -t utf-8 -o data/processed/fisheries_gps_points_2014.csv data/processed/fisheries_gps_points_ascii.csv
+	sed -i "s/,Latitud,/,Latitude,/" data/processed/fisheries_gps_points_2014.csv
+	sed -i "s/,Longitud,/,Longitude,/" data/processed/fisheries_gps_points_2014.csv
 
 data/processed/fisheries_gps_points.csv:
 	$(checkDirectories)
