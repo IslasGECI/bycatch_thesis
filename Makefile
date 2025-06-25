@@ -43,7 +43,7 @@ results: \
 	reports/figures/gps_albatross_50_percent_individuals_kernel.png \
 	reports/figures/gps_albatross_50_percent_representative_assess.png \
 	reports/figures/gps_albatross_50_percent_usage_area.png \
-	reports/figures/gps_fisheries_50_percent_kernel_density.png \
+	reports/figures/gps_fisheries_percent_kernel_density.png \
 	reports/figures/gps_fisheries_geographic_points.png
 
 reports/figures/gps_albatross_95_percent_individuals_kernel.png: \
@@ -174,7 +174,7 @@ data/processed/bl_gps_albatross_guadalupe.csv: \
 	cd data/raw && R -e "seabird.tracking::write_bl_table()"
 	mv data/raw/bl_gps_albatross_guadalupe.csv $@
 
-reports/figures/gps_fisheries_50_percent_kernel_density.png: \
+reports/figures/gps_fisheries_percent_kernel_density.png: \
 	data/processed/cropped_fisheries_gps_points_2014.csv \
 	data/raw/division_politica_paises.shp \
 	data/raw/division_politica_paises.shx \
@@ -184,7 +184,7 @@ reports/figures/gps_fisheries_50_percent_kernel_density.png: \
 		--geographic-data-path data/processed/cropped_fisheries_gps_points_2014.csv \
 		--global-shapefile-data-path data/raw/division_politica_paises.shp \
 		--path-rose-wind data/raw/rosewind.png \
-		--selected-contour "50_contour" \
+		--selected-contour "All_contours" \
 		--bandwidth 0.005 \
 		--result-map-path $@
 
