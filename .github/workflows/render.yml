@@ -36,5 +36,5 @@ jobs:
         path: |
           reports/*.pdf
           reports/*.docx
-          data/processed/trips_summary.csv
+          data/processed/*.csv
           reports/figures/*.png
