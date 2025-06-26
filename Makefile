@@ -47,53 +47,53 @@ results: \
 	reports/figures/gps_fisheries_percent_kernel_density.png
 
 reports/figures/gps_albatross_95_percent_individuals_kernel.png: \
-	data/processed/bl_gps_albatross_guadalupe.csv \
+	data/processed/bird_life_format_gps_albatross.csv \
 	trips_config.json
 	$(checkDirectories)
 	Rscript -e "bycatch::plot_individual_kernels(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/bl_gps_albatross_guadalupe.csv \
+		--data-path data/processed/bird_life_format_gps_albatross.csv \
 		--config-path trips_config.json \
 		--percentage-distribution 95 \
 		--output-path $@
 
 reports/figures/gps_albatross_75_percent_individuals_kernel.png: \
-	data/processed/bl_gps_albatross_guadalupe.csv \
+	data/processed/bird_life_format_gps_albatross.csv \
 	trips_config.json
 	$(checkDirectories)
 	Rscript -e "bycatch::plot_individual_kernels(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/bl_gps_albatross_guadalupe.csv \
+		--data-path data/processed/bird_life_format_gps_albatross.csv \
 		--config-path trips_config.json \
 		--percentage-distribution 75 \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_usage_area.png: \
-	data/processed/bl_gps_albatross_guadalupe.csv \
+	data/processed/bird_life_format_gps_albatross.csv \
 	trips_config.json
 	$(checkDirectories)
 	Rscript -e "bycatch::plot_usage_area_by_individual(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/bl_gps_albatross_guadalupe.csv \
+		--data-path data/processed/bird_life_format_gps_albatross.csv \
 		--config-path trips_config.json \
 		--percentage-distribution 50 \
 		--n-iterations 100 \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_representative_assess.png: \
-	data/processed/bl_gps_albatross_guadalupe.csv \
+	data/processed/bird_life_format_gps_albatross.csv \
 	trips_config.json
 	$(checkDirectories)
 	Rscript -e "bycatch::plot_representative_assess(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/bl_gps_albatross_guadalupe.csv \
+		--data-path data/processed/bird_life_format_gps_albatross.csv \
 		--config-path trips_config.json \
 		--percentage-distribution 50 \
 		--n-iterations 100 \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_individuals_kernel.png: \
-	data/processed/bl_gps_albatross_guadalupe.csv \
+	data/processed/bird_life_format_gps_albatross.csv \
 	trips_config.json
 	$(checkDirectories)
 	Rscript -e "bycatch::plot_individual_kernels(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/bl_gps_albatross_guadalupe.csv \
+		--data-path data/processed/bird_life_format_gps_albatross.csv \
 		--config-path trips_config.json \
 		--percentage-distribution 50 \
 		--output-path $@
@@ -151,22 +151,22 @@ reports/figures/gps_albatross_geographic_points_by_trip.png: \
 		--result-map-path $@
 
 data/processed/trips_geographic_points.csv: \
-	data/processed/bl_gps_albatross_guadalupe.csv
+	data/processed/bird_life_format_gps_albatross.csv
 	$(checkDirectories)
 	Rscript -e "bycatch::write_trips(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/bl_gps_albatross_guadalupe.csv \
+		--data-path data/processed/bird_life_format_gps_albatross.csv \
 		--config-path trips_config.json \
 		--output-path $@
 
 data/processed/trips_summary.csv: \
-	data/processed/bl_gps_albatross_guadalupe.csv
+	data/processed/bird_life_format_gps_albatross.csv
 	$(checkDirectories)
 	Rscript -e "bycatch::write_trips_summary(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/bl_gps_albatross_guadalupe.csv \
+		--data-path data/processed/bird_life_format_gps_albatross.csv \
 		--config-path trips_config.json \
 		--output-path $@
 
-data/processed/bl_gps_albatross_guadalupe.csv: \
+data/processed/bird_life_format_gps_albatross.csv: \
 	data/raw/datapackage.json \
 	data/raw/gps-albatros-guadalupe.csv \
 	data/raw/breeding_status_albatross_guadalupe.csv
