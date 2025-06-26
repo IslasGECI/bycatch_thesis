@@ -35,16 +35,16 @@ reports/anteproyecto.docx: \
 results: \
 	data/processed/trips_geographic_points.csv \
 	data/processed/trips_summary.csv \
-	reports/figures/cropped_gps_fisheries_geographic_points_2014.png \
-	reports/figures/gps_albatross_geographic_points.png \
-	reports/figures/gps_albatross_geographic_points_by_trip.png \
-	reports/figures/gps_albatross_95_percent_individuals_kernel.png \
-	reports/figures/gps_albatross_75_percent_individuals_kernel.png \
 	reports/figures/gps_albatross_50_percent_individuals_kernel.png \
 	reports/figures/gps_albatross_50_percent_representative_assess.png \
 	reports/figures/gps_albatross_50_percent_usage_area.png \
-	reports/figures/gps_fisheries_percent_kernel_density.png \
-	reports/figures/gps_fisheries_geographic_points.png
+	reports/figures/gps_albatross_75_percent_individuals_kernel.png \
+	reports/figures/gps_albatross_95_percent_individuals_kernel.png \
+	reports/figures/gps_albatross_geographic_points_by_trip.png \
+	reports/figures/gps_albatross_geographic_points.png \
+	reports/figures/gps_fisheries_geographic_points_2014.png \
+	reports/figures/gps_fisheries_geographic_points.png \
+	reports/figures/gps_fisheries_percent_kernel_density.png
 
 reports/figures/gps_albatross_95_percent_individuals_kernel.png: \
 	data/processed/bl_gps_albatross_guadalupe.csv \
@@ -175,13 +175,13 @@ data/processed/bl_gps_albatross_guadalupe.csv: \
 	mv data/raw/bl_gps_albatross_guadalupe.csv $@
 
 reports/figures/gps_fisheries_percent_kernel_density.png: \
-	data/processed/cropped_fisheries_gps_points_2014.csv \
+	data/processed/fisheries_gps_points_2014.csv \
 	data/raw/division_politica_paises.shp \
 	data/raw/division_politica_paises.shx \
 	data/raw/rosewind.png
 	$(checkDirectories)
 	geci-plot-cli plot-kernel-density \
-		--geographic-data-path data/processed/cropped_fisheries_gps_points_2014.csv \
+		--geographic-data-path data/processed/fisheries_gps_points_2014.csv \
 		--global-shapefile-data-path data/raw/division_politica_paises.shp \
 		--path-rose-wind data/raw/rosewind.png \
 		--selected-contour "All_contours" \
@@ -200,18 +200,6 @@ reports/figures/gps_fisheries_geographic_points.png: \
 		--path-rose-wind data/raw/rosewind.png \
 		--result-map-path $@
 
-reports/figures/cropped_gps_fisheries_geographic_points_2014.png: \
-	data/processed/cropped_fisheries_gps_points_2014.csv \
-	data/raw/division_politica_paises.shp \
-	data/raw/division_politica_paises.shx \
-	data/raw/rosewind.png
-	$(checkDirectories)
-	geci-plot-cli plot-geographic-points-by-vessel \
-		--geographic-data-path data/processed/cropped_fisheries_gps_points_2014.csv \
-		--global-shapefile-data-path data/raw/division_politica_paises.shp \
-		--path-rose-wind data/raw/rosewind.png \
-		--result-map-path $@
-
 reports/figures/gps_fisheries_geographic_points_2014.png: \
 	data/processed/fisheries_gps_points_2014.csv \
 	data/raw/division_politica_paises.shp \
@@ -223,18 +211,6 @@ reports/figures/gps_fisheries_geographic_points_2014.png: \
 		--global-shapefile-data-path data/raw/division_politica_paises.shp \
 		--path-rose-wind data/raw/rosewind.png \
 		--result-map-path $@
-
-data/processed/cropped_fisheries_gps_points_2014.csv: data/processed/fisheries_gps_points_2014.csv
-	$(checkDirectories)
-	Rscript -e "bycatch::process_fisheries_data(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/fisheries_gps_points_2014.csv \
-		--start "2014-01-01" \
-		--end "2014-06-30" \
-		--lat-min 20 \
-		--lat-max 40 \
-		--lon-min -130 \
-		--lon-max -110 \
-		--output-path $@
 
 data/processed/fisheries_gps_points_2014.csv:
 	$(checkDirectories)
@@ -326,4 +302,3 @@ init_git:
 
 
 setup: clean init_git
-
