@@ -35,15 +35,16 @@ reports/anteproyecto.docx: \
 results: \
 	data/processed/trips_geographic_points.csv \
 	data/processed/trips_summary.csv \
+	data/processed/vessel_kernel_union_25.gpkg \
 	reports/figures/gps_albatross_50_percent_individuals_kernel.png \
 	reports/figures/gps_albatross_50_percent_representative_assess.png \
 	reports/figures/gps_albatross_50_percent_usage_area.png \
 	reports/figures/gps_albatross_75_percent_individuals_kernel.png \
 	reports/figures/gps_albatross_95_percent_individuals_kernel.png \
-	reports/figures/gps_albatross_geographic_points_by_trip.png \
 	reports/figures/gps_albatross_geographic_points.png \
-	reports/figures/gps_fisheries_geographic_points_2014.png \
+	reports/figures/gps_albatross_geographic_points_by_trip.png \
 	reports/figures/gps_fisheries_geographic_points.png \
+	reports/figures/gps_fisheries_geographic_points_2014.png \
 	reports/figures/gps_fisheries_percent_kernel_density.png
 
 reports/figures/gps_albatross_95_percent_individuals_kernel.png: \
@@ -229,6 +230,17 @@ data/processed/fisheries_gps_points.csv:
 	sed -i "s/,Latitud,/,Latitude,/" data/processed/fisheries_gps_points.csv
 	sed -i "s/,Longitud,/,Longitude,/" data/processed/fisheries_gps_points.csv
 
+data/processed/vessel_seabird_kernel_intersection_25.gpkg: data/processed/vessel_kernel_union_25.gpkg data/processed/seabird_kernel_union_25.gpkg
+	$(checkDirectories)
+	Rscript "src/intersect_vessel_seabird_kernels.R"
+
+data/processed/vessel_kernel_union_25.gpkg: data/external/vessel_data_pacific_2014.csv
+	$(checkDirectories)
+	Rscript "src/generate_vessel_kernel_home_ranges.R"
+
+data/processed/seabird_kernel_union_25.gpkg: data/processed/trips_geographic_points.csv
+	$(checkDirectories)
+	Rscript "src/generate_seabird_kernel_home_ranges.R"
 
 data/raw/gps-albatros-guadalupe.csv:
 	$(checkDirectories)
@@ -286,9 +298,10 @@ endef
 	tests_r
 
 clean:
-	rm --force --recursive reports
-	rm --force --recursive data
 	rm --force *.pdf
+	rm --force --recursive data/processed
+	rm --force --recursive data/raw
+	rm --force --recursive reports
 
 
 

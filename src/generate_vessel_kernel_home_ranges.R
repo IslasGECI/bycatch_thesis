@@ -4,9 +4,12 @@ library(dplyr)
 library(sf)
 
 percent <- 25
+input_directory <- "data/external/"
+output_directory <- "data/processed/"
 
 # Load data
-vessel_data <- read.csv("data_vessel_pacific_2014.csv")
+filename_vessel_data <- paste0(input_directory, "vessel_data_pacific_2014.csv")
+vessel_data <- read.csv(filename_vessel_data)
 
 # Ensure vessel_id is a factor and not NA
 filtered_vessel_data <- vessel_data |>
@@ -28,30 +31,21 @@ home_ranges <- list()
 for (v in vessels) {
   # Subset data for vessel
   vessel_subset <- filtered_vessel_data[filtered_vessel_data$vessel_id == v, ]
-  
   # Skip if too few points
   if (nrow(vessel_subset) < 30) next  # adjust threshold if needed
-  
   # Create a SpatialPointsDataFrame
   coordinates(vessel_subset) <- ~ lon + lat
-
-  
   # Add vessel ID as a factor (required for kernelUD)
   vessel_subset$vessel_id <- as.factor(vessel_subset$vessel_rnpa)
-
   # Set the projection (optional but recommended)
   proj4string(vessel_subset) <- CRS("+proj=longlat +datum=WGS84")
-  
-    
   # Estimate UD
   kud <- tryCatch(
     kernelUD(vessel_subset["vessel_id"], h = "href"),
     error = function(e) NULL
   )
   if (is.null(kud)) next
-  
   # Extract percen% contour
-  
   ver <- tryCatch(
     getverticeshr(kud, percent = percent),
     error = function(e) NULL
@@ -75,7 +69,7 @@ home_ranges_sf <- Map(function(sf_obj, id) {
 combined_home_ranges_sf <- do.call(rbind, home_ranges_sf)
 
 plot(combined_home_ranges_sf["vessel_id"], main = paste0("Vessel Kernel Density (", percent, "%)"))
-filename_multiple_polygons <- paste0("vessel_home_ranges_", percent, ".gpkg")
+filename_multiple_polygons <- paste0(output_directory, "vessel_home_ranges_", percent, ".gpkg")
 st_write(combined_home_ranges_sf, filename_multiple_polygons, append = FALSE)  # or .shp
 
 
@@ -87,6 +81,5 @@ union_home_range <- st_union(combined_valid)
 
 
 union_home_range_sf <- st_sf(geometry = union_home_range)
-filename_union <- paste0("vessel_kernel_union_", percent, ".gpkg")
+filename_union <- paste0(output_directory, "vessel_kernel_union_", percent, ".gpkg")
 st_write(union_home_range_sf, filename_union, append = FALSE)
-

@@ -3,10 +3,13 @@ library(adehabitatHR)
 library(dplyr)
 library(sf)
 
-percent <- 50
+percent <- 25
+input_directory <- "data/processed/"
+output_directory <- "data/processed/"
 
 # Load data
-seabird_data <- read.csv("trips_geographic_points.csv")
+filename_seabird_data <- paste0(input_directory, "trips_geographic_points.csv")
+seabird_data <- read.csv(filename_seabird_data)
 
 # Ensure seabird_id is a factor and not NA
 filtered_seabird_data <- seabird_data |>
@@ -74,7 +77,7 @@ home_ranges_sf <- Map(function(sf_obj, id) {
 combined_home_ranges_sf <- do.call(rbind, home_ranges_sf)
 
 plot(combined_home_ranges_sf["seabird_id"], main = paste0("seabird Kernel Density (", percent, "%)"))
-filename_multiple_polygons <- paste0("seabird_home_ranges_", percent, ".gpkg")
+filename_multiple_polygons <- paste0(output_directory, "seabird_home_ranges_", percent, ".gpkg")
 st_write(combined_home_ranges_sf, filename_multiple_polygons, append = FALSE)  # or .shp
 
 
@@ -86,6 +89,6 @@ union_home_range <- st_union(combined_valid)
 
 
 union_home_range_sf <- st_sf(geometry = union_home_range)
-filename_union <- paste0("seabird_kernel_union_", percent, ".gpkg")
+filename_union <- paste0(output_directory, "seabird_kernel_union_", percent, ".gpkg")
 st_write(union_home_range_sf, filename_union, append = FALSE)
 
