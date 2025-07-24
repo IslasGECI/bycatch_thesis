@@ -3,6 +3,8 @@ library(sf)
 library(ggplot2)
 
 percent <- 25
+input_directory <- "data/processed/"
+output_directory <- "reports/figures/"
 
 # Load Mexico geometry
 mex <- ne_countries(scale = "medium",
@@ -10,134 +12,8 @@ mex <- ne_countries(scale = "medium",
                     returnclass = "sf")
 
 # Load home ranges from GeoPackage
-filename_multiple_polygons <- paste0("vessel_home_ranges_", percent, ".gpkg")
-combined_home_ranges_sf <- st_read(filename_multiple_polygons)
-
-# Plot both on the same map
-print(
-  ggplot() +
-    geom_sf(
-      data = combined_home_ranges_sf,
-      aes(fill = vessel_id),
-      color = NA,
-      alpha = 0.5
-    ) +
-    geom_sf(
-      data = mex,
-      fill = "beige",
-      color = "brown"
-    ) +
-    ggtitle(paste0(
-      percent, "% Kernel Density of Fishing Vessels off Mexico"
-    )) +
-    theme_minimal() +
-    guides(fill = "none")  # Optional: remove legend if too many vessels
-)
-png_filename_multiple_polygons <- paste0("kernel_vessel_home_ranges_map_", percent, ".png")
-ggsave(
-  png_filename_multiple_polygons,
-  width = 10,
-  height = 8,
-  dpi = 300
-)
-
-
-# Load home ranges from GeoPackage
-filename_union <- paste0("vessel_kernel_union_", percent, ".gpkg")
-union_vessel_home_range_sf <- st_read(filename_union)
-
-# Plot the union over the Mexico map
-print(
-  ggplot() +
-    geom_sf(
-      data = union_vessel_home_range_sf,
-      fill = "cornflowerblue",
-      color = NA,
-      alpha = 0.5
-    ) +
-    geom_sf(
-      data = mex,
-      fill = "beige",
-      color = "brown"
-    ) +
-    ggtitle(paste0(percent, "% Union of Kernel Home Ranges")) +
-    theme_minimal()
-)
-
-# Save union plot to PNG
-png_filename_union <- paste0("kernel_vessel_home_ranges_union_", percent, ".png")
-ggsave(png_filename_union,
-       width = 10,
-       height = 8,
-       dpi = 300)
-
-# Load home ranges from GeoPackage
-filename_multiple_polygons <- paste0("seabird_home_ranges_", percent, ".gpkg")
-combined_home_ranges_sf <- st_read(filename_multiple_polygons)
-
-# Plot both on the same map
-print(
-  ggplot() +
-    geom_sf(
-      data = combined_home_ranges_sf,
-      aes(fill = seabird_id),
-      color = NA,
-      alpha = 0.6
-    ) +
-    geom_sf(
-      data = mex,
-      fill = "beige",
-      color = "brown"
-    ) +
-    ggtitle(paste0(
-      percent, "% Kernel Density of Fishing seabirds off Mexico"
-    )) +
-    theme_minimal() +
-    guides(fill = "none")  # Optional: remove legend if too many seabirds
-)
-png_filename_multiple_polygons <- paste0("kernel_seabird_home_ranges_map_", percent, ".png")
-ggsave(
-  png_filename_multiple_polygons,
-  width = 10,
-  height = 8,
-  dpi = 300
-)
-
-
-# Load home ranges from GeoPackage
-filename_union <- paste0("seabird_kernel_union_", percent, ".gpkg")
-union_seabird_home_range_sf <- st_read(filename_union)
-
-# Plot the union over the Mexico map
-print(
-  ggplot() +
-    geom_sf(
-      data = union_seabird_home_range_sf,
-      fill = "lightgreen",
-      color = NA,
-      alpha = 0.6
-    ) +
-    geom_sf(
-      data = mex,
-      fill = "beige",
-      color = "brown"
-    ) +
-    ggtitle(paste0(percent, "% Union of Kernel Home Ranges")) +
-    theme_minimal()
-)
-
-# Save union plot to PNG
-png_filename_union <- paste0("kernel_seabird_home_ranges_union_", percent, ".png")
-ggsave(png_filename_union,
-       width = 10,
-       height = 8,
-       dpi = 300)
-
-
-# Load home ranges from GeoPackage
-filename_intersection <- paste0("vessel_seabird_kernel_intersection_", percent, ".gpkg")
+filename_intersection <- paste0(input_directory, "vessel_seabird_kernel_intersection_", percent, ".gpkg")
 intersection_sf <- st_read(filename_intersection)
-
 
 # Plot the intersection over the Mexico map
 print(
@@ -169,7 +45,7 @@ print(
 )
 
 # Save union plot to PNG
-png_filename_union <- paste0("kernel_overlap_home_ranges_union_", percent, ".png")
+png_filename_union <- paste0(output_directory, "kernel_overlap_home_ranges_union_", percent, ".png")
 ggsave(png_filename_union,
        width = 10,
        height = 8,
@@ -210,7 +86,7 @@ print(
 )
 
 # Save union plot to PNG
-png_filename_union <- paste0("kernel_overlap_home_ranges_union_", percent, "_zoom.png")
+png_filename_union <- paste0(output_directory, "kernel_overlap_home_ranges_union_", percent, "_zoom.png")
 ggsave(png_filename_union,
        width = 10,
        height = 8,

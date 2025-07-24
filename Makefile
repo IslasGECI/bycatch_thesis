@@ -45,7 +45,13 @@ results: \
 	reports/figures/gps_albatross_geographic_points_by_trip.png \
 	reports/figures/gps_fisheries_geographic_points.png \
 	reports/figures/gps_fisheries_geographic_points_2014.png \
-	reports/figures/gps_fisheries_percent_kernel_density.png
+	reports/figures/gps_fisheries_percent_kernel_density.png \
+	reports/figures/kernel_overlap_home_ranges_union_25.png \
+	reports/figures/kernel_overlap_home_ranges_union_25_zoom.png \
+	reports/figures/kernel_seabird_home_ranges_map_25.png \
+	reports/figures/kernel_seabird_home_ranges_union_25.png \
+	reports/figures/kernel_vessel_home_ranges_map_25.png \
+	reports/figures/kernel_vessel_home_ranges_union_25.png
 
 reports/figures/gps_albatross_95_percent_individuals_kernel.png: \
 	data/processed/bird_life_format_gps_albatross.csv \
@@ -233,6 +239,10 @@ data/processed/fisheries_gps_points.csv:
 data/processed/vessel_seabird_kernel_intersection_25.gpkg: data/processed/vessel_kernel_union_25.gpkg data/processed/seabird_kernel_union_25.gpkg
 	$(checkDirectories)
 	Rscript "src/intersect_vessel_seabird_kernels.R"
+
+reports/figures/kernel_overlap_home_ranges_union_25.png reports/figures/kernel_overlap_home_ranges_union_25_zoom.png: vessel_seabird_kernel_intersection_25.gpkg
+	$(checkDirectories)
+	Rscript "src/plot_overlap_home_ranges.R"
 
 data/processed/vessel_home_ranges_25.gpkg data/processed/vessel_kernel_union_25.gpkg: data/external/vessel_data_pacific_2014.csv
 	$(checkDirectories)
