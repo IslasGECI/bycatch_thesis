@@ -240,7 +240,7 @@ data/processed/vessel_seabird_kernel_intersection_25.gpkg: data/processed/vessel
 	$(checkDirectories)
 	Rscript "src/intersect_vessel_seabird_kernels.R"
 
-reports/figures/kernel_overlap_home_ranges_union_25.png reports/figures/kernel_overlap_home_ranges_union_25_zoom.png: vessel_seabird_kernel_intersection_25.gpkg
+reports/figures/kernel_overlap_home_ranges_union_25.png reports/figures/kernel_overlap_home_ranges_union_25_zoom.png: data/processed/vessel_seabird_kernel_intersection_25.gpkg
 	$(checkDirectories)
 	Rscript "src/plot_overlap_home_ranges.R"
 
