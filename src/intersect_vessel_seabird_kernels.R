@@ -19,7 +19,7 @@ intersection_sf <- st_intersection(union_vessel_home_range_sf, union_seabird_hom
 
 # Save the result
 output_directory <- "data/processed/"
-filename_intersection <- paste0(output_directory, "vessel_seabird_kernel_intersection_", percent, ".gpkg")
+filename_intersection <- paste0(output_directory, "overlap_kernel_intersection_", percent, ".gpkg")
 st_write(intersection_sf, filename_intersection, append = FALSE)
 
 # Optional: plot it

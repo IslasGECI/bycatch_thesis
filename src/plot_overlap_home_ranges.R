@@ -12,7 +12,11 @@ mex <- ne_countries(scale = "medium",
                     returnclass = "sf")
 
 # Load home ranges from GeoPackage
-filename_intersection <- paste0(input_directory, "vessel_seabird_kernel_intersection_", percent, ".gpkg")
+filename_vessel_union <- paste0(input_directory, "vessel_kernel_union_", percent, ".gpkg")
+union_vessel_home_range_sf <- st_read(filename_vessel_union)
+filename_seabird_union <- paste0(input_directory, "seabird_kernel_union_", percent, ".gpkg")
+union_seabird_home_range_sf <- st_read(filename_seabird_union)
+filename_intersection <- paste0(input_directory, "overlap_kernel_intersection_", percent, ".gpkg")
 intersection_sf <- st_read(filename_intersection)
 
 # Plot the intersection over the Mexico map
