@@ -234,13 +234,21 @@ data/processed/vessel_seabird_kernel_intersection_25.gpkg: data/processed/vessel
 	$(checkDirectories)
 	Rscript "src/intersect_vessel_seabird_kernels.R"
 
-data/processed/vessel_kernel_union_25.gpkg: data/external/vessel_data_pacific_2014.csv
+data/processed/vessel_home_ranges_25.gpkg data/processed/vessel_kernel_union_25.gpkg: data/external/vessel_data_pacific_2014.csv
 	$(checkDirectories)
 	Rscript "src/generate_vessel_kernel_home_ranges.R"
 
-data/processed/seabird_kernel_union_25.gpkg: data/processed/trips_geographic_points.csv
+reports/figures/kernel_vessel_home_ranges_map_25.png reports/figures/kernel_vessel_home_ranges_union_25.png: data/processed/vessel_home_ranges_25.gpkg data/processed/vessel_kernel_union_25.gpkg
+	$(checkDirectories)
+	Rscript "src/plot_vessel_home_ranges.R"
+
+data/processed/seabird_home_ranges_25.gpkg data/processed/seabird_kernel_union_25.gpkg: data/processed/trips_geographic_points.csv
 	$(checkDirectories)
 	Rscript "src/generate_seabird_kernel_home_ranges.R"
+
+reports/figures/kernel_seabird_home_ranges_map_25.png reports/figures/kernel_seabird_home_ranges_union_25.png: data/processed/seabird_home_ranges_25.gpkg data/processed/seabird_kernel_union_25.gpkg
+	$(checkDirectories)
+	Rscript "src/plot_seabird_home_ranges.R"
 
 data/raw/gps-albatros-guadalupe.csv:
 	$(checkDirectories)

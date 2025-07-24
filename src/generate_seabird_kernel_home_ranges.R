@@ -30,30 +30,21 @@ home_ranges <- list()
 for (v in seabirds) {
   # Subset data for seabird
   seabird_subset <- filtered_seabird_data[filtered_seabird_data$seabird_id == v, ]
-  
   # Skip if too few points
   if (nrow(seabird_subset) < 30) next  # adjust threshold if needed
-  
   # Create a SpatialPointsDataFrame
   coordinates(seabird_subset) <- ~ X + Y
-
-  
   # Add seabird ID as a factor (required for kernelUD)
   seabird_subset$seabird_id <- as.factor(seabird_subset$tripID)
-
   # Set the projection (optional but recommended)
   proj4string(seabird_subset) <- CRS("+proj=longlat +datum=WGS84")
-  
-    
   # Estimate UD
   kud <- tryCatch(
     kernelUD(seabird_subset["seabird_id"], h = "href"),
     error = function(e) NULL
   )
   if (is.null(kud)) next
-  
   # Extract percen% contour
-  
   ver <- tryCatch(
     getverticeshr(kud, percent = percent),
     error = function(e) NULL

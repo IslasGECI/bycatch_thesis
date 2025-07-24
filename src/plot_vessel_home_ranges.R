@@ -41,7 +41,6 @@ ggsave(
   dpi = 300
 )
 
-
 # Load home ranges from GeoPackage
 filename_union <- paste0("vessel_kernel_union_", percent, ".gpkg")
 union_home_range_sf <- st_read(filename_union)
