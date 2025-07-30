@@ -59,38 +59,36 @@ ggsave(png_filename_union,
 )
 
 # Plot the intersection over the Mexico map
-print(
-  ggplot() +
-    geom_sf(
-      data = union_vessel_home_range_sf,
-      fill = "cornflowerblue",
-      color = NA,
-      alpha = 0.4
-    ) +
-    geom_sf(
-      data = union_seabird_home_range_sf,
-      fill = "lightgreen",
-      color = NA,
-      alpha = 0.4
-    ) +
-    geom_sf(
-      data = intersection_sf,
-      fill = "pink",
-      color = NA
-    ) +
-    geom_sf(
-      data = mex,
-      fill = "beige",
-      color = "brown"
-    ) +
-    coord_sf(
-      xlim = c(-124, -110),
-      ylim = c(25, 34),
-      expand = FALSE
-    ) +
-    ggtitle(paste0(percent, "% Union of Kernel Home Ranges")) +
-    theme_minimal()
-)
+ggplot() +
+  geom_sf(
+    data = union_vessel_home_range_sf,
+    fill = "cornflowerblue",
+    color = NA,
+    alpha = 0.4
+  ) +
+  geom_sf(
+    data = union_seabird_home_range_sf,
+    fill = "lightgreen",
+    color = NA,
+    alpha = 0.4
+  ) +
+  geom_sf(
+    data = intersection_sf,
+    fill = "pink",
+    color = NA
+  ) +
+  geom_sf(
+    data = mex,
+    fill = "beige",
+    color = "brown"
+  ) +
+  coord_sf(
+    xlim = c(-124, -110),
+    ylim = c(25, 34),
+    expand = FALSE
+  ) +
+  ggtitle(paste0(percent, "% Union of Kernel Home Ranges")) +
+  theme_minimal()
 
 # Save union plot to PNG
 png_filename_union <- paste0(output_directory, "kernel_overlap_home_ranges_union_", percent, "_zoom.png")
