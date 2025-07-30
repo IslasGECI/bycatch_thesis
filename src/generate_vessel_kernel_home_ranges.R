@@ -32,7 +32,7 @@ for (v in vessels) {
   # Subset data for vessel
   vessel_subset <- filtered_vessel_data[filtered_vessel_data$vessel_id == v, ]
   # Skip if too few points
-  if (nrow(vessel_subset) < 30) next  # adjust threshold if needed
+  if (nrow(vessel_subset) < 30) next # adjust threshold if needed
   # Create a SpatialPointsDataFrame
   coordinates(vessel_subset) <- ~ lon + lat
   # Add vessel ID as a factor (required for kernelUD)
@@ -70,7 +70,7 @@ combined_home_ranges_sf <- do.call(rbind, home_ranges_sf)
 
 plot(combined_home_ranges_sf["vessel_id"], main = paste0("Vessel Kernel Density (", percent, "%)"))
 filename_multiple_polygons <- paste0(output_directory, "vessel_home_ranges_", percent, ".gpkg")
-st_write(combined_home_ranges_sf, filename_multiple_polygons, append = FALSE)  # or .shp
+st_write(combined_home_ranges_sf, filename_multiple_polygons, append = FALSE) # or .shp
 
 
 # Repair invalid geometries

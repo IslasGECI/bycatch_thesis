@@ -321,6 +321,9 @@ clean:
 	rm --force --recursive data/raw
 	rm --force --recursive reports
 
+format:
+	R -e "library(styler)" \
+      -e "style_dir('src')"
 
 
 init: init_git
@@ -331,5 +334,3 @@ init_git:
 	git config --global user.name "Ciencia de Datos • GECI"
 	git config --global user.email "ciencia.datos@islas.org.mx"
 
-
-setup: clean init_git

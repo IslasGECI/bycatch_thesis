@@ -31,7 +31,7 @@ for (v in seabirds) {
   # Subset data for seabird
   seabird_subset <- filtered_seabird_data[filtered_seabird_data$seabird_id == v, ]
   # Skip if too few points
-  if (nrow(seabird_subset) < 30) next  # adjust threshold if needed
+  if (nrow(seabird_subset) < 30) next # adjust threshold if needed
   # Create a SpatialPointsDataFrame
   coordinates(seabird_subset) <- ~ X + Y
   # Add seabird ID as a factor (required for kernelUD)
@@ -69,7 +69,7 @@ combined_home_ranges_sf <- do.call(rbind, home_ranges_sf)
 
 plot(combined_home_ranges_sf["seabird_id"], main = paste0("seabird Kernel Density (", percent, "%)"))
 filename_multiple_polygons <- paste0(output_directory, "seabird_home_ranges_", percent, ".gpkg")
-st_write(combined_home_ranges_sf, filename_multiple_polygons, append = FALSE)  # or .shp
+st_write(combined_home_ranges_sf, filename_multiple_polygons, append = FALSE) # or .shp
 
 
 # Repair invalid geometries
@@ -82,4 +82,3 @@ union_home_range <- st_union(combined_valid)
 union_home_range_sf <- st_sf(geometry = union_home_range)
 filename_union <- paste0(output_directory, "seabird_kernel_union_", percent, ".gpkg")
 st_write(union_home_range_sf, filename_union, append = FALSE)
-

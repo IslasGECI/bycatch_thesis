@@ -7,9 +7,11 @@ input_directory <- "data/processed/"
 output_directory <- "reports/figures/"
 
 # Load Mexico geometry
-mex <- ne_countries(scale = "medium",
-                    country = "Mexico",
-                    returnclass = "sf")
+mex <- ne_countries(
+  scale = "medium",
+  country = "Mexico",
+  returnclass = "sf"
+)
 
 # Load home ranges from GeoPackage
 filename_vessel_union <- paste0(input_directory, "vessel_kernel_union_", percent, ".gpkg")
@@ -51,9 +53,10 @@ print(
 # Save union plot to PNG
 png_filename_union <- paste0(output_directory, "kernel_overlap_home_ranges_union_", percent, ".png")
 ggsave(png_filename_union,
-       width = 10,
-       height = 8,
-       dpi = 300)
+  width = 10,
+  height = 8,
+  dpi = 300
+)
 
 # Plot the intersection over the Mexico map
 print(
@@ -92,6 +95,7 @@ print(
 # Save union plot to PNG
 png_filename_union <- paste0(output_directory, "kernel_overlap_home_ranges_union_", percent, "_zoom.png")
 ggsave(png_filename_union,
-       width = 10,
-       height = 8,
-       dpi = 300)
+  width = 10,
+  height = 8,
+  dpi = 300
+)

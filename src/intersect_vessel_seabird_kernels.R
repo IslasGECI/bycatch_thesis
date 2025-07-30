@@ -24,4 +24,3 @@ st_write(intersection_sf, filename_intersection, append = FALSE)
 
 # Optional: plot it
 plot(st_geometry(intersection_sf), main = paste0(percent, "% Vessel–Seabird Kernel Intersection"))
-
