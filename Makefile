@@ -1,8 +1,8 @@
 all: reports/anteproyecto.docx \
 	reports/anteproyecto.pdf \
 	reports/articulo_uno.docx \
-	reports/articulo_uno.pdf
-
+	reports/articulo_uno.pdf \
+	reports/figures/kernel_overlap_home_ranges_union_25_zoom.png
 
 reports/articulo_uno.pdf: \
 	reports/draft.md \
