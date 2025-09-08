@@ -287,6 +287,10 @@ data/raw/rosewind.png:
 data/external/232_ANP-ITRF08_04072025.shp:
 	unzip data/external/232_ANP-ITRF08_04072025.zip -d data/external
 
+reports/figures/anp.png: data/external/232_ANP-ITRF08_04072025.shp
+	$(checkDirectories)
+	Rscript src/plot_anp.R
+
 define renderBibLatex
 	cd $(<D) && pdflatex $(<F)
 	cd $(<D) && bibtex $(subst .tex,,$(<F))
