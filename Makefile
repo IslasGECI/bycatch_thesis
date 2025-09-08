@@ -284,6 +284,8 @@ data/raw/rosewind.png:
 	$(checkDirectories)
 	descarga_datos $(@F) $(@D) img/rosa_vientos
 
+data/external/232_ANP-ITRF08_04072025.shp:
+	unzip data/external/232_ANP-ITRF08_04072025.zip -d data/external
 
 define renderBibLatex
 	cd $(<D) && pdflatex $(<F)
