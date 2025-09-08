@@ -320,6 +320,10 @@ clean:
 	rm --force --recursive data/processed
 	rm --force --recursive data/raw
 	rm --force --recursive reports
+	rm --force data/external/232_ANP-ITRF08_04072025.cpg
+	rm --force data/external/232_ANP-ITRF08_04072025.dbf
+	rm --force data/external/232_ANP-ITRF08_04072025.prj
+	rm --force data/external/232_ANP-ITRF08_04072025.s*
 
 format:
 	R -e "library(styler)" \
