@@ -9,21 +9,35 @@
         "data": [
             {
                 "source": "tabular_data_packages",
-                "version": "37a9ec50da96f28464b7e57936e8ac46e85dd3b8",
+                "version": "e88d301fa414ea86d76fa162950df4595735518b",
+                "path": "seabird_tracking",
+                "type": "csv",
+                "filename": "gps-albatros-clarion.csv"
+            },
+            {
+                "source": "tabular_data_packages",
+                "version": "e88d301fa414ea86d76fa162950df4595735518b",
+                "path": "seabird_tracking",
+                "type": "csv",
+                "filename": "breeding_status_albatross_clarion.csv"
+            },
+            {
+                "source": "tabular_data_packages",
+                "version": "e88d301fa414ea86d76fa162950df4595735518b",
                 "path": "seabird_tracking",
                 "type": "csv",
                 "filename": "gps-albatros-guadalupe.csv"
             },
             {
                 "source": "tabular_data_packages",
-                "version": "37a9ec50da96f28464b7e57936e8ac46e85dd3b8",
+                "version": "e88d301fa414ea86d76fa162950df4595735518b",
                 "path": "seabird_tracking",
                 "type": "csv",
                 "filename": "breeding_status_albatross_guadalupe.csv"
             },
             {
                 "source": "tabular_data_packages",
-                "version": "37a9ec50da96f28464b7e57936e8ac46e85dd3b8",
+                "version": "e88d301fa414ea86d76fa162950df4595735518b",
                 "path": "seabird_tracking",
                 "type": "csv",
                 "filename": "datapackage.json"
