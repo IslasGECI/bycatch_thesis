@@ -5,6 +5,7 @@ on:
       - 'feature/**'
 
 jobs:
+  test_feature_results:
     name: Test results and draft
     runs-on: ubuntu-latest
     env:
