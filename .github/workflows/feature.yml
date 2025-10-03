@@ -21,7 +21,6 @@ jobs:
     - name: 🌎 Generate results
       run: |
         docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make reports/figures/gps_albatross_clarion_geographic_points.png
-        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make reports/figures/gps_albatross_clarion_geographic_points_by_trip.png
     - name: ⏫🏛️ Upload draft
       uses: actions/upload-artifact@main
       with:
