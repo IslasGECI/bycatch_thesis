@@ -173,37 +173,17 @@ data/processed/trips_summary.csv: \
 		--config-path trips_config.json \
 		--output-path $@
 
-reports/figures/gps_albatross_clarion_geographic_points_by_trip.png: \
-	data/processed/trips_geographic_points_clarion.csv \
-	data/raw/division_politica_paises.shp \
-	data/raw/division_politica_paises.shx \
-	data/raw/rosewind.png
-	$(checkDirectories)
-	geci-plot-cli plot-geographic-points-by-trip \
-		--geographic-data-path data/processed/trips_geographic_points_clarion.csv \
-		--global-shapefile-data-path data/raw/division_politica_paises.shp \
-		--path-rose-wind data/raw/rosewind.png \
-		--result-map-path $@
-
 reports/figures/gps_albatross_clarion_geographic_points.png: \
-	data/processed/trips_geographic_points_clarion.csv \
+	data/processed/bird_life_format_gps_albatross_clarion.csv \
 	data/raw/division_politica_paises.shp \
 	data/raw/division_politica_paises.shx \
 	data/raw/rosewind.png
 	$(checkDirectories)
 	geci-plot-cli plot-geographic-points \
-		--geographic-data-path data/processed/trips_geographic_points_clarion.csv \
+		--geographic-data-path data/processed/bird_life_format_gps_albatross_clarion.csv \
 		--global-shapefile-data-path data/raw/division_politica_paises.shp \
 		--path-rose-wind data/raw/rosewind.png \
 		--result-map-path $@
-
-data/processed/trips_geographic_points_clarion.csv: \
-	data/processed/bird_life_format_gps_albatross_clarion.csv
-	$(checkDirectories)
-	Rscript -e "bycatch::write_trips(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/bird_life_format_gps_albatross_clarion.csv \
-		--config-path trips_config_clarion.json \
-		--output-path $@
 
 data/processed/bird_life_format_gps_albatross_clarion.csv: \
 	data/raw/datapackage.json \
