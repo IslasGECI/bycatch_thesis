@@ -294,6 +294,10 @@ reports/figures/anp.png: data/external/232_ANP-ITRF08_04072025.shp
 	$(checkDirectories)
 	Rscript src/plot_anp.R
 
+reports/figures/mexico.png: data/external/Mexico_e_islas_wgs84.shp
+	$(checkDirectories)
+	Rscript src/plot_mexico.R
+
 define renderBibLatex
 	cd $(<D) && pdflatex $(<F)
 	cd $(<D) && bibtex $(subst .tex,,$(<F))
