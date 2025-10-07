@@ -294,9 +294,17 @@ reports/figures/anp.png: data/external/232_ANP-ITRF08_04072025.shp
 	$(checkDirectories)
 	Rscript src/plot_anp.R
 
+data/processed/anp_union.gpkg: data/external/232_ANP-ITRF08_04072025.shp
+	$(checkDirectories)
+	Rscript src/export_anp_to_gpkg.R
+
 reports/figures/mexico.png: data/external/Mexico_e_islas_wgs84.shp
 	$(checkDirectories)
 	Rscript src/plot_mexico.R
+
+data/processed/mexico_union.gpkg: data/external/Mexico_e_islas_wgs84.shp
+	$(checkDirectories)
+	Rscript src/export_mexico_to_gpkg.R
 
 define renderBibLatex
 	cd $(<D) && pdflatex $(<F)
