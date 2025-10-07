@@ -287,6 +287,9 @@ data/raw/rosewind.png:
 data/external/232_ANP-ITRF08_04072025.shp:
 	unzip data/external/232_ANP-ITRF08_04072025.zip -d data/external
 
+data/external/Mexico_e_islas_wgs84.shp:
+	unzip data/external/Mexico_e_islas_wgs84.zip -d data/external
+
 reports/figures/anp.png: data/external/232_ANP-ITRF08_04072025.shp
 	$(checkDirectories)
 	Rscript src/plot_anp.R
@@ -330,6 +333,11 @@ clean:
 	rm --force data/external/232_ANP-ITRF08_04072025.dbf
 	rm --force data/external/232_ANP-ITRF08_04072025.prj
 	rm --force data/external/232_ANP-ITRF08_04072025.s*
+	rm --force data/external/Mexico_e_islas_wgs84.cpg
+	rm --force data/external/Mexico_e_islas_wgs84.dbf
+	rm --force data/external/Mexico_e_islas_wgs84.prj
+	rm --force data/external/Mexico_e_islas_wgs84.qmd
+	rm --force data/external/Mexico_e_islas_wgs84.s*
 
 format:
 	R -e "library(styler)" \
