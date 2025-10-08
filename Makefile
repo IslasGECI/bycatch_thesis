@@ -306,6 +306,14 @@ data/processed/mexico_union.gpkg: data/external/Mexico_e_islas_wgs84.shp
 	$(checkDirectories)
 	Rscript src/export_mexico_to_gpkg.R
 
+data/processed/amp_mexico.gpkg: data/processed/anp_union.gpkg data/processed/mexico_union.gpkg
+	$(checkDirectories)
+	Rscript src/export_amp_mexico_to_gpkg.R
+
+reports/figures/amp_mexico.png: data/processed/amp_mexico.gpkg
+	$(checkDirectories)
+	Rscript src/plot_amp_mexico.R
+
 define renderBibLatex
 	cd $(<D) && pdflatex $(<F)
 	cd $(<D) && bibtex $(subst .tex,,$(<F))
