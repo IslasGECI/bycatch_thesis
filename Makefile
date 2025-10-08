@@ -314,6 +314,14 @@ reports/figures/amp_mexico.png: data/processed/amp_mexico.gpkg
 	$(checkDirectories)
 	Rscript src/plot_amp_mexico.R
 
+data/processed/overlap_amp_seabird_25.gpkg: data/processed/amp_mexico.gpkg data/processed/seabird_kernel_union_25.gpkg
+	$(checkDirectories)
+	Rscript src/overlap_amp_seabird.R
+
+reports/figures/overlap_amp_seabird.png: data/processed/overlap_amp_seabird_25.gpkg
+	$(checkDirectories)
+	Rscript src/plot_overlap_amp_seabird.R
+
 define renderBibLatex
 	cd $(<D) && pdflatex $(<F)
 	cd $(<D) && bibtex $(subst .tex,,$(<F))
