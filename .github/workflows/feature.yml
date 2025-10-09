@@ -1,0 +1,29 @@
+name: CI for features
+on:
+  push:
+    branches:
+      - 'feature/**'
+
+jobs:
+  test_feature_results:
+    name: Test results and draft
+    runs-on: ubuntu-latest
+    env:
+      BITBUCKET_USERNAME: ${{ secrets.BITBUCKET_USERNAME }}
+      BITBUCKET_PASSWORD: ${{ secrets.BITBUCKET_PASSWORD }}
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@main
+    - name: 🏗️🐋 Build image
+      run: docker build --tag islasgeci/bycatch_thesis:latest .
+    - name: 🌎 Generate results
+      run: |
+        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make reports/figures/gps_albatross_clarion_geographic_points.png
+    - name: ⏫🏛️ Upload draft
+      uses: actions/upload-artifact@main
+      with:
+        name: reports
+        path: |
+          reports/figures/*.png

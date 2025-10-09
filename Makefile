@@ -134,13 +134,13 @@ reports/figures/gps_albatross_kernel_density.png: \
 		--result-map-path $@
 
 reports/figures/gps_albatross_geographic_points.png: \
-	data/processed/trips_geographic_points.csv \
+	data/processed/bird_life_format_gps_albatross.csv \
 	data/raw/division_politica_paises.shp \
 	data/raw/division_politica_paises.shx \
 	data/raw/rosewind.png
 	$(checkDirectories)
 	geci-plot-cli plot-geographic-points \
-		--geographic-data-path data/processed/trips_geographic_points.csv \
+		--geographic-data-path data/processed/bird_life_format_gps_albatross.csv \
 		--global-shapefile-data-path data/raw/division_politica_paises.shp \
 		--path-rose-wind data/raw/rosewind.png \
 		--result-map-path $@
@@ -173,13 +173,39 @@ data/processed/trips_summary.csv: \
 		--config-path trips_config.json \
 		--output-path $@
 
+reports/figures/gps_albatross_clarion_geographic_points.png: \
+	data/processed/bird_life_format_gps_albatross_clarion.csv \
+	data/raw/division_politica_paises.shp \
+	data/raw/division_politica_paises.shx \
+	data/raw/rosewind.png
+	$(checkDirectories)
+	geci-plot-cli plot-geographic-points \
+		--geographic-data-path data/processed/bird_life_format_gps_albatross_clarion.csv \
+		--global-shapefile-data-path data/raw/division_politica_paises.shp \
+		--path-rose-wind data/raw/rosewind.png \
+		--result-map-path $@
+
+data/processed/bird_life_format_gps_albatross_clarion.csv: \
+	data/raw/datapackage.json \
+	data/raw/gps-albatros-clarion.csv \
+	data/raw/breeding_status_albatross_clarion.csv
+	$(checkDirectories)
+	Rscript -e "seabird.tracking::write_bl_table(seabird.tracking::get_domain_specific_options())" \
+		--breeding-status-path data/raw/breeding_status_albatross_clarion.csv \
+		--tracking-data-path data/raw/gps-albatros-clarion.csv \
+		--config-path trips_config_clarion.json \
+		--output-path $@
+
 data/processed/bird_life_format_gps_albatross.csv: \
 	data/raw/datapackage.json \
 	data/raw/gps-albatros-guadalupe.csv \
 	data/raw/breeding_status_albatross_guadalupe.csv
 	$(checkDirectories)
-	cd data/raw && R -e "seabird.tracking::write_bl_table()"
-	mv data/raw/bl_gps_albatross_guadalupe.csv $@
+	Rscript -e "seabird.tracking::write_bl_table(seabird.tracking::get_domain_specific_options())" \
+		--breeding-status-path data/raw/breeding_status_albatross_guadalupe.csv \
+		--tracking-data-path data/raw/gps-albatros-guadalupe.csv \
+		--config-path trips_config.json \
+		--output-path $@
 
 reports/figures/gps_fisheries_percent_kernel_density.png: \
 	data/processed/fisheries_gps_points_2014.csv \
@@ -259,6 +285,14 @@ data/processed/seabird_home_ranges_25.gpkg data/processed/seabird_kernel_union_2
 reports/figures/kernel_seabird_home_ranges_map_25.png reports/figures/kernel_seabird_home_ranges_union_25.png: data/processed/seabird_home_ranges_25.gpkg data/processed/seabird_kernel_union_25.gpkg
 	$(checkDirectories)
 	Rscript "src/plot_seabird_home_ranges.R"
+
+data/raw/gps-albatros-clarion.csv:
+	$(checkDirectories)
+	descarga_datos $(@F) $(@D) seabird_tracking
+
+data/raw/breeding_status_albatross_clarion.csv:
+	$(checkDirectories)
+	descarga_datos $(@F) $(@D) seabird_tracking
 
 data/raw/gps-albatros-guadalupe.csv:
 	$(checkDirectories)
