@@ -33,6 +33,7 @@ reports/anteproyecto.docx: \
 	pandoc --metadata-file=metadata.yaml --citeproc --output=$@ 01_proposal.md
 
 results_albatross: \
+	reports/figures/gps_albatross_geographic_points.png \
 	data/processed/trips_geographic_points.csv \
 	data/processed/trips_summary.csv \
 	reports/figures/gps_albatross_50_percent_individuals_kernel.png \
@@ -40,7 +41,6 @@ results_albatross: \
 	reports/figures/gps_albatross_50_percent_usage_area.png \
 	reports/figures/gps_albatross_75_percent_individuals_kernel.png \
 	reports/figures/gps_albatross_95_percent_individuals_kernel.png \
-	reports/figures/gps_albatross_geographic_points.png \
 	reports/figures/gps_albatross_geographic_points_by_trip.png
 
 results_fisheries: \
