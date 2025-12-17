@@ -18,9 +18,12 @@ jobs:
       uses: actions/checkout@main
     - name: 🏗️🐋 Build image
       run: docker build --tag islasgeci/bycatch_thesis:latest .
-    - name: 🌎 Generate trip results
+    - name: 🌎🦢 Generate albatross results
       run: |
-        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make results
+        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make results_albatross
+    - name: 🌎🛥️ Generate fisheries results
+      run: |
+        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make results_fisheries
     - name: ✍🏼 Build draft
       run: |
         docker run -v $PWD:/workdir islasgeci/bycatch_thesis:latest make all
