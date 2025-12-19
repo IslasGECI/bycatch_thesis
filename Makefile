@@ -86,6 +86,17 @@ reports/figures/gps_albatross_50_percent_usage_area.png: \
 		--n-iterations 100 \
 		--output-path $@
 
+reports/figures/gps_albatross_50_percent_potential_site.png: \
+	data/processed/trips_geographic_points.csv \
+	trips_config.json
+	$(checkDirectories)
+	Rscript -e "bycatch::plot_potential_site(bycatch::get_domain_specific_options())" \
+		--data-path data/processed/trips_geographic_points.csv \
+		--config-path trips_config.json \
+		--percentage-distribution 50 \
+		--n-iterations 100 \
+		--output-path $@
+
 reports/figures/gps_albatross_50_percent_representative_assess.png: \
 	data/processed/trips_geographic_points.csv \
 	trips_config.json
