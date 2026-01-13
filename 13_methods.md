@@ -2,7 +2,6 @@
 
 ## Site description
 
-
 Seabirds nest on the islands.
 The islands are protected natural areas.
 
@@ -71,9 +70,8 @@ How did we attach the GPS to the albatrosses?
 
 ## Specific questions
 
-What is the key area used by Laysan albatrosses in the Mexican Pacific?
-
-Do the key albatross areas coincide with the ANP areas?
+- We aim to identify the key areas used by Laysan albatrosses in the Mexican Pacific.
+- We also aim to determine whether these key areas overlap with existing ANPs.
 
 From the GPS trajectories, we calculated kernel density estimation (KDE) to define the key areas.
 
