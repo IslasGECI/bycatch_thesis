@@ -2,19 +2,6 @@
 
 ## Site description
 
-### Isla Guadalupe
-
-Isla Guadalupe is located 300 km west of the coast of Baja California.
-It is an oceanic island of volcanic origin.
-It has an area of XXX hectares/$km^2$.
-It measures 30 km at its longest part from the southern tip to the northern end.
-
-### Isla Clarion
-
-The Revillagigedo Archipelago is located XXX.
-It has a tropical climate.
-It is formed by XXX islands.
-We attached GPS units to XXX Laysan albatross individuals on XXX island.
 
 Seabirds nest on the islands.
 The islands are protected natural areas.
@@ -22,6 +9,25 @@ The islands are protected natural areas.
 Seabirds are marine organisms and are only found on land to reproduce.
 To install remote tracking devices on seabirds, it is more feasible to do so when they are nesting,
 that is, when they are located on an island.
+
+We attached GPS units to 48 Laysan albatross individuals on Guadalupe Island from 2014 to 2018, and
+to 10 individuals in 2025.
+Additionally, we attached GPS units to 26 individuals on Clarion Island from 2018 to 2022.
+
+### Isla Guadalupe
+
+Isla Guadalupe is located 300 km west of the coast of Baja California.
+It is an oceanic island of volcanic origin.
+It has an area of 244 km$^2$.
+It measures 30 km at its longest part from the southern end to the northern end.
+
+### Isla Clarion
+
+Clarion Island is the most remote of Mexico's Revillagigedo Islands.
+It is located 700 kilometres from the Mexican mainland.
+It has a tropical climate.
+It has an area of 19.8 km$^2$.
+It measures 8.6 km at its longest part from the eastern end to the western end.
 
 ### Feeding areas
 
@@ -69,7 +75,7 @@ What is the key area used by Laysan albatrosses in the Mexican Pacific?
 
 Do the key albatross areas coincide with the ANP areas?
 
-From the GPS trajectories, we calculated KDE to define the key areas.
+From the GPS trajectories, we calculated kernel density estimation (KDE) to define the key areas.
 
 We calculated the overlap index to quantify the overlap of the key areas with the ANP polygons.
 
