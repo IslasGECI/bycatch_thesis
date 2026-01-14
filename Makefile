@@ -38,9 +38,11 @@ results_albatross: \
 	data/processed/trips_summary.csv \
 	reports/figures/gps_albatross_50_percent_individuals_kernel.png \
 	reports/figures/gps_albatross_50_percent_representative_assess.png \
+	reports/figures/gps_albatross_50_percent_representative_assess_ARS.png \
 	reports/figures/gps_albatross_50_percent_usage_area.png \
 	reports/figures/gps_albatross_75_percent_individuals_kernel.png \
-	reports/figures/gps_albatross_95_percent_individuals_kernel.png \
+	reports/figures/gps_albatross_50_percent_potential_site.png \
+	reports/figures/gps_albatross_50_percent_potential_site_ARS.png \
 	reports/figures/gps_albatross_geographic_points_by_trip.png
 
 results_fisheries: \
@@ -63,6 +65,7 @@ reports/figures/gps_albatross_95_percent_individuals_kernel.png: \
 		--data-path data/processed/trips_geographic_points.csv \
 		--config-path trips_config.json \
 		--percentage-distribution 95 \
+		--smoothing-method scale_ARS \
 		--output-path $@
 
 reports/figures/gps_albatross_75_percent_individuals_kernel.png: \
@@ -83,6 +86,7 @@ reports/figures/gps_albatross_50_percent_usage_area.png: \
 		--data-path data/processed/trips_geographic_points.csv \
 		--config-path trips_config.json \
 		--percentage-distribution 50 \
+		--smoothing-method reference_bandwidth \
 		--n-iterations 100 \
 		--output-path $@
 
@@ -95,6 +99,33 @@ reports/figures/gps_albatross_50_percent_potential_site.png: \
 		--config-path trips_config.json \
 		--percentage-distribution 50 \
 		--n-iterations 100 \
+		--population-size 1551 \
+		--smoothing-method reference_bandwidth \
+		--output-path $@
+
+reports/figures/gps_albatross_50_percent_potential_site_ARS.png: \
+	data/processed/trips_geographic_points.csv \
+	trips_config.json
+	$(checkDirectories)
+	Rscript -e "bycatch::plot_potential_site(bycatch::get_domain_specific_options())" \
+		--data-path data/processed/trips_geographic_points.csv \
+		--config-path trips_config.json \
+		--percentage-distribution 50 \
+		--n-iterations 100 \
+		--population-size 1551 \
+		--smoothing-method scale_ARS \
+		--output-path $@
+
+reports/figures/gps_albatross_50_percent_representative_assess_ARS.png: \
+	data/processed/trips_geographic_points.csv \
+	trips_config.json
+	$(checkDirectories)
+	Rscript -e "bycatch::plot_representative_assess(bycatch::get_domain_specific_options())" \
+		--data-path data/processed/trips_geographic_points.csv \
+		--config-path trips_config.json \
+		--percentage-distribution 50 \
+		--n-iterations 100 \
+		--smoothing-method scale_ARS \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_representative_assess.png: \
@@ -106,6 +137,7 @@ reports/figures/gps_albatross_50_percent_representative_assess.png: \
 		--config-path trips_config.json \
 		--percentage-distribution 50 \
 		--n-iterations 100 \
+		--smoothing-method reference_bandwidth \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_individuals_kernel.png: \
@@ -116,6 +148,7 @@ reports/figures/gps_albatross_50_percent_individuals_kernel.png: \
 		--data-path data/processed/trips_geographic_points.csv \
 		--config-path trips_config.json \
 		--percentage-distribution 50 \
+		--smoothing-method scale_ARS \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_kernel_density.png: \
