@@ -58,13 +58,20 @@ Interior.
 
 ## Reagents, materials, and equipment
 
-What are the technical specifications (accuracy, etc.) of the GPS?
+Carion: ???.
+
+In Guadalupe Island we used the followin GPS devices.
+From 2014 to 2016: model GiSPy-4SB by TechnoSmart (Italy).
+From 2017 to 2018: i-gotU model GT-120 by MobileAction (Taiwan).
+From 2019 to 2023: ???
+In 2025: GPS datalogger with accelerometer and UHF model AxyTrek Remote by TechnoSmart (Italy).
 
 ## Data collection
 
 We attached the GPS to the albatrosses.
 
-How did we attach the GPS to the albatrosses?
+The GPS loggers were attached to the albatross individuals with Tesa tape (#4651, Tesa AG, Hamburg,
+Germany).
 
 # Experimental design
 
