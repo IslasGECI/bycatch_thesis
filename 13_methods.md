@@ -83,12 +83,44 @@ Germany).
 - We aim to identify the key areas used by Laysan albatrosses in the Mexican Pacific.
 - We also aim to determine whether these key areas overlap with existing ANPs.
 
+### Key areas used by Laysan albatrosses
+
 From the GPS trajectories, we calculated kernel density estimation (KDE) to define the key areas.
+
+The independent variable is the GPS locations of the albatrosses.
+The dependent variable is the key areas used by the albatrosses.
+
+
+A total of 114 individuals were tracked in Guadalupe Island between 2014 and 2025.
+
+| Year | Number of individuals |
+| ---- | --------------------- |
+| 2014 | 15 |
+| 2015 |  4 |
+| 2016 |  2 |
+| 2017 |  6 |
+| 2018 | 20 |
+| 2019 | 36 |
+| 2020 |  5 |
+| 2021 |  5 |
+| 2022 |  4 |
+| 2023 |  7 |
+| 2015 | 10 |
+
+A total of 26 individuals were tracked in Clarion Island between 2018 and 2022.
+
+| Year | Number of individuals |
+| ---- | --------------------- |
+| 2018 | 7 |
+| 2019 | 9 |
+| 2020 | 6 |
+| 2022 | 4 |
+
+### Overlap of key areas with ANPs
 
 We calculated the overlap index to quantify the overlap of the key areas with the ANP polygons.
 
 The independent variables are the key areas used by the albatrosses and the ANP polygons.
-
 The dependent variable is the overlap index.
 
 ## Studies that support your methodology
