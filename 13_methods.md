@@ -58,9 +58,12 @@ Interior.
 
 ## Reagents, materials, and equipment
 
-Carion: ???.
+In Carion Island, from 2018 to 2022 we used the following GPS devices:
+i-gotU model GT-120 by MobileAction (Taiwan).
+CatLog-S, Catnip Technologies (China).
+CatLog-S2, Perthold Engineering (USA).
 
-In Guadalupe Island we used the followin GPS devices.
+In Guadalupe Island we used the followin GPS devices:
 From 2014 to 2016: model GiSPy-4SB by TechnoSmart (Italy).
 From 2017 to 2018: i-gotU model GT-120 by MobileAction (Taiwan).
 From 2019 to 2023: ???
@@ -95,6 +98,8 @@ The dependent variable is the overlap index.
 ## Data processing
 
 We used the R package track2KBA.
+
+Records are every 10 minutes. 
 
 ## Statistical analyses
 
