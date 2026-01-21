@@ -20,6 +20,9 @@ It is an oceanic island of volcanic origin.
 It has an area of 244 km$^2$.
 It measures 30 km at its longest part from the southern end to the northern end.
 
+Isla Guadalupe alberga la colonia reproductiva de albatros de Laysan más grande del Pacífico
+oriental [@hernandez2019sexual].
+
 ### Isla Clarion
 
 Clarion Island is the most remote of Mexico's Revillagigedo Islands.
@@ -33,7 +36,14 @@ It measures 8.6 km at its longest part from the eastern end to the western end.
 The feeding area of the Laysan albatrosses nesting on Isla Guadalupe and Isla Clarión is affected by
 the California Current.
 Additionally, the entire study area is affected by El Niño and La Niña events.
-The data period includes "The Blob".
+
+### Time period
+
+The data were collected from 2014 to 2025.
+During this period, the study site was affected by the "Blob".
+
+A time period of more than a decade allows us to account for interannual variability in the use of
+key areas by Laysan albatrosses.
 
 ## Study species or system
 
@@ -53,15 +63,17 @@ ecosystem.
 
 ## Ethical considerations and permits
 
-We have all permits from the General Directorate of Wildlife, CONANP, and the Ministry of the
-Interior.
+The study was conducted under the permits from the following institutions: Ministry of the Interior,
+Ministry of Environment and Natural Resources, and the National Commission for Protected Natural
+Areas.
 
-## Reagents, materials, and equipment
+No albatross individuals were harmed during the study.
 
-In Carion Island, from 2018 to 2022 we used the following GPS devices:
-i-gotU model GT-120 by MobileAction (Taiwan).
-CatLog-S, Catnip Technologies (China).
-CatLog-S2, Perthold Engineering (USA).
+## Data collection
+
+We attached the GPS to the albatrosses.
+The GPS loggers were attached to the albatross individuals with Tesa tape (#4651, Tesa AG, Hamburg,
+Germany).
 
 In Guadalupe Island we used the followin GPS devices:
 From 2014 to 2016: model GiSPy-4SB by TechnoSmart (Italy).
@@ -69,12 +81,10 @@ From 2017 to 2018: i-gotU model GT-120 by MobileAction (Taiwan).
 From 2019 to 2023: ???
 In 2025: GPS datalogger with accelerometer and UHF model AxyTrek Remote by TechnoSmart (Italy).
 
-## Data collection
-
-We attached the GPS to the albatrosses.
-
-The GPS loggers were attached to the albatross individuals with Tesa tape (#4651, Tesa AG, Hamburg,
-Germany).
+In Carion Island, from 2018 to 2022 we used the following GPS devices:
+i-gotU model GT-120 by MobileAction (Taiwan).
+CatLog-S, Catnip Technologies (China).
+CatLog-S2, Perthold Engineering (USA).
 
 # Experimental design
 
@@ -131,7 +141,7 @@ The dependent variable is the overlap index.
 
 We used the R package track2KBA.
 
-Records are every 10 minutes. 
+Records are every 10 minutes.
 
 ## Statistical analyses
 
