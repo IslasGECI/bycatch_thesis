@@ -78,7 +78,7 @@ Germany).
 In Guadalupe Island we used the followin GPS devices:
 From 2014 to 2016: model GiSPy-4SB by TechnoSmart (Italy).
 From 2017 to 2018: i-gotU model GT-120 by MobileAction (Taiwan).
-From 2019 to 2023: ???
+From 2019 to 2023: XXX
 In 2025: GPS datalogger with accelerometer and UHF model AxyTrek Remote by TechnoSmart (Italy).
 
 In Carion Island, from 2018 to 2022 we used the following GPS devices:
@@ -134,6 +134,8 @@ The independent variables are the key areas used by the albatrosses and the ANP 
 The dependent variable is the overlap index.
 
 ## Studies that support your methodology
+
+We based our methodology on [@beal2021track2kba].
 
 # Data analysis
 
