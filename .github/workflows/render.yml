@@ -18,6 +18,12 @@ jobs:
       uses: actions/checkout@main
     - name: 🏗️🐋 Build image
       run: docker build --tag islasgeci/bycatch_thesis:latest .
+    - name: 🐋🔏 Docker log-in
+      run: echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+    - name: Copy vessel data
+      run: docker pull islasgeci/vessel_data:latest
+    - run: docker run --name vessel_data islasgeci/vessel_data:latest
+    - run: docker cp vessel_data:/data/. data/external
     - name: 🌎🦢 Generate albatross results
       run: |
         docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make results_albatross
@@ -27,8 +33,6 @@ jobs:
     - name: ✍🏼 Build draft
       run: |
         docker run -v $PWD:/workdir islasgeci/bycatch_thesis:latest make all
-    - name: 🐋🔏 Docker log-in
-      run: echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
     - name: 🐋⏫ Push latest Docker image to Docker Hub
       run: docker push islasgeci/bycatch_thesis:latest
     - name: Push SHA tag to Docker Hub
