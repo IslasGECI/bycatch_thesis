@@ -1,7 +1,7 @@
 matrix:
 - name: Markdown
   aspell:
-    lang: es
+    lang: en
     ignore-case: true
     mode: markdown
   dictionary:
