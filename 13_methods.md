@@ -23,7 +23,7 @@ It measures 30 km at its longest part from the southern end to the northern end.
 Guadalupe Island hosts the largest breeding colony of Laysan albatrosses in the eastern Pacific
 [@hernandez2019sexual].
 
-### Isla Clarion
+### Clarion Island
 
 Clarion Island is the most remote of Mexico's Revillagigedo Islands.
 It is located 700 kilometres from the Mexican mainland.

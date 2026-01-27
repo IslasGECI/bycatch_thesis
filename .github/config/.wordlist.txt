@@ -14,6 +14,7 @@ Ansible
 antipatrones
 antipatrón
 atípicamente
+Axy
 Baja
 BirdLife
 Bitbucket
