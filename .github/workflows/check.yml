@@ -6,7 +6,7 @@ on:
 jobs:
 
   spellcheck:
-    name: Check spelling
+    name: Check spelling in Spanish
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -14,7 +14,18 @@ jobs:
       name: Spellcheck
       with:
         config_path: .github/config/.spellcheck.yml
-        task_name: Markdown
+        task_name: Markdown in Spanish
+
+  spellcheck:
+    name: Check spelling in English
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: rojopolis/spellcheck-github-actions@master
+      name: Spellcheck
+      with:
+        config_path: .github/config/.spellcheck.yml
+        task_name: Markdown in English
 
   sentence_length:
     name: Check sentence length
