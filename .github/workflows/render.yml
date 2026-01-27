@@ -1,4 +1,4 @@
-name: Render one job
+name: Render report
 on:
   push:
     branches:

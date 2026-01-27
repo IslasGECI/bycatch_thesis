@@ -14,7 +14,6 @@ Ansible
 antipatrones
 antipatrón
 atípicamente
-AxyTreck
 Baja
 BirdLife
 Bitbucket
@@ -150,7 +149,6 @@ sysadmin
 Tableau
 TDD
 TDP
-TechnoSmart
 TEP
 Terraform
 Tesa
