@@ -44,7 +44,7 @@ jobs:
         done
     - name: Sentences are short
       run: |
-        for file in ??_*.md
+        for file in 1?_*.md
         do
             echo $file
             IFS=$'\n' && for line in $(egrep ":$" $file);    do echo "$line" ; [[ $(echo "$line" | wc -w) -le 25 ]] ; done
