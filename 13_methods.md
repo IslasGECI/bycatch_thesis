@@ -6,7 +6,7 @@ Seabirds nest on the islands.
 The islands are protected natural areas.
 
 Seabirds are marine organisms and are only found on land to reproduce.
-To install remote tracking devices on seabirds, it is more feasible to do so when they are nesting, that is, when they are located on an island.
+Tracking devices are installed while individuals are breeding on the island.
 
 We attached GPS units to 48 Laysan albatross individuals on Guadalupe Island from 2014 to 2018, and to 10 individuals in 2025.
 Additionally, we attached GPS units to 26 individuals on Clarion Island from 2018 to 2022.
@@ -56,7 +56,8 @@ If the ANPs serve to protect these species, we can infer that they serve to prot
 
 ## Ethical considerations and permits
 
-The study was conducted under the permits from the following institutions: Ministry of the Interior, Ministry of Environment and Natural Resources, and the National Commission for Protected Natural Areas.
+The study was conducted under the permits from the following institutions:
+Ministry of the Interior, Ministry of Environment and Natural Resources, and the National Commission for Protected Natural Areas.
 
 No albatross individuals were harmed during the study.
 
