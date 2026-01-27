@@ -16,6 +16,7 @@ antipatrón
 atípicamente
 Axy
 Baja
+Bird
 BirdLife
 Bitbucket
 Brandt
@@ -46,8 +47,10 @@ empoderado
 enlistamos
 EUA
 Excel
+feral
 FN
 fontsize
+forrajeador
 FP
 GB
 GECI
@@ -78,6 +81,7 @@ kaizen
 kanban
 KBA
 KDE
+kernels
 Kunming
 lang
 LaTeX
@@ -117,6 +121,7 @@ Pipelines
 pizarrón
 platicarle
 poblacional
+polluelos
 posentrega
 posteriori
 predictivas
@@ -160,8 +165,10 @@ TOSH
 TP
 Trilateral
 trinacional
+UDOI
 VII
 VIII
 VMS
+Watch
 WIP
 XXX
