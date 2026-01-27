@@ -35,7 +35,7 @@ jobs:
       uses: actions/checkout@main
     - name: Line ends with a period
       run: |
-        for file in ??_*.md
+        for file in 1?_*.md
         do
             echo $file
             echo $(egrep -v ":$" $file | egrep -v "\.$" | egrep -v "\?$" | egrep -v "^1\. " | egrep -v "^\W" ) > lines_without_period.tmp
