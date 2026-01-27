@@ -62,12 +62,26 @@ jobs:
       uses: actions/checkout@main
     - name: Paragraphs are short
       run: |
-        cat ??_*.md > draft.md
-        awk -v RS= '{print "Párrafo " NR ": " NF " palabras"}' draft.md
-    - name: Short paragraphs
-      run: |
-        for filename in ??_*.md
+        for file in 1?_*.md
         do
-            echo $filename
-            awk -v RS= '{print "Párrafo " NR ": " NF " palabras"}' $filename
+            echo "$file"
+            awk '
+              BEGIN {
+                RS = "";
+                max = 200;
+                fail = 0;
+              }
+              {
+                words = NF;
+                if (words > max) {
+                  split($0, lines, "\n");
+                  printf "❌ Paragraph %d too long (%d words)\n→ %s\n\n",
+                         NR, words, lines[1];
+                  fail = 1;
+                }
+              }
+              END {
+                if (fail) exit 1;
+              }
+            ' "$file"
         done
