@@ -1,6 +1,6 @@
 matrix:
 
-- name: Markdown in Spanish
+- name: markdown-in-spanish
   aspell:
     lang: es
     ignore-case: true
@@ -13,7 +13,7 @@ matrix:
   - '0?_*.md'
   default_encoding: utf-8
 
-- name: Markdown in English
+- name: markdown-in-english
   aspell:
     lang: en
     ignore-case: true
