@@ -5,7 +5,7 @@ on:
       'develop'
 jobs:
 
-  spellcheck:
+  spellcheck_es:
     name: Check spelling in Spanish
     runs-on: ubuntu-latest
     steps:
@@ -16,7 +16,7 @@ jobs:
         config_path: .github/config/.spellcheck.yml
         task_name: Markdown in Spanish
 
-  spellcheck:
+  spellcheck_en:
     name: Check spelling in English
     runs-on: ubuntu-latest
     steps:
