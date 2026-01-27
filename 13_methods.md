@@ -135,6 +135,66 @@ Records are every 10 minutes.
 
 ## Statistical analyses
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Duis sit amet semper dui, in feugiat nisi.
+Sed tincidunt justo porta nisl viverra vulputate.
+Nunc maximus pulvinar nulla et egestas.
+Sed egestas, justo non aliquet ullamcorper, orci eros dapibus velit, id dapibus sapien nulla quis urna.
+Nullam ac massa odio.
+Duis sit amet fermentum nisi, in semper lacus.
+Aliquam neque nisi, vehicula nec lorem sed, iaculis porttitor lorem.
+Praesent nec quam placerat, pharetra sapien a, pulvinar ipsum.
+Proin convallis tincidunt nibh, sit amet pharetra risus dapibus ut.
+In lorem lectus, iaculis vel dignissim ut, ultrices nec sapien.
+Donec varius elementum condimentum.
+Mauris a elit tempor, finibus diam sed, porttitor ex.
+Ut sit amet elit ac ex rutrum vestibulum non at odio.
+Integer porttitor quam sem, a convallis ipsum vulputate iaculis.
+Vestibulum laoreet lorem eu urna semper placerat.
+Nunc id dolor sollicitudin leo iaculis porttitor ut et lacus.
+Proin nunc est, venenatis ac vestibulum eget, condimentum eu felis.
+Suspendisse dapibus convallis arcu sit amet cursus.
+Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed tristique eros quis tortor convallis luctus.
+Morbi nisi nibh, vestibulum eget pulvinar non, placerat at mauris.
+Nullam imperdiet aliquet magna, at mattis lorem venenatis eget.
+Nunc quis ultrices libero, at porta augue.
+Curabitur ut leo posuere, condimentum sem non, scelerisque neque.
+Praesent aliquet accumsan lorem, a finibus mi sollicitudin vel.
+Phasellus venenatis quam ac eros blandit, et facilisis tortor rutrum.
+Aenean fermentum leo ac ligula auctor, sed posuere arcu ornare.
+Cras volutpat mollis urna, eget dapibus metus dignissim id.
+Proin tempus, diam nec sagittis tempus, turpis justo vehicula magna, quis commodo sapien mauris id urna.
+Nam fermentum quam a molestie tempus.
+In diam odio, posuere quis malesuada nec, volutpat vitae augue.
+Phasellus eu nisl elementum, viverra urna quis, ullamcorper dui.
+In non eros vitae nibh interdum luctus.
+Ut dignissim diam sed mi porta ultrices.
+Donec cursus, dolor vel consectetur mollis, lectus arcu hendrerit enim, eget tempus nulla urna id dolor.
+Pellentesque porttitor nisl vitae arcu dapibus scelerisque.
+Cras placerat commodo imperdiet.
+Proin vestibulum erat ac odio aliquet, eget ornare nunc pellentesque.
+Vestibulum felis tellus, lobortis ut ornare ut, porta sed leo.
+Proin vitae feugiat lectus, mattis semper magna.
+Pellentesque eget est commodo, tincidunt lectus at, semper quam.
+Nam venenatis sollicitudin rhoncus.
+Praesent vestibulum neque vel nunc porta, id vehicula leo porttitor.
+Pellentesque eu nisi et dolor feugiat commodo.
+Nunc scelerisque ut elit ut tincidunt.
+In vel dolor at felis tempus accumsan.
+Vivamus maximus ut est non fringilla.
+Quisque dapibus est et commodo finibus.
+Maecenas pellentesque at ligula in venenatis.
+Aenean laoreet ac metus malesuada porta.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Donec rhoncus enim rhoncus, venenatis ipsum eu, tincidunt arcu.
+Sed iaculis et elit non cursus.
+Donec ultricies rutrum massa, tincidunt dignissim quam gravida non.
+Proin ultricies sapien dui, sed finibus tellus laoreet nec.
+Praesent varius ac enim eu molestie.
+Quisque id purus nulla.
+Cras nisi lorem, mollis ac porttitor in, fringilla vitae purus.
+Vivamus commodo nisi eu risus placerat, sed mollis lectus scelerisque.
+
 ## Limitations and assumptions
 
 One limitation is that the GPS data only correspond to the reproductive season.
