@@ -6,11 +6,9 @@ Seabirds nest on the islands.
 The islands are protected natural areas.
 
 Seabirds are marine organisms and are only found on land to reproduce.
-To install remote tracking devices on seabirds, it is more feasible to do so when they are nesting,
-that is, when they are located on an island.
+To install remote tracking devices on seabirds, it is more feasible to do so when they are nesting, that is, when they are located on an island.
 
-We attached GPS units to 48 Laysan albatross individuals on Guadalupe Island from 2014 to 2018, and
-to 10 individuals in 2025.
+We attached GPS units to 48 Laysan albatross individuals on Guadalupe Island from 2014 to 2018, and to 10 individuals in 2025.
 Additionally, we attached GPS units to 26 individuals on Clarion Island from 2018 to 2022.
 
 ### Guadalupe Island
@@ -20,8 +18,7 @@ It is an oceanic island of volcanic origin.
 It has an area of 244 km$^2$.
 It measures 30 km at its longest part from the southern end to the northern end.
 
-Guadalupe Island hosts the largest breeding colony of Laysan albatrosses in the eastern Pacific
-[@hernandez2019sexual].
+Guadalupe Island hosts the largest breeding colony of Laysan albatrosses in the eastern Pacific [@hernandez2019sexual].
 
 ### Clarion Island
 
@@ -33,8 +30,7 @@ It measures 8.6 km at its longest part from the eastern end to the western end.
 
 ### Feeding areas
 
-The feeding area of the Laysan albatrosses nesting on Guadalupe Island and Clarion Island is affected by
-the California Current.
+The feeding area of the Laysan albatrosses nesting on Guadalupe Island and Clarion Island is affected by the California Current.
 Additionally, the entire study area is affected by El Niño and La Niña events.
 
 ### Time period
@@ -42,13 +38,11 @@ Additionally, the entire study area is affected by El Niño and La Niña events.
 The data were collected from 2014 to 2025.
 During this period, the study site was affected by the "Blob".
 
-A time period of more than a decade allows us to account for interannual variability in the use of
-key areas by Laysan albatrosses.
+A time period of more than a decade allows us to account for interannual variability in the use of key areas by Laysan albatrosses.
 
 ## Study species or system
 
-We are studying the key area used by Laysan albatrosses in the Mexican Pacific and its overlap with
-protected natural areas (ANP).
+We are studying the key area used by Laysan albatrosses in the Mexican Pacific and its overlap with protected natural areas (ANP).
 In particular, we focus on the albatrosses that nest on Guadalupe Island and Clarion Island.
 
 Albatrosses are seabirds.
@@ -58,31 +52,24 @@ During the reproductive and nesting season, they make foraging trips.
 They are at the nest, make a foraging trip, and return to the nest.
 
 Seabirds are top predators and serve as umbrella species.
-If the ANPs serve to protect these species, we can infer that they serve to protect the marine
-ecosystem.
+If the ANPs serve to protect these species, we can infer that they serve to protect the marine ecosystem.
 
 ## Ethical considerations and permits
 
-The study was conducted under the permits from the following institutions: Ministry of the Interior,
-Ministry of Environment and Natural Resources, and the National Commission for Protected Natural
-Areas.
+The study was conducted under the permits from the following institutions: Ministry of the Interior, Ministry of Environment and Natural Resources, and the National Commission for Protected Natural Areas.
 
 No albatross individuals were harmed during the study.
 
 ## Data collection
 
 We attached the GPS to the albatrosses.
-The GPS loggers were attached to the albatross individuals with Tesa tape (#4651, Tesa AG, Hamburg,
-Germany).
+The GPS loggers were attached to the albatross individuals with Tesa tape (#4651, Tesa AG, Hamburg, Germany).
 
-In Guadalupe Island we used the following GPS devices:
-From 2014 to 2016: model GiSPy-4SB by Techno Smart (Italy).
+In Guadalupe Island we used the following GPS devices: From 2014 to 2016: model GiSPy-4SB by Techno Smart (Italy).
 From 2017 to 2018: i-gotU model GT-120 by Mobile Action (Taiwan).
-From 2019 to 2023: XXX
-In 2025: GPS datalogger with accelerometer and UHF model Axy-Trek Remote by Techno Smart (Italy).
+From 2019 to 2023: XXX In 2025: GPS datalogger with accelerometer and UHF model Axy-Trek Remote by Techno Smart (Italy).
 
-In Clarion Island, from 2018 to 2022 we used the following GPS devices:
-i-gotU model GT-120 by Mobile Action (Taiwan).
+In Clarion Island, from 2018 to 2022 we used the following GPS devices: i-gotU model GT-120 by Mobile Action (Taiwan).
 CatLog-S, Catnip Technologies (China).
 CatLog-S2, Perthold Engineering (USA).
 
@@ -150,6 +137,5 @@ Records are every 10 minutes.
 ## Limitations and assumptions
 
 One limitation is that the GPS data only correspond to the reproductive season.
-We do not know if the key areas used by the albatrosses during the non-reproductive season are
-different.
+We do not know if the key areas used by the albatrosses during the non-reproductive season are different.
 However, it is during the reproductive season when the population could be most vulnerable.
