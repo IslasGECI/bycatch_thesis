@@ -34,6 +34,7 @@ reports/anteproyecto.docx: \
 
 results_albatross: \
 	reports/figures/gps_albatross_geographic_points.png \
+	reports/figures/gps_albatros_guadalupe_points_2025.png \
 	data/processed/trips_geographic_points.csv \
 	data/processed/trips_summary.csv \
 	reports/figures/gps_albatross_50_percent_individuals_kernel.png \
@@ -190,6 +191,28 @@ reports/figures/gps_albatross_geographic_points.png: \
 		--global-shapefile-data-path data/raw/division_politica_paises.shp \
 		--path-rose-wind data/raw/rosewind.png \
 		--result-map-path $@
+
+reports/figures/gps_albatross_geographic_points_2025.png: \
+	data/processed/gps_albatros_guadalupe_2025.csv \
+	data/raw/division_politica_paises.shp \
+	data/raw/division_politica_paises.shx \
+	data/raw/rosewind.png
+	$(checkDirectories)
+	geci-plot-cli plot-geographic-points \
+		--geographic-data-path data/processed/gps_albatros_guadalupe_2025.csv \
+		--global-shapefile-data-path data/raw/division_politica_paises.shp \
+		--path-rose-wind data/raw/rosewind.png \
+		--result-map-path $@
+
+data/processed/gps_albatros_guadalupe_2025.csv: \
+	data/raw/gps-albatros-guadalupe.csv 
+	$(checkDirectories)
+	Rscript -e "bycatch::filter_data_between_dates(bycatch::get_domain_specific_options())" \
+		--data-path data/raw/gps-albatros-guadalupe.csv \
+		--start 2025-01-01 \
+		--end 2025-12-31 \
+		--date-column-name date \
+		--output-path $@
 
 reports/figures/gps_albatross_geographic_points_by_trip.png: \
 	data/processed/trips_geographic_points.csv \
