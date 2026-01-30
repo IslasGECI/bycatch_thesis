@@ -34,7 +34,7 @@ reports/anteproyecto.docx: \
 
 results_albatross: \
 	reports/figures/gps_albatross_geographic_points.png \
-	reports/figures/gps_albatros_guadalupe_points_2025.png \
+	reports/figures/gps_albatross_geographic_points_2025.png \
 	data/processed/trips_geographic_points.csv \
 	data/processed/trips_summary.csv \
 	reports/figures/gps_albatross_50_percent_individuals_kernel.png \
