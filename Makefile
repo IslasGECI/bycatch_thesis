@@ -37,10 +37,10 @@ results_albatross: \
 	reports/figures/gps_albatross_geographic_points_2025.png \
 	data/processed/trips_geographic_points.csv \
 	data/processed/trips_summary.csv \
-	reports/figures/gps_albatross_50_percent_individuals_kernel.png \
+	reports/figures/gps_albatross_50_percent_individuals_kernel_ARS.png \
 	reports/figures/gps_albatross_50_percent_representative_assess.png \
 	reports/figures/gps_albatross_50_percent_representative_assess_ARS.png \
-	reports/figures/gps_albatross_50_percent_usage_area.png \
+	reports/figures/gps_albatross_50_percent_usage_area_ARS.png \
 	reports/figures/gps_albatross_75_percent_individuals_kernel.png \
 	reports/figures/gps_albatross_50_percent_potential_site.png \
 	reports/figures/gps_albatross_50_percent_potential_site_ARS.png \
@@ -79,7 +79,7 @@ reports/figures/gps_albatross_75_percent_individuals_kernel.png: \
 		--percentage-distribution 75 \
 		--output-path $@
 
-reports/figures/gps_albatross_50_percent_usage_area.png: \
+reports/figures/gps_albatross_50_percent_usage_area_ARS.png: \
 	data/processed/trips_geographic_points.csv \
 	trips_config.json
 	$(checkDirectories)
@@ -87,7 +87,7 @@ reports/figures/gps_albatross_50_percent_usage_area.png: \
 		--data-path data/processed/trips_geographic_points.csv \
 		--config-path trips_config.json \
 		--percentage-distribution 50 \
-		--smoothing-method reference_bandwidth \
+		--smoothing-method scale_ARS \
 		--n-iterations 100 \
 		--output-path $@
 
@@ -141,7 +141,7 @@ reports/figures/gps_albatross_50_percent_representative_assess.png: \
 		--smoothing-method reference_bandwidth \
 		--output-path $@
 
-reports/figures/gps_albatross_50_percent_individuals_kernel.png: \
+reports/figures/gps_albatross_50_percent_individuals_kernel_ARS.png: \
 	data/processed/trips_geographic_points.csv \
 	trips_config.json
 	$(checkDirectories)
