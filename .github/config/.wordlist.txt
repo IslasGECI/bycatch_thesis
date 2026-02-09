@@ -13,6 +13,7 @@ ANPs
 Ansible
 antipatrones
 antipatrón
+ARS
 atípicamente
 Axy
 Baja
@@ -49,6 +50,7 @@ EUA
 Excel
 feral
 Fishing
+FloatBarrier
 FN
 fontsize
 forrajeador
