@@ -4,5 +4,6 @@ author: 'Evaristo Rojas'
 fontsize: 12pt
 lang: es
 bibliography: references.bib
+reference-section-title: References
 csl: boletin-de-la-sociedad-matematica-mexicana.csl
 ...
