@@ -24,15 +24,12 @@ jobs:
       run: docker pull islasgeci/vessel_data:latest
     - run: docker run --name vessel_data islasgeci/vessel_data:latest
     - run: docker cp vessel_data:/data/. data/external
-    - name: 🌎🦢 Generate albatross results
+    - name: 🌎🦢 Generate albatross results draft
       run: |
-        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make results_albatross
+        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make reports/articulo_uno.pdf
     - name: 🌎🛥️ Generate fisheries results
       run: |
         docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make results_fisheries
-    - name: ✍🏼 Build draft
-      run: |
-        docker run -v $PWD:/workdir islasgeci/bycatch_thesis:latest make all
     - name: 🐋⏫ Push latest Docker image to Docker Hub
       run: docker push islasgeci/bycatch_thesis:latest
     - name: Push SHA tag to Docker Hub
