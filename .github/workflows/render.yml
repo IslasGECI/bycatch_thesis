@@ -36,7 +36,7 @@ jobs:
       uses: actions/checkout@main
     - name: 🌎🦢 Generate albatross results draft
       run: |
-        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make reports/articulo_uno.pdf
+        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis:latest make reports/articulo_uno.pdf
     - name: ⏫🏛️ Upload draft
       uses: actions/upload-artifact@main
       with:
@@ -67,7 +67,7 @@ jobs:
     - run: docker cp vessel_data:/data/. data/external
     - name: 🌎🛥️ Generate fisheries results
       run: |
-        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis make results_fisheries
+        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis:latest make results_fisheries
     - name: ⏫🏛️ Upload draft
       uses: actions/upload-artifact@main
       with:
