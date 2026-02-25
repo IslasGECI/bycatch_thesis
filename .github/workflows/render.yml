@@ -34,6 +34,15 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@main
+    - name: Download artifact
+      uses: actions/download-artifact@main
+      with:
+        name: image
+        path: /tmp
+    - name: Load image
+      run: |
+        docker load --input /tmp/image.tar
+        docker image ls -a          
     - name: 🌎🦢 Generate albatross results draft
       run: |
         docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis:latest make reports/articulo_uno.pdf
@@ -59,6 +68,15 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@main
+    - name: Download artifact
+      uses: actions/download-artifact@main
+      with:
+        name: image
+        path: /tmp
+    - name: Load image
+      run: |
+        docker load --input /tmp/image.tar
+        docker image ls -a          
     - name: 🐋🔏 Docker log-in
       run: echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
     - name: Copy vessel data
