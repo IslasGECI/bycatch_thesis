@@ -17,7 +17,7 @@ filtered_seabird_data <- seabird_data |>
     !is.na(X),
     !is.na(Y),
     !is.na(tripID),
-    season == 2014
+    lubridate::year(date) == 2014
   ) |>
   mutate(seabird_id = as.factor(tripID))
 
