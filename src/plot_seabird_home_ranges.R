@@ -47,7 +47,7 @@ ggsave(
 
 
 # Load home ranges from GeoPackage
-filename_union <- paste0("seabird_kernel_union_", percent, ".gpkg")
+filename_union <- paste0(input_directory, "seabird_kernel_union_", percent, ".gpkg")
 union_home_range_sf <- st_read(filename_union)
 
 # Plot the union over the Mexico map
