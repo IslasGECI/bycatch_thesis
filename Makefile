@@ -264,7 +264,8 @@ data/processed/fisheries_gps_points_2014.csv:
 data/processed/fisheries_gps_points.csv:
 	$(checkDirectories)
 	geci-zenodo download-from-geci-zenodo --doi "10.5281/zenodo.15102444"
-	unzip *.zip -d data/raw/conapesca/
+	mkdir --parents data/raw/conapesca
+	for file in *.zip; do unzip "$$file" -d data/raw/conapesca; done
 	Rscript src/concatenate_fishery_data.R
 	iconv -c -f ascii -t utf-8 -o data/processed/fisheries_gps_points.csv data/processed/fisheries_gps_points_ascii.csv
 	sed -i "s/,Latitud,/,Latitude,/" data/processed/fisheries_gps_points.csv
