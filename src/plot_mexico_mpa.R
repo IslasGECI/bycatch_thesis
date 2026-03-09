@@ -1,8 +1,8 @@
 # ==========================================
 # Propósito: Leer un GeoPackage con la diferencia espacial ANP - México
 #            y generar una figura estática en PNG sin usar control de flujo.
-# Entradas:  data/processed/amp_mexico.gpkg (capa: "amp_mexico")
-# Salidas:   reports/figures/amp_mexico_YYYY-MM-DD.png
+# Entradas:  data/processed/mexico_mpa.gpkg (capa: "mexico_mpa")
+# Salidas:   reports/figures/mexico_mpa_YYYY-MM-DD.png
 # Dependencias: sf, tidyverse, glue
 # Notas:     Se usa ggplot2 con geom_sf() para visualizar la geometría resultante.
 # ==========================================
@@ -14,9 +14,9 @@ library(glue)       # Para construir cadenas de texto dinámicas
 
 # ==== CONFIGURACIÓN ====
 # -- Centralizar rutas y constantes facilita cambios y mantiene el script legible
-input_gpkg_path <- "data/processed/amp_mexico.gpkg"                 # Ruta de entrada
-input_layer_name <- "amp_mexico"                                    # Nombre de la capa en el GPKG
-output_figure_path <- "reports/figures/amp_mexico.png"              # Ruta de la figura
+input_gpkg_path <- "data/processed/mexico_mpa.gpkg"                 # Ruta de entrada
+input_layer_name <- "mexico_mpa"                                    # Nombre de la capa en el GPKG
+output_figure_path <- "reports/figures/mexico_mpa.png"              # Ruta de la figura
 fill_color <- "#9AD0EC"                                             # Relleno para destacar el área
 line_color <- "#185ADB"                                             # Color del contorno
 line_size <- 0.3                                                    # Grosor del contorno
@@ -26,12 +26,12 @@ fig_dpi <- 300                                                      # Resolució
 
 # ==== IMPORTAR DATOS ====
 # Se lee la capa espacial desde el GeoPackage; quiet = TRUE suprime mensajes informativos
-amp_mexico <- st_read(dsn = input_gpkg_path, layer = input_layer_name, quiet = TRUE)
+mexico_mpa <- st_read(dsn = input_gpkg_path, layer = input_layer_name, quiet = TRUE)
 
 # ==== VISUALIZACIÓN ====
 # Se construye un mapa sencillo que resalta la geometría resultante de la diferencia espacial
 plot_amp <- ggplot() +
-  geom_sf(data = amp_mexico, fill = fill_color, color = line_color, size = line_size) +
+  geom_sf(data = mexico_mpa, fill = fill_color, color = line_color, size = line_size) +
   coord_sf() +                                # Mantiene la proyección del objeto sf sin distorsión
   theme_minimal() +                           # Estilo limpio para enfocarse en la geografía
   labs(

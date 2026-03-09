@@ -17,8 +17,8 @@ library(tidyverse)  # Para manipulación de datos y encadenamiento funcional
 # -- Centralizar variables fijas para facilitar mantenimiento
 anp_union_path <- "data/processed/anp_union.gpkg" # Ruta de entrada ANP
 mexico_union_path <- "data/processed/mexico_union.gpkg" # Ruta de entrada México
-output_gpkg_path <- "data/processed/amp_mexico.gpkg" # Nombre del archivo de salida
-output_layer_name <- "amp_mexico" # Nombre de la capa resultante
+output_gpkg_path <- "data/processed/mexico_mpa.gpkg" # Nombre del archivo de salida
+output_layer_name <- "mexico_mpa" # Nombre de la capa resultante
 
 # ==== IMPORTAR DATOS ====
 # Se leen las geometrías unidas previamente generadas

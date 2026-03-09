@@ -48,7 +48,13 @@ results_fisheries: \
 	reports/figures/kernel_seabird_home_ranges_map_25.png \
 	reports/figures/kernel_seabird_home_ranges_union_25.png \
 	reports/figures/kernel_vessel_home_ranges_map_25.png \
-	reports/figures/kernel_vessel_home_ranges_union_25.png
+	reports/figures/kernel_vessel_home_ranges_union_25.png \
+	reports/figures/mexico_eez.png \
+	reports/figures/mexico_mpa.png
+
+reports/figures/mexico_eez.png: data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_mexico_eez.R
 
 reports/figures/gps_albatross_95_percent_individuals_kernel.png: \
 	data/processed/trips_geographic_points.csv \
@@ -270,6 +276,9 @@ data/raw/rosewind.png:
 data/external/232_ANP-ITRF08_04072025.shp:
 	unzip data/external/232_ANP-ITRF08_04072025.zip -d data/external
 
+data/external/Exclusive_economic_zone_Mexico.shp:
+	unzip data/external/Exclusive_economic_zone_Mexico.zip -d data/external
+
 data/external/Mexico_e_islas_wgs84.shp:
 	unzip data/external/Mexico_e_islas_wgs84.zip -d data/external
 
@@ -289,15 +298,15 @@ data/processed/mexico_union.gpkg: data/external/Mexico_e_islas_wgs84.shp
 	$(checkDirectories)
 	Rscript src/export_mexico_to_gpkg.R
 
-data/processed/amp_mexico.gpkg: data/processed/anp_union.gpkg data/processed/mexico_union.gpkg
+data/processed/mexico_mpa.gpkg: data/processed/anp_union.gpkg data/processed/mexico_union.gpkg
 	$(checkDirectories)
-	Rscript src/export_amp_mexico_to_gpkg.R
+	Rscript src/export_mexico_mpa_to_gpkg.R
 
-reports/figures/amp_mexico.png: data/processed/amp_mexico.gpkg
+reports/figures/mexico_mpa.png: data/processed/mexico_mpa.gpkg
 	$(checkDirectories)
-	Rscript src/plot_amp_mexico.R
+	Rscript src/plot_mexico_mpa.R
 
-data/processed/overlap_amp_seabird_25.gpkg: data/processed/amp_mexico.gpkg data/processed/seabird_kernel_union_25.gpkg
+data/processed/overlap_amp_seabird_25.gpkg: data/processed/mexico_mpa.gpkg data/processed/seabird_kernel_union_25.gpkg
 	$(checkDirectories)
 	Rscript src/overlap_amp_seabird.R
 
@@ -344,6 +353,10 @@ clean:
 	rm --force data/external/232_ANP-ITRF08_04072025.dbf
 	rm --force data/external/232_ANP-ITRF08_04072025.prj
 	rm --force data/external/232_ANP-ITRF08_04072025.s*
+	rm --force data/external/Exclusive_economic_zone_Mexico.cpg
+	rm --force data/external/Exclusive_economic_zone_Mexico.dbf
+	rm --force data/external/Exclusive_economic_zone_Mexico.prj
+	rm --force data/external/Exclusive_economic_zone_Mexico.s*
 	rm --force data/external/Mexico_e_islas_wgs84.cpg
 	rm --force data/external/Mexico_e_islas_wgs84.dbf
 	rm --force data/external/Mexico_e_islas_wgs84.prj
