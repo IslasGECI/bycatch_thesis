@@ -32,7 +32,7 @@
 # data/processed/gps_albatross_combined.csv
 #
 # Outputs:
-# reports/figures/mexico_eez_bbox_union.png
+# reports/figures/mexico_eez_bbox_zoom_out.png
 #
 # Dependencies:
 # sf
@@ -45,21 +45,34 @@
 # evitando errores de superposición en la visualización.
 # ==========================================
 
-library(jsonlite)
-library(sf)
-library(tidyverse)
+library(glue)       # Permite construir mensajes dinámicos con variables para depuración o logging
+library(jsonlite)   # Permite leer archivos JSON de configuración para centralizar parámetros
+library(sf)         # Permite leer y manipular datos espaciales vectoriales
+library(tidyverse)  # Proporciona ggplot2 para construir visualizaciones declarativas
 
 # ==== CONFIGURATION ====
-config_path <- "bounding_box_config.json"
+bbox_config_path <- "bounding_box_config.json"
 input_gps_path <- "data/processed/gps_albatross_combined.csv"
 input_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
-output_figure_path <- "reports/figures/mexico_eez_bbox_union.png"
+output_figure_path <- "reports/figures/mexico_eez_bbox_zoom_out.png"
+zoom_bbox_path <- "data/processed/mexico_ezz_bounding_box_zoom_in.json"
 
-bbox_config <- fromJSON(config_path)
+# ---- Bounding box regional ----
+bbox_config <- fromJSON(bbox_config_path)
+
 bbox_lon_min <- bbox_config$bbox$lon_min
 bbox_lon_max <- bbox_config$bbox$lon_max
 bbox_lat_min <- bbox_config$bbox$lat_min
 bbox_lat_max <- bbox_config$bbox$lat_max
+
+# ---- Bounding box zoom ----
+bbox_zoom <- fromJSON(zoom_bbox_path)
+
+bbox_zoom_lon_min <- bbox_zoom$bbox$lon_min
+bbox_zoom_lon_max <- bbox_zoom$bbox$lon_max
+bbox_zoom_lat_min <- bbox_zoom$bbox$lat_min
+bbox_zoom_lat_max <- bbox_zoom$bbox$lat_max
+
 
 # ==== INPUTS ====
 mexico_eez_sf <- st_read(input_shapefile_path, quiet = TRUE)
@@ -78,7 +91,10 @@ gps_points_sf <- gps_tracks |>
     remove = FALSE
   )
 
-# ==== CREATE BOUNDING BOX ====
+
+# ==== CREATE BOUNDING BOXES ====
+
+# Regional bounding box
 bounding_box_polygon <- st_bbox(
   c(
     xmin = bbox_lon_min,
@@ -89,6 +105,19 @@ bounding_box_polygon <- st_bbox(
   crs = 4326
 ) |>
   st_as_sfc()
+
+# Zoom bounding box
+bounding_box_zoom_polygon <- st_bbox(
+  c(
+    xmin = bbox_zoom_lon_min,
+    xmax = bbox_zoom_lon_max,
+    ymin = bbox_zoom_lat_min,
+    ymax = bbox_zoom_lat_max
+  ),
+  crs = 4326
+) |>
+  st_as_sfc()
+
 
 # ==== PLOT ====
 plot_map <- ggplot() +
@@ -116,11 +145,20 @@ plot_map <- ggplot() +
       "Clarion" = "#F4A7A1"
     )
   ) +
+  geom_sf(
+    data = bounding_box_zoom_polygon,
+    fill = NA,
+    color = "#F6C177",
+    linewidth = 1
+  ) +
   coord_sf() +
   theme_minimal() +
   labs(
-    title = "Mexico EEZ, Bounding Box and Albatross GPS Tracks",
-    color = "Island"
+    title = "Mexico EEZ, Albatross GPS Tracks, and Bounding Boxes",
+    color = "Island",
+    subtitle = glue(
+      "Bounding box: {bbox_lat_min}–{bbox_lat_max}°N, {abs(bbox_lon_max)}–{abs(bbox_lon_min)}°W"
+    )
   )
 
 # ==== OUTPUT ====

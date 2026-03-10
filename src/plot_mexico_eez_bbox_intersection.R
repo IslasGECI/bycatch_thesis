@@ -36,15 +36,15 @@ library(tidyverse)  # Proporciona ggplot2 para construir visualizaciones declara
 
 # ==== CONFIGURATION ====
 # Centralizar rutas y parámetros evita valores dispersos y facilita mantenimiento
-bbox_config_path <- "bounding_box_config.json"
+zoom_bbox_path <- "data/processed/mexico_ezz_bounding_box_zoom_in.json"
 input_gpkg_path <- "data/processed/mexico_eez_bbox_intersection.gpkg"
-output_figure_path <- "reports/figures/mexico_eez_bbox.png"
+output_figure_path <- "reports/figures/mexico_eez_bbox_zoom_in.png"
 
-bbox_config <- fromJSON(bbox_config_path)
-bbox_lon_min <- bbox_config$bbox$lon_min
-bbox_lon_max <- bbox_config$bbox$lon_max
-bbox_lat_min <- bbox_config$bbox$lat_min
-bbox_lat_max <- bbox_config$bbox$lat_max
+zoom_bbox <- fromJSON(zoom_bbox_path)
+bbox_lon_min <- zoom_bbox$bbox$lon_min
+bbox_lon_max <- zoom_bbox$bbox$lon_max
+bbox_lat_min <- zoom_bbox$bbox$lat_min
+bbox_lat_max <- zoom_bbox$bbox$lat_max
 
 input_layer_name <- "mexico_eez_bbox"
 
@@ -76,14 +76,17 @@ plot_mexico_eez_bbox <- ggplot() +
     color = line_color,
     linewidth = line_size
   ) +
-  coord_sf() +      # Mantiene la proyección geográfica del objeto sf
-  theme_minimal() + # Reduce elementos visuales para enfatizar la geometría
+  coord_sf(
+    xlim = c(bbox_lon_min, bbox_lon_max),
+    ylim = c(bbox_lat_min, bbox_lat_max),
+    expand = FALSE
+  ) +
+  theme_minimal() +
   labs(
-    title = "Mexico EEZ Intersection with North Pacific Bounding Box",
+    title = "Mexico EEZ intersection with albatross GPS data",
     subtitle = glue(
-      "Spatial subset: {bbox_lat_min}–{bbox_lat_max}°N, {abs(bbox_lon_max)}–{abs(bbox_lon_min)}°W"
-    ),
-    caption = "Source: mexico_eez_bbox_intersection.gpkg"
+      "Bounding box: {bbox_lat_min}–{bbox_lat_max}°N, {abs(bbox_lon_max)}–{abs(bbox_lon_min)}°W"
+    )
   )
 
 
