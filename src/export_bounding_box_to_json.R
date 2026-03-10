@@ -41,7 +41,7 @@ library(jsonlite)
 input_csv_path <- "data/processed/gps_albatross_combined.csv"
 output_json_path <- "bounding_box_config.json"
 
-rounding_multiple <- 5
+rounding_multiple <- 10
 buffer <- 1 # Grados adicionales para asegurar que el bounding box deje un margen
 
 

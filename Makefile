@@ -59,7 +59,7 @@ reports/figures/mexico_eez.png: data/external/Exclusive_economic_zone_Mexico.shp
 bounding_box_config.json: data/processed/gps_albatross_combined.csv
 	Rscript src/export_bounding_box_to_json.R
 
-data/processed/mexico_eez_bbox_intersection.gpkg: data/external/Exclusive_economic_zone_Mexico.shp
+data/processed/mexico_eez_bbox_intersection.gpkg: data/external/Exclusive_economic_zone_Mexico.shp bounding_box_config.json
 	$(checkDirectories)
 	Rscript src/export_mexico_eez_bbox_to_gpkg.R
 
@@ -368,6 +368,7 @@ clean:
 	rm --force --recursive data/processed
 	rm --force --recursive data/raw
 	rm --force --recursive reports
+	rm --force bounding_box_config.json
 	rm --force data/external/232_ANP-ITRF08_04072025.cpg
 	rm --force data/external/232_ANP-ITRF08_04072025.dbf
 	rm --force data/external/232_ANP-ITRF08_04072025.prj

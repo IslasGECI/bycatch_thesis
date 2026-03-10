@@ -32,6 +32,7 @@
 
 
 # ==== HEADER ====
+library(jsonlite)   # Permite leer archivos JSON de configuración para centralizar parámetros
 library(sf)         # Permite operaciones espaciales vectoriales
 library(tidyverse)  # Facilita manipulación declarativa de datos
 
@@ -44,10 +45,10 @@ output_gpkg_path <- "data/processed/mexico_eez_bbox_intersection.gpkg"
 output_layer_name <- "mexico_eez_bbox"
 
 bbox_config <- fromJSON(config_path)
-bbox_lon_min <- bbox_config$bbox$lon_min
-bbox_lon_max <- bbox_config$bbox$lon_max
 bbox_lat_min <- bbox_config$bbox$lat_min
 bbox_lat_max <- bbox_config$bbox$lat_max
+bbox_lon_min <- bbox_config$bbox$lon_min
+bbox_lon_max <- bbox_config$bbox$lon_max
 
 # ==== INPUTS ====
 # Se importa la EEZ como objeto sf para habilitar operaciones geométricas
