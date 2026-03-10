@@ -38,16 +38,16 @@ library(tidyverse)  # Facilita manipulación declarativa de datos
 
 # ==== CONFIGURATION ====
 # Centralizar constantes evita números mágicos en el código
+config_path <- "bounding_box_config.json"
 input_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
 output_gpkg_path <- "data/processed/mexico_eez_bbox_intersection.gpkg"
 output_layer_name <- "mexico_eez_bbox"
 
-# Límites geográficos del bounding box
-bbox_lon_min <- -170   # 170° W expresado como longitud negativa
-bbox_lon_max <- -110   # 110° W
-bbox_lat_min <- 10     # 10° N
-bbox_lat_max <- 55     # 55° N
-
+bbox_config <- fromJSON(config_path)
+bbox_lon_min <- bbox_config$bbox$lon_min
+bbox_lon_max <- bbox_config$bbox$lon_max
+bbox_lat_min <- bbox_config$bbox$lat_min
+bbox_lat_max <- bbox_config$bbox$lat_max
 
 # ==== INPUTS ====
 # Se importa la EEZ como objeto sf para habilitar operaciones geométricas

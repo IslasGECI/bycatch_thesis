@@ -64,7 +64,7 @@ reports/figures/mexico_eez_bbox.png: data/processed/mexico_eez_bbox_intersection
 	$(checkDirectories)
 	Rscript src/plot_mexico_eez_bbox_intersection.R
 
-reports/figures/mexico_eez_bbox_union.png: data/external/Exclusive_economic_zone_Mexico.shp
+reports/figures/mexico_eez_bbox_union.png: data/external/Exclusive_economic_zone_Mexico.shp data/processed/gps_albatross_combined.csv
 	$(checkDirectories)
 	Rscript src/plot_mexico_eez_bbox_union.R
 
