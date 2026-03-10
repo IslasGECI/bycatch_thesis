@@ -56,15 +56,18 @@ reports/figures/mexico_eez.png: data/external/Exclusive_economic_zone_Mexico.shp
 	$(checkDirectories)
 	Rscript src/plot_mexico_eez.R
 
+bounding_box_config.json: data/processed/gps_albatross_combined.csv
+	Rscript src/export_bounding_box_to_json.R
+
 data/processed/mexico_eez_bbox_intersection.gpkg: data/external/Exclusive_economic_zone_Mexico.shp
 	$(checkDirectories)
 	Rscript src/export_mexico_eez_bbox_to_gpkg.R
 
-reports/figures/mexico_eez_bbox.png: data/processed/mexico_eez_bbox_intersection.gpkg
+reports/figures/mexico_eez_bbox.png: data/processed/mexico_eez_bbox_intersection.gpkg bounding_box_config.json
 	$(checkDirectories)
 	Rscript src/plot_mexico_eez_bbox_intersection.R
 
-reports/figures/mexico_eez_bbox_union.png: data/external/Exclusive_economic_zone_Mexico.shp data/processed/gps_albatross_combined.csv
+reports/figures/mexico_eez_bbox_union.png: data/external/Exclusive_economic_zone_Mexico.shp bounding_box_config.json
 	$(checkDirectories)
 	Rscript src/plot_mexico_eez_bbox_union.R
 

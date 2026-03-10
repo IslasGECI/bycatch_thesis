@@ -29,16 +29,24 @@
 
 
 # ==== HEADER ====
+library(glue)       # Permite construir mensajes dinámicos con variables para depuración o logging
+library(jsonlite)   # Permite leer archivos JSON de configuración para centralizar parámetros
 library(sf)         # Permite leer y manipular datos espaciales vectoriales
 library(tidyverse)  # Proporciona ggplot2 para construir visualizaciones declarativas
 
-
 # ==== CONFIGURATION ====
 # Centralizar rutas y parámetros evita valores dispersos y facilita mantenimiento
+bbox_config_path <- "bounding_box_config.json"
 input_gpkg_path <- "data/processed/mexico_eez_bbox_intersection.gpkg"
-input_layer_name <- "mexico_eez_bbox"
-
 output_figure_path <- "reports/figures/mexico_eez_bbox.png"
+
+bbox_config <- fromJSON(bbox_config_path)
+bbox_lon_min <- bbox_config$bbox$lon_min
+bbox_lon_max <- bbox_config$bbox$lon_max
+bbox_lat_min <- bbox_config$bbox$lat_min
+bbox_lat_max <- bbox_config$bbox$lat_max
+
+input_layer_name <- "mexico_eez_bbox"
 
 fill_color <- "#7DD3FC"     # Color de relleno que destaca el polígono marino
 line_color <- "#075985"     # Color de contorno para definir claramente los límites
@@ -47,7 +55,6 @@ line_size <- 0.3            # Grosor de línea moderado para mantener legibilida
 fig_width <- 8              # Ancho de figura consistente con otros mapas del proyecto
 fig_height <- 6             # Alto que mantiene proporción cartográfica
 fig_dpi <- 300              # Resolución adecuada para reportes o publicaciones
-
 
 # ==== INPUTS ====
 # Se lee la capa espacial desde el GeoPackage generado previamente
@@ -73,7 +80,9 @@ plot_mexico_eez_bbox <- ggplot() +
   theme_minimal() + # Reduce elementos visuales para enfatizar la geometría
   labs(
     title = "Mexico EEZ Intersection with North Pacific Bounding Box",
-    subtitle = "Spatial subset: 10–55°N, 110–170°W",
+    subtitle = glue(
+      "Spatial subset: {bbox_lat_min}–{bbox_lat_max}°N, {abs(bbox_lon_max)}–{abs(bbox_lon_min)}°W"
+    ),
     caption = "Source: mexico_eez_bbox_intersection.gpkg"
   )
 
