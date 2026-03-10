@@ -298,6 +298,10 @@ reports/figures/anp.png: data/external/232_ANP-ITRF08_04072025.shp
 	$(checkDirectories)
 	Rscript src/plot_anp.R
 
+data/processed/gps_albatross_combined.csv: data/raw/gps-albatros-clarion.csv data/raw/gps-albatros-guadalupe.csv
+	$(checkDirectories)
+	Rscript src/join_gps_data.R
+
 data/processed/anp_union.gpkg: data/external/232_ANP-ITRF08_04072025.shp
 	$(checkDirectories)
 	Rscript src/export_anp_to_gpkg.R
