@@ -33,6 +33,8 @@ reports/anteproyecto.docx: \
 
 results_albatross: \
 	data/processed/trips_summary.csv \
+	data/processed/trips_summary_clarion.csv \
+	data/processed/trips_summary_guadalupe.csv \
 	reports/figures/gps_albatross_50_percent_individuals_kernel_ARS.png \
 	reports/figures/gps_albatross_50_percent_potential_site_ARS.png \
 	reports/figures/gps_albatross_50_percent_representative_assess_ARS.png \
@@ -76,22 +78,22 @@ reports/figures/mexico_eez_bbox_zoom_out.png: data/external/Exclusive_economic_z
 	Rscript src/plot_mexico_eez_bbox_union.R
 
 reports/figures/gps_albatross_95_percent_individuals_kernel.png: \
-	data/processed/trips_geographic_points_guadalups.csv \
+	data/processed/trips_geographic_points_guadalupe.csv \
 	trips_config_guadalupe.json
 	$(checkDirectories)
 	Rscript -e "bycatch::plot_individual_kernels(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/trips_geographic_points_guadalups.csv \
+		--data-path data/processed/trips_geographic_points_guadalupe.csv \
 		--config-path trips_config_guadalupe.json \
 		--percentage-distribution 95 \
 		--smoothing-method scale_ARS \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_usage_area_ARS.png: \
-	data/processed/trips_geographic_points_guadalups.csv \
+	data/processed/trips_geographic_points_guadalupe.csv \
 	trips_config_guadalupe.json
 	$(checkDirectories)
 	Rscript -e "bycatch::plot_usage_area_by_individual(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/trips_geographic_points_guadalups.csv \
+		--data-path data/processed/trips_geographic_points_guadalupe.csv \
 		--config-path trips_config_guadalupe.json \
 		--percentage-distribution 50 \
 		--smoothing-method scale_ARS \
@@ -99,11 +101,11 @@ reports/figures/gps_albatross_50_percent_usage_area_ARS.png: \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_potential_site_ARS.png: \
-	data/processed/trips_geographic_points_guadalups.csv \
+	data/processed/trips_geographic_points_guadalupe.csv \
 	trips_config_guadalupe.json
 	$(checkDirectories)
 	Rscript -e "bycatch::plot_potential_site(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/trips_geographic_points_guadalups.csv \
+		--data-path data/processed/trips_geographic_points_guadalupe.csv \
 		--config-path trips_config_guadalupe.json \
 		--percentage-distribution 50 \
 		--n-iterations 100 \
@@ -112,11 +114,11 @@ reports/figures/gps_albatross_50_percent_potential_site_ARS.png: \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_representative_assess_ARS.png: \
-	data/processed/trips_geographic_points_guadalups.csv \
+	data/processed/trips_geographic_points_guadalupe.csv \
 	trips_config_guadalupe.json
 	$(checkDirectories)
 	Rscript -e "bycatch::plot_representative_assess(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/trips_geographic_points_guadalups.csv \
+		--data-path data/processed/trips_geographic_points_guadalupe.csv \
 		--config-path trips_config_guadalupe.json \
 		--percentage-distribution 50 \
 		--n-iterations 100 \
@@ -124,24 +126,24 @@ reports/figures/gps_albatross_50_percent_representative_assess_ARS.png: \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_individuals_kernel_ARS.png: \
-	data/processed/trips_geographic_points_guadalups.csv \
+	data/processed/trips_geographic_points_guadalupe.csv \
 	trips_config_guadalupe.json
 	$(checkDirectories)
 	Rscript -e "bycatch::plot_individual_kernels(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/trips_geographic_points_guadalups.csv \
+		--data-path data/processed/trips_geographic_points_guadalupe.csv \
 		--config-path trips_config_guadalupe.json \
 		--percentage-distribution 50 \
 		--smoothing-method scale_ARS \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_kernel_density.png: \
-	data/processed/trips_geographic_points_guadalups.csv \
+	data/processed/trips_geographic_points_guadalupe.csv \
 	data/raw/division_politica_paises.shp \
 	data/raw/division_politica_paises.shx \
 	data/raw/rosewind.png
 	$(checkDirectories)
 	geci-plot-cli plot-kernel-density \
-		--geographic-data-path data/processed/trips_geographic_points_guadalups.csv \
+		--geographic-data-path data/processed/trips_geographic_points_guadalupe.csv \
 		--global-shapefile-data-path data/raw/division_politica_paises.shp \
 		--path-rose-wind data/raw/rosewind.png \
 		--selected-contour "50_contour" \
@@ -149,13 +151,13 @@ reports/figures/gps_albatross_50_percent_kernel_density.png: \
 		--result-map-path $@
 
 reports/figures/gps_albatross_kernel_density.png: \
-	data/processed/trips_geographic_points_guadalups.csv \
+	data/processed/trips_geographic_points_guadalupe.csv \
 	data/raw/division_politica_paises.shp \
 	data/raw/division_politica_paises.shx \
 	data/raw/rosewind.png
 	$(checkDirectories)
 	geci-plot-cli plot-kernel-density \
-		--geographic-data-path data/processed/trips_geographic_points_guadalups.csv \
+		--geographic-data-path data/processed/trips_geographic_points_guadalupe.csv \
 		--global-shapefile-data-path data/raw/division_politica_paises.shp \
 		--path-rose-wind data/raw/rosewind.png \
 		--selected-contour "All_contours" \
@@ -197,13 +199,13 @@ data/processed/gps_albatros_guadalupe_2025.csv: \
 		--output-path $@
 
 reports/figures/gps_albatross_geographic_points_by_trip.png: \
-	data/processed/trips_geographic_points_guadalups.csv \
+	data/processed/trips_geographic_points_guadalupe.csv \
 	data/raw/division_politica_paises.shp \
 	data/raw/division_politica_paises.shx \
 	data/raw/rosewind.png
 	$(checkDirectories)
 	geci-plot-cli plot-geographic-points-by-trip \
-		--geographic-data-path data/processed/trips_geographic_points_guadalups.csv \
+		--geographic-data-path data/processed/trips_geographic_points_guadalupe.csv \
 		--global-shapefile-data-path data/raw/division_politica_paises.shp \
 		--path-rose-wind data/raw/rosewind.png \
 		--result-map-path $@
@@ -224,12 +226,20 @@ data/processed/trips_geographic_points_clarion.csv: \
 		--config-path trips_config_clarion.json \
 		--output-path $@
 
-data/processed/trips_summary.csv: \
-	data/processed/trips_geographic_points_guadalups.csv
+data/processed/trips_summary_guadalupe.csv: \
+	data/processed/trips_geographic_points_guadalupe.csv
 	$(checkDirectories)
 	Rscript -e "bycatch::write_trips_summary(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/trips_geographic_points_guadalups.csv \
+		--data-path data/processed/trips_geographic_points_guadalupe.csv \
 		--config-path trips_config_guadalupe.json \
+		--output-path $@
+
+data/processed/trips_summary_clarion.csv: \
+	data/processed/trips_geographic_points_clarion.csv
+	$(checkDirectories)
+	Rscript -e "bycatch::write_trips_summary(bycatch::get_domain_specific_options())" \
+		--data-path data/processed/trips_geographic_points_clarion.csv \
+		--config-path trips_config_clarion.json \
 		--output-path $@
 
 reports/figures/gps_albatross_clarion_geographic_points.png: \
@@ -260,7 +270,7 @@ reports/figures/kernel_vessel_home_ranges_map_25.png reports/figures/kernel_vess
 	$(checkDirectories)
 	Rscript "src/plot_vessel_home_ranges.R"
 
-data/processed/seabird_home_ranges_25.gpkg data/processed/seabird_kernel_union_25.gpkg: data/processed/trips_geographic_points_guadalups.csv
+data/processed/seabird_home_ranges_25.gpkg data/processed/seabird_kernel_union_25.gpkg: data/processed/trips_geographic_points_guadalupe.csv
 	$(checkDirectories)
 	Rscript "src/generate_seabird_kernel_home_ranges.R"
 
