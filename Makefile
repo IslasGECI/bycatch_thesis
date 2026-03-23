@@ -217,6 +217,12 @@ data/processed/trips_geographic_points_clarion.csv: \
 		--config-path trips_config_clarion.json \
 		--output-path $@
 
+data/processed/trips_geographic_points_all.csv: \
+	data/processed/trips_geographic_points_clarion.csv \
+	data/processed/trips_geographic_points_guadalupe.csv
+	rm --force $@
+	csvstack data/processed/trips_geographic_points_*.csv > $@
+
 data/processed/trips_summary_guadalupe.csv: \
 	data/processed/trips_geographic_points_guadalupe.csv
 	$(checkDirectories)
@@ -236,7 +242,8 @@ data/processed/trips_summary_clarion.csv: \
 data/processed/trips_summary_all.csv: \
 	data/processed/trips_summary_clarion.csv \
 	data/processed/trips_summary_guadalupe.csv
-	cat data/processed/trips_summary_guadalupe.csv <(tail -n +2 data/processed/trips_summary_clarion.csv) > $@
+	rm --force $@
+	csvstack data/processed/trips_summary_*.csv > $@
 
 reports/figures/gps_albatross_clarion_geographic_points.png: \
 	data/raw/gps-albatros-clarion.csv \
