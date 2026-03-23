@@ -37,7 +37,8 @@ results_albatross: \
 	data/processed/trips_summary_all.csv \
 	data/processed/trips_summary_clarion.csv \
 	data/processed/trips_summary_guadalupe.csv \
-	reports/figures/gps_albatross_50_percent_individuals_kernel_ARS.png \
+	reports/figures/gps_albatross_50_percent_individuals_kernel_ARS_all.png \
+	reports/figures/gps_albatross_50_percent_individuals_kernel_ARS_guadalupe.png \
 	reports/figures/gps_albatross_50_percent_potential_site_ARS.png \
 	reports/figures/gps_albatross_50_percent_representative_assess_ARS.png \
 	reports/figures/gps_albatross_50_percent_usage_area_ARS.png \
@@ -116,13 +117,35 @@ reports/figures/gps_albatross_50_percent_representative_assess_ARS.png: \
 		--smoothing-method scale_ARS \
 		--output-path $@
 
-reports/figures/gps_albatross_50_percent_individuals_kernel_ARS.png: \
+reports/figures/gps_albatross_50_percent_individuals_kernel_ARS_guadalupe.png: \
 	data/processed/trips_geographic_points_guadalupe.csv \
 	trips_config_guadalupe.json
 	$(checkDirectories)
 	Rscript -e "bycatch::plot_individual_kernels(bycatch::get_domain_specific_options())" \
 		--data-path data/processed/trips_geographic_points_guadalupe.csv \
 		--config-path trips_config_guadalupe.json \
+		--percentage-distribution 50 \
+		--smoothing-method scale_ARS \
+		--output-path $@
+
+reports/figures/gps_albatross_50_percent_individuals_kernel_ARS_clarion.png: \
+	data/processed/trips_geographic_points_clarion.csv \
+	trips_config_clarion.json
+	$(checkDirectories)
+	Rscript -e "bycatch::plot_individual_kernels(bycatch::get_domain_specific_options())" \
+		--data-path data/processed/trips_geographic_points_clarion.csv \
+		--config-path trips_config_clarion.json \
+		--percentage-distribution 50 \
+		--smoothing-method scale_ARS \
+		--output-path $@
+
+reports/figures/gps_albatross_50_percent_individuals_kernel_ARS_all.png: \
+	data/processed/trips_geographic_points_all.csv \
+	trips_config_all.json
+	$(checkDirectories)
+	Rscript -e "bycatch::plot_individual_kernels(bycatch::get_domain_specific_options())" \
+		--data-path data/processed/trips_geographic_points_all.csv \
+		--config-path trips_config_all.json \
 		--percentage-distribution 50 \
 		--smoothing-method scale_ARS \
 		--output-path $@
@@ -221,7 +244,7 @@ data/processed/trips_geographic_points_all.csv: \
 	data/processed/trips_geographic_points_clarion.csv \
 	data/processed/trips_geographic_points_guadalupe.csv
 	rm --force $@
-	csvstack data/processed/trips_geographic_points_*.csv > $@
+	Rscript src/join_trip_data.R
 
 data/processed/trips_summary_guadalupe.csv: \
 	data/processed/trips_geographic_points_guadalupe.csv
