@@ -79,17 +79,6 @@ reports/figures/mexico_eez_bbox_zoom_out.png: data/external/Exclusive_economic_z
 	$(checkDirectories)
 	Rscript src/plot_mexico_eez_bbox_union.R
 
-reports/figures/gps_albatross_95_percent_individuals_kernel.png: \
-	data/processed/trips_geographic_points_guadalupe.csv \
-	trips_config_guadalupe.json
-	$(checkDirectories)
-	Rscript -e "bycatch::plot_individual_kernels(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/trips_geographic_points_guadalupe.csv \
-		--config-path trips_config_guadalupe.json \
-		--percentage-distribution 95 \
-		--smoothing-method scale_ARS \
-		--output-path $@
-
 reports/figures/gps_albatross_50_percent_usage_area_ARS.png: \
 	data/processed/trips_geographic_points_guadalupe.csv \
 	trips_config_guadalupe.json
