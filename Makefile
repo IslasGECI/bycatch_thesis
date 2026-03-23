@@ -3,6 +3,8 @@ all: reports/anteproyecto.docx \
 	reports/articulo_uno.docx \
 	reports/articulo_uno.pdf
 
+SHELL := /bin/bash
+
 reports/articulo_uno.pdf: \
 	reports/draft.md \
 	metadata.yaml
@@ -32,7 +34,7 @@ reports/anteproyecto.docx: \
 	pandoc --metadata-file=metadata.yaml --citeproc --output=$@ 01_proposal.md
 
 results_albatross: \
-	data/processed/trips_summary.csv \
+	data/processed/trips_summary_all.csv \
 	data/processed/trips_summary_clarion.csv \
 	data/processed/trips_summary_guadalupe.csv \
 	reports/figures/gps_albatross_50_percent_individuals_kernel_ARS.png \
@@ -241,6 +243,11 @@ data/processed/trips_summary_clarion.csv: \
 		--data-path data/processed/trips_geographic_points_clarion.csv \
 		--config-path trips_config_clarion.json \
 		--output-path $@
+
+data/processed/trips_summary_all.csv: \
+	data/processed/trips_summary_clarion.csv \
+	data/processed/trips_summary_guadalupe.csv
+	cat data/processed/trips_summary_guadalupe.csv <(tail -n +2 data/processed/trips_summary_clarion.csv) > $@
 
 reports/figures/gps_albatross_clarion_geographic_points.png: \
 	data/raw/gps-albatros-clarion.csv \
