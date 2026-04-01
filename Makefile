@@ -90,7 +90,7 @@ reports/figures/gps_albatross_50_percent_usage_area_ARS.png: \
 		--config-path trips_config_guadalupe.json \
 		--percentage-distribution 50 \
 		--smoothing-method scale_ARS \
-		--n-iterations 100 \
+		--n-iterations 1000 \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_potential_site_ARS_guadalupe.png: \
@@ -101,8 +101,8 @@ reports/figures/gps_albatross_50_percent_potential_site_ARS_guadalupe.png: \
 		--data-path data/processed/trips_geographic_points_guadalupe.csv \
 		--config-path trips_config_guadalupe.json \
 		--percentage-distribution 50 \
-		--n-iterations 100 \
-		--population-size 1551 \
+		--n-iterations 1000 \
+		--population-size 4390 \ # 645*2 in the main island + 1550*2 in the islets (https://doi.org/10.5281/zenodo.18343678)
 		--smoothing-method scale_ARS \
 		--output-path $@
 
@@ -114,8 +114,8 @@ reports/figures/gps_albatross_50_percent_potential_site_ARS_all.png: \
 		--data-path data/processed/trips_geographic_points_all.csv \
 		--config-path trips_config_all.json \
 		--percentage-distribution 50 \
-		--n-iterations 100 \
-		--population-size 1551 \
+		--n-iterations 1000 \
+		--population-size 4437 \ # 47 individuals in Clarion Island on 2023 (YB) + 4390 individuals in Guadalupe Island
 		--smoothing-method scale_ARS \
 		--output-path $@
 
@@ -127,7 +127,7 @@ reports/figures/gps_albatross_50_percent_representative_assess_ARS.png: \
 		--data-path data/processed/trips_geographic_points_guadalupe.csv \
 		--config-path trips_config_guadalupe.json \
 		--percentage-distribution 50 \
-		--n-iterations 100 \
+		--n-iterations 1000 \
 		--smoothing-method scale_ARS \
 		--output-path $@
 
