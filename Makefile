@@ -65,21 +65,21 @@ reports/figures/mexico_eez.png: data/external/Exclusive_economic_zone_Mexico.shp
 bounding_box_config.json: data/processed/gps_albatross_combined.csv
 	Rscript src/export_bounding_box_to_json.R
 
-data/processed/mexico_eez_bbox_intersection.gpkg: data/external/Exclusive_economic_zone_Mexico.shp bounding_box_config.json
+data/processed/mexico_eez_bounding_box_intersection.gpkg: data/external/Exclusive_economic_zone_Mexico.shp bounding_box_config.json
 	$(checkDirectories)
-	Rscript src/export_mexico_eez_bbox_to_gpkg.R
+	Rscript src/export_mexico_eez_bounding_box_to_gpkg.R
 
-data/processed/mexico_ezz_bounding_box_zoom_in.json: data/processed/mexico_eez_bbox_intersection.gpkg
+data/processed/mexico_ezz_bounding_box_zoom_in.json: data/processed/mexico_eez_bounding_box_intersection.gpkg
 	$(checkDirectories)
 	Rscript src/export_mexico_eez_bounding_box_zoom_in_to_json.R
 
-reports/figures/mexico_eez_bbox_zoom_in.png: data/processed/mexico_eez_bbox_intersection.gpkg data/processed/mexico_ezz_bounding_box_zoom_in.json
+reports/figures/mexico_eez_bounding_box_zoom_in.png: data/processed/mexico_eez_bounding_box_intersection.gpkg data/processed/mexico_ezz_bounding_box_zoom_in.json
 	$(checkDirectories)
-	Rscript src/plot_mexico_eez_bbox_intersection.R
+	Rscript src/plot_mexico_eez_bounding_box_intersection.R
 
-reports/figures/mexico_eez_bbox_zoom_out.png: data/external/Exclusive_economic_zone_Mexico.shp bounding_box_config.json data/processed/mexico_ezz_bounding_box_zoom_in.json
+reports/figures/mexico_eez_bounding_box_zoom_out.png: data/external/Exclusive_economic_zone_Mexico.shp bounding_box_config.json data/processed/mexico_ezz_bounding_box_zoom_in.json
 	$(checkDirectories)
-	Rscript src/plot_mexico_eez_bbox_union.R
+	Rscript src/plot_mexico_eez_bounding_box_union.R
 
 reports/figures/gps_albatross_50_percent_usage_area_ARS.png: \
 	data/processed/trips_geographic_points_guadalupe.csv \

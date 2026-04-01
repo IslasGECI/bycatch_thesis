@@ -14,7 +14,7 @@
 # como archivo PNG para facilitar inspección visual.
 #
 # Inputs:
-# data/processed/mexico_eez_bbox_intersection.gpkg (layer: mexico_eez_bbox)
+# data/processed/mexico_eez_bounding_box_intersection.gpkg (layer: mexico_eez_bbox)
 #
 # Outputs:
 # reports/figures/mexico_eez_bbox.png
@@ -36,11 +36,11 @@ library(tidyverse)  # Proporciona ggplot2 para construir visualizaciones declara
 
 # ==== CONFIGURATION ====
 # Centralizar rutas y parámetros evita valores dispersos y facilita mantenimiento
-zoom_bbox_path <- "data/processed/mexico_ezz_bounding_box_zoom_in.json"
-input_gpkg_path <- "data/processed/mexico_eez_bbox_intersection.gpkg"
-output_figure_path <- "reports/figures/mexico_eez_bbox_zoom_in.png"
+zoom_bounding_box_path <- "data/processed/mexico_ezz_bounding_box_zoom_in.json"
+input_gpkg_path <- "data/processed/mexico_eez_bounding_box_intersection.gpkg"
+output_figure_path <- "reports/figures/mexico_eez_bounding_box_zoom_in.png"
 
-zoom_bbox <- fromJSON(zoom_bbox_path)
+zoom_bbox <- fromJSON(zoom_bounding_box_path)
 bbox_lon_min <- zoom_bbox$bbox$lon_min
 bbox_lon_max <- zoom_bbox$bbox$lon_max
 bbox_lat_min <- zoom_bbox$bbox$lat_min
@@ -59,7 +59,7 @@ fig_dpi <- 300              # Resolución adecuada para reportes o publicaciones
 # ==== INPUTS ====
 # Se lee la capa espacial desde el GeoPackage generado previamente
 # quiet = TRUE evita mensajes informativos innecesarios en ejecución automática
-mexico_eez_bbox_sf <- st_read(
+mexico_eez_bounding_box_sf <- st_read(
   dsn = input_gpkg_path,
   layer = input_layer_name,
   quiet = TRUE
@@ -71,7 +71,7 @@ mexico_eez_bbox_sf <- st_read(
 # ggplot permite un enfoque declarativo para construir mapas reproducibles
 plot_mexico_eez_bbox <- ggplot() +
   geom_sf(
-    data = mexico_eez_bbox_sf,
+    data = mexico_eez_bounding_box_sf,
     fill = fill_color,
     color = line_color,
     linewidth = line_size

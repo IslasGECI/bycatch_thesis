@@ -18,7 +18,7 @@
 # data/external/Exclusive_economic_zone_Mexico.shp
 #
 # Outputs:
-# data/processed/mexico_eez_bbox_intersection.gpkg
+# data/processed/mexico_eez_bounding_box_intersection.gpkg
 # layer: "mexico_eez_bbox"
 #
 # Dependencies:
@@ -41,7 +41,7 @@ library(tidyverse)  # Facilita manipulación declarativa de datos
 # Centralizar constantes evita números mágicos en el código
 config_path <- "bounding_box_config.json"
 input_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
-output_gpkg_path <- "data/processed/mexico_eez_bbox_intersection.gpkg"
+output_gpkg_path <- "data/processed/mexico_eez_bounding_box_intersection.gpkg"
 output_layer_name <- "mexico_eez_bbox"
 
 bbox_config <- fromJSON(config_path)
