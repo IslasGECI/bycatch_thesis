@@ -105,7 +105,6 @@ reports/figures/gps_albatross_50_percent_potential_site_ARS_guadalupe.png: \
 		--population-size 4390 \
 		--smoothing-method scale_ARS \
 		--output-path $@
-	# population-size: 645*2 in the main island + 1550*2 in the islets (https://doi.org/10.5281/zenodo.18343678)
 
 reports/figures/gps_albatross_50_percent_potential_site_ARS_all.png: \
 	data/processed/trips_geographic_points_all.csv \
@@ -119,7 +118,6 @@ reports/figures/gps_albatross_50_percent_potential_site_ARS_all.png: \
 		--population-size 4437 \
 		--smoothing-method scale_ARS \
 		--output-path $@
-	# population-size: 47 individuals in Clarion Island on 2023 (YB) + 4390 individuals in Guadalupe Island
 
 reports/figures/gps_albatross_50_percent_representative_assess_ARS.png: \
 	data/processed/trips_geographic_points_guadalupe.csv \
