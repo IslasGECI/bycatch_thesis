@@ -23,6 +23,7 @@ jobs:
       with:
         name: image
         path: /tmp/image.tar
+        retention-days: 14
 
   render-report-albatross:
     name: Render albatross results and draft
@@ -55,6 +56,7 @@ jobs:
           reports/*.docx
           data/processed/*.csv
           reports/figures/*.png
+        retention-days: 14
 
   render-report-fisheries:
     name: Render fisheries results and draft
@@ -95,6 +97,7 @@ jobs:
           reports/*.docx
           data/processed/*.csv
           reports/figures/*.png
+        retention-days: 14
 
   update-docker:
     name: Push image to Docker Hub
