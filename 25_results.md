@@ -1,13 +1,13 @@
 
 # Results
 
-![Distribution of raw tracking data for Laysan Albatross from Guadalupe Island during the seasons 2014–2018 and 2025.](reports/figures/gps_albatross_geographic_points.png)
-
-![Individuals trips for Laysan Albatross from Guadalupe Island during the seasons 2014–2018 and 2025.](reports/figures/gps_albatross_geographic_points_by_trip.png)
+![Individuals trips for Laysan Albatross from Guadalupe Island during the seasons 2014–2018 and 2025.](reports/figures/gps_albatross_geographic_points_by_trip_all.png)
 
 ![50% individual kernels derived using the ARS method from Laysan Albatross tracking data (2014–2018 and 2025 seasons) for the Guadalupe Island colony.](reports/figures/gps_albatross_50_percent_individuals_kernel_ARS_all.png)
 
 ![50% representative assessment derived using the ARS method from Laysan Albatross tracking data (2014–2018 and 2025 seasons) for the Guadalupe Island colony.](reports/figures/gps_albatross_50_percent_representative_assess_ARS_all.png)
+
+![Percentage](reports/figures/gps_albatross_50_percent_usage_area_ARS_all.png)
 
 ![50% potential site derived using the ARS method from Laysan Albatross tracking data (2014–2018 and 2025 seasons) for the Guadalupe Island colony.](reports/figures/gps_albatross_50_percent_potential_site_ARS_all.png)
 

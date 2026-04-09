@@ -7,64 +7,60 @@ all: reports/anteproyecto.docx \
 
 SHELL := /bin/bash
 
-reports/articulo_uno.pdf: \
-	reports/draft.md \
-	metadata.yaml
+reports/articulo_uno.docx reports/articulo_uno.pdf: \
+	metadata.yaml \
+	reports/first_paper_draft.md \
+	results_first_paper
 	$(checkDirectories)
-	pandoc --include-in-header=options.sty --metadata-file=metadata.yaml --metadata=documentclass:article --table-of-contents --citeproc --output=$@ reports/draft.md
+	pandoc --include-in-header=options.sty --metadata-file=metadata.yaml --metadata=documentclass:article --table-of-contents --citeproc --output=$@ reports/first_paper_draft.md
 
-reports/articulo_uno.docx: \
-	reports/draft.md \
-	metadata.yaml
-	$(checkDirectories)
-	pandoc --include-in-header=options.sty --metadata-file=metadata.yaml --metadata=documentclass:article --table-of-contents --citeproc --output=$@ reports/draft.md
-
-reports/draft.md: results_firts_paper
+reports/first_paper_draft.md:
 	$(checkDirectories)
 	cat 1?_*.md > $@
 
-reports/anteproyecto.pdf: \
+reports/articulo_dos.docx reports/articulo_dos.pdf: \
 	metadata.yaml \
-	01_proposal.md
+	reports/second_paper_draft.md \
+	results_second_paper
 	$(checkDirectories)
-	pandoc --metadata-file=metadata.yaml --citeproc --output=$@ 01_proposal.md
+	pandoc --include-in-header=options.sty --metadata-file=metadata.yaml --metadata=documentclass:article --table-of-contents --citeproc --output=$@ reports/second_paper_draft.md
 
-reports/anteproyecto.docx: \
+reports/second_paper_draft.md:
+	$(checkDirectories)
+	cat 2?_*.md > $@
+
+reports/anteproyecto.docx reports/anteproyecto.pdf: \
 	metadata.yaml \
 	01_proposal.md
 	$(checkDirectories)
 	pandoc --metadata-file=metadata.yaml --citeproc --output=$@ 01_proposal.md
 
 results_first_paper: \
+	data/processed/trips_summary_guadalupe.csv \
+	reports/figures/gps_albatross_50_percent_individuals_kernel_ARS_guadalupe.png \
+	reports/figures/gps_albatross_50_percent_potential_site_ARS_guadalupe.png \
+	reports/figures/gps_albatross_50_percent_representative_assess_ARS_guadalupe.png \
+	reports/figures/gps_albatross_50_percent_usage_area_ARS_guadalupe.png \
+	reports/figures/gps_albatross_geographic_points_by_trip_guadalupe.png \
+	reports/figures/gps_albatross_geographic_points_raw_guadalupe.png
+
+results_second_paper: \
 	data/processed/trips_summary_all.csv \
 	data/processed/trips_summary_clarion.csv \
 	data/processed/trips_summary_guadalupe.csv \
 	reports/figures/gps_albatross_50_percent_individuals_kernel_ARS_all.png \
-	reports/figures/gps_albatross_50_percent_individuals_kernel_ARS_guadalupe.png \
 	reports/figures/gps_albatross_50_percent_potential_site_ARS_all.png \
-	reports/figures/gps_albatross_50_percent_potential_site_ARS_guadalupe.png \
-	reports/figures/gps_albatross_50_percent_representative_assess_ARS.png \
-	reports/figures/gps_albatross_50_percent_usage_area_ARS.png \
-	reports/figures/gps_albatross_geographic_points.png \
-	reports/figures/gps_albatross_geographic_points_2025.png \
-	reports/figures/gps_albatross_geographic_points_by_trip.png
-
-results_second_paper: \
-	data/processed/vessel_kernel_union_25.gpkg \
-	reports/figures/kernel_overlap_home_ranges_union_25.png \
-	reports/figures/kernel_overlap_home_ranges_union_25_zoom.png \
-	reports/figures/kernel_seabird_home_ranges_map_25.png \
-	reports/figures/kernel_seabird_home_ranges_union_25.png \
-	reports/figures/kernel_vessel_home_ranges_map_25.png \
-	reports/figures/kernel_vessel_home_ranges_union_25.png \
-	reports/figures/mexico_eez.png \
-	reports/figures/mexico_mpa.png
+	reports/figures/gps_albatross_50_percent_representative_assess_ARS_all.png \
+	reports/figures/gps_albatross_50_percent_usage_area_ARS_all.png \
+	reports/figures/gps_albatross_geographic_points_by_trip_all.png \
+	reports/figures/mexico_eez_bounding_box_zoom_in.png \
+	reports/figures/mexico_eez_bounding_box_zoom_out.png
 
 reports/figures/mexico_eez.png: data/external/Exclusive_economic_zone_Mexico.shp
 	$(checkDirectories)
 	Rscript src/plot_mexico_eez.R
 
-bounding_box_config.json: data/processed/gps_albatross_combined.csv
+bounding_box_config.json: data/processed/gps-albatross-all.csv
 	Rscript src/export_bounding_box_to_json.R
 
 data/processed/mexico_eez_bounding_box_intersection.gpkg: data/external/Exclusive_economic_zone_Mexico.shp bounding_box_config.json
@@ -83,7 +79,7 @@ reports/figures/mexico_eez_bounding_box_zoom_out.png: data/external/Exclusive_ec
 	$(checkDirectories)
 	Rscript src/plot_mexico_eez_bounding_box_union.R
 
-reports/figures/gps_albatross_50_percent_usage_area_ARS.png: \
+reports/figures/gps_albatross_50_percent_usage_area_ARS_guadalupe.png: \
 	data/processed/trips_geographic_points_guadalupe.csv \
 	trips_config_guadalupe.json
 	$(checkDirectories)
@@ -121,7 +117,7 @@ reports/figures/gps_albatross_50_percent_potential_site_ARS_all.png: \
 		--smoothing-method scale_ARS \
 		--output-path $@
 
-reports/figures/gps_albatross_50_percent_representative_assess_ARS.png: \
+reports/figures/gps_albatross_50_percent_representative_assess_ARS_guadalupe.png: \
 	data/processed/trips_geographic_points_guadalupe.csv \
 	trips_config_guadalupe.json
 	$(checkDirectories)
@@ -166,7 +162,7 @@ reports/figures/gps_albatross_50_percent_individuals_kernel_ARS_all.png: \
 		--smoothing-method scale_ARS \
 		--output-path $@
 
-reports/figures/gps_albatross_50_percent_kernel_density.png: \
+reports/figures/gps_albatross_50_percent_kernel_density_guadalupe.png: \
 	data/processed/trips_geographic_points_guadalupe.csv \
 	data/raw/division_politica_paises.shp \
 	data/raw/division_politica_paises.shx \
@@ -180,7 +176,7 @@ reports/figures/gps_albatross_50_percent_kernel_density.png: \
 		--bandwidth 0.005 \
 		--result-map-path $@
 
-reports/figures/gps_albatross_kernel_density.png: \
+reports/figures/gps_albatross_kernel_density_guadalupe.png: \
 	data/processed/trips_geographic_points_guadalupe.csv \
 	data/raw/division_politica_paises.shp \
 	data/raw/division_politica_paises.shx \
@@ -194,7 +190,7 @@ reports/figures/gps_albatross_kernel_density.png: \
 		--bandwidth 0.005 \
 		--result-map-path $@
 
-reports/figures/gps_albatross_geographic_points.png: \
+reports/figures/gps_albatross_geographic_points_raw_guadalupe.png: \
 	data/raw/gps-albatros-guadalupe.csv \
 	data/raw/division_politica_paises.shp \
 	data/raw/division_politica_paises.shx \
@@ -206,7 +202,7 @@ reports/figures/gps_albatross_geographic_points.png: \
 		--path-rose-wind data/raw/rosewind.png \
 		--result-map-path $@
 
-reports/figures/gps_albatross_geographic_points_2025.png: \
+reports/figures/gps_albatross_geographic_points_raw_guadalupe_2025.png: \
 	data/processed/gps_albatros_guadalupe_2025.csv \
 	data/raw/division_politica_paises.shp \
 	data/raw/division_politica_paises.shx \
@@ -228,7 +224,7 @@ data/processed/gps_albatros_guadalupe_2025.csv: \
 		--date-column-name date \
 		--output-path $@
 
-reports/figures/gps_albatross_geographic_points_by_trip.png: \
+reports/figures/gps_albatross_geographic_points_by_trip_guadalupe.png: \
 	data/processed/trips_geographic_points_guadalupe.csv \
 	data/raw/division_politica_paises.shp \
 	data/raw/division_politica_paises.shx \
@@ -284,7 +280,7 @@ data/processed/trips_summary_all.csv: \
 	rm --force $@
 	csvstack data/processed/trips_summary_*.csv > $@
 
-reports/figures/gps_albatross_clarion_geographic_points.png: \
+reports/figures/gps_albatross_geographic_points_raw_clarion.png: \
 	data/raw/gps-albatros-clarion.csv \
 	data/raw/division_politica_paises.shp \
 	data/raw/division_politica_paises.shx \
@@ -295,30 +291,6 @@ reports/figures/gps_albatross_clarion_geographic_points.png: \
 		--global-shapefile-data-path data/raw/division_politica_paises.shp \
 		--path-rose-wind data/raw/rosewind.png \
 		--result-map-path $@
-
-data/processed/overlap_kernel_intersection_25.gpkg: data/processed/vessel_kernel_union_25.gpkg data/processed/seabird_kernel_union_25.gpkg
-	$(checkDirectories)
-	Rscript "src/intersect_vessel_seabird_kernels.R"
-
-reports/figures/kernel_overlap_home_ranges_union_25.png reports/figures/kernel_overlap_home_ranges_union_25_zoom.png: data/processed/overlap_kernel_intersection_25.gpkg data/processed/vessel_kernel_union_25.gpkg data/processed/seabird_kernel_union_25.gpkg
-	$(checkDirectories)
-	Rscript "src/plot_overlap_home_ranges.R"
-
-data/processed/vessel_home_ranges_25.gpkg data/processed/vessel_kernel_union_25.gpkg: data/external/vessel_data_pacific_2014.csv
-	$(checkDirectories)
-	Rscript "src/generate_vessel_kernel_home_ranges.R"
-
-reports/figures/kernel_vessel_home_ranges_map_25.png reports/figures/kernel_vessel_home_ranges_union_25.png: data/processed/vessel_home_ranges_25.gpkg data/processed/vessel_kernel_union_25.gpkg
-	$(checkDirectories)
-	Rscript "src/plot_vessel_home_ranges.R"
-
-data/processed/seabird_home_ranges_25.gpkg data/processed/seabird_kernel_union_25.gpkg: data/processed/trips_geographic_points_guadalupe.csv
-	$(checkDirectories)
-	Rscript "src/generate_seabird_kernel_home_ranges.R"
-
-reports/figures/kernel_seabird_home_ranges_map_25.png reports/figures/kernel_seabird_home_ranges_union_25.png: data/processed/seabird_home_ranges_25.gpkg data/processed/seabird_kernel_union_25.gpkg
-	$(checkDirectories)
-	Rscript "src/plot_seabird_home_ranges.R"
 
 data/raw/gps-albatros-clarion.csv:
 	$(checkDirectories)
@@ -365,7 +337,7 @@ reports/figures/anp.png: data/external/232_ANP-ITRF08_04072025.shp
 	$(checkDirectories)
 	Rscript src/plot_anp.R
 
-data/processed/gps_albatross_combined.csv: data/raw/gps-albatros-clarion.csv data/raw/gps-albatros-guadalupe.csv
+data/processed/gps-albatross-all.csv: data/raw/gps-albatros-clarion.csv data/raw/gps-albatros-guadalupe.csv
 	$(checkDirectories)
 	Rscript src/join_gps_data.R
 
@@ -388,14 +360,6 @@ data/processed/mexico_mpa.gpkg: data/processed/anp_union.gpkg data/processed/mex
 reports/figures/mexico_mpa.png: data/processed/mexico_mpa.gpkg
 	$(checkDirectories)
 	Rscript src/plot_mexico_mpa.R
-
-data/processed/overlap_amp_seabird_25.gpkg: data/processed/mexico_mpa.gpkg data/processed/seabird_kernel_union_25.gpkg
-	$(checkDirectories)
-	Rscript src/overlap_amp_seabird.R
-
-reports/figures/overlap_amp_seabird.png: data/processed/overlap_amp_seabird_25.gpkg
-	$(checkDirectories)
-	Rscript src/plot_overlap_amp_seabird.R
 
 define renderBibLatex
 	cd $(<D) && pdflatex $(<F)

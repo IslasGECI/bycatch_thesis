@@ -16,7 +16,7 @@
 # y fáciles de interpretar en mapas regionales.
 #
 # Inputs:
-# data/processed/gps_albatross_combined.csv
+# data/processed/gps-albatross-all.csv
 #
 # Outputs:
 # config/bounding_box_config.json
@@ -38,7 +38,7 @@ library(jsonlite)
 
 
 # ==== CONFIGURATION ====
-input_csv_path <- "data/processed/gps_albatross_combined.csv"
+input_csv_path <- "data/processed/gps-albatross-all.csv"
 output_json_path <- "bounding_box_config.json"
 
 rounding_multiple <- 10
