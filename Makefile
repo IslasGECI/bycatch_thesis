@@ -40,7 +40,7 @@ results_albatross: \
 	reports/figures/gps_albatross_50_percent_individuals_kernel_ARS_all.png \
 	reports/figures/gps_albatross_50_percent_individuals_kernel_ARS_guadalupe.png \
 	reports/figures/gps_albatross_50_percent_potential_site_ARS_all.png \
-	reports/figures/gps_albatross_50_percent_potential_site_ARS_guadalulpe.png \
+	reports/figures/gps_albatross_50_percent_potential_site_ARS_guadalupe.png \
 	reports/figures/gps_albatross_50_percent_representative_assess_ARS.png \
 	reports/figures/gps_albatross_50_percent_usage_area_ARS.png \
 	reports/figures/gps_albatross_geographic_points.png \
