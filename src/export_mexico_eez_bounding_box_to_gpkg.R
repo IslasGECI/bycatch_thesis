@@ -39,7 +39,7 @@ library(tidyverse)  # Facilita manipulación declarativa de datos
 
 # ==== CONFIGURATION ====
 # Centralizar constantes evita números mágicos en el código
-config_path <- "bounding_box_config.json"
+config_path <- "config_bounding_box.json"
 input_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
 output_gpkg_path <- "data/processed/mexico_eez_bounding_box_intersection.gpkg"
 output_layer_name <- "mexico_eez_bbox"

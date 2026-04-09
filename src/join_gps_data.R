@@ -18,7 +18,7 @@
 # data/raw/gps-albatros-clarion.csv
 #
 # Outputs:
-# data/processed/gps-albatross-all.csv
+# data/processed/gps_albatross_all.csv
 #
 # Dependencies:
 # tidyverse
@@ -38,7 +38,7 @@ library(tidyverse)  # Proporciona readr y dplyr para importar y manipular tablas
 input_guadalupe_path <- "data/raw/gps-albatros-guadalupe.csv"
 input_clarion_path <- "data/raw/gps-albatros-clarion.csv"
 
-output_csv_path <- "data/processed/gps-albatross-all.csv"
+output_csv_path <- "data/processed/gps_albatross_all.csv"
 
 column_date <- "date"
 column_time <- "time"

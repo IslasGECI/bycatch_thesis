@@ -1,6 +1,6 @@
 # ==========================================
 # Propósito: Cargar y graficar el shapefile
-#           232_ANP-ITRF08_04072025.shp
+#           Mexico_e_islas_wgs84.shp
 # Entradas: Archivo shapefile en data/external/
 # Salidas: Visualización geográfica del shapefile
 # Dependencias: sf, tidyverse
@@ -11,26 +11,24 @@ library(sf)         # Para manejar datos espaciales como Simple Features
 library(tidyverse)  # Para manipulación de datos y visualización con ggplot2
 
 # ==== CONFIGURACIÓN ====
-anp_shapefile_path <- "data/external/232_ANP-ITRF08_04072025.shp"  # Ruta al shapefile
-anp_figure_path <- "reports/figures/anp.png" # Nombre del archivo con la figura
+mexico_shapefile_path <- "data/external/Mexico_e_islas_wgs84.shp" # Ruta al shapefile
+mexico_figure_path <- "reports/figures/mexico_map.png" # Nombre del archivo con la figura
 
 # ==== IMPORTAR Y PREPARAR DATOS ====
-shape_data <- st_read(anp_shapefile_path)
+shape_data <- st_read(mexico_shapefile_path)
 
 # ==== VISUALIZACIÓN DEL SHAPEFILE ====
 plot <- ggplot() +
   geom_sf(data = shape_data, fill = "lightblue", color = "darkblue", size = 0.3) +
   theme_minimal() +
   labs(
-    title = "232 Áreas Naturales Protegidas en México",
-    subtitle = "Fecha del Shapefile: Julio 2025",
-    caption = "Información Espacial de las Áreas Naturales Protegidas: https://sig.conanp.gob.mx/"
+    title = "México y sus islas"
   )
 
 # ==== GUARDAR SALIDA ====
 # Guarda el gráfico con buena resolución en la carpeta 'outputs'
 ggsave(
-  filename = anp_figure_path,
+  filename = mexico_figure_path,
   plot = plot,
   width = 8,
   height = 6,

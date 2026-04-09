@@ -36,7 +36,7 @@ library(tidyverse)  # Proporciona ggplot2 para construir visualizaciones declara
 
 # ==== CONFIGURATION ====
 # Centralizar rutas y parámetros evita valores dispersos y facilita mantenimiento
-zoom_bounding_box_path <- "data/processed/mexico_ezz_bounding_box_zoom_in.json"
+zoom_bounding_box_path <- "data/processed/mexico_eez_bounding_box_zoom_in.json"
 input_gpkg_path <- "data/processed/mexico_eez_bounding_box_intersection.gpkg"
 output_figure_path <- "reports/figures/mexico_eez_bounding_box_zoom_in.png"
 

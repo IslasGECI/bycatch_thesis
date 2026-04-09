@@ -16,10 +16,10 @@
 # y fáciles de interpretar en mapas regionales.
 #
 # Inputs:
-# data/processed/gps-albatross-all.csv
+# data/processed/gps_albatross_all.csv
 #
 # Outputs:
-# config/bounding_box_config.json
+# config_bounding_box.json
 #
 # Dependencies:
 # tidyverse
@@ -38,8 +38,8 @@ library(jsonlite)
 
 
 # ==== CONFIGURATION ====
-input_csv_path <- "data/processed/gps-albatross-all.csv"
-output_json_path <- "bounding_box_config.json"
+input_csv_path <- "data/processed/gps_albatross_all.csv"
+output_json_path <- "config_bounding_box.json"
 
 rounding_multiple <- 10
 buffer <- 1 # Grados adicionales para asegurar que el bounding box deje un margen

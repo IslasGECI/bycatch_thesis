@@ -38,7 +38,7 @@ library(jsonlite)  # Exportación de archivos JSON
 
 # ==== CONFIGURATION ====
 input_gpkg_path <- "data/processed/mexico_eez_bounding_box_intersection.gpkg"
-output_json_path <- "data/processed/mexico_ezz_bounding_box_zoom_in.json"
+output_json_path <- "data/processed/mexico_eez_bounding_box_zoom_in.json"
 
 rounding_multiple <- 5
 

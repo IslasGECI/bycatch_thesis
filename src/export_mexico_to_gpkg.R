@@ -2,7 +2,7 @@
 # Propósito: Cargar un shapefile de México, generar la unión (disolución)
 #            de todas las geometrías y exportarla a un archivo GeoPackage (.gpkg)
 # Entradas:  data/external/Mexico_e_islas_wgs84.shp
-# Salidas:   data/processed/mexico_union.gpkg (capa: "mexico_union")
+# Salidas:   data/processed/mexico_map.gpkg (capa: "mexico_map")
 # Dependencias: sf, tidyverse, glue
 # Notas:     Se aplica st_make_valid() antes de st_union() para evitar errores
 #            por geometrías inválidas.
@@ -15,8 +15,8 @@ library(tidyverse)  # Para una sintaxis de manipulación de datos clara y encade
 # ==== CONFIGURACIÓN ====
 # -- Variables centralizadas para facilitar cambios sin tocar el resto del código
 input_shapefile_path <- "data/external/Mexico_e_islas_wgs84.shp" # Ruta al shapefile de entrada
-output_gpkg_path <- "data/processed/mexico_union.gpkg" # Ruta del GeoPackage de salida
-output_layer_name <- "mexico_union" # Nombre de la capa dentro del GPKG
+output_gpkg_path <- "data/processed/mexico_map.gpkg" # Ruta del GeoPackage de salida
+output_layer_name <- "mexico_map" # Nombre de la capa dentro del GPKG
 
 # ==== IMPORTAR Y PREPARAR DATOS ====
 # Se lee el shapefile como objeto sf; quiet = TRUE reduce ruido en consola

@@ -3,7 +3,7 @@
 #            generar la unión (disolución) de todas las geometrías
 #            y exportarla a un archivo GeoPackage (.gpkg) sin graficar.
 # Entradas:  data/external/232_ANP-ITRF08_04072025.shp
-# Salidas:   data/processed/anp_union.gpkg (capa: "anp_union")
+# Salidas:   data/processed/mexico_pna.gpkg (capa: "mexico_pna")
 # Dependencias: sf, tidyverse
 # Notas:     Se aplica st_make_valid() antes de st_union() para evitar errores
 #            por geometrías inválidas. Se mantiene el CRS original (YAGNI).
@@ -16,8 +16,8 @@ library(tidyverse)  # Para una sintaxis de manipulación de datos clara y encade
 # ==== CONFIGURACIÓN ====
 # -- Centralizar valores fijos facilita cambios futuros sin tocar el resto del script
 input_shapefile_path <- "data/external/232_ANP-ITRF08_04072025.shp" # Ruta al shapefile de entrada
-output_gpkg_path <- "data/processed/anp_union.gpkg" # Ruta del GeoPackage de salida
-output_layer_name <- "anp_union" # Nombre de la capa dentro del GPKG
+output_gpkg_path <- "data/processed/mexico_pna.gpkg" # Ruta del GeoPackage de salida
+output_layer_name <- "mexico_pna" # Nombre de la capa dentro del GPKG
 
 # ==== IMPORTAR Y PREPARAR DATOS ====
 # Se lee el shapefile como objeto sf; quiet = TRUE minimiza el ruido en consola
