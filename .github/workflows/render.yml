@@ -46,7 +46,7 @@ jobs:
         docker image ls -a
     - name: 🌎🦢 Generate first paper
       run: |
-        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis:latest make reports/articulo_uno.pdf reports/articulo_uno.docx
+        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis:latest make reports/first_paper.pdf reports/first_paper.docx
     - name: ⏫🏛️ Upload draft
       uses: actions/upload-artifact@main
       with:
@@ -87,7 +87,7 @@ jobs:
     - run: docker cp vessel_data:/data/. data/external
     - name: 🌎🛥️ Generate second paper
       run: |
-        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis:latest make reports/articulo_dos.pdf reports/articulo_dos.docx
+        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis:latest make reports/second_paper.pdf reports/second_paper.docx
     - name: ⏫🏛️ Upload draft
       uses: actions/upload-artifact@main
       with:
