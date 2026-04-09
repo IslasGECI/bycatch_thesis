@@ -25,8 +25,8 @@ jobs:
         path: /tmp/image.tar
         retention-days: 14
 
-  render-report-albatross:
-    name: Render albatross results and draft
+  render-first-paper:
+    name: Render first paper
     needs: [build-image]
     runs-on: ubuntu-latest
     env:
@@ -44,13 +44,13 @@ jobs:
       run: |
         docker load --input /tmp/image.tar
         docker image ls -a
-    - name: 🌎🦢 Generate albatross results draft
+    - name: 🌎🦢 Generate first paper
       run: |
-        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis:latest make reports/articulo_uno.pdf
+        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis:latest make reports/articulo_uno.pdf reports/articulo_uno.docx
     - name: ⏫🏛️ Upload draft
       uses: actions/upload-artifact@main
       with:
-        name: albatross_results
+        name: first_paper_results
         path: |
           reports/*.pdf
           reports/*.docx
@@ -58,8 +58,8 @@ jobs:
           reports/figures/*.png
         retention-days: 14
 
-  render-report-fisheries:
-    name: Render fisheries results and draft
+  render-second-paper:
+    name: Render second paper
     needs: [build-image]
     runs-on: ubuntu-latest
     env:
@@ -85,13 +85,13 @@ jobs:
       run: docker pull islasgeci/vessel_data:latest
     - run: docker run --name vessel_data islasgeci/vessel_data:latest
     - run: docker cp vessel_data:/data/. data/external
-    - name: 🌎🛥️ Generate fisheries results
+    - name: 🌎🛥️ Generate second paper
       run: |
-        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis:latest make results_fisheries
+        docker run --volume $PWD:/workdir --env BITBUCKET_USERNAME=$BITBUCKET_USERNAME --env BITBUCKET_PASSWORD=$BITBUCKET_PASSWORD islasgeci/bycatch_thesis:latest make reports/articulo_dos.pdf reports/articulo_dos.docx
     - name: ⏫🏛️ Upload draft
       uses: actions/upload-artifact@main
       with:
-        name: fisheries_results
+        name: second_paper_results
         path: |
           reports/*.pdf
           reports/*.docx
@@ -101,7 +101,7 @@ jobs:
 
   update-docker:
     name: Push image to Docker Hub
-    needs: [render-report-albatross, render-report-fisheries]
+    needs: [render-first-paper, render-second-paper]
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repo

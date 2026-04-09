@@ -1,7 +1,9 @@
 all: reports/anteproyecto.docx \
 	reports/anteproyecto.pdf \
 	reports/articulo_uno.docx \
-	reports/articulo_uno.pdf
+	reports/articulo_uno.pdf \
+	reports/articulo_dos.docx \
+	reports/articulo_dos.pdf
 
 SHELL := /bin/bash
 
@@ -17,7 +19,7 @@ reports/articulo_uno.docx: \
 	$(checkDirectories)
 	pandoc --include-in-header=options.sty --metadata-file=metadata.yaml --metadata=documentclass:article --table-of-contents --citeproc --output=$@ reports/draft.md
 
-reports/draft.md: results_albatross
+reports/draft.md: results_firts_paper
 	$(checkDirectories)
 	cat 1?_*.md > $@
 
@@ -33,7 +35,7 @@ reports/anteproyecto.docx: \
 	$(checkDirectories)
 	pandoc --metadata-file=metadata.yaml --citeproc --output=$@ 01_proposal.md
 
-results_albatross: \
+results_first_paper: \
 	data/processed/trips_summary_all.csv \
 	data/processed/trips_summary_clarion.csv \
 	data/processed/trips_summary_guadalupe.csv \
@@ -47,7 +49,7 @@ results_albatross: \
 	reports/figures/gps_albatross_geographic_points_2025.png \
 	reports/figures/gps_albatross_geographic_points_by_trip.png
 
-results_fisheries: \
+results_second_paper: \
 	data/processed/vessel_kernel_union_25.gpkg \
 	reports/figures/kernel_overlap_home_ranges_union_25.png \
 	reports/figures/kernel_overlap_home_ranges_union_25_zoom.png \
