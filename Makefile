@@ -1,16 +1,19 @@
 all: \
+	articles \
 	dangling \
 	maps \
 	old_method \
+	results_clarion
+
+SHELL := /bin/bash
+
+articles: \
 	reports/anteproyecto.docx \
 	reports/anteproyecto.pdf \
 	reports/first_paper.docx \
 	reports/first_paper.pdf \
 	reports/second_paper.docx \
-	reports/second_paper.pdf \
-	results_clarion
-
-SHELL := /bin/bash
+	reports/second_paper.pdf
 
 reports/first_paper.docx reports/first_paper.pdf: \
 	metadata.yaml \
@@ -407,22 +410,16 @@ endef
 
 .PHONY: \
 	all \
+	articles \
 	clean \
 	dangling \
 	format \
-	green \
 	init \
 	maps \
 	old_method \
-	red \
-	refactor \
-	results \
 	results_clarion \
 	results_first_paper \
-	results_second_paper \
-	setup \
-	tests \
-	tests_r
+	results_second_paper
 
 clean:
 	rm --force *.pdf
