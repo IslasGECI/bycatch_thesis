@@ -159,6 +159,18 @@ reports/figures/gps_albatross_50_percent_representative_assess_ars_guadalupe.png
 		--smoothing-method scale_ARS \
 		--output-path $@
 
+reports/figures/gps_albatross_50_percent_representative_assess_ars_all.png: \
+	data/processed/trips_geographic_points_all.csv \
+	config_trips_all.json
+	$(checkDirectories)
+	Rscript -e "bycatch::plot_representative_assess(bycatch::get_domain_specific_options())" \
+		--data-path data/processed/trips_geographic_points_all.csv \
+		--config-path config_trips_all.json \
+		--percentage-distribution 50 \
+		--n-iterations 1000 \
+		--smoothing-method scale_ARS \
+		--output-path $@
+
 reports/figures/gps_albatross_50_percent_individuals_kernel_ars_guadalupe.png: \
 	data/processed/trips_geographic_points_guadalupe.csv \
 	config_trips_guadalupe.json
