@@ -290,6 +290,18 @@ reports/figures/gps_albatross_geographic_points_by_trip_guadalupe.png: \
 		--path-rose-wind data/raw/rosewind.png \
 		--result-map-path $@
 
+reports/figures/gps_albatross_geographic_points_by_trip_all.png: \
+	data/processed/trips_geographic_points_all.csv \
+	data/raw/division_politica_paises.shp \
+	data/raw/division_politica_paises.shx \
+	data/raw/rosewind.png
+	$(checkDirectories)
+	geci-plot-cli plot-geographic-points-by-trip \
+		--geographic-data-path data/processed/trips_geographic_points_all.csv \
+		--global-shapefile-data-path data/raw/division_politica_paises.shp \
+		--path-rose-wind data/raw/rosewind.png \
+		--result-map-path $@
+
 data/processed/trips_geographic_points_guadalupe.csv: \
 	data/raw/gps-albatros-guadalupe.csv
 	$(checkDirectories)
