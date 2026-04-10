@@ -121,6 +121,18 @@ reports/figures/gps_albatross_50_percent_usage_area_ars_guadalupe.png: \
 		--n-iterations 1000 \
 		--output-path $@
 
+reports/figures/gps_albatross_50_percent_usage_area_ars_all.png: \
+	data/processed/trips_geographic_points_all.csv \
+	config_trips_all.json
+	$(checkDirectories)
+	Rscript -e "bycatch::plot_usage_area_by_individual(bycatch::get_domain_specific_options())" \
+		--data-path data/processed/trips_geographic_points_all.csv \
+		--config-path config_trips_all.json \
+		--percentage-distribution 50 \
+		--smoothing-method scale_ARS \
+		--n-iterations 1000 \
+		--output-path $@
+
 reports/figures/gps_albatross_50_percent_potential_site_ars_guadalupe.png: \
 	data/processed/trips_geographic_points_guadalupe.csv \
 	config_trips_guadalupe.json
