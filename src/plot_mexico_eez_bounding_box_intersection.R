@@ -1,30 +1,35 @@
 # ==========================================
-# Title: Plot Mexico EEZ Bounding Box Intersection
+# Título: Graficar Intersección entre EEZ de México y Bounding Box
 #
-# Background (Why):
+# Contexto (Por qué):
 # Después de recortar la Zona Económica Exclusiva (EEZ) de México usando
 # un bounding box regional, es útil generar una visualización rápida para
 # verificar que el recorte espacial ocurrió correctamente y que la región
 # resultante coincide con el área esperada del Pacífico Norte.
 #
-# What / How:
+# Descripción (Qué / Cómo):
 # El script carga el GeoPackage generado previamente que contiene la
 # intersección entre la EEZ de México y un bounding box geográfico.
 # Posteriormente construye una figura simple usando ggplot2 y la exporta
 # como archivo PNG para facilitar inspección visual.
 #
-# Inputs:
-# data/processed/mexico_eez_bounding_box_intersection.gpkg (layer: mexico_eez_bbox)
+# Entradas:
+# data/processed/mexico_eez_bounding_box_intersection.gpkg (capa: mexico_eez_bbox)
+# data/processed/mexico_eez_bounding_box_zoom_in.json
 #
-# Outputs:
-# reports/figures/mexico_eez_bbox.png
+# Salidas:
+# reports/figures/mexico_eez_bounding_box_zoom_in.png
 #
-# Dependencies:
-# sf, tidyverse
+# Dependencias:
+# sf
+# tidyverse
+# glue
+# jsonlite
 #
-# Notes:
+# Notas:
 # Se utiliza geom_sf() para mantener la geometría original sin necesidad
 # de reproyecciones adicionales.
+# Se utiliza coord_sf() para establecer los límites del mapa.
 # ==========================================
 
 

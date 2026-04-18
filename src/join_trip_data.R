@@ -1,24 +1,31 @@
-# ================================
-# Concatena archivos CSV con columnas distintas con puntos geográficos de viajes de alimentación.
+# ==========================================
+# Título: Concatenar Puntos Geográficos de Viajes de Alimentación de Albatros
 #
-# Por qué:
-# En los datos de GPS de Isla Guadalupe e Isla Clarión las columnas no coinciden exactamente.
-# Necesitamos asegurar que las columnas se alineen por nombre y que los datos faltantes se rellenen
-# correctamente.
+# Contexto (Por qué):
+# Los datos de GPS de albatros de las islas Guadalupe y Clarión contienen
+# puntos geográficos de viajes de alimentación. Las columnas de ambos
+# archivos no coinciden exactamente, por lo que es necesario estandarizarlos
+# y combinarlos en un único dataset para análisis posteriores.
 #
-# Cómo:
-# Lee dos archivos CSV, estandarizar columnas implícitamente mediante bind_rows, y exportar un
-# único archivo combinado.
+# Descripción (Qué / Cómo):
+# El script carga los dos archivos CSV de puntos geográficos de viajes,
+# los combina automáticamente mediante bind_rows() que alinea las columnas
+# por nombre, y exporta el resultado como un archivo CSV unificado.
 #
 # Entradas:
-# - data/processed/trips_geographic_points_clarion.csv
-# - data/processed/trips_geographic_points_guadalupe.csv
+# data/processed/trips_geographic_points_clarion.csv
+# data/processed/trips_geographic_points_guadalupe.csv
 #
-# Salida:
-# - data/processed/trips_geographic_points_all.csv
+# Salidas:
+# data/processed/trips_geographic_points_all.csv
 #
 # Dependencias:
-# - tidyverse
+# tidyverse
+#
+# Notas:
+# Se utiliza bind_rows() que automáticamente estandariza las columnas.
+# Los datos faltantes en una tabla se rellenan con NA al combinar.
+# ==========================================
 
 # ==== HEADER ====
 library(tidyverse)  # Proporciona readr y dplyr para importar y manipular tablas

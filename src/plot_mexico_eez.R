@@ -1,24 +1,32 @@
 # ==========================================
-# Propósito:
-# Grafica la Zona Económica Exclusiva (EEZ) de México usando un shapefile
+# Título: Graficar la Zona Económica Exclusiva de México
 #
-# La Zona Económica Exclusiva (EEZ) define el espacio marítimo donde
+# Contexto (Por qué):
+# La Zona Económica Exclusiva (ZEE) define el espacio marítimo donde
 # México posee derechos soberanos para la exploración, explotación
-# y gestión de recursos marinos. Visualizar este polígono permite
-# contextualizar análisis espaciales marinos como distribución de
-# biodiversidad, áreas protegidas o actividades pesqueras.
+# y gestión de recursos marines. Visualizar este polígono permite
+# contextualizar análisis espaciales como distribución de biodiversidad,
+# áreas protegidas o actividades pesqueras.
 #
-# Este script carga el shapefile de la EEZ de México, lo convierte
-# en un objeto sf y genera una figura estática utilizando ggplot2.
+# Descripción (Qué / Cómo):
+# El script carga el shapefile de la ZEE de México, lo convierte
+# en un objeto sf y genera una figura estática utilizando ggplot2
+# que se guarda como archivo PNG.
 #
 # Entradas:
 # data/external/Exclusive_economic_zone_Mexico.shp
 #
-# Salida:
+# Salidas:
 # reports/figures/mexico_eez.png
 #
 # Dependencias:
-# sf, tidyverse
+# sf
+# tidyverse
+#
+# Notas:
+# Se utiliza geom_sf() para mantener la geometría original.
+# Se utiliza coord_sf() para mantener la proyección geográfica.
+# La ZEE es la zona donde México tiene derechos soberanos sobre recursos marinos.
 # ==========================================
 
 # ==== HEADER ====

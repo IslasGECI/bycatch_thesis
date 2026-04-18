@@ -1,34 +1,35 @@
 # ==========================================
-# Title: Calculate Rounded Bounding Box from Albatross GPS Data
+# Título: Calcular Bounding Box Redondeado a Partir de Datos GPS de Albatros
 #
-# Background (Why):
+# Contexto (Por qué):
 # Para mantener consistencia entre scripts de análisis y visualización,
 # es conveniente definir la región espacial de trabajo mediante un
 # bounding box almacenado en un archivo de configuración. En lugar de
 # definir manualmente los límites geográficos, este script calcula el
 # bounding box directamente a partir de los datos GPS de albatros.
 #
-# What / How:
+# Descripción (Qué / Cómo):
 # El script carga el archivo CSV con registros GPS, calcula los valores
 # mínimos y máximos de longitud y latitud, y posteriormente expande
 # estos límites al múltiplo de 5 grados más cercano utilizando
 # floor() y ceiling(). Esto produce límites cartográficos más limpios
 # y fáciles de interpretar en mapas regionales.
 #
-# Inputs:
+# Entradas:
 # data/processed/gps_albatross_all.csv
 #
-# Outputs:
+# Salidas:
 # config_bounding_box.json
 #
-# Dependencies:
+# Dependencias:
 # tidyverse
 # jsonlite
 #
-# Notes:
+# Notas:
 # El redondeo asegura que:
 #   - límites oeste y sur se redondeen hacia abajo
 #   - límites este y norte se redondeen hacia arriba
+# Se añade un buffer de 1 grado para dejar margen en el bounding box
 # ==========================================
 
 

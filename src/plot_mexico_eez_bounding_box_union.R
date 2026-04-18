@@ -1,7 +1,7 @@
 # ==========================================
-# Title: Visualización de la ZEE de México, Bounding Box del Pacífico Norte y Registros GPS de Albatros
+# Título: Visualizar la ZEE de México, Bounding Box del Pacífico Norte y Registros GPS de Albatros
 #
-# Background (Why):
+# Contexto (Por qué):
 # Los datos de seguimiento GPS de albatros permiten estudiar patrones de
 # movimiento, áreas de alimentación y uso del espacio marino. Para interpretar
 # estos movimientos es útil visualizarlos en el contexto geográfico donde
@@ -12,7 +12,7 @@
 # del área esperada del Pacífico Nororiental y que los datos espaciales estén
 # correctamente georreferenciados.
 #
-# What / How:
+# Descripción (Qué / Cómo):
 # El script carga el shapefile de la Zona Económica Exclusiva de México,
 # transforma la geometría al sistema de coordenadas geográficas WGS84
 # (EPSG:4326) para asegurar compatibilidad con datos GPS, y construye un
@@ -27,24 +27,30 @@
 # Finalmente, el mapa se exporta como una figura PNG para su uso en reportes
 # o inspección visual de los datos.
 #
-# Inputs:
+# Entradas:
 # data/external/Exclusive_economic_zone_Mexico.shp
 # data/processed/gps_albatross_all.csv
+# config_bounding_box.json
+# data/processed/mexico_eez_bounding_box_zoom_in.json
 #
-# Outputs:
+# Salidas:
 # reports/figures/mexico_eez_bounding_box_zoom_out.png
 #
-# Dependencies:
+# Dependencias:
 # sf
 # tidyverse
+# glue
+# jsonlite
 #
-# Notes:
+# Notas:
 # Se supone que las coordenadas GPS del archivo CSV están en longitud y
 # latitud (WGS84). La conversión explícita del shapefile a EPSG:4326 asegura
-# que todas las capas espaciales compartan el mismo sistema de referencia,
-# evitando errores de superposición en la visualización.
+# que todas las capas espaciales compartan el mismo sistema de referencia
+# Se muestran dos bounding boxes: el regional y el de zoom.
 # ==========================================
 
+
+# ==== HEADER ====
 library(glue)       # Permite construir mensajes dinámicos con variables para depuración o logging
 library(jsonlite)   # Permite leer archivos JSON de configuración para centralizar parámetros
 library(sf)         # Permite leer y manipular datos espaciales vectoriales

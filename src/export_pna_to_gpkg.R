@@ -1,12 +1,31 @@
 # ==========================================
-# Propósito: Cargar un shapefile de Áreas Naturales Protegidas (ANP),
-#            generar la unión (disolución) de todas las geometrías
-#            y exportarla a un archivo GeoPackage (.gpkg) sin graficar.
-# Entradas:  data/external/232_ANP-ITRF08_04072025.shp
-# Salidas:   data/processed/mexico_pna.gpkg (capa: "mexico_pna")
-# Dependencias: sf, tidyverse
-# Notas:     Se aplica st_make_valid() antes de st_union() para evitar errores
-#            por geometrías inválidas. Se mantiene el CRS original (YAGNI).
+# Título: Exportar Áreas Naturales Protegidas a GeoPackage
+#
+# Contexto (Por qué):
+# Las Áreas Naturales Protegidas (ANP) provienen de un shapefile con
+# múltiples polígonos. Unirlos en una sola geometría facilita las
+# operaciones de diferencia espacial para calcular las áreas marinas
+# protegidas.
+#
+# Descripción (Qué / Cómo):
+# El script carga el shapefile de ANP, aplica st_make_valid() para
+# corregir geometrías inválidas, genera la unión de todas las geometrías
+# y exporta el resultado como GeoPackage.
+#
+# Entradas:
+# data/external/232_ANP-ITRF08_04072025.shp
+#
+# Salidas:
+# data/processed/mexico_pna.gpkg (capa: mexico_pna)
+#
+# Dependencias:
+# sf
+# tidyverse
+#
+# Notas:
+# Se aplica st_make_valid() antes de st_union() para evitar errores.
+# Se mantiene el CRS original (YAGNI).
+# El shapefile contiene 232 áreas naturales protegidas.
 # ==========================================
 
 # ==== CARGAR PAQUETES ====

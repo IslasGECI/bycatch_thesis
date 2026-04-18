@@ -1,31 +1,32 @@
 # ==========================================
-# Title: Concatenate Albatross GPS Tracks from Guadalupe and Clarion
+# Título: Concatenar Registros GPS de Albatros de Guadalupe y Clarión
 #
-# Background (Why):
+# Contexto (Por qué):
 # Los registros GPS de albatros provienen de dos colonias diferentes
 # (Guadalupe y Clarión). Para facilitar análisis posteriores de
 # movimientos y distribución espacial, es conveniente consolidar
 # ambos archivos en un único dataset estandarizado.
 #
-# What / How:
+# Descripción (Qué / Cómo):
 # El script carga los dos archivos CSV originales, selecciona
 # únicamente las columnas que ambos comparten y agrega una columna
 # que identifica la isla de origen de cada registro. Finalmente,
 # concatena ambas tablas y exporta el resultado como un nuevo CSV.
 #
-# Inputs:
+# Entradas:
 # data/raw/gps-albatros-guadalupe.csv
 # data/raw/gps-albatros-clarion.csv
 #
-# Outputs:
+# Salidas:
 # data/processed/gps_albatross_all.csv
 #
-# Dependencies:
+# Dependencias:
 # tidyverse
 #
-# Notes:
+# Notas:
 # Solo se conservan las columnas comunes necesarias para el análisis:
-# date, time, longitude, latitude, name y Altitude.
+#   - date, time, longitude, latitude, name y Altitude
+# Se agrega una columna island_name para identificar la isla de origen
 # ==========================================
 
 

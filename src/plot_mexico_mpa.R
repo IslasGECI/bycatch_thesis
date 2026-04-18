@@ -1,10 +1,31 @@
 # ==========================================
-# Propósito: Leer un GeoPackage con la diferencia espacial ANP - México
-#            y generar una figura estática en PNG sin usar control de flujo.
-# Entradas:  data/processed/mexico_mpa.gpkg (capa: "mexico_mpa")
-# Salidas:   reports/figures/mexico_mpa_YYYY-MM-DD.png
-# Dependencias: sf, tidyverse, glue
-# Notas:     Se usa ggplot2 con geom_sf() para visualizar la geometría resultante.
+# Título: Graficar las Áreas Marinas Protegidas de México
+#
+# Contexto (Por qué):
+# Las Áreas Marinas Protegidas (AMP) representan las zonas donde la
+# actividad humana está regulada para proteger ecosistemas marinos.
+# Visualizarlas permite identificar zonas de posible refugio para albatros.
+#
+# Descripción (Qué / Cómo):
+# El script lee un GeoPackage que contiene la diferencia espacial entre
+# las Áreas Naturales Protegidas y el territorio mexicano (lo que resulta
+# en las áreas marinas protegidas). Genera una figura estática usando
+# ggplot2 con la fecha actual en el nombre del archivo.
+#
+# Entradas:
+# data/processed/mexico_mpa.gpkg (capa: mexico_mpa)
+#
+# Salidas:
+# reports/figures/mexico_mpa.png
+#
+# Dependencias:
+# sf
+# tidyverse
+# glue
+#
+# Notas:
+# Se utiliza glue para construir el nombre de la figura
+# Se utiliza geom_sf() para visualizar la geometría
 # ==========================================
 
 # ==== CARGAR PAQUETES ====

@@ -1,11 +1,32 @@
 # ==========================================
-# Propósito: Cargar un shapefile de México, generar la unión (disolución)
-#            de todas las geometrías y exportarla a un archivo GeoPackage (.gpkg)
-# Entradas:  data/external/Mexico_e_islas_wgs84.shp
-# Salidas:   data/processed/mexico_map.gpkg (capa: "mexico_map")
-# Dependencias: sf, tidyverse, glue
-# Notas:     Se aplica st_make_valid() antes de st_union() para evitar errores
-#            por geometrías inválidas.
+# Título: Exportar Shapefile de México a GeoPackage
+#
+# Contexto (Por qué):
+# El formato GeoPackage (.gpkg) es un estándar abierto que permite
+# almacenar datos geoespaciales vectoriales de manera interoperable.
+# Unir las geometrías del shapefile de México facilita las operaciones
+# espaciales subsecuentes.
+#
+# Descripción (Qué / Cómo):
+# El script carga el shapefile de México e islas, aplica st_make_valid()
+# para corregir geometrías inválidas, genera la unión de todas las
+# geometrías mediante st_union() y exporta el resultado como GeoPackage.
+#
+# Entradas:
+# data/external/Mexico_e_islas_wgs84.shp
+#
+# Salidas:
+# data/processed/mexico_map.gpkg (capa: mexico_map)
+#
+# Dependencias:
+# sf
+# tidyverse
+# glue
+#
+# Notas:
+# Se aplica st_make_valid() antes de st_union() para evitar errores
+# por geometrías inválidas.
+# Se mantiene el CRS original (YAGNI).
 # ==========================================
 
 # ==== CARGAR PAQUETES ====

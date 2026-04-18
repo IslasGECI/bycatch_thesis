@@ -1,33 +1,37 @@
 # ==========================================
-# Title: Intersect Mexico EEZ with North Pacific Bounding Box
+# Título: Calcular Intersección entre EEZ de México y Bounding Box del Pacífico Norte
 #
-# Background (Why):
+# Contexto (Por qué):
 # Para muchos análisis oceánicos se necesita limitar la extensión espacial
 # de los datos para reducir volumen de procesamiento y enfocarse en una
 # región de interés. En este caso se recorta la Zona Económica Exclusiva
 # (EEZ) de México utilizando un bounding box que cubre parte del Pacífico
 # Norte.
 #
-# What / How:
+# Descripción (Qué / Cómo):
 # El script carga el shapefile de la EEZ de México, transforma la geometría
 # a coordenadas geográficas WGS84, crea un polígono rectangular a partir de
 # coordenadas definidas por el usuario y calcula la intersección espacial
 # entre ambos objetos.
 #
-# Inputs:
+# Entradas:
 # data/external/Exclusive_economic_zone_Mexico.shp
+# config_bounding_box.json
 #
-# Outputs:
-# data/processed/mexico_eez_bounding_box_intersection.gpkg
-# layer: "mexico_eez_bbox"
+# Salidas:
+# data/processed/mexico_eez_bounding_box_intersection.gpkg (capa: mexico_eez_bbox)
 #
-# Dependencies:
-# sf, tidyverse
+# Dependencias:
+# sf
+# tidyverse
+# jsonlite
 #
-# Notes:
+# Notas:
 # El bounding box está definido en coordenadas geográficas (lon/lat),
 # por lo que la EEZ se transforma explícitamente a EPSG:4326 para
-# garantizar compatibilidad espacial.
+# garantizar compatibilidad espacial
+# Se utiliza st_make_valid() para asegurar geometrías válidas antes de
+# realizar operaciones topológicas
 # ==========================================
 
 

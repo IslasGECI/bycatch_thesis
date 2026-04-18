@@ -1,30 +1,31 @@
 # ==========================================
-# Title: Calculate Rounded Bounding Box from EEZ Subset
+# Título: Calcular Bounding Box Redondeado a Partir de Subconjunto de EEZ
 #
-# Background (Why):
+# Contexto (Por qué):
 # Para mantener consistencia entre scripts de análisis y visualización,
 # es útil definir los límites espaciales de trabajo mediante un archivo
 # de configuración. En lugar de definir manualmente el bounding box,
 # este script lo calcula automáticamente a partir de la geometría
 # espacial de la EEZ recortada.
 #
-# What / How:
+# Descripción (Qué / Cómo):
 # El script lee el archivo GeoPackage que contiene la intersección entre
 # la Zona Económica Exclusiva (EEZ) de México y un bounding box previo.
 # Posteriormente calcula el bounding box mínimo de esa geometría usando
 # st_bbox(), redondea los límites al múltiplo de 5 grados más cercano y
 # exporta el resultado como archivo JSON de configuración.
 #
-# Inputs:
+# Entradas:
 # data/processed/mexico_eez_bounding_box_intersection.gpkg
 #
-# Outputs:
-# config/bounding_box_config.json
+# Salidas:
+# data/processed/mexico_eez_bounding_box_zoom_in.json
 #
-# Dependencies:
-# sf, jsonlite
+# Dependencias:
+# sf
+# jsonlite
 #
-# Notes:
+# Notas:
 # El redondeo garantiza límites cartográficos limpios:
 #   - oeste y sur → floor() (hacia abajo)
 #   - este y norte → ceiling() (hacia arriba)

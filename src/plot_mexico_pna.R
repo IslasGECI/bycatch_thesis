@@ -1,9 +1,29 @@
 # ==========================================
-# Propósito: Cargar y graficar el shapefile
-#           232_ANP-ITRF08_04072025.shp
-# Entradas: Archivo shapefile en data/external/
-# Salidas: Visualización geográfica del shapefile
-# Dependencias: sf, tidyverse
+# Título: Graficar las Áreas Naturales Protegidas de México
+#
+# Contexto (Por qué):
+# Las Áreas Naturales Protegidas (ANP) son fundamentales para la
+# conservación de especies marinas. Visualizarlas permite contextualizar
+# las zonas de protección existentes en el territorio mexicano.
+#
+# Descripción (Qué / Cómo):
+# El script carga el shapefile de ANP de México, lo convierte en un
+# objeto sf y genera una figura estática utilizando ggplot2 que se
+# guarda como archivo PNG.
+#
+# Entradas:
+# data/external/232_ANP-ITRF08_04072025.shp
+#
+# Salidas:
+# reports/figures/mexico_pna.png
+#
+# Dependencias:
+# sf
+# tidyverse
+#
+# Notas:
+# El shapefile contiene 232 áreas naturales protegidas.
+# Se utiliza el sistema de referencia ITRF08.
 # ==========================================
 
 # ==== CARGAR PAQUETES ====
