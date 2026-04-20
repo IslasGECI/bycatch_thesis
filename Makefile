@@ -72,7 +72,9 @@ results_clarion: \
 maps: \
 	reports/figures/mexico_map.png \
 	reports/figures/mexico_mpa.png \
-	reports/figures/mexico_pna.png
+	reports/figures/mexico_pna.png \
+	reports/figures/mexico_naturalearth.png \
+	reports/figures/mexico_naturalearth_pro.png
 
 old_method: \
 	reports/figures/gps_albatross_50_percent_kernel_density_guadalupe.png \
@@ -430,6 +432,14 @@ data/processed/mexico_mpa.gpkg: data/processed/mexico_pna.gpkg data/processed/me
 reports/figures/mexico_mpa.png: data/processed/mexico_mpa.gpkg
 	$(checkDirectories)
 	Rscript src/plot_mexico_mpa.R
+
+reports/figures/mexico_naturalearth.png:
+	$(checkDirectories)
+	Rscript src/plot_mexico_naturalearth.R
+
+reports/figures/mexico_naturalearth_pro.png:
+	$(checkDirectories)
+	Rscript src/plot_mexico_naturalearth_pro.R
 
 define renderBibLatex
 	cd $(<D) && pdflatex $(<F)
