@@ -65,5 +65,23 @@
             }
         ],
         "requirements": []
+    },
+    {
+        "image_tag": "",
+        "name": "Second article",
+        "description": "This is the second article",
+        "report": "second_article.pdf",
+        "results": [],
+        "scripts": [],
+        "data": [
+            {
+                "source": "tabular_data_packages",
+                "version": "ddb0524d3ed20e6363b833b7b73881ed6de6eacc",
+                "path": "global_fishing_data",
+                "type": "csv",
+                "filename": "oorg_2025_geci_longline_events_v20260402.csv"
+            }
+        ],
+        "requirements": []
     }
 ]
