@@ -4,7 +4,15 @@
         "name": "First article",
         "description": "This is the first article",
         "report": "first_article.pdf",
-        "results": [],
+        "results": [
+            "data/processed/trips_summary_guadalupe.csv",
+            "reports/figures/gps_albatross_50_percent_individuals_kernel_ars_guadalupe.png",
+            "reports/figures/gps_albatross_50_percent_potential_site_ars_guadalupe.png",
+            "reports/figures/gps_albatross_50_percent_representative_assess_ars_guadalupe.png",
+            "reports/figures/gps_albatross_50_percent_usage_area_ars_guadalupe.png",
+            "reports/figures/gps_albatross_geographic_points_by_trip_guadalupe.png",
+            "reports/figures/gps_albatross_geographic_points_raw_guadalupe.png"
+        ],
         "scripts": [],
         "data": [
             {
@@ -64,15 +72,39 @@
                 "filename": "division_politica_paises.shp"
             }
         ],
-        "requirements": []
+        "requirements": [
+            "bycatch",
+            "sf",
+            "tidyverse",
+            "glue"
+        ]
     },
     {
         "image_tag": "",
         "name": "Second article",
         "description": "This is the second article",
         "report": "second_article.pdf",
-        "results": [],
-        "scripts": [],
+        "results": [
+            "data/processed/trips_summary_all.csv",
+            "data/processed/trips_summary_clarion.csv",
+            "data/processed/trips_summary_guadalupe.csv",
+            "reports/figures/gps_albatross_50_percent_individuals_kernel_ars_all.png",
+            "reports/figures/gps_albatross_50_percent_potential_site_ars_all.png",
+            "reports/figures/gps_albatross_50_percent_representative_assess_ars_all.png",
+            "reports/figures/gps_albatross_50_percent_usage_area_ars_all.png",
+            "reports/figures/gps_albatross_geographic_points_by_trip_all.png",
+            "reports/figures/mexico_eez_bounding_box_zoom_in.png",
+            "reports/figures/mexico_eez_bounding_box_zoom_out.png"
+        ],
+        "scripts": [
+            "src/join_gps_data.R",
+            "src/join_trip_data.R",
+            "src/export_bounding_box_to_json.R",
+            "src/export_mexico_eez_bounding_box_to_gpkg.R",
+            "src/export_mexico_eez_bounding_box_zoom_in_to_json.R",
+            "src/plot_mexico_eez_bounding_box_intersection.R",
+            "src/plot_mexico_eez_bounding_box_union.R"
+        ],
         "data": [
             {
                 "source": "tabular_data_packages",
@@ -80,8 +112,80 @@
                 "path": "global_fishing_data",
                 "type": "csv",
                 "filename": "oorg_2025_geci_longline_events_v20260402.csv"
+            },
+            {
+                "source": "tabular_data_packages",
+                "version": "5095cda1e61487b3ee1c2f4d513b80fd6cf03f59",
+                "path": "seabird_tracking",
+                "type": "csv",
+                "filename": "gps-albatros-clarion.csv"
+            },
+            {
+                "source": "tabular_data_packages",
+                "version": "5095cda1e61487b3ee1c2f4d513b80fd6cf03f59",
+                "path": "seabird_tracking",
+                "type": "csv",
+                "filename": "breeding_status_albatross_clarion.csv"
+            },
+            {
+                "source": "tabular_data_packages",
+                "version": "5095cda1e61487b3ee1c2f4d513b80fd6cf03f59",
+                "path": "seabird_tracking",
+                "type": "csv",
+                "filename": "gps-albatros-guadalupe.csv"
+            },
+            {
+                "source": "tabular_data_packages",
+                "version": "5095cda1e61487b3ee1c2f4d513b80fd6cf03f59",
+                "path": "seabird_tracking",
+                "type": "csv",
+                "filename": "breeding_status_albatross_guadalupe.csv"
+            },
+            {
+                "source": "tabular_data_packages",
+                "version": "5095cda1e61487b3ee1c2f4d513b80fd6cf03f59",
+                "path": "seabird_tracking",
+                "type": "csv",
+                "filename": "datapackage.json"
+            },
+            {
+                "source": "archivos_binarios",
+                "version": "de0e47e0b821a81d152e985b77c8750a6a24bd28",
+                "path": "img/rosa_vientos",
+                "type": "png",
+                "filename": "rosewind.png"
+            },
+            {
+                "source": "archivos_binarios",
+                "version": "de0e47e0b821a81d152e985b77c8750a6a24bd28",
+                "path": "shp/division_politica_paises",
+                "type": "shx",
+                "filename": "division_politica_paises.shx"
+            },
+            {
+                "source": "archivos_binarios",
+                "version": "de0e47e0b821a81d152e985b77c8750a6a24bd28",
+                "path": "shp/division_politica_paises",
+                "type": "shp",
+                "filename": "division_politica_paises.shp"
+            },
+            {
+                "source": "archivos_binarios",
+                "version": "de0e47e0b821a81d152e985b77c8750a6a24bd28",
+                "path": "shp/zee_mexico",
+                "type": "shp",
+                "filename": "Exclusive_economic_zone_Mexico.shp"
             }
         ],
-        "requirements": []
+        "requirements": [
+            "bycatch",
+            "sf",
+            "tidyverse",
+            "jsonlite",
+            "glue",
+            "rnaturalearth",
+            "rnaturalearthdata",
+            "ggspatial"
+        ]
     }
 ]
