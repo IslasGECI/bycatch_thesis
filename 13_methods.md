@@ -12,12 +12,18 @@ We attached GPS units to 48 Laysan albatross individuals on Guadalupe Island fro
 
 ### Guadalupe Island
 
-Guadalupe Island is located 300 km west of the coast of Baja California.
-It is an oceanic island of volcanic origin.
-It has an area of 244 km$^2$.
-It measures 30 km at its longest part from the southern end to the northern end.
+Guadalupe Island is located 300 km west of the Baja California peninsula.
+It is an oceanic island of volcanic origin, with an area of 244 km² and a maximum length of 30 km.
+Its isolation and position within the California Current system influence the movement ecology of breeding seabirds and enables foraging in productive waters, which is crucial for the breeding success of seabirds.
 
 Guadalupe Island hosts the largest breeding colony of Laysan albatrosses in the eastern Pacific [@hernandez2019sexual].
+The colony size makes it suitable for identifying population-level core use areas, as it represents a substantial fraction of the regional population.
+Eastern Pacific colonies also exhibit distinct foraging patterns, supporting its representativeness for the region.
+
+During the breeding season, Laysan albatrosses commute between the colony and the feeding areas.
+This behavior allows repeated trips from a fixed location, enabling the identification of recurrent key-use areas from tracking data.
+
+Studying individuals from this colony therefore enables the identification of core foraging areas and the assessment of their spatial overlap with Protected Natural Areas (ANPs), including the Guadalupe Island Biosphere Reserve.
 
 ### Feeding areas
 

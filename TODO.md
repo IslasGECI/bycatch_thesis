@@ -4,16 +4,6 @@
 
 ### Site description
 
-#### Guadalupe Island
-
-* [ ] Add **explicit justification for site selection**
-  * Why Guadalupe is appropriate for identifying core areas
-  * Why this colony is representative of the eastern Pacific population
-* [ ] Link site to research objectives (core areas + overlap with ANPs)
-* [ ] Connect physical characteristics (isolation, size) to movement ecology
-
----
-
 #### Feeding areas
 
 * [ ] Explain **why oceanographic context matters methodologically**
@@ -205,3 +195,17 @@
 ---
 
 # DONE
+
+
+## Materials
+
+### Site description
+
+#### Guadalupe Island
+
+* [x] Add **explicit justification for site selection**
+  * Why Guadalupe is appropriate for identifying core areas
+  * Why this colony is representative of the eastern Pacific population
+* [x] Link site to research objectives (core areas + overlap with ANPs)
+* [x] Connect physical characteristics (isolation, size) to movement ecology
+
