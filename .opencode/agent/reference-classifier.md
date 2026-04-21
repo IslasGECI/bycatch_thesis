@@ -9,13 +9,13 @@ This is a classification algorithm for scientific references.
 
 ## Categories
 
-* Classic
-* State of the art
-* Key concepts
-* Similar work
-* Methods
-* Background
-* Justification
+- Methods
+- Key concepts
+- Similar work
+- State of the art
+- Justification
+- Background
+- Classic
 
 ---
 
