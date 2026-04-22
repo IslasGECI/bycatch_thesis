@@ -2,19 +2,16 @@
 
 ## Site description
 
-Seabirds nest on the islands.
-The islands are protected natural areas.
+Seabirds breed on islands, which are designated as protected natural areas.
+Because seabirds are marine organisms that return to land only to reproduce, tracking devices were deployed during the breeding period at the colony.
 
-Seabirds are marine organisms and are only found on land to reproduce.
-Tracking devices are installed while individuals are breeding on the island.
-
-We attached GPS units to 48 Laysan albatross individuals on Guadalupe Island from 2014 to 2018, and to 10 individuals in 2025.
+We attached GPS units to 48 Laysan albatross individuals on Guadalupe Island between 2014 and 2018, and to 10 additional individuals in 2025.
 
 ### Guadalupe Island
 
 Guadalupe Island is located 300 km west of the Baja California peninsula.
-It is an oceanic island of volcanic origin, with an area of 244 km² and a maximum length of 30 km.
-Its isolation and position within the California Current system influence the movement ecology of breeding seabirds and enables foraging in productive waters, which is crucial for the breeding success of seabirds.
+It is an oceanic island of volcanic origin, with an area of 244 km$^2$ and a maximum length of 30 km.
+Its position within the California Current system enables the albatrosses breeding on the island to forage in productive waters, which is crucial for the breeding success of seabirds.
 
 Guadalupe Island hosts the largest breeding colony of Laysan albatrosses in the eastern Pacific [@hernandez2019sexual].
 The colony size makes it suitable for identifying population-level core use areas, as it represents a substantial fraction of the regional population.
