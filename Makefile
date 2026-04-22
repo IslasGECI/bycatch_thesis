@@ -70,11 +70,12 @@ results_clarion: \
 	reports/figures/gps_albatross_geographic_points_raw_clarion.png
 
 maps: \
+	reports/figures/mexico_eez.png \
 	reports/figures/mexico_map.png \
 	reports/figures/mexico_mpa.png \
-	reports/figures/mexico_pna.png \
 	reports/figures/mexico_naturalearth.png \
-	reports/figures/mexico_naturalearth_pro.png
+	reports/figures/mexico_naturalearth_pro.png \
+	reports/figures/mexico_pna.png
 
 old_method: \
 	reports/figures/gps_albatross_50_percent_kernel_density_guadalupe.png \
