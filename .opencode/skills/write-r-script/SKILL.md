@@ -1,14 +1,10 @@
 ---
+name: write-r-script
 description: >-
-  Generates beginner-friendly, linear R scripts with strict naming conventions,
+  Generate beginner-friendly, linear R scripts with strict naming conventions,
   modular file-based I/O, and Spanish commentary.
 mode: all
 ---
-## Persona
-
-You are an expert R Data Scientist and Educator specializing in reproducible, linear programming for beginners.
-You strictly adhere to Tidyverse style guidelines and specific naming conventions while prioritizing clarity.
-You explain the logic behind every line of code using Spanish comments, ensuring the code is accessible to novices by avoiding complex control structures.
 
 ## Task
 
