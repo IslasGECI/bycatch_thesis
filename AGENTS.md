@@ -1,17 +1,21 @@
-# Developer Manual
+# Developer Manual (AGENTS.md)
 
-This document outlines the technical architecture, operational guidelines, and engineering standards for the `bycatch_thesis` project.
+This document provides a workflow-oriented guide to the technical architecture, operational procedures, and engineering standards for the `bycatch_thesis` project.
 
 ---
 
-## 1. Technical Overview
+## Phase 1: Environment Setup & Operations
 
 ### Build System
 - **Primary**: `make` (Makefile-driven).
 - **Docker**: `docker-compose run --rm islasgeci` or build image from `Dockerfile`.
-- **Container image**: `islasgeci/bycatch_thesis:latest` (extends `islasgeci/bycatch`).
+- **Container image**: `islasgeci/bycatch_thesis:latest`.
 
-### Key Commands
+### Initial Configuration
+- **Credentials**: Set `BITBUCKET_USERNAME` and `BITBUCKET_PASSWORD` as environment variables for data access.
+- **Docker Registry**: Set `DOCKER_USERNAME`/`DOCKER_PASSWORD` for pushing images.
+
+### Key Operational Commands
 ```bash
 make reports/first_paper.pdf  # Build first article
 make reports/second_paper.pdf # Build second article
@@ -22,119 +26,82 @@ make format                  # Style R code with styler
 shellspec                    # Run shell tests (ShellSpec)
 ```
 
-### Docker Requirements
-- `BITBUCKET_USERNAME` and `BITBUCKET_PASSWORD` env vars (secrets in CI) for data access.
-- `DOCKER_USERNAME`/`DOCKER_PASSWORD` for pushing images.
+---
+
+## Phase 2: Data Lifecycle & Acquisition
+
+### 1. Data Acquisition
+- **Download**: `make data/raw/gps-albatros-guadalupe.csv` (uses `descarga_datos`).
+- **External Dependencies**: `docker pull islasgeci/vessel_data:latest`.
+
+### 2. Integrity Rules
+- **Raw Data**: Must remain strictly **immutable** in `data/raw/`.
+- **Processed Data**: Resides in `data/processed/`, shaped specifically for modeling.
+
+### 3. Traceability
+- **analyses.json**: The authoritative map of data-script-report relationships.
+- **Makefile**: Defines the specific rules for transforming data into results.
 
 ---
 
-## 2. Architecture & Structure
+## Phase 3: Development & Coding Standards
 
-This project follows the **Class 3 Repository Structure** inspired by Cookiecutter Data Science.
+### 1. Repository Architecture (Class 3)
+Scripts and content must be placed according to the project map:
+- `src/`: R analysis scripts.
+- `reports/figures/`: Generated visualizations.
+- `references/`: BibTeX and articles.
+- `1?_*.md` / `2?_*.md`: Manuscript sources (Paper 1 and 2).
 
-### Repository Layout
-```
-├── Dockerfile         <- Build the repository image.
-├── Makefile           <- Orchestration for reports and data processing.
-├── README.md          <- High-level overview and authoritative work definition.
-├── AGENTS.md          <- Developer manual (this file).
-├── TODO.md            <- Project backlog and roadmap.
-├── analyses.json      <- Defines relationships between data, reports, and scripts.
-├── data/
-│   ├── external/      <- Third-party data.
-│   ├── processed/     <- Processed data (CSV, GPKG, etc.).
-│   └── raw/           <- Immutable original data.
-├── references/        <- Articles, books, and BibTeX files.
-├── reports/           <- Final outputs (PDF, Docx) and figures.
-│   └── figures/       <- Generated visualizations.
-├── src/               <- R analysis scripts and source code.
-└── tests/             <- Shell and R tests for reproducibility.
-```
+### 2. Coding in R
+- **Style**: Tidyverse.
+- **Linear Rule**: Write linear code in analysis scripts; avoid complex loops or functions.
+- **Language**: English for code (variables/functions); Spanish for comments.
+- **Documentation**: Comment **every line** in Spanish, focusing on the "why".
 
-### File Mappings
-- **Markdown sources**: `1?_*.md` (Paper 1), `2?_*.md` (Paper 2) — concatenated by Makefile.
-- **R analysis scripts**: `src/*.R`.
-- **R package**: `bycatch::` functions from `IslasGECI/bycatch_code`.
-- **Processed data**: `data/processed/*.csv`.
-
-### Core Configuration
-- **Makefile**: Must contain `all`, per-result blocks, and general-purpose phony rules.
-- **analyses.json**: Authoritative source for data-script-report relationships.
-
----
-
-## 3. Data Management
-
-### Sources & Acquisition
-- **Primary Source**: Private Bitbucket repos (requires credentials).
-- **Download**: `make data/raw/gps-albatros-guadalupe.csv` uses the `descarga_datos` tool.
-- **Vessel data**: `docker pull islasgeci/vessel_data:latest`.
-
-### Integrity Rules
-- **Raw data** must remain strictly immutable.
-- **Processed data** should be shaped for analysis and modeling.
-- Intermediate results belong in `data/processed/` or `reports/`.
-
----
-
-## 4. Standards & Conventions
-
-### Commit Messages
-- Start with a **Gitmoji** (e.g., 🐛, ✨, ♻️).
-- Use an imperative verb (e.g., "Add", "Fix").
-- Prioritize explaining **why** the change was made.
-- Limit lines to ≤ 80 characters.
-- First line is a summary; separate from body with a blank line.
-
-### Repository Content Rules
-- Only **plain text** files (`csv`, `json`, `svg`, `tex`, etc.) are allowed.
-- No binary files > 1 MB or > 10,000 lines.
-- **Binary images** only if required for functionality and ≤ 256px. Prefer SVG.
-
-### Coding Standards (R)
-- **Style**: Tidyverse style.
-- **Language**: English for variables/functions; Spanish for comments (focus on "why").
-- **Script Structure**: Header, Configuration, Inputs, Process, and Output sections.
-- **Linear Code Rule**: Prefer linear code; avoid functions/loops in main analysis scripts. Use file-based modularity.
-- **Comment every line** in Spanish.
-
-#### Script Header Format
+### 3. Script Structure
+Every script in `src/` must follow this header format:
 ```r
 # ==========================================
 # Título: (1 línea)
 # Contexto (Por qué): (2–4 líneas)
 # Descripción (Qué / Cómo): (3–6 líneas)
-# Entradas: (Sin bullets, uno por línea)
-# Salidas: (Sin bullets, uno por línea)
+# Entradas: (Uno por línea)
+# Salidas: (Uno por línea)
 # Dependencias: (Un paquete por línea)
 # Notas: (Opcional, máximo 4 bullets)
 # ==========================================
 ```
 
-### Documentation & Prose
-- **Spanish prose**: `0?_*.md` files.
-- **English prose**: `1?_*.md` files.
-- **Wordlist**: Managed in `.github/config/.wordlist.txt`.
+### 4. Repository Content Policy
+- **Text Only**: Only plain text files allowed (CSV, JSON, SVG, TeX).
+- **Binary Limits**: Images only if ≤ 256px and necessary. No files > 1 MB.
 
 ---
 
-## 5. Quality Assurance
+## Phase 4: Validation, Testing & Commits
 
-### CI Checks (on `develop` branch)
-- **Spellcheck**: Spanish and English sources.
-- **Sentence length**: ≤ 25 words.
-- **Paragraph length**: ≤ 200 words.
+### 1. Quality Assurance (CI)
+Before pushing to `develop`, ensure your prose meets these standards:
+- **Spellcheck**: Passing for both English and Spanish.
+- **Constraint**: ≤ 25 words per sentence; ≤ 200 words per paragraph.
 
-### Testing Protocols
-- **Reproducibility**: Tests must verify that results can be recreated from data.
-- **Naming**: Tests start with `test_` and use only alphanumeric characters.
+### 2. Testing
+- **Reproducibility**: All results must be reproducible from the raw data.
+- **Naming**: Test files must start with `test_` and use alphanumeric names.
+
+### 3. Commitment (Gitmoji)
+Commits must follow the project's semantic style:
+- **Format**: `[Emoji] [Imperative Verb] [Summary]`
+- **Example**: `✨ Add kernel density estimation for Clarion Island`
+- **Priority**: Explain **why** the change was made in the message body.
 
 ---
 
-## 6. Documentation Strategy
+## Documentation Strategy Summary
 
-| Filename | Audience | Contents | Domain | Cadence |
-| :--- | :--- | :--- | :--- | :--- |
-| **README.md** | User | **User Manual**: Overview, capabilities, and usage instructions. | Interface | Low |
-| **AGENTS.md** | Developers | **Developer Manual**: Architecture, principles, and guidelines. | Architecture | Medium |
-| **TODO.md** | Developers | **Backlog**: Pending tasks, bugs, and roadmap. | Roadmap | Very High |
+| Level | File | Audience | Focus |
+| :--- | :--- | :--- | :--- |
+| **User** | `README.md` | General Users | What the project is and how to use it. |
+| **Developer** | `AGENTS.md` | Developers | How to build, code, and contribute (this file). |
+| **Roadmap** | `TODO.md` | Team | What needs to be done next. |
