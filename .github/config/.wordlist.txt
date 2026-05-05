@@ -8,6 +8,7 @@ ambientalistas
 American
 Analytical
 anidantes
+anthropogenic
 ANP
 ANPs
 Ansible
@@ -46,6 +47,7 @@ El
 empodera
 empoderado
 enlistamos
+EEZ
 EUA
 Excel
 feral
