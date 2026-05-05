@@ -3,7 +3,8 @@
 
 ![Spatial overlap between Laysan albatross tracking data and Mexico’s Exclusive Economic Zone (EEZ).](reports/figures/mexico_eez_bounding_box_zoom_out.png)
 
-The figure presents the spatial distribution of GPS tracking data of Laysan albatrosses (_Phoebastria immutabilis_) originating from two breeding colonies in relation to the Mexican Exclusive Economic Zone (EEZ).
+The figure presents the spatial distribution of GPS tracking data of Laysan albatrosses (_Phoebastria immutabilis_).
+These data originate from two breeding colonies in relation to the Mexican Exclusive Economic Zone (EEZ).
 Individual movement trajectories are shown as continuous lines (colored by colony: green for Guadalupe Island and pink for Clarion Island).
 
 A large rectangular bounding box (purple; 10–60°N, 110–170°W) delineates the full domain of the GPS tracking data.
@@ -15,7 +16,8 @@ Both populations show spatial convergence along the western coast of the Baja Ca
 
 ![Spatial delimitation of the study area within the Mexican Exclusive Economic Zone (EEZ) based on albatross tracking data.](reports/figures/mexico_eez_bounding_box_zoom_in.png)
 
-The figure shows the subset of the Mexican Exclusive Economic Zone (EEZ) in the northeastern Pacific Ocean that encompasses all available GPS tracking locations of Laysan albatross (Phoebastria immutabilis) used in this study.
+The figure shows the subset of the Mexican Exclusive Economic Zone (EEZ) in the northeastern Pacific Ocean.
+It encompasses all available GPS tracking locations of Laysan albatross (_Phoebastria immutabilis_) used in this study.
 The EEZ is represented as a filled polygon (blue), and the displayed extent corresponds to a spatial bounding box defined between 15–35°N and 110–125°W.
 
 All GPS locations falling outside this bounding box occur beyond the limits of the Mexican EEZ.
