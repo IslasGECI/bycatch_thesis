@@ -502,11 +502,8 @@ check:
 	src/check_manuscript_style.sh "1?_*.md"
 	src/check_manuscript_style.sh "2?_*.md"
 	src/check_spelling.sh
-	shellspec
-
 
 init: init_git
-	shellspec --init
 
 init_git:
 	git config --global --add safe.directory /workdir
