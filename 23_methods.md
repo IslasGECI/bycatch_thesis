@@ -8,7 +8,7 @@ The islands are protected natural areas.
 Seabirds are marine organisms and are only found on land to reproduce.
 Tracking devices are installed while individuals are breeding on the island.
 
-We attached GPS units to 48 Laysan albatross individuals on Guadalupe Island from 2014 to 2018, and to 10 individuals in 2025.
+We attached GPS units to XXX Laysan albatross individuals on Guadalupe Island from 2014 to 2026.
 Additionally, we attached GPS units to 26 individuals on Clarion Island from 2018 to 2022.
 
 ### Guadalupe Island
@@ -35,7 +35,7 @@ Additionally, the entire study area is affected by El Niño and La Niña events.
 
 ### Time period
 
-The data were collected from 2014 to 2025.
+The data were collected from 2014 to 2026.
 During this period, the study site was affected by the "Blob".
 
 A time period of more than a decade allows us to account for interannual variability in the use of key areas by Laysan albatrosses.
@@ -68,7 +68,8 @@ The GPS loggers were attached to the albatross individuals with Tesa tape (#4651
 
 In Guadalupe Island we used the following GPS devices: From 2014 to 2016: model GiSPy-4SB by Techno Smart (Italy).
 From 2017 to 2018: i-gotU model GT-120 by Mobile Action (Taiwan).
-From 2019 to 2023: XXX In 2025: GPS datalogger with accelerometer and UHF model Axy-Trek Remote by Techno Smart (Italy).
+From 2019 to 2023: XXX.
+From 2025 to 2026: GPS datalogger with accelerometer and UHF model Axy-Trek Remote by Techno Smart (Italy).
 
 In Clarion Island, from 2018 to 2022 we used the following GPS devices: i-gotU model GT-120 by Mobile Action (Taiwan).
 CatLog-S, Catnip Technologies (China).
@@ -89,7 +90,7 @@ The independent variable is the GPS locations of the albatrosses.
 The dependent variable is the key areas used by the albatrosses.
 
 
-A total of 114 individuals were tracked in Guadalupe Island between 2014 and 2025.
+A total of XXX individuals were tracked in Guadalupe Island between 2014 and 2026.
 
 | Year | Number of individuals |
 | ---- | --------------------- |
@@ -104,6 +105,7 @@ A total of 114 individuals were tracked in Guadalupe Island between 2014 and 202
 | 2022 |  4 |
 | 2023 |  7 |
 | 2025 | 10 |
+| 2026 | XXX |
 
 A total of 26 individuals were tracked in Clarion Island between 2018 and 2022.
 
