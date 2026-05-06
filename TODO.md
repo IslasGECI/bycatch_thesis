@@ -1,4 +1,8 @@
-# TODO
+# WORKING ON: Issue #12 - 📝 Escribir la sección de Métodos
+
+Podemos empezar a escribir el primer borrador de la sección de:
+
+- [Métodos](https://github.com/IslasGECI/bycatch_thesis/blob/develop/13_methods.md)
 
 ## Materials
 
@@ -174,10 +178,12 @@
     - what was done
     - why it was done?
 
-# DONE
+---
 
 ## CI/CD & Quality Assurance
 
 - [x] **Fix Paper 2 manuscript style violations**
 - [x] **Add spellcheck to Makefile check target**
 - [x] **Verify GitHub Actions workflow**
+
+---
