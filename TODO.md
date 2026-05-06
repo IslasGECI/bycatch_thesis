@@ -202,6 +202,22 @@
 
 ---
 
+## CI/CD & Quality Assurance
+
+* [ ] **Fix Paper 2 manuscript style violations**
+  * [ ] Fix 4 sentences exceeding 25 words in `29_supplementary.md`
+  * [ ] Fix missing punctuation in `29_supplementary.md`
+  * [ ] Ensure all Paper 2 files pass `make check`
+* [ ] **Add spellcheck to Makefile check target**
+  * [ ] Integrate Spanish spellcheck into `make check`
+  * [ ] Integrate English spellcheck into `make check`
+  * [ ] Test that `make check` runs all validations locally
+* [ ] **Verify GitHub Actions workflow**
+  * [ ] Confirm `manuscript_style` job passes on develop
+  * [ ] All three jobs (spellcheck_es, spellcheck_en, manuscript_style) succeed
+
+---
+
 # DONE
 
 
