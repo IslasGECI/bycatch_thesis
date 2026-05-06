@@ -462,6 +462,7 @@ endef
 .PHONY: \
 	all \
 	articles \
+	check \
 	clean \
 	dangling \
 	format \
@@ -495,6 +496,11 @@ clean:
 format:
 	R -e "library(styler)" \
       -e "style_dir('src')"
+
+check:
+	src/check_manuscript_style.sh "1?_*.md"
+	src/check_manuscript_style.sh "2?_*.md"
+	shellspec
 
 
 init: init_git
