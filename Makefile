@@ -471,7 +471,8 @@ endef
 	old_method \
 	results_clarion \
 	results_first_paper \
-	results_second_paper
+	results_second_paper \
+	spellcheck
 
 clean:
 	rm --force *.pdf
@@ -500,6 +501,7 @@ format:
 check:
 	src/check_manuscript_style.sh "1?_*.md"
 	src/check_manuscript_style.sh "2?_*.md"
+	src/check_spelling.sh
 	shellspec
 
 
