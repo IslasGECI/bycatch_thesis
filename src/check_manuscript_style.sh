@@ -31,11 +31,12 @@ check_line_endings() {
     echo "Checking line endings in: $file"
 
     # Encontrar líneas que NO terminan con puntuación válida
-    # Excluir líneas que terminan con: : . ? o comienzan con "1. " o caracteres no-palabra
+    # Excluir líneas que terminan con: : . ? ] o comienzan con "1. " o caracteres no-palabra
     local lines_without_period
     lines_without_period=$(egrep -v ":$" "$file" | \
                           egrep -v "\.$" | \
                           egrep -v "\?$" | \
+                          egrep -v "\]$" | \
                           egrep -v "^1\. " | \
                           egrep -v "^\W" || true)
 
