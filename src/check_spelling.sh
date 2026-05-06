@@ -8,13 +8,13 @@
 #   para archivos de manuscrito español e inglés usando la configuración
 #   y diccionario del proyecto. Reporta errores ortográficos encontrados.
 # Entradas: Archivos markdown del proyecto, configuración spellcheck.yml,
-#   diccionario personalizado .wordlist.txt
+#   diccionario personalizado .wordlist-es.txt o .wordlist-en.txt
 # Salidas: Mensajes de error a stdout; código de salida 0 si pasa, 1 si falla
 # Dependencias: aspell, python3 (pyspelling)
 # Notas:
 #   - Requiere estar en el directorio raíz del proyecto
 #   - Usa configuración en .github/config/.spellcheck.yml
-#   - Diccionario personalizado en .github/config/.wordlist.txt
+#   - Diccionario personalizado en .github/config/.wordlist-es.txt o .wordlist-en.txt
 # ==========================================
 
 # Variable para rastrear si hay errores
@@ -47,10 +47,11 @@ check_spelling() {
         if [[ -f "$file" ]]; then
             # Usar aspell en modo markdown para verificar
             local misspellings
+            local wordlist=".github/config/.wordlist-${lang}.txt"
             misspellings=$(aspell --lang="$lang" \
                                   --ignore-case \
                                   --mode=markdown \
-                                  --personal=/workdir/.github/config/.wordlist.txt \
+                                  --personal="/workdir/$wordlist" \
                                   list < "$file" | sort -u)
 
             if [[ -n "$misspellings" ]]; then

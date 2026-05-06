@@ -1,6 +1,8 @@
 FROM islasgeci/bycatch:latest
 COPY . /workdir
-
+RUN apt update && apt install --yes \
+        aspell-es && \
+    apt clean && rm --force --recursive /var/lib/apt/lists/*
 RUN pip install --upgrade pip && pip install \
 	git+https://github.com/IslasGECI/geci_plots.git \
 	zenodo-api

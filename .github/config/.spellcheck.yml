@@ -7,7 +7,7 @@ matrix:
     mode: markdown
   dictionary:
     wordlists:
-    - .github/config/.wordlist.txt
+    - .github/config/.wordlist-es.txt
     encoding: utf-8
   sources:
   - '0?_*.md'
@@ -20,7 +20,7 @@ matrix:
     mode: markdown
   dictionary:
     wordlists:
-    - .github/config/.wordlist.txt
+    - .github/config/.wordlist-en.txt
     encoding: utf-8
   sources:
   - '1?_*.md'
