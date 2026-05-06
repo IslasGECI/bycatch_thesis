@@ -100,8 +100,85 @@ Commits must follow the project's semantic style:
 
 ## Documentation Strategy Summary
 
-| Level | File | Audience | Focus |
+| File | Level | Audience | Focus |
 | :--- | :--- | :--- | :--- |
-| **User** | `README.md` | General Users | What the project is and how to use it. |
-| **Developer** | `AGENTS.md` | Developers | How to build, code, and contribute (this file). |
-| **Roadmap** | `TODO.md` | Team | What needs to be done next. |
+| `README.md` | **User** | General Users | What the project is and how to use it. |
+| `AGENTS.md` | **Developer** | Developers | How to build, code, and contribute (this file). |
+| `TODO.md`   | **Roadmap** | Team | What needs to be done next. |
+
+---
+
+## Task Management: The Gold Workflow
+
+This project uses a **"Gold" workflow** inspired by Test-Driven Development's concept of *grabbing for the gold* (Kent Beck, *TDD By Example*).
+
+In TDD, **"the gold"** is a clear specification of target behavior reached through small, incremental steps: Red → Green → Refactor.
+
+This project applies that same concept to task management:
+
+### Definitions
+
+| Term | Meaning |
+|------|---------|
+| **Gold** | A GitHub Issue containing a collection of related tasks that represent a target behavior or deliverable |
+| **TODO.md** | The active workspace that shows ONLY the tasks for the Gold you're currently working on |
+| **Task** | One small, completable step toward reaching the Gold |
+
+### How It Works
+
+```
+┌─────────────────────────────────────────────────┐
+│        GitHub Issues (Permanent Gold Store)     │
+├─────────────────────────────────────────────────┤
+│ Issue #1: "Write Methods Section" [GOLD]        │
+│   ├── [ ] Add site selection justification      │
+│   └── [ ] Explain oceanographic context         │
+│                                                 │
+│ Issue #2: "ANP Intersection Analysis" [GOLD]    │
+│   ├── [ ] Define overlap index formula          │
+│   └── [ ] Specify vector vs raster approach     │
+└─────────────────────────────────────────────────┘
+                        ↓
+              (You pick a Gold to work on)
+                        ↓
+┌─────────────────────────────────────────────────┐
+│         TODO.md (Active Workspace)              │
+│  = The Gold you're grabbing for RIGHT NOW       │
+├─────────────────────────────────────────────────┤
+│ # WORKING ON: Issue #2 - ANP Intersection       │
+│                                                 │
+│ - [ ] Define overlap index formula              │
+│ - [ ] Specify vector vs raster approach         │
+│                                                 │
+│ # DONE                                          │
+│ - [x] (completed tasks)                         │
+└─────────────────────────────────────────────────┘
+                        ↓
+              [TDD Cycle: Red-Green-Refactor]
+              [Complete one task at a time]
+              [Until you reach the Gold]
+```
+
+### The Workflow
+
+1. **Choose a Gold**: Pick a GitHub Issue to work on
+2. **Load TODO.md**: Copy that issue's tasks into TODO.md (replacing previous content)
+3. **Grab for the Gold**: Work through each task using TDD cycles
+4. **Mark Progress**: Check off tasks in both TODO.md and the GitHub Issue
+5. **Switching Golds**: When done (or changing focus), replace TODO.md with the new issue's tasks
+6. **Cleanup**: Before switching Golds, ensure all completed tasks in TODO.md are marked as complete in the GitHub Issue (the Permanent Gold Store), then clear TODO.md.
+
+### Why This Works
+
+| Benefit | Explanation |
+|---------|--------------|
+| **Focus** | TODO.md shows only ONE Gold at a time — no clutter |
+| **Clarity** | The Gold (Issue) defines exactly what "done" looks like |
+| **TDD-Aligned** | Small tasks = small increments = Red-Green-Refactor |
+| **Traceability** | GitHub Issues are permanent; TODO.md is ephemeral workspace |
+| **Flexibility** | Switch Golds anytime by updating TODO.md |
+
+### Summary
+
+> **GitHub Issues are Golds. TODO.md is the Gold you're grabbing for right now.**
+
