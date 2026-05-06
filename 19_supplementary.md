@@ -25,5 +25,6 @@ All GPS locations falling outside this bounding box occur beyond the limits of t
 Portions of the EEZ not shown in this figure were not considered because they do not contain any albatross tracking records.
 
 The resulting study area represents the intersection between biologically informed movement data and jurisdictional boundaries.
-All analyses of spatial use and potential interactions with anthropogenic activities are restricted to areas both ecologically utilized by the species and legally under Mexican management.
+All analyses of spatial use and potential interactions with anthropogenic activities are restricted to specific areas.
+These areas are both ecologically utilized by the species and legally under Mexican management.
 
