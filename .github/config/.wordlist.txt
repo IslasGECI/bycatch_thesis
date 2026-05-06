@@ -1,3 +1,4 @@
+personal_ws-1.1 en 179 utf-8
 AaC
 ACC
 accelerometer

@@ -27,21 +27,21 @@ check_spelling() {
     local lang="$1"
     local pattern="$2"
     local lang_name="$3"
-    
+
     echo "Checking spelling in $lang_name..."
-    
+
     # Obtener lista de archivos que coinciden con el patrón
     local files
     files=$(eval echo "$pattern")
-    
+
     if [[ -z "$files" ]]; then
         echo "⚠️  No files matching pattern: $pattern"
         return 0
     fi
-    
+
     # Contador para errores
     local error_count=0
-    
+
     # Procesar cada archivo
     for file in $files; do
         if [[ -f "$file" ]]; then
@@ -50,9 +50,9 @@ check_spelling() {
             misspellings=$(aspell --lang="$lang" \
                                   --ignore-case \
                                   --mode=markdown \
-                                  --personal=.github/config/.wordlist.txt \
+                                  --personal=/workdir/.github/config/.wordlist.txt \
                                   list < "$file" | sort -u)
-            
+
             if [[ -n "$misspellings" ]]; then
                 echo "❌ Spelling errors in $file:"
                 echo "$misspellings" | while read -r word; do
@@ -63,7 +63,7 @@ check_spelling() {
             fi
         fi
     done
-    
+
     if [[ $error_count -eq 0 ]]; then
         echo "✅ No spelling errors found in $lang_name files"
     fi
@@ -77,25 +77,25 @@ main() {
     echo "Manuscript Spellcheck"
     echo "============================================"
     echo ""
-    
+
     # Verificar español (0?_*.md)
     echo "─────────────────────────────────────────"
     check_spelling "es" "0?_*.md" "Spanish"
     echo "─────────────────────────────────────────"
     echo ""
-    
+
     # Verificar inglés Paper 1 (1?_*.md)
     echo "─────────────────────────────────────────"
     check_spelling "en" "1?_*.md" "English (Paper 1)"
     echo "─────────────────────────────────────────"
     echo ""
-    
+
     # Verificar inglés Paper 2 (2?_*.md)
     echo "─────────────────────────────────────────"
     check_spelling "en" "2?_*.md" "English (Paper 2)"
     echo "─────────────────────────────────────────"
     echo ""
-    
+
     if [[ $HAS_ERRORS -eq 0 ]]; then
         echo "✅ All spelling checks passed!"
         return 0
