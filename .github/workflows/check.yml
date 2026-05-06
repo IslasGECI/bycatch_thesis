@@ -2,38 +2,19 @@ name: Check spelling and style
 on:
   push:
     branches:
-      'develop'
+      - develop
 jobs:
 
-  spellcheck_es:
-    name: Check spelling in Spanish
+  check:
+    name: Check manuscripts
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: rojopolis/spellcheck-github-actions@master
-      name: Spellcheck
-      with:
-        config_path: .github/config/.spellcheck.yml
-        task_name: markdown-in-spanish
-
-  spellcheck_en:
-    name: Check spelling in English
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: rojopolis/spellcheck-github-actions@master
-      name: Spellcheck
-      with:
-        config_path: .github/config/.spellcheck.yml
-        task_name: markdown-in-english
-
-  manuscript_style:
-    name: Check manuscript style
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repo
-      uses: actions/checkout@main
-    - name: Check Paper 1 style
-      run: src/check_manuscript_style.sh "1?_*.md"
-    - name: Check Paper 2 style
-      run: src/check_manuscript_style.sh "2?_*.md"
+      - uses: actions/checkout@v3
+      - name: Pull Docker image
+        run: docker pull islasgeci/bycatch_thesis:latest
+      - name: Run spellcheck
+        run: docker run --volume $PWD:/workdir islasgeci/bycatch_thesis:latest src/check_spelling.sh
+      - name: Check Paper 1 style
+        run: docker run --volume $PWD:/workdir islasgeci/bycatch_thesis:latest src/check_manuscript_style.sh "1?_*.md"
+      - name: Check Paper 2 style
+        run: docker run --volume $PWD:/workdir islasgeci/bycatch_thesis:latest src/check_manuscript_style.sh "2?_*.md"
