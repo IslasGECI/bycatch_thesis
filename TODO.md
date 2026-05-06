@@ -178,12 +178,3 @@ Podemos empezar a escribir el primer borrador de la sección de:
     - what was done
     - why it was done?
 
----
-
-## CI/CD & Quality Assurance
-
-- [x] **Fix Paper 2 manuscript style violations**
-- [x] **Add spellcheck to Makefile check target**
-- [x] **Verify GitHub Actions workflow**
-
----
