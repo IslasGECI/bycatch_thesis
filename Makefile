@@ -121,7 +121,7 @@ reports/figures/gps_albatross_50_percent_usage_area_ars_guadalupe.png: \
 		--config-path config_trips_guadalupe.json \
 		--percentage-distribution 50 \
 		--smoothing-method scale_ARS \
-		--n-iterations 1000 \
+		--n-iterations 314 \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_usage_area_ars_all.png: \
@@ -133,7 +133,7 @@ reports/figures/gps_albatross_50_percent_usage_area_ars_all.png: \
 		--config-path config_trips_all.json \
 		--percentage-distribution 50 \
 		--smoothing-method scale_ARS \
-		--n-iterations 1000 \
+		--n-iterations 314 \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_potential_site_ars_guadalupe.png: \
@@ -144,7 +144,7 @@ reports/figures/gps_albatross_50_percent_potential_site_ars_guadalupe.png: \
 		--data-path data/processed/trips_geographic_points_guadalupe.csv \
 		--config-path config_trips_guadalupe.json \
 		--percentage-distribution 50 \
-		--n-iterations 1000 \
+		--n-iterations 314 \
 		--population-size 4390 \
 		--smoothing-method scale_ARS \
 		--output-path $@
@@ -157,7 +157,7 @@ reports/figures/gps_albatross_50_percent_potential_site_ars_all.png: \
 		--data-path data/processed/trips_geographic_points_all.csv \
 		--config-path config_trips_all.json \
 		--percentage-distribution 50 \
-		--n-iterations 1000 \
+		--n-iterations 314 \
 		--population-size 4437 \
 		--smoothing-method scale_ARS \
 		--output-path $@
@@ -170,7 +170,7 @@ reports/figures/gps_albatross_50_percent_representative_assess_ars_guadalupe.png
 		--data-path data/processed/trips_geographic_points_guadalupe.csv \
 		--config-path config_trips_guadalupe.json \
 		--percentage-distribution 50 \
-		--n-iterations 1000 \
+		--n-iterations 314 \
 		--smoothing-method scale_ARS \
 		--output-path $@
 
@@ -182,7 +182,7 @@ reports/figures/gps_albatross_50_percent_representative_assess_ars_all.png: \
 		--data-path data/processed/trips_geographic_points_all.csv \
 		--config-path config_trips_all.json \
 		--percentage-distribution 50 \
-		--n-iterations 1000 \
+		--n-iterations 314 \
 		--smoothing-method scale_ARS \
 		--output-path $@
 
