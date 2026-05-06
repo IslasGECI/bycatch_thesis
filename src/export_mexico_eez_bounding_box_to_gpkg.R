@@ -97,5 +97,6 @@ st_write(
   dsn = output_gpkg_path,
   layer = output_layer_name,
   driver = "GPKG",
+  delete_layer = TRUE,
   quiet = TRUE
 )
