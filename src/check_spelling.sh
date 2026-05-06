@@ -51,7 +51,6 @@ check_spelling() {
                                   --ignore-case \
                                   --mode=markdown \
                                   --personal=.github/config/.wordlist.txt \
-                                  --personal-dict=.github/config/.wordlist.txt \
                                   list < "$file" | sort -u)
             
             if [[ -n "$misspellings" ]]; then
