@@ -24,7 +24,9 @@ reports/first_paper.docx reports/first_paper.pdf: \
 
 reports/first_paper.md:
 	$(checkDirectories)
-	cat papers/first-paper/1?_*.md > $@
+	cat papers/first-paper/1?_*.md > papers/first-paper/first_paper.mustache
+	mustache data/processed/methods.json papers/first-paper/first_paper.mustache > $@
+
 
 reports/second_paper.docx reports/second_paper.pdf: \
 	papers/second-paper/20_metadata.yaml \
