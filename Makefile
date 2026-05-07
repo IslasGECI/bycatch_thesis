@@ -499,8 +499,8 @@ format:
       -e "style_dir('src')"
 
 check:
-	src/check_manuscript_style.sh "1?_*.md"
-	src/check_manuscript_style.sh "2?_*.md"
+	src/check_manuscript_style.sh "papers/first-paper/1?_*.md"
+	src/check_manuscript_style.sh "papers/second-paper/2?_*.md"
 	src/check_spelling.sh
 
 init: init_git
