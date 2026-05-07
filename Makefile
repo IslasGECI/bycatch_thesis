@@ -138,6 +138,8 @@ reports/figures/gps_albatross_50_percent_usage_area_ars_all.png: \
 		--n-iterations 314 \
 		--output-path $@
 
+# 4390 = 645*2 pairs in the main island + 1550*2 pairs in the islets (https://doi.org/10.5281/zenodo.18343678)
+
 reports/figures/gps_albatross_50_percent_potential_site_ars_guadalupe.png: \
 	data/processed/trips_geographic_points_guadalupe.csv \
 	config_trips_guadalupe.json
@@ -150,6 +152,8 @@ reports/figures/gps_albatross_50_percent_potential_site_ars_guadalupe.png: \
 		--population-size 4390 \
 		--smoothing-method scale_ARS \
 		--output-path $@
+
+# 4437 = 47 individuals in Clarion Island (2023) + 4390 individuals in Guadalupe Island
 
 reports/figures/gps_albatross_50_percent_potential_site_ars_all.png: \
 	data/processed/trips_geographic_points_all.csv \
