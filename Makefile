@@ -50,7 +50,6 @@ results_first_paper: \
 	reports/figures/gps_albatross_50_percent_individuals_kernel_ars_guadalupe.png \
 	reports/figures/gps_albatross_50_percent_potential_site_ars_guadalupe.png \
 	reports/figures/gps_albatross_50_percent_representative_assess_ars_guadalupe.png \
-	reports/figures/gps_albatross_50_percent_usage_area_ars_guadalupe.png \
 	reports/figures/gps_albatross_geographic_points_by_trip_guadalupe.png \
 	reports/figures/gps_albatross_geographic_points_raw_guadalupe.png
 
@@ -61,7 +60,6 @@ results_second_paper: \
 	reports/figures/gps_albatross_50_percent_individuals_kernel_ars_all.png \
 	reports/figures/gps_albatross_50_percent_potential_site_ars_all.png \
 	reports/figures/gps_albatross_50_percent_representative_assess_ars_all.png \
-	reports/figures/gps_albatross_50_percent_usage_area_ars_all.png \
 	reports/figures/gps_albatross_geographic_points_by_trip_all.png \
 	reports/figures/mexico_eez_bounding_box_zoom_in.png \
 	reports/figures/mexico_eez_bounding_box_zoom_out.png
@@ -113,30 +111,6 @@ reports/figures/mexico_eez_bounding_box_zoom_out.png: \
 	data/processed/mexico_eez_bounding_box_zoom_in.json
 	$(checkDirectories)
 	Rscript src/plot_mexico_eez_bounding_box_union.R
-
-reports/figures/gps_albatross_50_percent_usage_area_ars_guadalupe.png: \
-	data/processed/trips_geographic_points_guadalupe.csv \
-	config_trips_guadalupe.json
-	$(checkDirectories)
-	Rscript -e "bycatch::plot_usage_area_by_individual(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/trips_geographic_points_guadalupe.csv \
-		--config-path config_trips_guadalupe.json \
-		--percentage-distribution 50 \
-		--smoothing-method scale_ARS \
-		--n-iterations 314 \
-		--output-path $@
-
-reports/figures/gps_albatross_50_percent_usage_area_ars_all.png: \
-	data/processed/trips_geographic_points_all.csv \
-	config_trips_all.json
-	$(checkDirectories)
-	Rscript -e "bycatch::plot_usage_area_by_individual(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/trips_geographic_points_all.csv \
-		--config-path config_trips_all.json \
-		--percentage-distribution 50 \
-		--smoothing-method scale_ARS \
-		--n-iterations 314 \
-		--output-path $@
 
 # 4390 = 645*2 pairs in the main island + 1550*2 pairs in the islets (https://doi.org/10.5281/zenodo.18343678)
 
