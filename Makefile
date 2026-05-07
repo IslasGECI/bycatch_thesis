@@ -16,32 +16,32 @@ articles: \
 	reports/second_paper.pdf
 
 reports/first_paper.docx reports/first_paper.pdf: \
-	metadata.yaml \
-	reports/first_paper_draft.md \
+	papers/first-paper/10_metadata.yaml \
+	reports/first_paper.md \
 	results_first_paper
 	$(checkDirectories)
-	pandoc --include-in-header=options.sty --metadata-file=metadata.yaml --metadata=documentclass:article --table-of-contents --citeproc --output=$@ reports/first_paper_draft.md
+	pandoc --include-in-header=options.sty --metadata-file=papers/first-paper/10_metadata.yaml --metadata=documentclass:article --table-of-contents --citeproc --output=$@ reports/first_paper.md
 
-reports/first_paper_draft.md:
+reports/first_paper.md:
 	$(checkDirectories)
-	cat 1?_*.md > $@
+	cat papers/first-paper/1?_*.md > $@
 
 reports/second_paper.docx reports/second_paper.pdf: \
-	metadata.yaml \
-	reports/second_paper_draft.md \
+	papers/second-paper/20_metadata.yaml \
+	reports/second_paper.md \
 	results_second_paper
 	$(checkDirectories)
-	pandoc --include-in-header=options.sty --metadata-file=metadata.yaml --metadata=documentclass:article --table-of-contents --citeproc --output=$@ reports/second_paper_draft.md
+	pandoc --include-in-header=options.sty --metadata-file=papers/second-paper/20_metadata.yaml --metadata=documentclass:article --table-of-contents --citeproc --output=$@ reports/second_paper.md
 
-reports/second_paper_draft.md:
+reports/second_paper.md:
 	$(checkDirectories)
-	cat 2?_*.md > $@
+	cat papers/second-paper/2?_*.md > $@
 
 reports/anteproyecto.docx reports/anteproyecto.pdf: \
-	metadata.yaml \
-	01_proposal.md
+	papers/proposal/00_metadata.yaml \
+	papers/proposal/01_proposal.md
 	$(checkDirectories)
-	pandoc --metadata-file=metadata.yaml --citeproc --output=$@ 01_proposal.md
+	pandoc --metadata-file=papers/proposal/00_metadata.yaml --citeproc --output=$@ papers/proposal/01_proposal.md
 
 results_first_paper: \
 	data/processed/trips_summary_guadalupe.csv \
