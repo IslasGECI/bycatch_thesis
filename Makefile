@@ -88,10 +88,10 @@ reports/figures/mexico_eez.png: data/external/Exclusive_economic_zone_Mexico.shp
 	$(checkDirectories)
 	Rscript src/plot_mexico_eez.R
 
-config_bounding_box.json: data/processed/gps_albatross_all.csv
+data/processed/bounding_box.json: data/processed/gps_albatross_all.csv
 	Rscript src/export_bounding_box_to_json.R
 
-data/processed/mexico_eez_bounding_box_intersection.gpkg: data/external/Exclusive_economic_zone_Mexico.shp config_bounding_box.json
+data/processed/mexico_eez_bounding_box_intersection.gpkg: data/external/Exclusive_economic_zone_Mexico.shp data/processed/bounding_box.json
 	$(checkDirectories)
 	Rscript src/export_mexico_eez_bounding_box_to_gpkg.R
 
@@ -106,7 +106,7 @@ reports/figures/mexico_eez_bounding_box_zoom_in.png: \
 	Rscript src/plot_mexico_eez_bounding_box_intersection.R
 
 reports/figures/mexico_eez_bounding_box_zoom_out.png: \
-	data/external/Exclusive_economic_zone_Mexico.shp config_bounding_box.json \
+	data/external/Exclusive_economic_zone_Mexico.shp data/processed/bounding_box.json \
 	data/processed/gps_albatross_all.csv \
 	data/processed/mexico_eez_bounding_box_zoom_in.json
 	$(checkDirectories)
@@ -479,7 +479,7 @@ clean:
 	rm --force --recursive data/processed
 	rm --force --recursive data/raw
 	rm --force --recursive reports
-	rm --force config_bounding_box.json
+	rm --force data/processed/bounding_box.json
 	rm --force data/external/232_ANP-ITRF08_04072025.cpg
 	rm --force data/external/232_ANP-ITRF08_04072025.dbf
 	rm --force data/external/232_ANP-ITRF08_04072025.prj

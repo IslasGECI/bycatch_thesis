@@ -30,7 +30,7 @@
 # Entradas:
 # data/external/Exclusive_economic_zone_Mexico.shp
 # data/processed/gps_albatross_all.csv
-# config_bounding_box.json
+# data/processed/bounding_box.json
 # data/processed/mexico_eez_bounding_box_zoom_in.json
 #
 # Salidas:
@@ -57,7 +57,7 @@ library(sf)         # Permite leer y manipular datos espaciales vectoriales
 library(tidyverse)  # Proporciona ggplot2 para construir visualizaciones declarativas
 
 # ==== CONFIGURATION ====
-bbox_config_path <- "config_bounding_box.json"
+bbox_config_path <- "data/processed/bounding_box.json"
 input_gps_path <- "data/processed/gps_albatross_all.csv"
 input_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
 output_figure_path <- "reports/figures/mexico_eez_bounding_box_zoom_out.png"

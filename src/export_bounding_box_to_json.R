@@ -19,7 +19,7 @@
 # data/processed/gps_albatross_all.csv
 #
 # Salidas:
-# config_bounding_box.json
+# data/processed/bounding_box.json
 #
 # Dependencias:
 # tidyverse
@@ -40,7 +40,7 @@ library(jsonlite)
 
 # ==== CONFIGURATION ====
 input_csv_path <- "data/processed/gps_albatross_all.csv"
-output_json_path <- "config_bounding_box.json"
+output_json_path <- "data/processed/bounding_box.json"
 
 rounding_multiple <- 10
 buffer <- 1 # Grados adicionales para asegurar que el bounding box deje un margen
