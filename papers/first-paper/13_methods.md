@@ -58,13 +58,16 @@ If the ANPs serve to protect these species, we can infer that they serve to prot
 
 The study was conducted under the permits from the following institutions:
 Ministry of the Interior, Ministry of Environment and Natural Resources, and the National Commission for Protected Natural Areas.
+[[ Add specific permit IDs or agencies if possible ]]
 
 No albatross individuals were harmed during the study.
+[[ Explain how albatross are trapped. Is there a standard for this? ]]
 
 ## Data collection
 
 We attached the GPS to the albatrosses.
 The GPS loggers were attached to the albatross individuals with Tesa tape (#4651, Tesa AG, Hamburg, Germany).
+[[ Explain how the tape is attached. Is there a standard protocol for this? ]]
 
 In Guadalupe Island we used the following GPS devices: From 2014 to 2016: model GiSPy-4SB by Techno Smart (Italy).
 From 2017 to 2018: i-gotU model GT-120 by Mobile Action (Taiwan).
