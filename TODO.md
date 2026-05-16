@@ -105,9 +105,11 @@ function signatures will change further — they will accept
 `--artifact-path` instead of `--data-path` and `--config-path`.
 This will require additional Makefile updates at that time.
 
-Additionally, new `create_*` functions will be added (`create_processed_data`,
+Sprint 4 adds four new `create_*` exported functions (`create_processed_data`,
 `create_individual_kde`, `create_potential_kba`, `create_representative_assessment`),
-expanding the artifact pipeline beyond the current CLI entries.
+expanding the artifact pipeline beyond the current CLI entries. These follow the
+current `options`-list convention; Sprint 7 will change their signatures to
+explicit parameters (`data_path`, `config_path`, `output_path`, etc.).
 
 ### Sprint 3 — Plot layer added (2026-05-16)
 
@@ -117,4 +119,13 @@ Sprint 3 adds three internal `plot_*` functions in `R/plot.R`:
 no I/O, no side effects). They are NOT exported — `render_*` functions will
 be restructured in Sprint 5 to use them instead of `track2KBA` base-R
 plots. No immediate Makefile impact.
+
+### Sprint 4 — Cache exports added (2026-05-16)
+
+Sprint 4 adds four exported `create_*` functions in `R/cli.R`:
+`create_individual_kde`, `create_processed_data`, `create_potential_kba`,
+and `create_representative_assessment`. These follow the current `options`-list
+convention. The `create_potential_kba` test is inherently slow (~5 min) because
+it calls `findSite`; it lives in `tests/testthat/test_cache.R` but may be moved
+to `slow/` later.
 
