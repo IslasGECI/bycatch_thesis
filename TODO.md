@@ -1,6 +1,6 @@
 # Issue #47: Update Makefile after bycatch_code renames
 
-`bycatch_code` v0.8.0 renamed three public functions. The
+`bycatch_code` renamed six public functions (current HEAD). The
 `bycatch_thesis/Makefile` must be updated to match.
 
 ## Rename map
@@ -93,39 +93,39 @@
 
 | Change type | Count |
 |-------------|-------|
-| `Rscript -e` function calls to rename (items 1–3) | 9 |
-| `Rscript -e` function calls to rename (items 4–6) | 4 |
-| Output filename / target name renames (items 1–3) | 8 |
-| Total | ~21 |
+| `Rscript -e` function calls to rename (items 1–3) | 7 |
+| `Rscript -e` function calls to rename (items 4–6) | 5 |
+| Output filename / target name renames (items 1–3) | 7 |
+| Total | ~19 |
 
-## Future impact
+## bycatch_code context
 
-After bycatch_code Phase 2 (write/render separation), `render_*`
-function signatures will change further — they will accept
-`--artifact-path` instead of `--data-path` and `--config-path`.
-This will require additional Makefile updates at that time.
+### Completed — Sprints 3 and 4
 
-Sprint 4 adds four new `create_*` exported functions (`create_processed_data`,
-`create_individual_kde`, `create_potential_kba`, `create_representative_assessment`),
-expanding the artifact pipeline beyond the current CLI entries. These follow the
-current `options`-list convention; Sprint 7 will change their signatures to
-explicit parameters (`data_path`, `config_path`, `output_path`, etc.).
-
-### Sprint 3 — Plot layer added (2026-05-16)
-
-Sprint 3 adds three internal `plot_*` functions in `R/plot.R`:
+Sprint 3 added three internal `plot_*` functions in `R/plot.R`:
 `plot_representative_assessment`, `plot_potential_kba`, and
 `plot_individual_kde`. These are Level 1 Pure functions (in-memory ggplot2,
 no I/O, no side effects). They are NOT exported — `render_*` functions will
 be restructured in Sprint 5 to use them instead of `track2KBA` base-R
 plots. No immediate Makefile impact.
 
-### Sprint 4 — Cache exports added (2026-05-16)
-
-Sprint 4 adds four exported `create_*` functions in `R/cli.R`:
+Sprint 4 added four exported `create_*` functions in `R/cli.R`:
 `create_individual_kde`, `create_processed_data`, `create_potential_kba`,
-and `create_representative_assessment`. These follow the current `options`-list
-convention. The `create_potential_kba` test is inherently slow (~5 min) because
-it calls `findSite`; it lives in `tests/testthat/test_cache.R` but may be moved
-to `slow/` later.
+and `create_representative_assessment`. These expand the artifact pipeline
+beyond the current CLI entries and follow the current `options`-list
+convention. The `create_potential_kba` test is inherently slow (~5 min)
+because it calls `findSite`; it lives in `tests/testthat/test_cache.R` but may
+be moved to `slow/` later. No immediate Makefile impact — these functions are
+not yet wired into the build.
+
+### Pending — Phase 2 (Sprints 5–8)
+
+After bycatch_code Phase 2 (write/render separation), `render_*`
+function signatures will change further — they will accept
+`--artifact-path` instead of `--data-path` and `--config-path`.
+This will require additional Makefile updates at that time.
+
+Sprint 7 will change `create_*` signatures from the current
+`options`-list convention to explicit parameters (`data_path`,
+`config_path`, `output_path`, etc.).
 
