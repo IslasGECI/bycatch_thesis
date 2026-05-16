@@ -98,27 +98,7 @@
 | Output filename / target name renames (items 1–3) | 7 |
 | Total | ~19 |
 
-## bycatch_code context
-
-### Completed — Sprints 3 and 4
-
-Sprint 3 added three internal `plot_*` functions in `R/plot.R`:
-`plot_representative_assessment`, `plot_potential_kba`, and
-`plot_individual_kde`. These are Level 1 Pure functions (in-memory ggplot2,
-no I/O, no side effects). They are NOT exported — `render_*` functions will
-be restructured in Sprint 5 to use them instead of `track2KBA` base-R
-plots. No immediate Makefile impact.
-
-Sprint 4 added four exported `create_*` functions in `R/cli.R`:
-`create_individual_kde`, `create_processed_data`, `create_potential_kba`,
-and `create_representative_assessment`. These expand the artifact pipeline
-beyond the current CLI entries and follow the current `options`-list
-convention. The `create_potential_kba` test is inherently slow (~5 min)
-because it calls `findSite`; it lives in `tests/testthat/test_cache.R` but may
-be moved to `slow/` later. No immediate Makefile impact — these functions are
-not yet wired into the build.
-
-### Pending — Phase 2 (Sprints 5–8)
+## Upcoming Makefile impact
 
 After bycatch_code Phase 2 (write/render separation), `render_*`
 function signatures will change further — they will accept
