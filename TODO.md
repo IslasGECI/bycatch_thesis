@@ -109,3 +109,12 @@ Additionally, new `create_*` functions will be added (`create_processed_data`,
 `create_individual_kde`, `create_potential_kba`, `create_representative_assessment`),
 expanding the artifact pipeline beyond the current CLI entries.
 
+### Sprint 3 — Plot layer added (2026-05-16)
+
+Sprint 3 adds three internal `plot_*` functions in `R/plot.R`:
+`plot_representative_assessment`, `plot_potential_kba`, and
+`plot_individual_kde`. These are Level 1 Pure functions (in-memory ggplot2,
+no I/O, no side effects). They are NOT exported — `render_*` functions will
+be restructured in Sprint 5 to use them instead of `track2KBA` base-R
+plots. No immediate Makefile impact.
+
