@@ -1,18 +1,21 @@
 # Issue #47: Update Makefile after bycatch_code renames
 
-`bycatch_code` renamed six public functions (current HEAD). The
-`bycatch_thesis/Makefile` must be updated to match.
+`bycatch_code` v0.9.0 renamed six public functions and restructured
+the pipeline. The `bycatch_thesis/Makefile` must be updated to match.
 
 ## Rename map
 
 ### 1. `bycatch::plot_potential_site` → `bycatch::render_potential_kba`
 
-**Recipe calls** (replace function name only):
+This step no longer computes KDE/KBA inline. A separate
+`create_potential_kba` step must generate the `.gpkg` first.
+
+**Recipe calls** (replace function name AND arguments):
 
 | Line | Current | Fixed |
 |------|---------|-------|
-| 121 | `bycatch::plot_potential_site(...)` | `bycatch::render_potential_kba(...)` |
-| 136 | `bycatch::plot_potential_site(...)` | `bycatch::render_potential_kba(...)` |
+| 121 | `bycatch::plot_potential_site(bycatch::get_domain_specific_options())` `--data-path data/processed/trips_geographic_points_guadalupe.csv` `--config-path config_trips_guadalupe.json` `--percentage-distribution 50` `--n-iterations 314` `--population-size 4390` `--smoothing-method scale_ARS` `--output-path $@` | `bycatch::render_potential_kba(bycatch::get_domain_specific_options())` `--gpkg-path <KBA-gpkg-for-guadalupe>` `--output-path $@` |
+| 136 | same pattern with `_all` data, `config_trips_all.json`, `--population-size 4437` | `bycatch::render_potential_kba(bycatch::get_domain_specific_options())` `--gpkg-path <KBA-gpkg-for-all>` `--output-path $@` |
 
 **Filenames** (rename target + all prerequisite references):
 
@@ -25,12 +28,16 @@
 
 ### 2. `bycatch::plot_representative_assess` → `bycatch::render_representative_assessment`
 
+This step no longer computes bootstrap/assessment inline. A separate
+`create_representative_assessment` step must generate the `.rds` cache
+first.
+
 **Recipe calls:**
 
 | Line | Current | Fixed |
 |------|---------|-------|
-| 149 | `bycatch::plot_representative_assess(...)` | `bycatch::render_representative_assessment(...)` |
-| 161 | `bycatch::plot_representative_assess(...)` | `bycatch::render_representative_assessment(...)` |
+| 149 | `bycatch::plot_representative_assess(bycatch::get_domain_specific_options())` `--data-path data/processed/trips_geographic_points_guadalupe.csv` `--config-path config_trips_guadalupe.json` `--percentage-distribution 50` `--n-iterations 314` `--smoothing-method scale_ARS` `--output-path $@` | `bycatch::render_representative_assessment(bycatch::get_domain_specific_options())` `--rds-path <processed-data-rds-for-guadalupe>` `--output-path $@` |
+| 161 | same pattern with `_all` data, `config_trips_all.json`, `--n-iterations 314` | `bycatch::render_representative_assessment(bycatch::get_domain_specific_options())` `--rds-path <processed-data-rds-for-all>` `--output-path $@` |
 
 **Filenames:**
 
@@ -43,13 +50,16 @@
 
 ### 3. `bycatch::plot_individual_kernels` → `bycatch::render_individual_kde`
 
+This step no longer computes KDE inline. A separate
+`create_individual_kde` step must generate the `.gpkg` first.
+
 **Recipe calls:**
 
 | Line | Current | Fixed |
 |------|---------|-------|
-| 173 | `bycatch::plot_individual_kernels(...)` | `bycatch::render_individual_kde(...)` |
-| 184 | `bycatch::plot_individual_kernels(...)` | `bycatch::render_individual_kde(...)` |
-| 195 | `bycatch::plot_individual_kernels(...)` | `bycatch::render_individual_kde(...)` |
+| 173 | `bycatch::plot_individual_kernels(bycatch::get_domain_specific_options())` `--data-path data/processed/trips_geographic_points_guadalupe.csv` `--config-path config_trips_guadalupe.json` `--percentage-distribution 50` `--smoothing-method scale_ARS` `--output-path $@` | `bycatch::render_individual_kde(bycatch::get_domain_specific_options())` `--gpkg-path <UD-gpkg-for-guadalupe>` `--output-path $@` |
+| 184 | same pattern with `_clarion` data, `config_trips_clarion.json` | `bycatch::render_individual_kde(bycatch::get_domain_specific_options())` `--gpkg-path <UD-gpkg-for-clarion>` `--output-path $@` |
+| 195 | same pattern with `_all` data, `config_trips_all.json` | `bycatch::render_individual_kde(bycatch::get_domain_specific_options())` `--gpkg-path <UD-gpkg-for-all>` `--output-path $@` |
 
 **Filenames:**
 
@@ -61,33 +71,61 @@
 
 ### 4. `bycatch::filter_data_between_dates` → `bycatch::create_filtered_gps_between_dates`
 
+Arguments unchanged.
+
 **Recipe calls:**
 
 | Line | Current | Fixed |
 |------|---------|-------|
-| 257 | `bycatch::filter_data_between_dates(...)` | `bycatch::create_filtered_gps_between_dates(...)` |
+| 257 | `bycatch::filter_data_between_dates(bycatch::get_domain_specific_options())` `--data-path data/raw/gps-albatros-guadalupe.csv` `--start 2025-01-01` `--end 2025-12-31` `--date-column-name date` `--output-path $@` | `bycatch::create_filtered_gps_between_dates(bycatch::get_domain_specific_options())` `--data-path data/raw/gps-albatros-guadalupe.csv` `--start 2025-01-01` `--end 2025-12-31` `--date-column-name date` `--output-path $@` |
 
 ---
 
 ### 5. `bycatch::write_trips` → `bycatch::create_trips`
 
+Arguments unchanged.
+
 **Recipe calls:**
 
 | Line | Current | Fixed |
 |------|---------|-------|
-| 291 | `bycatch::write_trips(...)` | `bycatch::create_trips(...)` |
-| 299 | `bycatch::write_trips(...)` | `bycatch::create_trips(...)` |
+| 291 | `bycatch::write_trips(bycatch::get_domain_specific_options())` `--data-path data/raw/gps-albatros-guadalupe.csv` `--config-path config_trips_guadalupe.json` `--output-path $@` | `bycatch::create_trips(bycatch::get_domain_specific_options())` `--data-path data/raw/gps-albatros-guadalupe.csv` `--config-path config_trips_guadalupe.json` `--output-path $@` |
+| 299 | same pattern with `_clarion` data, `config_trips_clarion.json` | `bycatch::create_trips(bycatch::get_domain_specific_options())` `--data-path data/raw/gps-albatros-clarion.csv` `--config-path config_trips_clarion.json` `--output-path $@` |
 
 ---
 
 ### 6. `bycatch::write_trips_summary` → `bycatch::create_trips_summary`
 
+Arguments unchanged.
+
 **Recipe calls:**
 
 | Line | Current | Fixed |
 |------|---------|-------|
-| 313 | `bycatch::write_trips_summary(...)` | `bycatch::create_trips_summary(...)` |
-| 321 | `bycatch::write_trips_summary(...)` | `bycatch::create_trips_summary(...)` |
+| 313 | `bycatch::write_trips_summary(bycatch::get_domain_specific_options())` `--data-path data/processed/trips_geographic_points_guadalupe.csv` `--config-path config_trips_guadalupe.json` `--output-path $@` | `bycatch::create_trips_summary(bycatch::get_domain_specific_options())` `--data-path data/processed/trips_geographic_points_guadalupe.csv` `--config-path config_trips_guadalupe.json` `--output-path $@` |
+| 321 | same pattern with `_clarion` data, `config_trips_clarion.json` | `bycatch::create_trips_summary(bycatch::get_domain_specific_options())` `--data-path data/processed/trips_geographic_points_clarion.csv` `--config-path config_trips_clarion.json` `--output-path $@` |
+
+## New Makefile rules needed
+
+The pipeline split means four new intermediate artifacts are needed:
+
+| Artifact | Created by | Options | Consumed by |
+|---|---|---|---|
+| `.rds` cache (per island) | `create_processed_data` | `--data-path`, `--config-path`, `--percentage-distribution`, `--smoothing-method`, `--n-iterations`, `--output-path` | `create_potential_kba`, `create_representative_assessment` |
+| `.gpkg` KBA polygons (per island) | `create_potential_kba` | `--rds-path`, `--config-path`, `--data-path`, `--percentage-distribution`, `--smoothing-method`, `--population-size`, `--output-path` | `render_potential_kba` |
+| `.gpkg` UD polygons (per island) | `create_individual_kde` | `--data-path`, `--config-path`, `--percentage-distribution`, `--smoothing-method`, `--output-path` | `render_individual_kde` |
+| `.csv` assessment detail (per island) | `create_representative_assessment` | `--rds-path`, `--output-path` | (not consumed by render) |
+
+These are not `bycatch::` calls currently present in the Makefile.
+They must be added as new targets and prerequisites.
+
+### Proposed intermediate file names
+
+| Island | `.rds` cache | `.gpkg` KBA | `.gpkg` UD | `.csv` assessment |
+|---|---|---|---|---|
+| Guadalupe | `data/processed/cache_guadalupe.rds` | `data/processed/kba_polygons_guadalupe.gpkg` | `data/processed/ud_polygons_guadalupe.gpkg` | `data/processed/assessment_detail_guadalupe.csv` |
+| Clarion | `data/processed/cache_clarion.rds` | `data/processed/kba_polygons_clarion.gpkg` | `data/processed/ud_polygons_clarion.gpkg` | `data/processed/assessment_detail_clarion.csv` |
+| All | `data/processed/cache_all.rds` | `data/processed/kba_polygons_all.gpkg` | `data/processed/ud_polygons_all.gpkg` | `data/processed/assessment_detail_all.csv` |
 
 ## Scope
 
@@ -96,35 +134,6 @@
 | `Rscript -e` function calls to rename (items 1–3) | 7 |
 | `Rscript -e` function calls to rename (items 4–6) | 5 |
 | Output filename / target name renames (items 1–3) | 7 |
-| Total | ~19 |
-
-## Upcoming Makefile impact
-
-### Sprint 5 — Render functions now read pre-computed artifacts
-
-`render_*` functions no longer run the R6 class pipeline. Instead,
-each reads a pre-computed artifact:
-
-| Function | Reads | Writes |
-|---|---|---|
-| `render_representative_assessment` | `.rds` cache (`rds-path`) | `.png` |
-| `render_potential_kba` | `.gpkg` KBA polygons (`gpkg-path`) | `.png` |
-| `render_individual_kde` | `.gpkg` UDPolygons (`gpkg-path`) | `.png` |
-
-The options list for all three now requires only `rds-path` or
-`gpkg-path` in addition to `output-path`. The `data-path` and
-`config-path` arguments are no longer needed for render calls.
-
-### (Removed — the `options` convention is permanent)
-
-All Level 2 functions (`create_*`, `render_*`) permanently use the
-`(options)` list pattern via `get_domain_specific_options()`. No
-signature cleanup sprint is planned.
-
-### Sprint 6 — Internal restructuring (no Makefile impact)
-
-Sprint 6 removed the R6 class `Track2KBA_Wrapper`, consolidated all
-`compute_*` functions into `R/compute.R`, and inlined `compute_cache`
-into `create_processed_data`. No exported function signatures changed.
-The Makefile does not need updating for Sprint 6.
+| New `create_*` targets to add (3 islands × ~4 functions) | ~12 |
+| Total | ~31 |
 
