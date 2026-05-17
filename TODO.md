@@ -100,12 +100,24 @@
 
 ## Upcoming Makefile impact
 
-After bycatch_code Phase 2 (write/render separation), `render_*`
-function signatures will change further — they will accept
-`--artifact-path` instead of `--data-path` and `--config-path`.
-This will require additional Makefile updates at that time.
+### Sprint 5 — Render functions now read pre-computed artifacts
 
-Sprint 7 will change `create_*` signatures from the current
-`options`-list convention to explicit parameters (`data_path`,
-`config_path`, `output_path`, etc.).
+`render_*` functions no longer run the R6 class pipeline. Instead,
+each reads a pre-computed artifact:
+
+| Function | Reads | Writes |
+|---|---|---|
+| `render_representative_assessment` | `.rds` cache (`rds-path`) | `.png` |
+| `render_potential_kba` | `.gpkg` KBA polygons (`gpkg-path`) | `.png` |
+| `render_individual_kde` | `.gpkg` UDPolygons (`gpkg-path`) | `.png` |
+
+The options list for all three now requires only `rds-path` or
+`gpkg-path` in addition to `output-path`. The `data-path` and
+`config-path` arguments are no longer needed for render calls.
+
+### (Removed — the `options` convention is permanent)
+
+All Level 2 functions (`create_*`, `render_*`) permanently use the
+`(options)` list pattern via `get_domain_specific_options()`. No
+signature cleanup sprint is planned.
 
