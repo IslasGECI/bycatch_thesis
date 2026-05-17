@@ -121,3 +121,10 @@ All Level 2 functions (`create_*`, `render_*`) permanently use the
 `(options)` list pattern via `get_domain_specific_options()`. No
 signature cleanup sprint is planned.
 
+### Sprint 6 — Internal restructuring (no Makefile impact)
+
+Sprint 6 removed the R6 class `Track2KBA_Wrapper`, consolidated all
+`compute_*` functions into `R/compute.R`, and inlined `compute_cache`
+into `create_processed_data`. No exported function signatures changed.
+The Makefile does not need updating for Sprint 6.
+
