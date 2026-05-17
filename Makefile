@@ -22,7 +22,7 @@ reports/first_paper.docx reports/first_paper.pdf: \
 	$(checkDirectories)
 	pandoc --include-in-header=options.sty --metadata-file=papers/first-paper/10_metadata.yaml --metadata=documentclass:article --table-of-contents --citeproc --output=$@ reports/first_paper.md
 
-reports/first_paper.md:
+reports/first_paper.md: data/processed/methods.json
 	$(checkDirectories)
 	cat papers/first-paper/1?_*.md > papers/first-paper/first_paper.mustache
 	mustache data/processed/methods.json papers/first-paper/first_paper.mustache > $@
