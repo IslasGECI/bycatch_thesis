@@ -47,7 +47,7 @@ reports/anteproyecto.docx reports/anteproyecto.pdf: \
 
 results_first_paper: \
 	data/processed/trips_summary_guadalupe.csv \
-	reports/figures/gps_albatross_50_percent_individuals_kernel_ars_guadalupe.png \
+	reports/figures/gps_albatross_50_percent_individual_kde_ars_guadalupe.png \
 	reports/figures/gps_albatross_50_percent_potential_site_ars_guadalupe.png \
 	reports/figures/gps_albatross_50_percent_representative_assess_ars_guadalupe.png \
 	reports/figures/gps_albatross_geographic_points_by_trip_guadalupe.png \
@@ -166,15 +166,22 @@ reports/figures/gps_albatross_50_percent_representative_assess_ars_all.png: \
 		--smoothing-method scale_ARS \
 		--output-path $@
 
-reports/figures/gps_albatross_50_percent_individuals_kernel_ars_guadalupe.png: \
+data/processed/ud_polygons_guadalupe.gpkg: \
 	data/processed/trips_geographic_points_guadalupe.csv \
 	config_trips_guadalupe.json
 	$(checkDirectories)
-	Rscript -e "bycatch::plot_individual_kernels(bycatch::get_domain_specific_options())" \
+	Rscript -e "bycatch::create_individual_kde(bycatch::get_domain_specific_options())" \
 		--data-path data/processed/trips_geographic_points_guadalupe.csv \
 		--config-path config_trips_guadalupe.json \
 		--percentage-distribution 50 \
 		--smoothing-method scale_ARS \
+		--output-path $@
+
+reports/figures/gps_albatross_50_percent_individual_kde_ars_guadalupe.png: \
+	data/processed/ud_polygons_guadalupe.gpkg
+	$(checkDirectories)
+	Rscript -e "bycatch::render_individual_kde(bycatch::get_domain_specific_options())" \
+		--gpkg-path data/processed/ud_polygons_guadalupe.gpkg \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_individuals_kernel_ars_clarion.png: \
@@ -288,7 +295,7 @@ reports/figures/gps_albatross_geographic_points_by_trip_all.png: \
 data/processed/trips_geographic_points_guadalupe.csv: \
 	data/raw/gps-albatros-guadalupe.csv
 	$(checkDirectories)
-	Rscript -e "bycatch::write_trips(bycatch::get_domain_specific_options())" \
+	Rscript -e "bycatch::create_trips(bycatch::get_domain_specific_options())" \
 		--data-path data/raw/gps-albatros-guadalupe.csv \
 		--config-path config_trips_guadalupe.json \
 		--output-path $@
