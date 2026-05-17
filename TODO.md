@@ -127,13 +127,29 @@ They must be added as new targets and prerequisites.
 | Clarion | `data/processed/cache_clarion.rds` | `data/processed/kba_polygons_clarion.gpkg` | `data/processed/ud_polygons_clarion.gpkg` | `data/processed/assessment_detail_clarion.csv` |
 | All | `data/processed/cache_all.rds` | `data/processed/kba_polygons_all.gpkg` | `data/processed/ud_polygons_all.gpkg` | `data/processed/assessment_detail_all.csv` |
 
+## Paper references affected
+
+The renamed PNGs are embedded in the paper markdown sources. These must
+be updated in sync with the Makefile filename renames.
+
+| File | Old path | New path |
+|------|----------|----------|
+| `papers/first-paper/15_results.md` | `...individuals_kernel_ars_guadalupe.png` | `...individual_kde_ars_guadalupe.png` |
+| `papers/first-paper/15_results.md` | `...potential_site_ars_guadalupe.png` | `...potential_kba_ars_guadalupe.png` |
+| `papers/first-paper/15_results.md` | `...representative_assess_ars_guadalupe.png` | `...representative_assessment_ars_guadalupe.png` |
+| `papers/first-paper/first_paper.mustache` | (same 3 paths, inherited from template) | (same renames) |
+| `papers/second-paper/25_results.md` | `...individuals_kernel_ars_all.png` | `...individual_kde_ars_all.png` |
+| `papers/second-paper/25_results.md` | `...potential_site_ars_all.png` | `...potential_kba_ars_all.png` |
+| `papers/second-paper/25_results.md` | `...representative_assess_ars_all.png` | `...representative_assessment_ars_all.png` |
+
 ## Scope
 
 | Change type | Count |
 |-------------|-------|
 | `Rscript -e` function calls to rename (items 1–3) | 7 |
 | `Rscript -e` function calls to rename (items 4–6) | 5 |
-| Output filename / target name renames (items 1–3) | 7 |
+| Makefile output filename / target name renames (items 1–3) | 7 |
+| Paper markdown image path renames (items 1–3) | 6 |
 | New `create_*` targets to add (3 islands × ~4 functions) | ~12 |
-| Total | ~31 |
+| Total | ~37 |
 
