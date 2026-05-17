@@ -142,6 +142,43 @@ be updated in sync with the Makefile filename renames.
 | `papers/second-paper/25_results.md` | `...potential_site_ars_all.png` | `...potential_kba_ars_all.png` |
 | `papers/second-paper/25_results.md` | `...representative_assess_ars_all.png` | `...representative_assessment_ars_all.png` |
 
+## Execution plan
+
+One PNG at a time. Each loop: Red → Green → commit.
+
+1. `make <png>` fails (Red)
+2. Implement minimum changes for that one PNG (Green)
+3. Commit
+
+The simplest PNG has the shortest dependency chain, so we start there
+and build up. PNGs are grouped by the `create_*` function they need:
+
+| Order | PNG | Old function | New `create_*` dep | `create_processed_data` needed? |
+|-------|-----|-------------|-------------------|-------------------------------|
+| 1 | `...individual_kde_ars_guadalupe.png` | `plot_individual_kernels` | `create_individual_kde` | No |
+| 2 | `...individual_kde_ars_clarion.png` | `plot_individual_kernels` | `create_individual_kde` | No |
+| 3 | `...individual_kde_ars_all.png` | `plot_individual_kernels` | `create_individual_kde` | No |
+| 4 | `...representative_assessment_ars_guadalupe.png` | `plot_representative_assess` | `create_representative_assessment` | Yes |
+| 5 | `...representative_assessment_ars_all.png` | `plot_representative_assess` | `create_representative_assessment` | Yes |
+| 6 | `...potential_kba_ars_guadalupe.png` | `plot_potential_site` | `create_potential_kba` | Yes |
+| 7 | `...potential_kba_ars_all.png` | `plot_potential_site` | `create_potential_kba` | Yes |
+
+### Loop 1: `...individual_kde_ars_guadalupe.png`
+
+Changes A–F in one shot for this single PNG:
+
+| Letter | Change | Files affected |
+|--------|--------|---------------|
+| A | Rename `write_trips` → `create_trips` (Guadalupe recipe only) | `Makefile` line 291 |
+| B | Add `ud_polygons_guadalupe.gpkg` target calling `create_individual_kde` | `Makefile` new rule |
+| C | Update PNG target prerequisite: `.csv` → `.gpkg` | `Makefile` line 169 |
+| D | Update PNG recipe: `render_individual_kde` with `--gpkg-path` | `Makefile` lines 173–178 |
+| E | Rename PNG filename: `individuals_kernel` → `individual_kde` | `Makefile` lines 50, 169 (target name + preref ref) |
+| F | Update paper image paths to match new PNG name | `papers/first-paper/15_results.md` (`.mustache` is auto-generated) |
+
+Subsequent loops follow the same pattern but may also need to add
+`create_processed_data` targets (when `cache_*.rds` is required).
+
 ## Scope
 
 | Change type | Count |
