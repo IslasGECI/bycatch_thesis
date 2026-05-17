@@ -10,3 +10,12 @@ services:
       BITBUCKET_PASSWORD: $BITBUCKET_PASSWORD
     volumes:
       - $PWD:/workdir
+    depends_on:
+      data:
+        condition: service_completed_successfully
+
+  data:
+    image: islasgeci/vessel_data:latest
+    volumes:
+      - ./data/external:/data_container
+    command: sh -c "mkdir --parents /data_container && cp --archive --verbose /data/. /data_container"
