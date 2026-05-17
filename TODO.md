@@ -153,15 +153,15 @@ One PNG at a time. Each loop: Red → Green → commit.
 The simplest PNG has the shortest dependency chain, so we start there
 and build up. PNGs are grouped by the `create_*` function they need:
 
-| Order | PNG | Old function | New `create_*` dep | `create_processed_data` needed? |
-|-------|-----|-------------|-------------------|-------------------------------|
-| 1 | `...individual_kde_ars_guadalupe.png` | `plot_individual_kernels` | `create_individual_kde` | No |
-| 2 | `...individual_kde_ars_clarion.png` | `plot_individual_kernels` | `create_individual_kde` | No |
-| 3 | `...individual_kde_ars_all.png` | `plot_individual_kernels` | `create_individual_kde` | No |
-| 4 | `...representative_assessment_ars_guadalupe.png` | `plot_representative_assess` | `create_representative_assessment` | Yes |
-| 5 | `...representative_assessment_ars_all.png` | `plot_representative_assess` | `create_representative_assessment` | Yes |
-| 6 | `...potential_kba_ars_guadalupe.png` | `plot_potential_site` | `create_potential_kba` | Yes |
-| 7 | `...potential_kba_ars_all.png` | `plot_potential_site` | `create_potential_kba` | Yes |
+| Order | PNG | Old function | New render | New create dep | Needs `create_processed_data`? |
+|-------|-----|-------------|-----------|---------------|-------------------------------|
+| 1 | `...individual_kde_ars_guadalupe.png` | `plot_individual_kernels` | `render_individual_kde` | `create_individual_kde` | No |
+| 2 | `...individual_kde_ars_clarion.png` | `plot_individual_kernels` | `render_individual_kde` | `create_individual_kde` | No |
+| 3 | `...individual_kde_ars_all.png` | `plot_individual_kernels` | `render_individual_kde` | `create_individual_kde` | No |
+| 4 | `...representative_assessment_ars_guadalupe.png` | `plot_representative_assess` | `render_representative_assessment` | `create_processed_data` | Yes |
+| 5 | `...representative_assessment_ars_all.png` | `plot_representative_assess` | `render_representative_assessment` | `create_processed_data` | Yes |
+| 6 | `...potential_kba_ars_guadalupe.png` | `plot_potential_site` | `render_potential_kba` | `create_processed_data` + `create_potential_kba` | Yes |
+| 7 | `...potential_kba_ars_all.png` | `plot_potential_site` | `render_potential_kba` | `create_processed_data` + `create_potential_kba` | Yes |
 
 ### Loop 1: `...individual_kde_ars_guadalupe.png`
 
@@ -170,23 +170,102 @@ Changes A–F in one shot for this single PNG:
 | Letter | Change | Files affected |
 |--------|--------|---------------|
 | A | Rename `write_trips` → `create_trips` (Guadalupe recipe only) | `Makefile` line 291 |
-| B | Add `ud_polygons_guadalupe.gpkg` target calling `create_individual_kde` | `Makefile` new rule |
-| C | Update PNG target prerequisite: `.csv` → `.gpkg` | `Makefile` line 169 |
-| D | Update PNG recipe: `render_individual_kde` with `--gpkg-path` | `Makefile` lines 173–178 |
-| E | Rename PNG filename: `individuals_kernel` → `individual_kde` | `Makefile` lines 50, 169 (target name + preref ref) |
-| F | Update paper image paths to match new PNG name | `papers/first-paper/15_results.md` (`.mustache` is auto-generated) |
+| B | Add `ud_polygons_guadalupe.gpkg` target calling `create_individual_kde` with `--data-path`, `--config-path`, `--percentage-distribution 50`, `--smoothing-method scale_ARS`, `--output-path $@` | `Makefile` new rule |
+| C | Update PNG target prerequisite: `trips_geographic_points_guadalupe.csv` → `ud_polygons_guadalupe.gpkg` | `Makefile` line 169 |
+| D | Update PNG recipe: `render_individual_kde` with `--gpkg-path` instead of `plot_individual_kernels` with `--data-path`, `--config-path`, `--percentage-distribution`, `--smoothing-method` | `Makefile` lines 173–178 |
+| E | Rename PNG filename: `individuals_kernel` → `individual_kde` | `Makefile` lines 50 (preref in results_first_paper), 169 (target name) |
+| F | Update paper image path in `15_results.md` | `papers/first-paper/15_results.md` |
 
-Subsequent loops follow the same pattern but may also need to add
-`create_processed_data` targets (when `cache_*.rds` is required).
+### Loop 2: `...individual_kde_ars_clarion.png`
+
+This PNG is not referenced in any paper markdown file. Remove the
+Makefile target and its prerequisite reference entirely instead of
+renaming.
+
+| Letter | Change | Files affected |
+|--------|--------|---------------|
+| A | Rename `write_trips` → `create_trips` (Clarion recipe) | `Makefile` line 299 |
+| B | *(no new create target needed — target is being removed)* | — |
+| C | *(not applicable — target is being removed)* | — |
+| D | *(not applicable — target is being removed)* | — |
+| E | Remove `results_clarion` reference and entire PNG target (lines 67–70 and 180–189) | `Makefile` lines 67–70 (preref in results_clarion), 180–189 (target) |
+| F | No paper update needed | — |
+
+After this loop `results_clarion` no longer references any
+`individual_kde` PNG. It still lists `trips_summary_clarion.csv` and
+`...geographic_points_raw_clarion.png` — those are unrelated to the
+rename plan.
+
+### Loop 3: `...individual_kde_ars_all.png`
+
+| Letter | Change | Files affected |
+|--------|--------|---------------|
+| A | No `write_trips` to fix (all trips come from guadalupe + clarion CSVs) | — |
+| B | Add `ud_polygons_all.gpkg` target calling `create_individual_kde` (same flags, all data/config) | `Makefile` new rule |
+| C | Update PNG target prerequisite: `.csv` → `.gpkg` | `Makefile` line 191 |
+| D | Update PNG recipe: `render_individual_kde` with `--gpkg-path` | `Makefile` lines 195–200 |
+| E | Rename PNG filename: `individuals_kernel` → `individual_kde` | `Makefile` lines 60 (preref in results_second_paper), 191 (target name) |
+| F | Update paper image path | `papers/second-paper/25_results.md` |
+
+### Loop 4: `...representative_assessment_ars_guadalupe.png`
+
+This is the first loop that needs `create_processed_data` to produce
+the `.rds` cache.
+
+| Letter | Change | Files affected |
+|--------|--------|---------------|
+| A | Rename `write_trips_summary` → `create_trips_summary` (Guadalupe) | `Makefile` line 313 |
+| B | Add `cache_guadalupe.rds` target calling `create_processed_data` with `--data-path`, `--config-path`, `--percentage-distribution 50`, `--smoothing-method scale_ARS`, `--n-iterations 314`, `--output-path $@` | `Makefile` new rule |
+| C | Update PNG target prerequisite: `.csv` + config → `cache_guadalupe.rds` | `Makefile` lines 145–147 |
+| D | Update PNG recipe: `render_representative_assessment` with `--rds-path` instead of `plot_representative_assess` with all old flags | `Makefile` lines 149–155 |
+| E | Rename PNG filename: `representative_assess` → `representative_assessment` | `Makefile` lines 52 (preref), 145 (target name) |
+| F | Update paper image path | `papers/first-paper/15_results.md` |
+
+### Loop 5: `...representative_assessment_ars_all.png`
+
+| Letter | Change | Files affected |
+|--------|--------|---------------|
+| A | Rename `write_trips_summary` → `create_trips_summary` (Clarion) only if not yet done | `Makefile` line 321 |
+| B | Add `cache_all.rds` target calling `create_processed_data` (all data/config, `--n-iterations 314`) | `Makefile` new rule |
+| C | Update PNG target prerequisite: `.csv` + config → `cache_all.rds` | `Makefile` lines 157–159 |
+| D | Update PNG recipe: `render_representative_assessment` with `--rds-path` | `Makefile` lines 161–167 |
+| E | Rename PNG filename: `representative_assess` → `representative_assessment` | `Makefile` lines 62 (preref), 157 (target name) |
+| F | Update paper image path | `papers/second-paper/25_results.md` |
+
+### Loop 6: `...potential_kba_ars_guadalupe.png`
+
+This loop needs both `create_processed_data` (already added in Loop 4)
+AND `create_potential_kba`.
+
+| Letter | Change | Files affected |
+|--------|--------|---------------|
+| A | Rename `write_trips_summary` already done in Loop 4 | — |
+| B | Add `kba_polygons_guadalupe.gpkg` target calling `create_potential_kba` with `--rds-path cache_guadalupe.rds`, `--data-path`, `--config-path`, `--percentage-distribution 50`, `--smoothing-method scale_ARS`, `--population-size 4390`, `--output-path $@` | `Makefile` new rule |
+| C | Update PNG target prerequisite: `.csv` + config → `kba_polygons_guadalupe.gpkg` | `Makefile` lines 117–119 |
+| D | Update PNG recipe: `render_potential_kba` with `--gpkg-path` instead of `plot_potential_site` with all old flags | `Makefile` lines 121–128 |
+| E | Rename PNG filename: `potential_site` → `potential_kba` | `Makefile` lines 51 (preref), 117 (target name) |
+| F | Update paper image path | `papers/first-paper/15_results.md` |
+
+### Loop 7: `...potential_kba_ars_all.png`
+
+| Letter | Change | Files affected |
+|--------|--------|---------------|
+| A | No additional `write_*` renames needed | — |
+| B | Add `kba_polygons_all.gpkg` target calling `create_potential_kba` (all data/config, `--population-size 4437`) | `Makefile` new rule |
+| C | Update PNG target prerequisite: `.csv` + config → `kba_polygons_all.gpkg` | `Makefile` lines 132–134 |
+| D | Update PNG recipe: `render_potential_kba` with `--gpkg-path` | `Makefile` lines 136–143 |
+| E | Rename PNG filename: `potential_site` → `potential_kba` | `Makefile` lines 61 (preref), 132 (target name) |
+| F | Update paper image path | `papers/second-paper/25_results.md` |
 
 ## Scope
 
 | Change type | Count |
 |-------------|-------|
-| `Rscript -e` function calls to rename (items 1–3) | 7 |
+| `Rscript -e` function calls to rename (items 1–3) | 6 |
 | `Rscript -e` function calls to rename (items 4–6) | 5 |
-| Makefile output filename / target name renames (items 1–3) | 7 |
+| Makefile output filename / target name renames (items 1–3) | 6 |
 | Paper markdown image path renames (items 1–3) | 6 |
-| New `create_*` targets to add (3 islands × ~4 functions) | ~12 |
-| Total | ~37 |
+| Makefile targets to remove (clarion individual kde, orphaned by paper-less loop) | 1 |
+| New `create_*` targets to add (2 islands × 3 functions) | ~6 |
+| Total | ~30 |
 
