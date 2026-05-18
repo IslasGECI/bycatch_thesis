@@ -59,7 +59,7 @@ results_second_paper: \
 	data/processed/trips_summary_guadalupe.csv \
 	reports/figures/gps_albatross_50_percent_individual_kde_ars_all.png \
 	reports/figures/gps_albatross_50_percent_potential_site_ars_all.png \
-	reports/figures/gps_albatross_50_percent_representative_assess_ars_all.png \
+	reports/figures/gps_albatross_50_percent_representative_assessment_ars_all.png \
 	reports/figures/gps_albatross_geographic_points_by_trip_all.png \
 	reports/figures/mexico_eez_bounding_box_zoom_in.png \
 	reports/figures/mexico_eez_bounding_box_zoom_out.png
@@ -160,16 +160,23 @@ reports/figures/gps_albatross_50_percent_representative_assessment_ars_guadalupe
 		--rds-path data/processed/cache_guadalupe.rds \
 		--output-path $@
 
-reports/figures/gps_albatross_50_percent_representative_assess_ars_all.png: \
+data/processed/cache_all.rds: \
 	data/processed/trips_geographic_points_all.csv \
 	config_trips_all.json
 	$(checkDirectories)
-	Rscript -e "bycatch::plot_representative_assess(bycatch::get_domain_specific_options())" \
+	Rscript -e "bycatch::create_processed_data(bycatch::get_domain_specific_options())" \
 		--data-path data/processed/trips_geographic_points_all.csv \
 		--config-path config_trips_all.json \
 		--percentage-distribution 50 \
-		--n-iterations 314 \
 		--smoothing-method scale_ARS \
+		--n-iterations 314 \
+		--output-path $@
+
+reports/figures/gps_albatross_50_percent_representative_assessment_ars_all.png: \
+	data/processed/cache_all.rds
+	$(checkDirectories)
+	Rscript -e "bycatch::render_representative_assessment(bycatch::get_domain_specific_options())" \
+		--rds-path data/processed/cache_all.rds \
 		--output-path $@
 
 data/processed/ud_polygons_guadalupe.gpkg: \
@@ -327,7 +334,7 @@ data/processed/trips_summary_guadalupe.csv: \
 data/processed/trips_summary_clarion.csv: \
 	data/processed/trips_geographic_points_clarion.csv
 	$(checkDirectories)
-	Rscript -e "bycatch::write_trips_summary(bycatch::get_domain_specific_options())" \
+	Rscript -e "bycatch::create_trips_summary(bycatch::get_domain_specific_options())" \
 		--data-path data/processed/trips_geographic_points_clarion.csv \
 		--config-path config_trips_clarion.json \
 		--output-path $@
