@@ -58,7 +58,7 @@ results_second_paper: \
 	data/processed/trips_summary_clarion.csv \
 	data/processed/trips_summary_guadalupe.csv \
 	reports/figures/gps_albatross_50_percent_individual_kde_ars_all.png \
-	reports/figures/gps_albatross_50_percent_potential_site_ars_all.png \
+	reports/figures/gps_albatross_50_percent_potential_kba_ars_all.png \
 	reports/figures/gps_albatross_50_percent_representative_assessment_ars_all.png \
 	reports/figures/gps_albatross_geographic_points_by_trip_all.png \
 	reports/figures/mexico_eez_bounding_box_zoom_in.png \
@@ -131,6 +131,28 @@ reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png: \
 	$(checkDirectories)
 	Rscript -e "bycatch::render_potential_kba(bycatch::get_domain_specific_options())" \
 		--gpkg-path data/processed/kba_polygons_guadalupe.gpkg \
+		--output-path $@
+
+# 4437 = 47 individuals in Clarion Island (2023) + 4390 individuals in Guadalupe Island
+
+data/processed/kba_polygons_all.gpkg: \
+	data/processed/cache_all.rds \
+	config_trips_all.json
+	$(checkDirectories)
+	Rscript -e "bycatch::create_potential_kba(bycatch::get_domain_specific_options())" \
+		--rds-path data/processed/cache_all.rds \
+		--config-path config_trips_all.json \
+		--data-path data/processed/trips_geographic_points_all.csv \
+		--percentage-distribution 50 \
+		--smoothing-method scale_ARS \
+		--population-size 4437 \
+		--output-path $@
+
+reports/figures/gps_albatross_50_percent_potential_kba_ars_all.png: \
+	data/processed/kba_polygons_all.gpkg
+	$(checkDirectories)
+	Rscript -e "bycatch::render_potential_kba(bycatch::get_domain_specific_options())" \
+		--gpkg-path data/processed/kba_polygons_all.gpkg \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_representative_assessment_ars_guadalupe.png: \
