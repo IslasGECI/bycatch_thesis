@@ -66,7 +66,6 @@ results_second_paper: \
 
 results_clarion: \
 	data/processed/trips_summary_clarion.csv \
-	reports/figures/gps_albatross_50_percent_individuals_kernel_ars_clarion.png \
 	reports/figures/gps_albatross_geographic_points_raw_clarion.png
 
 maps: \
@@ -184,17 +183,6 @@ reports/figures/gps_albatross_50_percent_individual_kde_ars_guadalupe.png: \
 		--gpkg-path data/processed/ud_polygons_guadalupe.gpkg \
 		--output-path $@
 
-reports/figures/gps_albatross_50_percent_individuals_kernel_ars_clarion.png: \
-	data/processed/trips_geographic_points_clarion.csv \
-	config_trips_clarion.json
-	$(checkDirectories)
-	Rscript -e "bycatch::plot_individual_kernels(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/trips_geographic_points_clarion.csv \
-		--config-path config_trips_clarion.json \
-		--percentage-distribution 50 \
-		--smoothing-method scale_ARS \
-		--output-path $@
-
 reports/figures/gps_albatross_50_percent_individuals_kernel_ars_all.png: \
 	data/processed/trips_geographic_points_all.csv \
 	config_trips_all.json
@@ -303,7 +291,7 @@ data/processed/trips_geographic_points_guadalupe.csv: \
 data/processed/trips_geographic_points_clarion.csv: \
 	data/raw/gps-albatros-clarion.csv
 	$(checkDirectories)
-	Rscript -e "bycatch::write_trips(bycatch::get_domain_specific_options())" \
+	Rscript -e "bycatch::create_trips(bycatch::get_domain_specific_options())" \
 		--data-path data/raw/gps-albatros-clarion.csv \
 		--config-path config_trips_clarion.json \
 		--output-path $@
