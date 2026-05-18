@@ -22,9 +22,11 @@ reports/first_paper.docx reports/first_paper.pdf: \
 	$(checkDirectories)
 	pandoc --include-in-header=options.sty --metadata-file=papers/first-paper/10_metadata.yaml --metadata=documentclass:article --table-of-contents --citeproc --output=$@ reports/first_paper.md
 
-reports/first_paper.md: data/processed/methods.json
+first_paper_sources := $(wildcard papers/first-paper/1?_*.md)
+
+reports/first_paper.md: data/processed/methods.json $(first_paper_sources)
 	$(checkDirectories)
-	cat papers/first-paper/1?_*.md > papers/first-paper/first_paper.mustache
+	cat $(first_paper_sources) > papers/first-paper/first_paper.mustache
 	mustache data/processed/methods.json papers/first-paper/first_paper.mustache > $@
 
 
@@ -35,9 +37,11 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	$(checkDirectories)
 	pandoc --include-in-header=options.sty --metadata-file=papers/second-paper/20_metadata.yaml --metadata=documentclass:article --table-of-contents --citeproc --output=$@ reports/second_paper.md
 
-reports/second_paper.md:
+second_paper_sources := $(wildcard papers/second-paper/2?_*.md)
+
+reports/second_paper.md: $(second_paper_sources)
 	$(checkDirectories)
-	cat papers/second-paper/2?_*.md > $@
+	cat $(second_paper_sources) > $@
 
 reports/anteproyecto.docx reports/anteproyecto.pdf: \
 	papers/proposal/00_metadata.yaml \
@@ -51,7 +55,9 @@ results_first_paper: \
 	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png \
 	reports/figures/gps_albatross_50_percent_representative_assessment_ars_guadalupe.png \
 	reports/figures/gps_albatross_geographic_points_by_trip_guadalupe.png \
-	reports/figures/gps_albatross_geographic_points_raw_guadalupe.png
+	reports/figures/gps_albatross_geographic_points_raw_guadalupe.png \
+	reports/figures/mexico_eez_bounding_box_zoom_in.png \
+	reports/figures/mexico_eez_bounding_box_zoom_out.png
 
 results_second_paper: \
 	data/processed/trips_summary_all.csv \
