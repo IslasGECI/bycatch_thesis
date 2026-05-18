@@ -23,7 +23,14 @@ make articles                # Build all articles
 make maps                    # Build Mexico map figures only
 make clean                   # Remove all generated files
 make format                  # Style R code with styler
-shellspec                    # Run shell tests (ShellSpec)
+
+# Build artifacts incrementally, one PNG at a time:
+make reports/figures/gps_albatross_50_percent_individual_kde_ars_guadalupe.png
+make reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png
+make reports/figures/gps_albatross_50_percent_representative_assessment_ars_guadalupe.png
+
+# Verify bycatch functions exist in installed package:
+Rscript -e "library(bycatch); exists('create_individual_kde', where='package:bycatch', mode='function')"
 ```
 
 ---
@@ -41,6 +48,19 @@ shellspec                    # Run shell tests (ShellSpec)
 ### 3. Traceability
 - **analyses.json**: The authoritative map of data-script-report relationships.
 - **Makefile**: Defines the specific rules for transforming data into results.
+
+### 4. Pipeline Pattern (bycatch v0.9.0+)
+The bycatch package splits computation and visualization into two phases:
+- `create_*()`: Performs computation, writes intermediate artifact to `data/processed/` (`.rds`, `.gpkg`, `.csv`).
+- `render_*()`: Reads intermediate artifact, produces PNG in `reports/figures/`.
+
+Makefile targets follow the same split: an intermediate artifact target (e.g. `data/processed/ud_polygons_guadalupe.gpkg`) feeds into the PNG target (`reports/figures/gps_albatross_50_percent_individual_kde_ars_guadalupe.png`).
+
+### 5. Make Dependency Gotchas
+- **`.PHONY` targets without recipes**: Make will not cascade to their prerequisites unless a recipe (even `@true`) exists. Always verify that group targets (`results_first_paper`, `results_second_paper`, etc.) have a recipe when listed in `.PHONY`.
+- **Source file dependencies**: Rules that concatenate glob patterns (e.g. `cat papers/first-paper/1?_*.md`) must list the actual files as prerequisites using `$(wildcard ...)`. Otherwise Make won't detect edits to source files.
+- **Intermediate artifact prerequisites**: PNG render targets depend on intermediate `.gpkg` or `.rds` files, not on the raw CSV data. The dependency chain is: raw data → `create_*()` → intermediate → `render_*()` → PNG.
+- **Option flag availability**: The `get_domain_specific_options()` parser defines a fixed set of flags. As of bycatch v0.9.1 it includes `--gpkg-path` and `--rds-path` (added for render functions). Earlier versions do not.
 
 ---
 

@@ -1,50 +1,66 @@
 # Bycatch risk assessment of the Laysan albatross in the Mexican Pacific
 
-## Overview
+## What it does
 
-This repository hosts the code and analytical workflows supporting a doctoral thesis on seabird–fishery interactions in the Mexican Pacific.
-The project aims to quantify bycatch risk by integrating seabird tracking data, fisheries data, and spatial analysis.
+This project analyzes how the foraging areas of Laysan albatrosses overlap with commercial fishing zones in the Mexican Pacific. It produces maps, risk estimates, and scientific manuscripts as PDFs and figures.
 
-Bycatch is a global conservation issue: approximately 25% of total fisheries catch is incidental, and albatrosses are highly vulnerable to longline and trawl fisheries.
-Despite high fishing activity, significant information gaps remain in the Mexican Pacific.
+## How to use it
 
-## Research question
+The main outputs are two scientific articles:
 
-What is the bycatch risk of the Laysan albatross associated with commercial fishing in the Mexican Pacific?
+1. **First paper** — identifies key seabird areas (KBAs) and evaluates their coverage by marine protected areas
+2. **Second paper** — quantifies spatial overlap between albatross space use and fishing activity
 
-**Hypothesis:**
-Laysan albatross foraging areas overlap with fishing zones, increasing bycatch risk.
+To generate the first article:
 
-## Project structure
+```bash
+make reports/first_paper.pdf
+```
 
-The project is organized into three analytical components:
+To generate the second article:
 
-* **Chapter I:** Identify key seabird areas and evaluate protection under MPAs
-* **Chapter II:** Quantify spatial overlap with fisheries (potential risk)
-* **Chapter III:** Identify behavioral interactions (effective risk)
+```bash
+make reports/second_paper.pdf
+```
 
-## Data
+To generate all figures and articles:
 
-* Seabird GPS tracking data
-* Vessel Monitoring System (VMS) data (CONAPESCA)
-* AIS data (Global Fishing Watch)
+```bash
+make articles
+```
 
-## Methods
+To build only the Mexico reference maps:
 
-* Kernel Density Estimation (utilization distributions)
-* Spatial overlap metrics
-* Behavioral classification (foraging vs transit)
-* Fishing activity inference from vessel trajectories
+```bash
+make maps
+```
 
-## Workflow
+## Before you start
 
-1. Process tracking and vessel data
-2. Estimate seabird space use
-3. Quantify spatial overlap
-4. Identify interaction events and risk
+You need access credentials for the data sources:
 
-## Outputs
+- **BITBUCKET_USERNAME** and **BITBUCKET_PASSWORD** — for downloading seabird GPS tracking data
 
-* Maps of key seabird areas
-* Overlap and risk estimates
-* Interaction hotspots
+## Run the project
+
+**With Docker (recommended):**
+
+```bash
+docker-compose run --rm islasgeci
+```
+
+Inside the container, run any `make` command.
+
+**Without Docker:**
+
+Install R and the required packages from `Dockerfile`, then run:
+
+```bash
+make articles
+```
+
+## Coming soon
+
+- Bycatch risk maps from vessel monitoring system (VMS) data
+- Interaction hotspot identification from AIS vessel trajectories
+- Behavioral classification of foraging versus transit events
