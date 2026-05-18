@@ -57,7 +57,7 @@ results_second_paper: \
 	data/processed/trips_summary_all.csv \
 	data/processed/trips_summary_clarion.csv \
 	data/processed/trips_summary_guadalupe.csv \
-	reports/figures/gps_albatross_50_percent_individuals_kernel_ars_all.png \
+	reports/figures/gps_albatross_50_percent_individual_kde_ars_all.png \
 	reports/figures/gps_albatross_50_percent_potential_site_ars_all.png \
 	reports/figures/gps_albatross_50_percent_representative_assess_ars_all.png \
 	reports/figures/gps_albatross_geographic_points_by_trip_all.png \
@@ -183,15 +183,22 @@ reports/figures/gps_albatross_50_percent_individual_kde_ars_guadalupe.png: \
 		--gpkg-path data/processed/ud_polygons_guadalupe.gpkg \
 		--output-path $@
 
-reports/figures/gps_albatross_50_percent_individuals_kernel_ars_all.png: \
+data/processed/ud_polygons_all.gpkg: \
 	data/processed/trips_geographic_points_all.csv \
 	config_trips_all.json
 	$(checkDirectories)
-	Rscript -e "bycatch::plot_individual_kernels(bycatch::get_domain_specific_options())" \
+	Rscript -e "bycatch::create_individual_kde(bycatch::get_domain_specific_options())" \
 		--data-path data/processed/trips_geographic_points_all.csv \
 		--config-path config_trips_all.json \
 		--percentage-distribution 50 \
 		--smoothing-method scale_ARS \
+		--output-path $@
+
+reports/figures/gps_albatross_50_percent_individual_kde_ars_all.png: \
+	data/processed/ud_polygons_all.gpkg
+	$(checkDirectories)
+	Rscript -e "bycatch::render_individual_kde(bycatch::get_domain_specific_options())" \
+		--gpkg-path data/processed/ud_polygons_all.gpkg \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_kernel_density_guadalupe.png: \
