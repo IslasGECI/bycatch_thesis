@@ -48,7 +48,7 @@ reports/anteproyecto.docx reports/anteproyecto.pdf: \
 results_first_paper: \
 	data/processed/trips_summary_guadalupe.csv \
 	reports/figures/gps_albatross_50_percent_individual_kde_ars_guadalupe.png \
-	reports/figures/gps_albatross_50_percent_potential_site_ars_guadalupe.png \
+	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png \
 	reports/figures/gps_albatross_50_percent_representative_assessment_ars_guadalupe.png \
 	reports/figures/gps_albatross_geographic_points_by_trip_guadalupe.png \
 	reports/figures/gps_albatross_geographic_points_raw_guadalupe.png
@@ -113,44 +113,24 @@ reports/figures/mexico_eez_bounding_box_zoom_out.png: \
 
 # 4390 = 645*2 pairs in the main island + 1550*2 pairs in the islets (https://doi.org/10.5281/zenodo.18343678)
 
-reports/figures/gps_albatross_50_percent_potential_site_ars_guadalupe.png: \
-	data/processed/trips_geographic_points_guadalupe.csv \
+data/processed/kba_polygons_guadalupe.gpkg: \
+	data/processed/cache_guadalupe.rds \
 	config_trips_guadalupe.json
 	$(checkDirectories)
-	Rscript -e "bycatch::plot_potential_site(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/trips_geographic_points_guadalupe.csv \
+	Rscript -e "bycatch::create_potential_kba(bycatch::get_domain_specific_options())" \
+		--rds-path data/processed/cache_guadalupe.rds \
 		--config-path config_trips_guadalupe.json \
+		--data-path data/processed/trips_geographic_points_guadalupe.csv \
 		--percentage-distribution 50 \
-		--n-iterations 314 \
+		--smoothing-method scale_ARS \
 		--population-size 4390 \
-		--smoothing-method scale_ARS \
 		--output-path $@
 
-# 4437 = 47 individuals in Clarion Island (2023) + 4390 individuals in Guadalupe Island
-
-reports/figures/gps_albatross_50_percent_potential_site_ars_all.png: \
-	data/processed/trips_geographic_points_all.csv \
-	config_trips_all.json
+reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png: \
+	data/processed/kba_polygons_guadalupe.gpkg
 	$(checkDirectories)
-	Rscript -e "bycatch::plot_potential_site(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/trips_geographic_points_all.csv \
-		--config-path config_trips_all.json \
-		--percentage-distribution 50 \
-		--n-iterations 314 \
-		--population-size 4437 \
-		--smoothing-method scale_ARS \
-		--output-path $@
-
-data/processed/cache_guadalupe.rds: \
-	data/processed/trips_geographic_points_guadalupe.csv \
-	config_trips_guadalupe.json
-	$(checkDirectories)
-	Rscript -e "bycatch::create_processed_data(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/trips_geographic_points_guadalupe.csv \
-		--config-path config_trips_guadalupe.json \
-		--percentage-distribution 50 \
-		--smoothing-method scale_ARS \
-		--n-iterations 314 \
+	Rscript -e "bycatch::render_potential_kba(bycatch::get_domain_specific_options())" \
+		--gpkg-path data/processed/kba_polygons_guadalupe.gpkg \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_representative_assessment_ars_guadalupe.png: \
