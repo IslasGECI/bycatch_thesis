@@ -45,6 +45,7 @@ check_spelling() {
     # Procesar cada archivo
     for file in $files; do
         if [[ -f "$file" ]]; then
+            echo "   Checking: $file"
             # Usar aspell en modo markdown para verificar
             local misspellings
             local wordlist=".github/config/.wordlist-${lang}.txt"
@@ -81,19 +82,19 @@ main() {
 
     # Verificar español (0?_*.md)
     echo "─────────────────────────────────────────"
-    check_spelling "es" "0?_*.md" "Spanish"
+    check_spelling "es" "papers/proposal/0?_*.md" "Spanish"
     echo "─────────────────────────────────────────"
     echo ""
 
     # Verificar inglés Paper 1 (1?_*.md)
     echo "─────────────────────────────────────────"
-    check_spelling "en" "1?_*.md" "English (Paper 1)"
+    check_spelling "en" "papers/first-paper/1?_*.md" "English (Paper 1)"
     echo "─────────────────────────────────────────"
     echo ""
 
     # Verificar inglés Paper 2 (2?_*.md)
     echo "─────────────────────────────────────────"
-    check_spelling "en" "2?_*.md" "English (Paper 2)"
+    check_spelling "en" "papers/second-paper/2?_*.md" "English (Paper 2)"
     echo "─────────────────────────────────────────"
     echo ""
 

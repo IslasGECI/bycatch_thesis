@@ -17,7 +17,7 @@
 # ==========================================
 
 # Obtener el patrón de archivos (por defecto: Paper 1)
-PATTERN="${1:-1?_*.md}"
+PATTERN="${1:-papers/first-paper/1?_*.md}"
 
 # Rastrear si hay errores
 HAS_ERRORS=0
