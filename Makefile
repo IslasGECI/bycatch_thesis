@@ -168,6 +168,18 @@ reports/figures/gps_albatross_50_percent_representative_assessment_ars_guadalupe
 		--rds-path data/processed/cache_guadalupe.rds \
 		--output-path $@
 
+data/processed/cache_guadalupe.rds: \
+	data/processed/trips_geographic_points_guadalupe.csv \
+	config_trips_guadalupe.json
+	$(checkDirectories)
+	Rscript -e "bycatch::create_processed_data(bycatch::get_domain_specific_options())" \
+		--data-path data/processed/trips_geographic_points_guadalupe.csv \
+		--config-path config_trips_guadalupe.json \
+		--percentage-distribution 50 \
+		--smoothing-method scale_ARS \
+		--n-iterations 314 \
+		--output-path $@
+
 data/processed/cache_all.rds: \
 	data/processed/trips_geographic_points_all.csv \
 	config_trips_all.json
