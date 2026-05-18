@@ -7,13 +7,14 @@
 # Descripción (Qué / Cómo): Ejecuta verificación de ortografía aspell
 #   para archivos de manuscrito español e inglés usando la configuración
 #   y diccionario del proyecto. Reporta errores ortográficos encontrados.
-# Entradas: Archivos markdown del proyecto, configuración spellcheck.yml,
-#   diccionario personalizado .wordlist-es.txt o .wordlist-en.txt
+# Entradas: Dos argumentos obligatorios:
+#   $1: patrón glob (ej. "papers/first-paper/1?_*.md")
+#   $2: idioma — "es" para español o "en" para inglés
 # Salidas: Mensajes de error a stdout; código de salida 0 si pasa, 1 si falla
-# Dependencias: aspell, python3 (pyspelling)
+# Dependencias: aspell, bash
 # Notas:
 #   - Requiere estar en el directorio raíz del proyecto
-#   - Usa configuración en .github/config/.spellcheck.yml
+#   - Uso: check_spelling.sh '<glob_pattern>' '<es|en>'
 #   - Diccionario personalizado en .github/config/.wordlist-es.txt o .wordlist-en.txt
 # ==========================================
 
@@ -80,21 +81,37 @@ main() {
     echo "============================================"
     echo ""
 
-    # Verificar español (0?_*.md)
-    echo "─────────────────────────────────────────"
-    check_spelling "es" "papers/proposal/0?_*.md" "Spanish"
-    echo "─────────────────────────────────────────"
-    echo ""
+    # Validar argumentos
+    if [[ $# -lt 2 ]]; then
+        echo "❌ Error: Se requieren dos argumentos."
+        echo "   Uso: $0 '<glob_pattern>' '<language>'"
+        echo "   language: 'es' para español, 'en' para inglés"
+        echo "   Ejemplo: $0 'papers/first-paper/1?_*.md' 'en'"
+        HAS_ERRORS=1
+        echo ""
+        echo "❌ Some checks failed"
+        return 1
+    fi
 
-    # Verificar inglés Paper 1 (1?_*.md)
-    echo "─────────────────────────────────────────"
-    check_spelling "en" "papers/first-paper/1?_*.md" "English (Paper 1)"
-    echo "─────────────────────────────────────────"
-    echo ""
+    local pattern="$1"
+    local lang="$2"
+    local lang_name=""
 
-    # Verificar inglés Paper 2 (2?_*.md)
+    case "$lang" in
+        es) lang_name="Spanish" ;;
+        en) lang_name="English" ;;
+        *)
+            echo "❌ Error: Idioma no soportado: '$lang'"
+            echo "   Use 'es' para español o 'en' para inglés"
+            HAS_ERRORS=1
+            echo ""
+            echo "❌ Some checks failed"
+            return 1
+            ;;
+    esac
+
     echo "─────────────────────────────────────────"
-    check_spelling "en" "papers/second-paper/2?_*.md" "English (Paper 2)"
+    check_spelling "$lang" "$pattern" "$lang_name"
     echo "─────────────────────────────────────────"
     echo ""
 
@@ -102,7 +119,7 @@ main() {
         echo "✅ All spelling checks passed!"
         return 0
     else
-        echo "❌ Some spelling checks failed"
+        echo "❌ Some checks failed"
         return 1
     fi
 }

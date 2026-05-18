@@ -7,17 +7,24 @@
 # Descripción (Qué / Cómo): Valida que cada línea termine con
 #   puntuación adecuada y que todas las oraciones sean ≤25 palabras.
 #   Itera sobre archivos de manuscrito y reporta violaciones.
-# Entradas: Archivos markdown (1?_*.md o 2?_*.md en directorio actual)
+# Entradas: Patrón glob como argumento obligatorio (ej. "papers/first-paper/1?_*.md")
 # Salidas: Mensajes de error a stdout; código de salida 0 si pasa, 1 si falla
 # Dependencias: grep, egrep, wc, bash
 # Notas:
 #   - Requiere estar en el directorio raíz del proyecto
-#   - Se puede llamar con patrón: check_manuscript_style.sh "1?_*.md"
+#   - Uso: check_manuscript_style.sh '<glob_pattern>'
 #   - Usa expresiones regulares extendidas para coincidencia
 # ==========================================
 
-# Obtener el patrón de archivos (por defecto: Paper 1)
-PATTERN="${1:-papers/first-paper/1?_*.md}"
+# Validar que se proporcionó un patrón de archivos
+if [[ $# -lt 1 ]]; then
+    echo "❌ Error: No se proporcionó un patrón de archivos."
+    echo "   Uso: $0 '<glob_pattern>'"
+    echo "   Ejemplo: $0 'papers/first-paper/1?_*.md'"
+    echo "   Ejemplo: $0 'papers/second-paper/2?_*.md'"
+    exit 1
+fi
+PATTERN="$1"
 
 # Rastrear si hay errores
 HAS_ERRORS=0

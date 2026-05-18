@@ -503,9 +503,11 @@ format:
       -e "style_dir('src')"
 
 check:
-	src/check_manuscript_style.sh "papers/first-paper/1?_*.md"
-	src/check_manuscript_style.sh "papers/second-paper/2?_*.md"
-	src/check_spelling.sh
+	src/check_manuscript_style.sh 'papers/first-paper/1?_*.md'
+	src/check_manuscript_style.sh 'papers/second-paper/2?_*.md'
+	src/check_spelling.sh 'papers/proposal/0?_*.md' 'es'
+	src/check_spelling.sh 'papers/first-paper/1?_*.md' 'en'
+	src/check_spelling.sh 'papers/second-paper/2?_*.md' 'en'
 
 init: init_git
 

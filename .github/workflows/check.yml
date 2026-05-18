@@ -12,9 +12,13 @@ jobs:
       - uses: actions/checkout@v3
       - name: Pull Docker image
         run: docker pull islasgeci/bycatch_thesis:latest
-      - name: Run spellcheck
-        run: docker run --volume $PWD:/workdir islasgeci/bycatch_thesis:latest src/check_spelling.sh
+      - name: Run spellcheck (Spanish)
+        run: docker run --volume $PWD:/workdir islasgeci/bycatch_thesis:latest src/check_spelling.sh 'papers/proposal/0?_*.md' 'es'
+      - name: Run spellcheck (Paper 1)
+        run: docker run --volume $PWD:/workdir islasgeci/bycatch_thesis:latest src/check_spelling.sh 'papers/first-paper/1?_*.md' 'en'
+      - name: Run spellcheck (Paper 2)
+        run: docker run --volume $PWD:/workdir islasgeci/bycatch_thesis:latest src/check_spelling.sh 'papers/second-paper/2?_*.md' 'en'
       - name: Check Paper 1 style
-        run: docker run --volume $PWD:/workdir islasgeci/bycatch_thesis:latest src/check_manuscript_style.sh "1?_*.md"
+        run: docker run --volume $PWD:/workdir islasgeci/bycatch_thesis:latest src/check_manuscript_style.sh 'papers/first-paper/1?_*.md'
       - name: Check Paper 2 style
-        run: docker run --volume $PWD:/workdir islasgeci/bycatch_thesis:latest src/check_manuscript_style.sh "2?_*.md"
+        run: docker run --volume $PWD:/workdir islasgeci/bycatch_thesis:latest src/check_manuscript_style.sh 'papers/second-paper/2?_*.md'
