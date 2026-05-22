@@ -1,22 +1,21 @@
 # ==========================================
-# Título: Graficar la Zona Económica Exclusiva de México
+# Título: Grafica la zona económica exclusiva de México
 #
 # Contexto (Por qué):
 # La Zona Económica Exclusiva (ZEE) define el espacio marítimo donde
-# México posee derechos soberanos para la exploración, explotación
-# y gestión de recursos marines. Visualizar este polígono permite
-# contextualizar análisis espaciales como distribución de biodiversidad,
-# áreas protegidas o actividades pesqueras.
+# México posee derechos soberanos para la gestión de recursos marinos.
+# Visualizar este polígono permite contextualizar análisis espaciales
+# como distribución de biodiversidad o actividades pesqueras.
 #
 # Descripción (Qué / Cómo):
-# El script carga el shapefile de la ZEE de México, lo convierte
-# en un objeto sf y genera una figura estática utilizando ggplot2
-# que se guarda como archivo PNG.
+# Carga el shapefile de la ZEE de México, lo convierte en un objeto sf
+# y genera una figura estática con ggplot2 que se exporta como PNG para
+# su inclusión en reportes del proyecto.
 #
 # Entradas:
 # data/external/Exclusive_economic_zone_Mexico.shp
 #
-# Salidas:
+# Salida:
 # reports/figures/mexico_eez.png
 #
 # Dependencias:
@@ -24,58 +23,61 @@
 # tidyverse
 #
 # Notas:
-# Se utiliza geom_sf() para mantener la geometría original.
-# Se utiliza coord_sf() para mantener la proyección geográfica.
-# La ZEE es la zona donde México tiene derechos soberanos sobre recursos marinos.
+# - Se utiliza geom_sf() para mantener la geometría original del shapefile
+# - coord_sf() preserva la proyección geográfica del objeto sf
 # ==========================================
 
-# ==== HEADER ====
-# Se cargan únicamente los paquetes necesarios para leer datos espaciales
-# y construir gráficos declarativos con ggplot2
-library(sf)         # Permite importar shapefiles como objetos Simple Features
-library(tidyverse)  # Proporciona ggplot2 y herramientas de manipulación de datos
 
+# ==== CONFIGURACIÓN ====
+library(sf)         # Proporciona st_read para importar shapefiles como objetos Simple Features
+library(tidyverse)  # Proporciona ggplot2 para construir gráficos declarativos
 
-# ==== CONFIGURATION ====
-# Centralizar rutas y constantes evita números mágicos y facilita mantenimiento
-input_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"  # Ruta al shapefile EEZ
-output_figure_path <- "reports/figures/mexico_eez.png"                      # Ruta de la figura generada
+# Ruta del shapefile de la Zona Económica Exclusiva de México
+input_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
+# Ruta del archivo PNG que almacenará la figura de la ZEE
+output_figure_path <- "reports/figures/mexico_eez.png"
 
+# Colores para la visualización de la ZEE en el mapa
 fill_color <- "#9AD0EC"    # Color de relleno que resalta la superficie marítima
-line_color <- "#0C4A6E"    # Color del contorno para definir claramente el límite EEZ
-line_size <- 0.3           # Grosor del borde para mantener visibilidad sin saturar el mapa
+line_color <- "#0C4A6E"    # Color del contorno para definir el límite de la ZEE
+line_size <- 0.3           # Grosor del borde para visibilidad sin saturar el mapa
 
-fig_width <- 8             # Ancho de la figura en pulgadas para exportación consistente
-fig_height <- 6            # Alto de la figura para mantener proporción cartográfica
-fig_dpi <- 300             # Resolución suficiente para reportes y publicaciones
+# Dimensiones y resolución de la figura de salida
+fig_width <- 8             # Ancho en pulgadas consistente con otros mapas del proyecto
+fig_height <- 6            # Alto en pulgadas que mantiene proporción cartográfica
+fig_dpi <- 300             # Resolución adecuada para reportes y publicaciones
 
 
-# ==== INPUTS ====
-# Se importa el shapefile como objeto sf para habilitar operaciones espaciales
-# quiet = TRUE evita mensajes informativos que no aportan al flujo del pipeline
+# ==== ENTRADAS ====
+# Importa el shapefile de la ZEE como objeto sf para operaciones espaciales
 mexico_eez_sf <- st_read(input_shapefile_path, quiet = TRUE)
 
 
-# ==== PROCESS / ANALYSIS ====
-# Se construye una visualización simple que resalta únicamente la geometría EEZ
-# ggplot() permite una construcción declarativa del gráfico
+# ==== PROCESAMIENTO / ANÁLISIS ====
+# Construye una visualización simple que resalta la geometría de la ZEE
+# usando ggplot2 con un enfoque declarativo y minimalista
 plot_mexico_eez <- ggplot() +
+  # Capa de la geometría de la ZEE con colores definidos en configuración
   geom_sf(
     data = mexico_eez_sf,
     fill = fill_color,
     color = line_color,
     linewidth = line_size
   ) +
-  coord_sf() +           # Mantiene la proyección geográfica del objeto sf
-  theme_minimal() +      # Estilo limpio que enfatiza la geometría espacial
+  # Preserva la proyección geográfica original del objeto sf
+  coord_sf() +
+  # Estilo limpio que enfatiza la geometría espacial sin decoraciones
+  theme_minimal() +
+  # Etiquetas del mapa con la fuente de los datos espaciales
   labs(
     title = "Zona Económica Exclusiva de México",
     caption = "Geoportal: Zonas de Refugio Pesquero. TNC México"
   )
 
-# ==== OUTPUT ====
-# Se exporta la figura como PNG para mantener consistencia con otros outputs del proyecto
-# La resolución alta permite su uso en reportes o publicaciones
+
+# ==== SALIDA ====
+# Exporta la figura como PNG para mantener consistencia con otros
+# mapas del proyecto y permitir su uso en reportes o publicaciones
 ggsave(
   filename = output_figure_path,
   plot = plot_mexico_eez,
