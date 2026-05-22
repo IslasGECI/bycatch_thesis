@@ -46,7 +46,7 @@
                 "source": "tabular_data_packages",
                 "version": "96436f3e4d6bdb92ac85daa4857fbb1dc5b6970e",
                 "path": "seabird_tracking",
-                "type": "csv",
+                "type": "json",
                 "filename": "datapackage.json"
             },
             {
@@ -113,6 +113,13 @@
             },
             {
                 "source": "tabular_data_packages",
+                "version": "ddb0524d3ed20e6363b833b7b73881ed6de6eacc",
+                "path": "global_fishing_data",
+                "type": "json",
+                "filename": "datapackage.json"
+            },
+            {
+                "source": "tabular_data_packages",
                 "version": "96436f3e4d6bdb92ac85daa4857fbb1dc5b6970e",
                 "path": "seabird_tracking",
                 "type": "csv",
@@ -143,7 +150,7 @@
                 "source": "tabular_data_packages",
                 "version": "96436f3e4d6bdb92ac85daa4857fbb1dc5b6970e",
                 "path": "seabird_tracking",
-                "type": "csv",
+                "type": "json",
                 "filename": "datapackage.json"
             },
             {

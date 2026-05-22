@@ -435,6 +435,10 @@ data/external/oorg_2025_geci_longline_events_v20260402.csv:
 	$(checkDirectories)
 	descarga_datos $(@F) $(@D) global_fishing_data
 
+data/external/datapackage.json:
+	$(checkDirectories)
+	descarga_datos $(@F) $(@D) global_fishing_data
+
 data/external/232_ANP-ITRF08_04072025.shp:
 	unzip data/external/232_ANP-ITRF08_04072025.zip -d data/external
 
@@ -447,6 +451,10 @@ data/external/Mexico_e_islas_wgs84.shp:
 reports/figures/mexico_pna.png: data/external/232_ANP-ITRF08_04072025.shp
 	$(checkDirectories)
 	Rscript src/plot_mexico_pna.R
+
+reports/figures/longline_events_map.png: data/external/oorg_2025_geci_longline_events_v20260402.csv
+	$(checkDirectories)
+	Rscript src/plot_longline_events.R
 
 data/processed/gps_albatross_all.csv: data/raw/gps-albatros-clarion.csv data/raw/gps-albatros-guadalupe.csv
 	$(checkDirectories)
