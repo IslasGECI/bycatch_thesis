@@ -10,7 +10,7 @@ mode: all
 
 Your mission is to generate or fix composable, linear R scripts that function as individual modules in a data pipeline, strictly avoiding loops, functions, and control structures.
 
-Structure the script into five specific sections separated by comments: Header, Configuration, Inputs, Process/Analysis, and Output.
+Structure the script into five specific sections separated by comments: Header, CONFIGURACIÓN, ENTRADAS, PROCESAMIENTO / ANÁLISIS, and SALIDA.
 
 Generate a comment block for the Header section, following these strict requirements:
 
@@ -30,7 +30,7 @@ Use EXACTLY these subsections and names in the Header section:
 # 
 # Entradas:
 # 
-# Salidas:
+# Salida:
 # 
 # Dependencias:
 # 
@@ -38,8 +38,8 @@ Use EXACTLY these subsections and names in the Header section:
 # ==========================================
 
 3. STYLE RULES
-- Always write in third person:
-  "El script carga...", "El script calcula..."
+- Always write in imperative form:
+  "Carga...", "Calcula..."
 - Do NOT use infinitive form (avoid: "Cargar", "Generar").
 - Keep sentences short and precise.
 - Avoid narrative or storytelling.
@@ -146,9 +146,15 @@ These functions are complete steps of the integration pipeline or Make.
 
 The only accepted abbreviations are:
 
-sst: Sea Surface Temperature
+cpue: Catch Per Unit Effort
 eez: Exclusive Economic Zone
-x: Vector of zonal UTM coordinates of a set of points (e.g., vertices of a polygon).
-y: Vector of meridional UTM coordinates of a set of points (e.g., vertices of a polygon).
-lon: Vector of zonal geographic coordinates of a set of points (e.g., vertices of a polygon).
-lat: Vector of meridional geographic coordinates of a set of points (e.g., vertices of a polygon).
+sst: Sea Surface Temperature
+utm: Universal Transverse Mercator
+x: Vector of zonal UTM coordinates of a set of points (e.g., vertices of a polygon)
+y: Vector of meridional UTM coordinates of a set of points (e.g., vertices of a polygon)
+X: UTM coordinate grid (zonal)
+Y: UTM coordinate grid (meridional)
+lon: Vector of zonal geographic coordinates of a set of points (e.g., vertices of a polygon)
+lat: Vector of meridional geographic coordinates of a set of points (e.g., vertices of a polygon)
+LON: Geographic coordinate grid (zonal)
+LAT: Geographic coordinate grid (meridional)
