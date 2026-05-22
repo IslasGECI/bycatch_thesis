@@ -1,24 +1,22 @@
 # ==========================================
-# Título: Calcular Bounding Box Redondeado a Partir de Datos GPS de Albatros
+# Título: Calcula el bounding box redondeado a partir de datos GPS de albatros
 #
 # Contexto (Por qué):
-# Para mantener consistencia entre scripts de análisis y visualización,
-# es conveniente definir la región espacial de trabajo mediante un
-# bounding box almacenado en un archivo de configuración. En lugar de
-# definir manualmente los límites geográficos, este script calcula el
-# bounding box directamente a partir de los datos GPS de albatros.
+# Para mantener consistencia entre scripts de análisis y visualización
+# es necesario definir la región espacial de trabajo mediante un bounding
+# box almacenado en un archivo de configuración. Calcularlo directamente
+# a partir de los datos GPS evita definir manualmente los límites.
 #
 # Descripción (Qué / Cómo):
-# El script carga el archivo CSV con registros GPS, calcula los valores
-# mínimos y máximos de longitud y latitud, y posteriormente expande
-# estos límites al múltiplo de 5 grados más cercano utilizando
-# floor() y ceiling(). Esto produce límites cartográficos más limpios
-# y fáciles de interpretar en mapas regionales.
+# Carga el archivo CSV con registros GPS, calcula los valores mínimos
+# y máximos de longitud y latitud, y expande estos límites al múltiplo
+# de 5 grados más cercano. Agrega un buffer de 1 grado para dejar margen
+# y exporta el resultado como JSON para que otros scripts lo consuman.
 #
 # Entradas:
 # data/processed/gps_albatross_all.csv
 #
-# Salidas:
+# Salida:
 # data/processed/bounding_box.json
 #
 # Dependencias:
@@ -26,32 +24,33 @@
 # jsonlite
 #
 # Notas:
-# El redondeo asegura que:
-#   - límites oeste y sur se redondeen hacia abajo
-#   - límites este y norte se redondeen hacia arriba
-# Se añade un buffer de 1 grado para dejar margen en el bounding box
+# - El redondeo usa floor() para límites inferiores y ceiling() para superiores
+# - El buffer de 1 grado evita que puntos queden exactamente sobre el borde
 # ==========================================
 
 
-# ==== HEADER ====
-library(tidyverse)
-library(jsonlite)
+# ==== CONFIGURACIÓN ====
+library(tidyverse)  # Proporciona readr para importar datos y dplyr para transformaciones
+library(jsonlite)   # Proporciona write_json para exportar el bounding box como JSON
 
-
-# ==== CONFIGURATION ====
+# Ruta del archivo CSV con los registros GPS combinados de ambas colonias
 input_csv_path <- "data/processed/gps_albatross_all.csv"
+# Ruta del archivo JSON que almacenará el bounding box de la región de estudio
 output_json_path <- "data/processed/bounding_box.json"
 
+# Múltiplo de redondeo para obtener límites cartográficos limpios
 rounding_multiple <- 10
-buffer <- 1 # Grados adicionales para asegurar que el bounding box deje un margen
+# Grados adicionales para evitar que puntos queden exactamente sobre el borde
+buffer <- 1
 
 
-# ==== INPUTS ====
+# ==== ENTRADAS ====
+# Carga los registros GPS de albatros desde el archivo CSV consolidado
 gps_data <- read_csv(input_csv_path, show_col_types = FALSE)
 
 
-# ==== PROCESS / ANALYSIS ====
-# Se calcula el bounding box mínimo que contiene todos los puntos GPS
+# ==== PROCESAMIENTO / ANÁLISIS ====
+# Calcula los valores extremos de longitud y latitud con un margen de seguridad
 bbox_raw <- gps_data |>
   summarise(
     lon_min = min(longitude, na.rm = TRUE) - buffer,
@@ -60,7 +59,8 @@ bbox_raw <- gps_data |>
     lat_max = max(latitude, na.rm = TRUE) + buffer
   )
 
-# Se redondean los límites al múltiplo de 5 más cercano
+# Redondea los límites al múltiplo de 5 grados más cercano para obtener
+# coordenadas cartográficas limpias y fáciles de interpretar en mapas
 bbox_rounded <- bbox_raw |>
   mutate(
     lon_min = floor(lon_min / rounding_multiple) * rounding_multiple,
@@ -69,9 +69,8 @@ bbox_rounded <- bbox_raw |>
     lat_max = ceiling(lat_max / rounding_multiple) * rounding_multiple
   )
 
-
-# ==== CREATE JSON STRUCTURE ====
-# Se convierte la tabla a lista para generar la estructura JSON deseada
+# Convierte la tabla de una fila en una lista anidada con la estructura
+# JSON esperada por los scripts de visualización del proyecto
 bbox_list <- list(
   bbox = list(
     lon_min = bbox_rounded$lon_min,
@@ -82,8 +81,9 @@ bbox_list <- list(
 )
 
 
-# ==== OUTPUT ====
-# Se exporta el archivo JSON de configuración
+# ==== SALIDA ====
+# Exporta el bounding box como JSON de configuración para mantener
+# la consistencia espacial entre todos los scripts del pipeline
 write_json(
   bbox_list,
   output_json_path,
