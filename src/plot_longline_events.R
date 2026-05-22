@@ -31,22 +31,22 @@
 
 
 # ==== CONFIGURACIÓN ====
-library(tidyverse)          # Proporciona readr para importar datos y ggplot2 para graficar
-library(rnaturalearth)      # Proporciona datos vectoriales de costa mundial
-library(rnaturalearthdata)  # Extiende rnaturalearth con resolución media de costa
+library(tidyverse) # Proporciona readr para importar datos y ggplot2 para graficar
+library(rnaturalearth) # Proporciona datos vectoriales de costa mundial
+library(rnaturalearthdata) # Extiende rnaturalearth con resolución media de costa
 
 # Rutas de archivos de entrada y salida
 input_csv_path <- "data/external/oorg_2025_geci_longline_events_v20260402.csv"
 output_png_path <- "reports/figures/longline_events_map.png"
 
 # Parámetros de visualización para manejar la alta densidad de puntos
-point_alpha <- 0.1          # Transparencia para evitar saturación por sobreposición
-point_size <- 0.5           # Tamaño pequeño para mantener legibilidad del mapa
+point_alpha <- 0.1 # Transparencia para evitar saturación por sobreposición
+point_size <- 0.5 # Tamaño pequeño para mantener legibilidad del mapa
 
 # Dimensiones y resolución de la figura de salida
-fig_width <- 10             # Ancho en pulgadas consistente con otros mapas del proyecto
-fig_height <- 6             # Alto en pulgadas que mantiene proporción cartográfica
-fig_dpi <- 300              # Resolución adecuada para publicaciones en reportes
+fig_width <- 10 # Ancho en pulgadas consistente con otros mapas del proyecto
+fig_height <- 6 # Alto en pulgadas que mantiene proporción cartográfica
+fig_dpi <- 300 # Resolución adecuada para publicaciones en reportes
 
 
 # ==== ENTRADAS ====

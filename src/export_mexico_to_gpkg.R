@@ -30,8 +30,8 @@
 
 
 # ==== CONFIGURACIÓN ====
-library(sf)         # Proporciona st_read para importar shapefiles y st_union para disolver geometrías
-library(tidyverse)  # Proporciona summarize() para colapsar múltiples geometrías en una sola
+library(sf) # Proporciona st_read para importar shapefiles y st_union para disolver geometrías
+library(tidyverse) # Proporciona summarize() para colapsar múltiples geometrías en una sola
 
 # Ruta del shapefile de México e islas en coordenadas geográficas
 input_shapefile_path <- "data/external/Mexico_e_islas_wgs84.shp"

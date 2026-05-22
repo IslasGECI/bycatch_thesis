@@ -30,9 +30,9 @@
 
 
 # ==== CONFIGURACIÓN ====
-library(glue)       # Proporciona glue() para interpolar variables en los mensajes del gráfico
-library(sf)         # Proporciona st_read para importar geometrías desde GeoPackage
-library(tidyverse)  # Proporciona ggplot2 para construir visualizaciones declarativas
+library(glue) # Proporciona glue() para interpolar variables en los mensajes del gráfico
+library(sf) # Proporciona st_read para importar geometrías desde GeoPackage
+library(tidyverse) # Proporciona ggplot2 para construir visualizaciones declarativas
 
 # Ruta del GeoPackage que contiene la diferencia espacial ANP − México
 input_gpkg_path <- "data/processed/mexico_mpa.gpkg"
@@ -42,9 +42,9 @@ input_layer_name <- "mexico_mpa"
 output_figure_path <- "reports/figures/mexico_mpa.png"
 
 # Colores para la visualización de las áreas marinas protegidas
-fill_color <- "#9AD0EC"     # Color de relleno que destaca las AMP en el mapa
-line_color <- "#185ADB"     # Color de contorno para definir los límites de las AMP
-line_size <- 0.3            # Grosor de línea moderado para mantener legibilidad
+fill_color <- "#9AD0EC" # Color de relleno que destaca las AMP en el mapa
+line_color <- "#185ADB" # Color de contorno para definir los límites de las AMP
+line_size <- 0.3 # Grosor de línea moderado para mantener legibilidad
 
 # Dimensiones y resolución de la figura de salida
 fig_width <- 8

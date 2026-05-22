@@ -30,8 +30,8 @@
 
 
 # ==== CONFIGURACIÓN ====
-library(sf)         # Proporciona st_read para importar geometrías y st_bbox para bounding boxes
-library(jsonlite)   # Proporciona write_json para exportar el resultado como JSON
+library(sf) # Proporciona st_read para importar geometrías y st_bbox para bounding boxes
+library(jsonlite) # Proporciona write_json para exportar el resultado como JSON
 
 # Ruta del GeoPackage con la intersección EEZ-bounding box del paso anterior
 input_gpkg_path <- "data/processed/mexico_eez_bounding_box_intersection.gpkg"

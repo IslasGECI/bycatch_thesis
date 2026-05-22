@@ -29,8 +29,8 @@
 
 
 # ==== CONFIGURACIÓN ====
-library(sf)         # Proporciona st_read para importar shapefiles como objetos Simple Features
-library(tidyverse)  # Proporciona ggplot2 para construir gráficos declarativos
+library(sf) # Proporciona st_read para importar shapefiles como objetos Simple Features
+library(tidyverse) # Proporciona ggplot2 para construir gráficos declarativos
 
 # Ruta del shapefile de la Zona Económica Exclusiva de México
 input_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
@@ -38,14 +38,14 @@ input_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
 output_figure_path <- "reports/figures/mexico_eez.png"
 
 # Colores para la visualización de la ZEE en el mapa
-fill_color <- "#9AD0EC"    # Color de relleno que resalta la superficie marítima
-line_color <- "#0C4A6E"    # Color del contorno para definir el límite de la ZEE
-line_size <- 0.3           # Grosor del borde para visibilidad sin saturar el mapa
+fill_color <- "#9AD0EC" # Color de relleno que resalta la superficie marítima
+line_color <- "#0C4A6E" # Color del contorno para definir el límite de la ZEE
+line_size <- 0.3 # Grosor del borde para visibilidad sin saturar el mapa
 
 # Dimensiones y resolución de la figura de salida
-fig_width <- 8             # Ancho en pulgadas consistente con otros mapas del proyecto
-fig_height <- 6            # Alto en pulgadas que mantiene proporción cartográfica
-fig_dpi <- 300             # Resolución adecuada para reportes y publicaciones
+fig_width <- 8 # Ancho en pulgadas consistente con otros mapas del proyecto
+fig_height <- 6 # Alto en pulgadas que mantiene proporción cartográfica
+fig_dpi <- 300 # Resolución adecuada para reportes y publicaciones
 
 
 # ==== ENTRADAS ====

@@ -29,7 +29,7 @@
 
 
 # ==== CONFIGURACIÓN ====
-library(tidyverse)  # Proporciona readr para importar CSVs y dplyr para combinar tablas
+library(tidyverse) # Proporciona readr para importar CSVs y dplyr para combinar tablas
 
 # Ruta del archivo CSV con los puntos geográficos de viajes de Clarión
 input_file_clarion_path <- "data/processed/trips_geographic_points_clarion.csv"

@@ -32,18 +32,18 @@
 
 
 # ==== CONFIGURACIÓN ====
-library(rnaturalearth)      # Proporciona ne_countries() para descargar límites políticos
-library(rnaturalearthdata)  # Proporciona los datos cartográficos base de Natural Earth
-library(sf)                 # Proporciona la clase sf para manejar geometrías espaciales
-library(tidyverse)          # Proporciona ggplot2 para construir visualizaciones declarativas
+library(rnaturalearth) # Proporciona ne_countries() para descargar límites políticos
+library(rnaturalearthdata) # Proporciona los datos cartográficos base de Natural Earth
+library(sf) # Proporciona la clase sf para manejar geometrías espaciales
+library(tidyverse) # Proporciona ggplot2 para construir visualizaciones declarativas
 
 # Ruta del archivo PNG de salida con el mapa de México desde Natural Earth
 output_figure_path <- "reports/figures/mexico_naturalearth.png"
 
 # Colores para la visualización del territorio mexicano
-fill_color <- "lightblue"   # Color de relleno que destaca el territorio en el mapa
-line_color <- "darkblue"    # Color de contorno para definir los límites políticos
-line_size <- 0.3            # Grosor de línea moderado para mantener legibilidad
+fill_color <- "lightblue" # Color de relleno que destaca el territorio en el mapa
+line_color <- "darkblue" # Color de contorno para definir los límites políticos
+line_size <- 0.3 # Grosor de línea moderado para mantener legibilidad
 
 # Dimensiones y resolución de la figura de salida
 fig_width <- 8

@@ -30,8 +30,8 @@
 
 
 # ==== CONFIGURACIÓN ====
-library(tidyverse)  # Proporciona readr para importar datos y dplyr para transformaciones
-library(jsonlite)   # Proporciona write_json para exportar el bounding box como JSON
+library(tidyverse) # Proporciona readr para importar datos y dplyr para transformaciones
+library(jsonlite) # Proporciona write_json para exportar el bounding box como JSON
 
 # Ruta del archivo CSV con los registros GPS combinados de ambas colonias
 input_csv_path <- "data/processed/gps_albatross_all.csv"

@@ -30,7 +30,7 @@
 
 
 # ==== CONFIGURACIÓN ====
-library(tidyverse)  # Proporciona readr para importar CSVs y dplyr para seleccionar y combinar tablas
+library(tidyverse) # Proporciona readr para importar CSVs y dplyr para seleccionar y combinar tablas
 
 # Rutas de los archivos CSV de entrada con datos GPS de cada colonia
 input_guadalupe_path <- "data/raw/gps-albatros-guadalupe.csv"

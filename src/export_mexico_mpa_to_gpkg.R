@@ -31,8 +31,8 @@
 
 
 # ==== CONFIGURACIÓN ====
-library(sf)         # Proporciona st_read para importar geometrías y st_difference para diferencias espaciales
-library(tidyverse)  # Proporciona el operador pipe |> para flujos de datos lineales
+library(sf) # Proporciona st_read para importar geometrías y st_difference para diferencias espaciales
+library(tidyverse) # Proporciona el operador pipe |> para flujos de datos lineales
 
 # Ruta del GeoPackage con las Áreas Naturales Protegidas de México
 mexico_pna_path <- "data/processed/mexico_pna.gpkg"

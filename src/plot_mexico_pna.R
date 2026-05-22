@@ -27,8 +27,8 @@
 
 
 # ==== CONFIGURACIÓN ====
-library(sf)         # Proporciona st_read para importar shapefiles como objetos sf
-library(tidyverse)  # Proporciona ggplot2 para construir visualizaciones declarativas
+library(sf) # Proporciona st_read para importar shapefiles como objetos sf
+library(tidyverse) # Proporciona ggplot2 para construir visualizaciones declarativas
 
 # Ruta del shapefile de Áreas Naturales Protegidas de México en formato ITRF08
 pna_shapefile_path <- "data/external/232_ANP-ITRF08_04072025.shp"
@@ -36,9 +36,9 @@ pna_shapefile_path <- "data/external/232_ANP-ITRF08_04072025.shp"
 pna_figure_path <- "reports/figures/mexico_pna.png"
 
 # Colores para la visualización de las áreas naturales protegidas
-fill_color <- "lightblue"   # Color de relleno para las ANP en el mapa
-line_color <- "darkblue"    # Color de contorno que delimita cada ANP
-line_size <- 0.3            # Grosor de línea fino para mantener legibilidad
+fill_color <- "lightblue" # Color de relleno para las ANP en el mapa
+line_color <- "darkblue" # Color de contorno que delimita cada ANP
+line_size <- 0.3 # Grosor de línea fino para mantener legibilidad
 
 # Dimensiones y resolución de la figura de salida
 fig_width <- 8

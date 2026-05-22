@@ -36,10 +36,10 @@
 
 
 # ==== CONFIGURACIÓN ====
-library(glue)       # Proporciona glue() para interpolar variables en los mensajes del gráfico
-library(jsonlite)   # Proporciona fromJSON para leer los bounding boxes de configuración
-library(sf)         # Proporciona st_read, st_transform y st_as_sf para operaciones espaciales
-library(tidyverse)  # Proporciona ggplot2 y readr para graficar e importar datos tabulares
+library(glue) # Proporciona glue() para interpolar variables en los mensajes del gráfico
+library(jsonlite) # Proporciona fromJSON para leer los bounding boxes de configuración
+library(sf) # Proporciona st_read, st_transform y st_as_sf para operaciones espaciales
+library(tidyverse) # Proporciona ggplot2 y readr para graficar e importar datos tabulares
 
 # Rutas de archivos de entrada
 bbox_config_path <- "data/processed/bounding_box.json"
@@ -65,12 +65,12 @@ bbox_zoom_lat_min <- bbox_zoom$bbox$lat_min
 bbox_zoom_lat_max <- bbox_zoom$bbox$lat_max
 
 # Colores para las distintas capas del mapa
-fill_eez_color <- "#93C5FD"       # Color de relleno de la ZEE de México
-line_eez_color <- "#1E3A8A"       # Color del contorno de la ZEE
-fill_alpha <- 0.5                 # Transparencia del relleno de la ZEE
-line_bbox_color <- "#C6B7E2"      # Color del contorno del bounding box regional
-line_zoom_color <- "#F6C177"      # Color del contorno del bounding box de zoom
-line_bbox_width <- 1              # Grosor de línea de los bounding boxes
+fill_eez_color <- "#93C5FD" # Color de relleno de la ZEE de México
+line_eez_color <- "#1E3A8A" # Color del contorno de la ZEE
+fill_alpha <- 0.5 # Transparencia del relleno de la ZEE
+line_bbox_color <- "#C6B7E2" # Color del contorno del bounding box regional
+line_zoom_color <- "#F6C177" # Color del contorno del bounding box de zoom
+line_bbox_width <- 1 # Grosor de línea de los bounding boxes
 
 # Colores para los puntos GPS según la isla de origen
 color_guadalupe <- "#8ECFB0"

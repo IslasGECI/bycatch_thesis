@@ -32,9 +32,9 @@
 
 
 # ==== CONFIGURACIÓN ====
-library(jsonlite)   # Proporciona fromJSON para leer el bounding box de configuración
-library(sf)         # Proporciona st_read y operaciones espaciales vectoriales
-library(tidyverse)  # Proporciona el operador pipe |> para flujos de datos lineales
+library(jsonlite) # Proporciona fromJSON para leer el bounding box de configuración
+library(sf) # Proporciona st_read y operaciones espaciales vectoriales
+library(tidyverse) # Proporciona el operador pipe |> para flujos de datos lineales
 
 # Ruta del archivo JSON con los límites del bounding box de la región de estudio
 config_path <- "data/processed/bounding_box.json"

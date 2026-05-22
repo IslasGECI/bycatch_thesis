@@ -32,10 +32,10 @@
 
 
 # ==== CONFIGURACIÓN ====
-library(glue)       # Proporciona glue() para interpolar variables en mensajes del gráfico
-library(jsonlite)   # Proporciona fromJSON para leer el bounding box de configuración
-library(sf)         # Proporciona st_read para importar geometrías desde GeoPackage
-library(tidyverse)  # Proporciona ggplot2 para construir visualizaciones declarativas
+library(glue) # Proporciona glue() para interpolar variables en mensajes del gráfico
+library(jsonlite) # Proporciona fromJSON para leer el bounding box de configuración
+library(sf) # Proporciona st_read para importar geometrías desde GeoPackage
+library(tidyverse) # Proporciona ggplot2 para construir visualizaciones declarativas
 
 # Ruta del archivo JSON con los límites del bounding box de la región de estudio
 zoom_bounding_box_path <- "data/processed/mexico_eez_bounding_box_zoom_in.json"
@@ -56,14 +56,14 @@ bbox_lat_max <- zoom_bbox$bbox$lat_max
 input_layer_name <- "mexico_eez_bbox"
 
 # Colores para la visualización de la intersección en el mapa
-fill_color <- "#7DD3FC"     # Color de relleno que destaca el polígono marino
-line_color <- "#075985"     # Color de contorno para definir claramente los límites
-line_size <- 0.3            # Grosor de línea moderado para mantener legibilidad
+fill_color <- "#7DD3FC" # Color de relleno que destaca el polígono marino
+line_color <- "#075985" # Color de contorno para definir claramente los límites
+line_size <- 0.3 # Grosor de línea moderado para mantener legibilidad
 
 # Dimensiones y resolución de la figura de salida
-fig_width <- 8              # Ancho consistente con otros mapas del proyecto
-fig_height <- 6             # Alto que mantiene proporción cartográfica
-fig_dpi <- 300              # Resolución adecuada para reportes o publicaciones
+fig_width <- 8 # Ancho consistente con otros mapas del proyecto
+fig_height <- 6 # Alto que mantiene proporción cartográfica
+fig_dpi <- 300 # Resolución adecuada para reportes o publicaciones
 
 
 # ==== ENTRADAS ====

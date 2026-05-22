@@ -33,44 +33,44 @@
 
 
 # ==== CONFIGURACIÓN ====
-library(ggspatial)              # Proporciona annotation_scale y annotation_north_arrow
-library(rnaturalearth)          # Proporciona ne_countries() para descargar límites políticos
-library(rnaturalearthdata)      # Proporciona los datos cartográficos base de Natural Earth
-library(sf)                     # Proporciona la clase sf para manejar geometrías espaciales
-library(tidyverse)              # Proporciona ggplot2 para construir visualizaciones declarativas
+library(ggspatial) # Proporciona annotation_scale y annotation_north_arrow
+library(rnaturalearth) # Proporciona ne_countries() para descargar límites políticos
+library(rnaturalearthdata) # Proporciona los datos cartográficos base de Natural Earth
+library(sf) # Proporciona la clase sf para manejar geometrías espaciales
+library(tidyverse) # Proporciona ggplot2 para construir visualizaciones declarativas
 
 # Ruta del archivo PNG de salida con el mapa profesional de México
 output_figure_path <- "reports/figures/mexico_naturalearth_pro.png"
 
 # Colores para el mapa de México con estilo profesional
-fill_color <- "antiquewhite"        # Color de relleno claro para el territorio
-line_color <- "gray30"              # Color de contorno para los límites políticos
-line_size <- 0.3                    # Grosor de línea moderado
+fill_color <- "antiquewhite" # Color de relleno claro para el territorio
+line_color <- "gray30" # Color de contorno para los límites políticos
+line_size <- 0.3 # Grosor de línea moderado
 
 # Límites geográficos del mapa en coordenadas WGS84 (EPSG:4326)
-map_xlim <- c(-118, -86)            # Rango de longitud (oeste a este)
-map_ylim <- c(12, 33)               # Rango de latitud (sur a norte)
+map_xlim <- c(-118, -86) # Rango de longitud (oeste a este)
+map_ylim <- c(12, 33) # Rango de latitud (sur a norte)
 
 # Colores para los elementos decorativos del mapa
-grid_line_color <- "gray50"         # Color de las líneas de la cuadrícula
-grid_line_type <- "dashed"          # Estilo de línea punteada para la cuadrícula
-grid_line_size <- 0.3               # Grosor de las líneas de la cuadrícula
-panel_bg_color <- "aliceblue"       # Color de fondo del panel del mapa
-panel_border_color <- "gray30"      # Color del borde del panel
+grid_line_color <- "gray50" # Color de las líneas de la cuadrícula
+grid_line_type <- "dashed" # Estilo de línea punteada para la cuadrícula
+grid_line_size <- 0.3 # Grosor de las líneas de la cuadrícula
+panel_bg_color <- "aliceblue" # Color de fondo del panel del mapa
+panel_border_color <- "gray30" # Color del borde del panel
 
 # Estilo del título y subtítulo del mapa
-title_size <- 14                    # Tamaño de fuente del título principal
-title_face <- "bold"                # Negrita para el título principal
-title_hjust <- 0.5                  # Centrado horizontal del título
-subtitle_size <- 10                 # Tamaño de fuente del subtítulo
-subtitle_hjust <- 0.5              # Centrado horizontal del subtítulo
+title_size <- 14 # Tamaño de fuente del título principal
+title_face <- "bold" # Negrita para el título principal
+title_hjust <- 0.5 # Centrado horizontal del título
+subtitle_size <- 10 # Tamaño de fuente del subtítulo
+subtitle_hjust <- 0.5 # Centrado horizontal del subtítulo
 
 # Posición de la escala gráfica y la flecha de norte
-scale_location <- "bl"              # Esquina inferior izquierda (bottom-left)
-scale_width <- 0.5                  # Proporción del ancho del mapa que ocupa la escala
-north_location <- "br"              # Esquina inferior derecha (bottom-right)
-north_pad_x <- 0.5                  # Margen horizontal de la flecha (pulgadas)
-north_pad_y <- 0.5                  # Margen vertical de la flecha (pulgadas)
+scale_location <- "bl" # Esquina inferior izquierda (bottom-left)
+scale_width <- 0.5 # Proporción del ancho del mapa que ocupa la escala
+north_location <- "br" # Esquina inferior derecha (bottom-right)
+north_pad_x <- 0.5 # Margen horizontal de la flecha (pulgadas)
+north_pad_y <- 0.5 # Margen vertical de la flecha (pulgadas)
 
 # Dimensiones y resolución de la figura de salida
 fig_width <- 8

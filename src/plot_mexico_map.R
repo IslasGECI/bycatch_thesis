@@ -28,8 +28,8 @@
 
 
 # ==== CONFIGURACIÓN ====
-library(sf)         # Proporciona st_read para importar shapefiles como objetos sf
-library(tidyverse)  # Proporciona ggplot2 para construir visualizaciones declarativas
+library(sf) # Proporciona st_read para importar shapefiles como objetos sf
+library(tidyverse) # Proporciona ggplot2 para construir visualizaciones declarativas
 
 # Ruta del shapefile de México e islas en coordenadas geográficas WGS84
 mexico_shapefile_path <- "data/external/Mexico_e_islas_wgs84.shp"
@@ -37,9 +37,9 @@ mexico_shapefile_path <- "data/external/Mexico_e_islas_wgs84.shp"
 mexico_figure_path <- "reports/figures/mexico_map.png"
 
 # Colores y estilo del mapa base de México
-fill_color <- "lightblue"   # Color de relleno para el territorio mexicano
-line_color <- "darkblue"    # Color del contorno que delimita el territorio
-line_size <- 0.3            # Grosor de línea fino para mantener legibilidad
+fill_color <- "lightblue" # Color de relleno para el territorio mexicano
+line_color <- "darkblue" # Color del contorno que delimita el territorio
+line_size <- 0.3 # Grosor de línea fino para mantener legibilidad
 
 # Dimensiones y resolución de la figura de salida
 fig_width <- 8

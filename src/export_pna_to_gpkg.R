@@ -31,8 +31,8 @@
 
 
 # ==== CONFIGURACIÓN ====
-library(sf)         # Proporciona st_read para importar shapefiles y st_union para disolver geometrías
-library(tidyverse)  # Proporciona summarize() para colapsar múltiples geometrías en una sola
+library(sf) # Proporciona st_read para importar shapefiles y st_union para disolver geometrías
+library(tidyverse) # Proporciona summarize() para colapsar múltiples geometrías en una sola
 
 # Ruta del shapefile con las 232 Áreas Naturales Protegidas de México
 input_shapefile_path <- "data/external/232_ANP-ITRF08_04072025.shp"
