@@ -77,6 +77,7 @@ results_clarion: \
 	reports/figures/gps_albatross_geographic_points_raw_clarion.png
 
 maps: \
+	reports/figures/longline_events_map.png \
 	reports/figures/mexico_eez.png \
 	reports/figures/mexico_map.png \
 	reports/figures/mexico_mpa.png \
