@@ -1,5 +1,5 @@
 # ==========================================
-# Título: Graficar las Áreas Marinas Protegidas de México
+# Título: Grafica las áreas marinas protegidas de México
 #
 # Contexto (Por qué):
 # Las Áreas Marinas Protegidas (AMP) representan las zonas donde la
@@ -7,62 +7,87 @@
 # Visualizarlas permite identificar zonas de posible refugio para albatros.
 #
 # Descripción (Qué / Cómo):
-# El script lee un GeoPackage que contiene la diferencia espacial entre
-# las Áreas Naturales Protegidas y el territorio mexicano (lo que resulta
-# en las áreas marinas protegidas). Genera una figura estática usando
-# ggplot2 con la fecha actual en el nombre del archivo.
+# Lee un GeoPackage que contiene la diferencia espacial entre las Áreas
+# Naturales Protegidas y el territorio mexicano, lo que resulta en las
+# áreas marinas protegidas. Genera una figura estática con ggplot2 y
+# la exporta como PNG.
 #
 # Entradas:
 # data/processed/mexico_mpa.gpkg (capa: mexico_mpa)
 #
-# Salidas:
+# Salida:
 # reports/figures/mexico_mpa.png
 #
 # Dependencias:
+# glue
 # sf
 # tidyverse
-# glue
 #
 # Notas:
-# Se utiliza glue para construir el nombre de la figura
-# Se utiliza geom_sf() para visualizar la geometría
+# - glue() construye el texto del caption con información de la ruta del insumo
+# - geom_sf() preserva la proyección original del objeto sf
 # ==========================================
 
-# ==== CARGAR PAQUETES ====
-library(sf)         # Para leer y manejar datos espaciales (Simple Features)
-library(tidyverse)  # Para manipulación declarativa y gráficos con ggplot2
-library(glue)       # Para construir cadenas de texto dinámicas
 
 # ==== CONFIGURACIÓN ====
-# -- Centralizar rutas y constantes facilita cambios y mantiene el script legible
-input_gpkg_path <- "data/processed/mexico_mpa.gpkg"                 # Ruta de entrada
-input_layer_name <- "mexico_mpa"                                    # Nombre de la capa en el GPKG
-output_figure_path <- "reports/figures/mexico_mpa.png"              # Ruta de la figura
-fill_color <- "#9AD0EC"                                             # Relleno para destacar el área
-line_color <- "#185ADB"                                             # Color del contorno
-line_size <- 0.3                                                    # Grosor del contorno
-fig_width <- 8                                                      # Ancho de la figura (pulgadas)
-fig_height <- 6                                                     # Alto de la figura (pulgadas)
-fig_dpi <- 300                                                      # Resolución de salida
+library(glue)       # Proporciona glue() para interpolar variables en los mensajes del gráfico
+library(sf)         # Proporciona st_read para importar geometrías desde GeoPackage
+library(tidyverse)  # Proporciona ggplot2 para construir visualizaciones declarativas
 
-# ==== IMPORTAR DATOS ====
-# Se lee la capa espacial desde el GeoPackage; quiet = TRUE suprime mensajes informativos
-mexico_mpa <- st_read(dsn = input_gpkg_path, layer = input_layer_name, quiet = TRUE)
+# Ruta del GeoPackage que contiene la diferencia espacial ANP − México
+input_gpkg_path <- "data/processed/mexico_mpa.gpkg"
+# Nombre de la capa dentro del GeoPackage que almacena la geometría de las AMP
+input_layer_name <- "mexico_mpa"
+# Ruta del archivo PNG de salida con el mapa de áreas marinas protegidas
+output_figure_path <- "reports/figures/mexico_mpa.png"
 
-# ==== VISUALIZACIÓN ====
-# Se construye un mapa sencillo que resalta la geometría resultante de la diferencia espacial
+# Colores para la visualización de las áreas marinas protegidas
+fill_color <- "#9AD0EC"     # Color de relleno que destaca las AMP en el mapa
+line_color <- "#185ADB"     # Color de contorno para definir los límites de las AMP
+line_size <- 0.3            # Grosor de línea moderado para mantener legibilidad
+
+# Dimensiones y resolución de la figura de salida
+fig_width <- 8
+fig_height <- 6
+fig_dpi <- 300
+
+
+# ==== ENTRADAS ====
+# Importa la capa espacial desde el GeoPackage generado previamente con
+# la diferencia espacial entre las ANP y el territorio de México
+mexico_mpa <- st_read(
+  dsn = input_gpkg_path,
+  layer = input_layer_name,
+  quiet = TRUE
+)
+
+
+# ==== PROCESAMIENTO / ANÁLISIS ====
+# Construye un mapa sencillo que resalta la geometría de las áreas marinas
+# protegidas resultante de la operación de diferencia espacial
 plot_amp <- ggplot() +
-  geom_sf(data = mexico_mpa, fill = fill_color, color = line_color, size = line_size) +
-  coord_sf() +                                # Mantiene la proyección del objeto sf sin distorsión
-  theme_minimal() +                           # Estilo limpio para enfocarse en la geografía
+  # Capa de la geometría de las AMP con colores definidos
+  geom_sf(
+    data = mexico_mpa,
+    fill = fill_color,
+    color = line_color,
+    size = line_size
+  ) +
+  # Preserva la proyección geográfica original del objeto sf
+  coord_sf() +
+  # Estilo limpio que enfatiza la geometría espacial sin distracciones
+  theme_minimal() +
+  # Etiquetas descriptivas para identificar la capa y su origen
   labs(
     title = "Diferencia espacial ANP − México",
     subtitle = "Geometría resultante (ANP menos territorio de México)",
     caption = glue("Fuente: {input_gpkg_path} / capa: {input_layer_name}")
   )
 
-# ==== GUARDAR SALIDA ====
-# Se exporta el gráfico en PNG con nombre versionado por fecha para trazabilidad
+
+# ==== SALIDA ====
+# Exporta el mapa de áreas marinas protegidas como PNG para integrarse
+# con el sistema de reportes del proyecto
 ggsave(
   filename = output_figure_path,
   plot = plot_amp,
