@@ -1,31 +1,18 @@
 # ==========================================
-# Título: Visualizar la ZEE de México, Bounding Box del Pacífico Norte y Registros GPS de Albatros
+# Título: Visualiza la ZEE de México, el bounding box y los registros GPS de albatros
 #
 # Contexto (Por qué):
 # Los datos de seguimiento GPS de albatros permiten estudiar patrones de
-# movimiento, áreas de alimentación y uso del espacio marino. Para interpretar
-# estos movimientos es útil visualizarlos en el contexto geográfico donde
-# ocurren, particularmente en relación con la Zona Económica Exclusiva (ZEE)
-# de México y con una región de estudio definida mediante un bounding box.
-# Esta visualización facilita la inspección exploratoria de los datos,
-# permitiendo verificar que las trayectorias de las aves se encuentren dentro
-# del área esperada del Pacífico Nororiental y que los datos espaciales estén
-# correctamente georreferenciados.
+# movimiento y áreas de alimentación. Visualizarlos en el contexto de la
+# ZEE de México y el bounding box regional facilita la interpretación
+# espacial y la verificación de la calidad de los datos.
 #
 # Descripción (Qué / Cómo):
-# El script carga el shapefile de la Zona Económica Exclusiva de México,
-# transforma la geometría al sistema de coordenadas geográficas WGS84
-# (EPSG:4326) para asegurar compatibilidad con datos GPS, y construye un
-# bounding box definido por límites de latitud y longitud que delimitan la
-# región de interés. Posteriormente, importa un archivo CSV que contiene
-# registros GPS combinados de albatros provenientes de dos colonias
-# (Guadalupe y Clarión), convierte esas coordenadas en un objeto espacial
-# de tipo sf y genera un mapa con ggplot2 donde se muestran:
-#   1) la ZEE de México,
-#   2) el bounding box de la región de estudio,
-#   3) los puntos GPS de los albatros coloreados según la isla de origen.
-# Finalmente, el mapa se exporta como una figura PNG para su uso en reportes
-# o inspección visual de los datos.
+# Carga el shapefile de la ZEE de México, los puntos GPS de albatros y
+# los bounding boxes de configuración. Transforma la ZEE a WGS84, crea
+# los polígonos de los bounding boxes, convierte los puntos GPS a sf y
+# genera un mapa con ggplot2 que muestra todas las capas superpuestas.
+# Exporta la figura como PNG para su uso en reportes.
 #
 # Entradas:
 # data/external/Exclusive_economic_zone_Mexico.shp
@@ -33,63 +20,87 @@
 # data/processed/bounding_box.json
 # data/processed/mexico_eez_bounding_box_zoom_in.json
 #
-# Salidas:
+# Salida:
 # reports/figures/mexico_eez_bounding_box_zoom_out.png
 #
 # Dependencias:
-# sf
-# tidyverse
 # glue
 # jsonlite
+# sf
+# tidyverse
 #
 # Notas:
-# Se supone que las coordenadas GPS del archivo CSV están en longitud y
-# latitud (WGS84). La conversión explícita del shapefile a EPSG:4326 asegura
-# que todas las capas espaciales compartan el mismo sistema de referencia
-# Se muestran dos bounding boxes: el regional y el de zoom.
+# - Las coordenadas GPS están en WGS84; la ZEE se transforma a EPSG:4326 para compatibilidad
+# - Se muestran dos bounding boxes: el regional (morado) y el de zoom (naranja)
 # ==========================================
 
 
-# ==== HEADER ====
-library(glue)       # Permite construir mensajes dinámicos con variables para depuración o logging
-library(jsonlite)   # Permite leer archivos JSON de configuración para centralizar parámetros
-library(sf)         # Permite leer y manipular datos espaciales vectoriales
-library(tidyverse)  # Proporciona ggplot2 para construir visualizaciones declarativas
+# ==== CONFIGURACIÓN ====
+library(glue)       # Proporciona glue() para interpolar variables en los mensajes del gráfico
+library(jsonlite)   # Proporciona fromJSON para leer los bounding boxes de configuración
+library(sf)         # Proporciona st_read, st_transform y st_as_sf para operaciones espaciales
+library(tidyverse)  # Proporciona ggplot2 y readr para graficar e importar datos tabulares
 
-# ==== CONFIGURATION ====
+# Rutas de archivos de entrada
 bbox_config_path <- "data/processed/bounding_box.json"
 input_gps_path <- "data/processed/gps_albatross_all.csv"
 input_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
-output_figure_path <- "reports/figures/mexico_eez_bounding_box_zoom_out.png"
 zoom_bounding_box_path <- "data/processed/mexico_eez_bounding_box_zoom_in.json"
 
-# ---- Bounding box regional ----
-bbox_config <- fromJSON(bbox_config_path)
+# Ruta del archivo PNG de salida
+output_figure_path <- "reports/figures/mexico_eez_bounding_box_zoom_out.png"
 
+# Carga los límites del bounding box regional desde el archivo JSON
+bbox_config <- fromJSON(bbox_config_path)
 bbox_lon_min <- bbox_config$bbox$lon_min
 bbox_lon_max <- bbox_config$bbox$lon_max
 bbox_lat_min <- bbox_config$bbox$lat_min
 bbox_lat_max <- bbox_config$bbox$lat_max
 
-# ---- Bounding box zoom ----
+# Carga los límites del bounding box de zoom desde el archivo JSON
 bbox_zoom <- fromJSON(zoom_bounding_box_path)
-
 bbox_zoom_lon_min <- bbox_zoom$bbox$lon_min
 bbox_zoom_lon_max <- bbox_zoom$bbox$lon_max
 bbox_zoom_lat_min <- bbox_zoom$bbox$lat_min
 bbox_zoom_lat_max <- bbox_zoom$bbox$lat_max
 
+# Colores para las distintas capas del mapa
+fill_eez_color <- "#93C5FD"       # Color de relleno de la ZEE de México
+line_eez_color <- "#1E3A8A"       # Color del contorno de la ZEE
+fill_alpha <- 0.5                 # Transparencia del relleno de la ZEE
+line_bbox_color <- "#C6B7E2"      # Color del contorno del bounding box regional
+line_zoom_color <- "#F6C177"      # Color del contorno del bounding box de zoom
+line_bbox_width <- 1              # Grosor de línea de los bounding boxes
 
-# ==== INPUTS ====
+# Colores para los puntos GPS según la isla de origen
+color_guadalupe <- "#8ECFB0"
+color_clarion <- "#F4A7A1"
+
+# Tamaño y transparencia de los puntos GPS en el mapa
+gps_point_size <- 0.3
+gps_point_alpha <- 0.7
+
+# Dimensiones y resolución de la figura de salida
+fig_width <- 8
+fig_height <- 6
+fig_dpi <- 300
+
+
+# ==== ENTRADAS ====
+# Importa el shapefile de la ZEE de México como objeto sf
 mexico_eez_sf <- st_read(input_shapefile_path, quiet = TRUE)
-
+# Importa los registros GPS de albatros desde el archivo CSV consolidado
 gps_tracks <- read_csv(input_gps_path, show_col_types = FALSE)
 
-# Transform geometry to geographic coordinates
+
+# ==== PROCESAMIENTO / ANÁLISIS ====
+# Transforma la ZEE a coordenadas geográficas WGS84 para que coincida
+# con el sistema de referencia de los datos GPS y los bounding boxes
 mexico_eez_wgs84 <- mexico_eez_sf |>
   st_transform(4326)
 
-# Convert GPS table to spatial points
+# Convierte los registros GPS de tabla a puntos espaciales sf usando
+# las columnas de longitud y latitud como coordenadas geográficas
 gps_points_sf <- gps_tracks |>
   st_as_sf(
     coords = c("longitude", "latitude"),
@@ -97,10 +108,8 @@ gps_points_sf <- gps_tracks |>
     remove = FALSE
   )
 
-
-# ==== CREATE BOUNDING BOXES ====
-
-# Regional bounding box
+# Construye el polígono del bounding box regional a partir de las
+# coordenadas definidas en el archivo JSON de configuración
 bounding_box_polygon <- st_bbox(
   c(
     xmin = bbox_lon_min,
@@ -112,7 +121,8 @@ bounding_box_polygon <- st_bbox(
 ) |>
   st_as_sfc()
 
-# Zoom bounding box
+# Construye el polígono del bounding box de zoom para mostrar el
+# área de intersección dentro del contexto regional más amplio
 bounding_box_zoom_polygon <- st_bbox(
   c(
     xmin = bbox_zoom_lon_min,
@@ -124,54 +134,64 @@ bounding_box_zoom_polygon <- st_bbox(
 ) |>
   st_as_sfc()
 
-
-# ==== PLOT ====
+# Construye el mapa temático con todas las capas espaciales superpuestas
 plot_map <- ggplot() +
+  # Capa de la ZEE de México con relleno semitransparente
   geom_sf(
     data = mexico_eez_wgs84,
-    fill = "#93C5FD",
-    color = "#1E3A8A",
-    alpha = 0.5
+    fill = fill_eez_color,
+    color = line_eez_color,
+    alpha = fill_alpha
   ) +
+  # Capa del bounding box regional que define el área de estudio amplia
   geom_sf(
     data = bounding_box_polygon,
     fill = NA,
-    color = "#C6B7E2",
-    linewidth = 1
+    color = line_bbox_color,
+    linewidth = line_bbox_width
   ) +
+  # Capa de los puntos GPS de albatros coloreados por isla de origen
   geom_sf(
     data = gps_points_sf,
     aes(color = island_name),
-    size = 0.3,
-    alpha = 0.7
+    size = gps_point_size,
+    alpha = gps_point_alpha
   ) +
+  # Asigna colores distintivos a cada colonia de albatros
   scale_color_manual(
     values = c(
-      "Guadalupe" = "#8ECFB0",
-      "Clarion" = "#F4A7A1"
+      "Guadalupe" = color_guadalupe,
+      "Clarion" = color_clarion
     )
   ) +
+  # Capa del bounding box de zoom que muestra el área de intersección
   geom_sf(
     data = bounding_box_zoom_polygon,
     fill = NA,
-    color = "#F6C177",
-    linewidth = 1
+    color = line_zoom_color,
+    linewidth = line_bbox_width
   ) +
+  # Preserva la proyección geográfica original de los datos
   coord_sf() +
+  # Estilo limpio que enfatiza las capas espaciales del mapa
   theme_minimal() +
+  # Etiquetas del mapa con los nombres de las capas en español
   labs(
-    title = "Mexico EEZ, Albatross GPS Tracks, and Bounding Boxes",
-    color = "Island",
+    title = "ZEE de México, rutas GPS de albatros y bounding boxes",
+    color = "Isla",
     subtitle = glue(
-      "Bounding box: {bbox_lat_min}–{bbox_lat_max}°N, {abs(bbox_lon_max)}–{abs(bbox_lon_min)}°W"
+      "Bounding box: {bbox_lat_min}–{bbox_lat_max}°N, {abs(bbox_lon_max)}–{abs(bbox_lon_min)}°O"
     )
   )
 
-# ==== OUTPUT ====
+
+# ==== SALIDA ====
+# Exporta el mapa como PNG para integrarse con el sistema de reportes
+# del proyecto y permitir la inspección visual de las capas espaciales
 ggsave(
   filename = output_figure_path,
   plot = plot_map,
-  width = 8,
-  height = 6,
-  dpi = 300
+  width = fig_width,
+  height = fig_height,
+  dpi = fig_dpi
 )
