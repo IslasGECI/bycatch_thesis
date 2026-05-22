@@ -1,59 +1,62 @@
 # ==========================================
-# Título: Exportar Shapefile de México a GeoPackage
+# Título: Exporta el shapefile de México a GeoPackage
 #
 # Contexto (Por qué):
-# El formato GeoPackage (.gpkg) es un estándar abierto que permite
-# almacenar datos geoespaciales vectoriales de manera interoperable.
-# Unir las geometrías del shapefile de México facilita las operaciones
-# espaciales subsecuentes.
+# El formato GeoPackage es un estándar abierto que permite almacenar
+# datos geoespaciales vectoriales de manera interoperable. Convertir
+# el shapefile de México a GeoPackage unifica las geometrías para
+# facilitar las operaciones espaciales subsecuentes del pipeline.
 #
 # Descripción (Qué / Cómo):
-# El script carga el shapefile de México e islas, aplica st_make_valid()
-# para corregir geometrías inválidas, genera la unión de todas las
-# geometrías mediante st_union() y exporta el resultado como GeoPackage.
+# Carga el shapefile de México e islas, aplica st_make_valid() para
+# corregir geometrías inválidas, genera la unión de todas las geometrías
+# mediante st_union() y exporta el resultado como GeoPackage con una
+# capa nombrada para consumir en otros scripts.
 #
 # Entradas:
 # data/external/Mexico_e_islas_wgs84.shp
 #
-# Salidas:
+# Salida:
 # data/processed/mexico_map.gpkg (capa: mexico_map)
 #
 # Dependencias:
 # sf
 # tidyverse
-# glue
 #
 # Notas:
-# Se aplica st_make_valid() antes de st_union() para evitar errores
-# por geometrías inválidas.
-# Se mantiene el CRS original (YAGNI).
+# - st_make_valid() se aplica antes de st_union() para evitar errores topológicos
+# - El CRS original se conserva sin transformaciones innecesarias
 # ==========================================
 
-# ==== CARGAR PAQUETES ====
-library(sf)         # Para manejar datos espaciales (lectura/escritura y operaciones geométricas)
-library(tidyverse)  # Para una sintaxis de manipulación de datos clara y encadenada
 
 # ==== CONFIGURACIÓN ====
-# -- Variables centralizadas para facilitar cambios sin tocar el resto del código
-input_shapefile_path <- "data/external/Mexico_e_islas_wgs84.shp" # Ruta al shapefile de entrada
-output_gpkg_path <- "data/processed/mexico_map.gpkg" # Ruta del GeoPackage de salida
-output_layer_name <- "mexico_map" # Nombre de la capa dentro del GPKG
+library(sf)         # Proporciona st_read para importar shapefiles y st_union para disolver geometrías
+library(tidyverse)  # Proporciona summarize() para colapsar múltiples geometrías en una sola
 
-# ==== IMPORTAR Y PREPARAR DATOS ====
-# Se lee el shapefile como objeto sf; quiet = TRUE reduce ruido en consola
-# Mantener el CRS original evita transformaciones innecesarias (YAGNI)
+# Ruta del shapefile de México e islas en coordenadas geográficas
+input_shapefile_path <- "data/external/Mexico_e_islas_wgs84.shp"
+# Ruta del GeoPackage que almacenará la geometría unificada de México
+output_gpkg_path <- "data/processed/mexico_map.gpkg"
+# Nombre de la capa dentro del GeoPackage para identificar la geometría
+output_layer_name <- "mexico_map"
+
+
+# ==== ENTRADAS ====
+# Importa el shapefile de México como objeto sf manteniendo el CRS original
 shape_data <- st_read(input_shapefile_path, quiet = TRUE)
 
-# ==== CREAR GEOMETRÍA UNIDA (DISOLUCIÓN) ====
-# Se corrigen geometrías potencialmente inválidas para que st_union() no falle
-# summarize() sin agrupación colapsa todas las filas en una sola geometría
-shape_union <- shape_data |>
-  st_make_valid() |>                       # Evita problemas topológicos
-  summarize(geometry = st_union(geometry)) # Disuelve límites internos en una única geometría
 
-# ==== EXPORTAR A GEOPACKAGE ====
-# Se escribe la geometría resultante en un archivo .gpkg con nombre versionado por fecha
-# Usar un nombre único por fecha evita sobreescrituras y facilita trazabilidad
+# ==== PROCESAMIENTO / ANÁLISIS ====
+# Corrige geometrías potencialmente inválidas para que st_union() no falle
+# y disuelve los límites internos colapsando todas las filas en una sola
+shape_union <- shape_data |>
+  st_make_valid() |>
+  summarize(geometry = st_union(geometry))
+
+
+# ==== SALIDA ====
+# Exporta la geometría unificada como GeoPackage con una capa nombrada
+# para facilitar su lectura por otros scripts del pipeline de análisis
 st_write(
   obj = shape_union,
   dsn = output_gpkg_path,
