@@ -122,10 +122,10 @@ reports/figures/mexico_eez_bounding_box_zoom_out.png: \
 # 4390 = 645*2 pairs in the main island + 1550*2 pairs in the islets (https://doi.org/10.5281/zenodo.18343678)
 
 data/processed/kba_polygons_guadalupe.gpkg: \
-	data/processed/cache_guadalupe.rds
+	data/processed/representative_assessment_guadalupe.rds
 	$(checkDirectories)
 	Rscript -e "bycatch::create_potential_kba(bycatch::get_domain_specific_options())" \
-		--rds-path data/processed/cache_guadalupe.rds \
+		--rds-path data/processed/representative_assessment_guadalupe.rds \
 		--percentage-distribution 50 \
 		--population-size 4390 \
 		--output-path $@
@@ -140,10 +140,10 @@ reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png: \
 # 4437 = 47 individuals in Clarion Island (2023) + 4390 individuals in Guadalupe Island
 
 data/processed/kba_polygons_all.gpkg: \
-	data/processed/cache_all.rds
+	data/processed/representative_assessment_all.rds
 	$(checkDirectories)
 	Rscript -e "bycatch::create_potential_kba(bycatch::get_domain_specific_options())" \
-		--rds-path data/processed/cache_all.rds \
+		--rds-path data/processed/representative_assessment_all.rds \
 		--percentage-distribution 50 \
 		--population-size 4437 \
 		--output-path $@
@@ -156,10 +156,10 @@ reports/figures/gps_albatross_50_percent_potential_kba_ars_all.png: \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_representative_assessment_ars_guadalupe.png: \
-	data/processed/cache_guadalupe.rds
+	data/processed/representative_assessment_guadalupe.rds
 	$(checkDirectories)
 	Rscript -e "bycatch::render_representative_assessment(bycatch::get_domain_specific_options())" \
-		--rds-path data/processed/cache_guadalupe.rds \
+		--rds-path data/processed/representative_assessment_guadalupe.rds \
 		--output-path $@
 
 # create_processed_data was removed in bycatch v0.9.2.
@@ -177,7 +177,7 @@ data/processed/individual_kde_guadalupe.rds: \
 		--trips-summary-path data/processed/trips_summary_guadalupe.csv \
 		--output-path $@
 
-data/processed/cache_guadalupe.rds: \
+data/processed/representative_assessment_guadalupe.rds: \
 	data/processed/individual_kde_guadalupe.rds
 	$(checkDirectories)
 	Rscript -e "bycatch::create_representative_assessment(bycatch::get_domain_specific_options())" \
@@ -199,7 +199,7 @@ data/processed/individual_kde_all.rds: \
 		--trips-summary-path data/processed/trips_summary_all.csv \
 		--output-path $@
 
-data/processed/cache_all.rds: \
+data/processed/representative_assessment_all.rds: \
 	data/processed/individual_kde_all.rds
 	$(checkDirectories)
 	Rscript -e "bycatch::create_representative_assessment(bycatch::get_domain_specific_options())" \
@@ -209,10 +209,10 @@ data/processed/cache_all.rds: \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_representative_assessment_ars_all.png: \
-	data/processed/cache_all.rds
+	data/processed/representative_assessment_all.rds
 	$(checkDirectories)
 	Rscript -e "bycatch::render_representative_assessment(bycatch::get_domain_specific_options())" \
-		--rds-path data/processed/cache_all.rds \
+		--rds-path data/processed/representative_assessment_all.rds \
 		--output-path $@
 
 # Note: create_individual_kde output changed from .gpkg to .rds in bycatch v0.9.2.
