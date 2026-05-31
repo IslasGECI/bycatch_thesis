@@ -1,204 +1,96 @@
 # Developer Manual (AGENTS.md)
 
-This document provides a workflow-oriented guide to the technical architecture, operational procedures, and engineering standards for the `bycatch_thesis` project.
+Workflow-oriented guide to the technical architecture, operational procedures, and engineering standards for the `bycatch_thesis` project.
 
----
-
-## Phase 1: Environment Setup & Operations
+## Environment Setup & Operations
 
 ### Build System
 - **Primary**: `make` (Makefile-driven).
-- **Docker**: `docker-compose run --rm islasgeci` or build image from `Dockerfile`.
+- **Docker**: `docker-compose run --rm islasgeci` or `docker exec bycatch_thesis_ci <command>` for running ad-hoc commands inside the already-running container.
 - **Container image**: `islasgeci/bycatch_thesis:latest`.
 
 ### Initial Configuration
-- **Credentials**: Set `BITBUCKET_USERNAME` and `BITBUCKET_PASSWORD` as environment variables for data access.
+- **Credentials**: Set `BITBUCKET_USERNAME` and `BITBUCKET_PASSWORD` for data access.
 - **Docker Registry**: Set `DOCKER_USERNAME`/`DOCKER_PASSWORD` for pushing images.
 
 ### Key Operational Commands
 ```bash
-make reports/first_paper.pdf  # Build first article
-make reports/second_paper.pdf # Build second article
-make articles                # Build all articles
-make maps                    # Build Mexico map figures only
-make clean                   # Remove all generated files
-make format                  # Style R code with styler
-
-# Build artifacts incrementally, one PNG at a time:
-make reports/figures/gps_albatross_50_percent_individual_kde_ars_guadalupe.png
-make reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png
-make reports/figures/gps_albatross_50_percent_representative_assessment_ars_guadalupe.png
-
-# Verify bycatch functions exist in installed package:
-Rscript -e "library(bycatch); exists('create_individual_kde', where='package:bycatch', mode='function')"
+make reports/first_paper.pdf
+make reports/second_paper.pdf
+make articles
+make maps
+make clean
+make format                                  # Style R code with styler
+docker exec bycatch_thesis_ci make <target>  # Run a make target inside the container
+docker exec bycatch_thesis_ci Rscript src/foo.R  # Run a script inside the container
 ```
 
----
+### Make Dependency Gotchas
+- **`.PHONY` targets without recipes**: Make will not cascade to their prerequisites unless a recipe (even `@true`) exists. Always verify that group targets have a recipe when listed in `.PHONY`.
+- **Source file dependencies**: Rules that concatenate glob patterns (e.g. `cat papers/first-paper/1?_*.md`) must list actual files as prerequisites using `$(wildcard ...)`.
+- **Intermediate artifact prerequisites**: PNG render targets depend on intermediate `.gpkg` or `.rds` files, not on raw CSV data. The chain is: raw data → `create_*()` → intermediate → `render_*()` → PNG.
 
-## Phase 2: Data Lifecycle & Acquisition
+## Data Lifecycle
 
-### 1. Data Acquisition
-- **Download**: `make data/raw/gps-albatros-guadalupe.csv` (uses `descarga_datos`).
-- **External Dependencies**: `docker pull islasgeci/vessel_data:latest`.
+- **Raw Data**: Immutable in `data/raw/`.
+- **Processed Data**: In `data/processed/`, shaped for modeling.
+- **Traceability**: `analyses.json` maps data-script-report relationships; `Makefile` defines transformation rules.
+- **Pipeline Pattern**: Computation (`create_*()`) writes to `data/processed/`; visualization (`render_*()`) reads intermediate artifacts and writes PNGs to `reports/figures/`.
+- **Custom scripts**: Some figures bypass the `bycatch` package and use `src/` scripts directly (e.g., `export_kba_mpa_intersection.R`, `plot_potential_kba_guadalupe.R`, `plot_kba_mpa_intersection.R`).
 
-### 2. Integrity Rules
-- **Raw Data**: Must remain strictly **immutable** in `data/raw/`.
-- **Processed Data**: Resides in `data/processed/`, shaped specifically for modeling.
+## Development & Coding Standards
 
-### 3. Traceability
-- **analyses.json**: The authoritative map of data-script-report relationships.
-- **Makefile**: Defines the specific rules for transforming data into results.
-
-### 4. Pipeline Pattern (bycatch v0.9.0+)
-The bycatch package splits computation and visualization into two phases:
-- `create_*()`: Performs computation, writes intermediate artifact to `data/processed/` (`.rds`, `.gpkg`, `.csv`).
-- `render_*()`: Reads intermediate artifact, produces PNG in `reports/figures/`.
-
-Makefile targets follow the same split: an intermediate artifact target (e.g. `data/processed/ud_polygons_guadalupe.gpkg`) feeds into the PNG target (`reports/figures/gps_albatross_50_percent_individual_kde_ars_guadalupe.png`).
-
-### 5. Make Dependency Gotchas
-- **`.PHONY` targets without recipes**: Make will not cascade to their prerequisites unless a recipe (even `@true`) exists. Always verify that group targets (`results_first_paper`, `results_second_paper`, etc.) have a recipe when listed in `.PHONY`.
-- **Source file dependencies**: Rules that concatenate glob patterns (e.g. `cat papers/first-paper/1?_*.md`) must list the actual files as prerequisites using `$(wildcard ...)`. Otherwise Make won't detect edits to source files.
-- **Intermediate artifact prerequisites**: PNG render targets depend on intermediate `.gpkg` or `.rds` files, not on the raw CSV data. The dependency chain is: raw data → `create_*()` → intermediate → `render_*()` → PNG.
-- **Option flag availability**: The `get_domain_specific_options()` parser defines a fixed set of flags. As of bycatch v0.9.1 it includes `--gpkg-path` and `--rds-path` (added for render functions). Earlier versions do not.
-
----
-
-## Phase 3: Development & Coding Standards
-
-### 1. Repository Architecture (Class 3)
-Scripts and content must be placed according to the project map:
-- `src/`: R analysis scripts.
-- `reports/figures/`: Generated visualizations.
-- `references/`: BibTeX and articles.
-- `1?_*.md` / `2?_*.md`: Manuscript sources (Paper 1 and 2).
-
-### 2. Coding in R
-- **Style**: Tidyverse.
-- **Linear Rule**: Write linear code in analysis scripts; avoid complex loops or functions.
-- **Language**: English for code (variables/functions); Spanish for comments.
-- **Documentation**: Comment **every line** in Spanish, focusing on the "why".
-
-### 3. Script Structure
-Every script in `src/` must follow this header format:
-```r
+### Script Structure (src/)
+Every script must follow this header structure in Spanish, using imperative form (no infinitives):
+```
 # ==========================================
 # Título: (1 línea)
 # Contexto (Por qué): (2–4 líneas)
 # Descripción (Qué / Cómo): (3–6 líneas)
-# Entradas: (Uno por línea)
-# Salidas: (Uno por línea)
+# Entradas: (Uno por línea, sin bullets)
+# Salida: (Uno por línea, sin bullets)
 # Dependencias: (Un paquete por línea)
 # Notas: (Opcional, máximo 4 bullets)
 # ==========================================
 ```
+Then: `# ==== CONFIGURACIÓN ====`, `# ==== ENTRADAS ====`, `# ==== PROCESAMIENTO / ANÁLISIS ====`, `# ==== SALIDA ====`.
 
-### 4. Repository Content Policy
-- **Text Only**: Only plain text files allowed (CSV, JSON, SVG, TeX).
-- **Binary Limits**: Images only if ≤ 256px and necessary. No files > 1 MB.
+### Style Rules
+- **Full style reference**: https://islas.dev/guia_de_estilo/STYLEGUIDE
+- **Code**: English variables, Tidyverse, linear (no functions/loops/if), comment every line in Spanish focusing on why.
+- **Comments**: Spanish, per-line, explaining logic/reasoning not mechanics.
+- **Script names**: Start with a verb, letters and numbers only.
+- **Output**: Each script writes exactly one output file.
 
----
+### Repository Content
+- **Text only**: CSV, JSON, SVG, TeX, Markdown. No binaries > 1 MB.
+- **Images**: Only if ≤ 256 px and necessary. PNGs excluded from git via `.gitignore`.
 
-## Phase 4: Validation, Testing & Commits
+## Validation, Testing & Commits
 
-### 1. Quality Assurance (CI)
-Before pushing to `develop`, ensure your prose meets these standards:
+### Quality Assurance
+- `make check` runs spellcheck and manuscript style checks.
 - **Spellcheck**: Passing for both English and Spanish.
-- **Constraint**: ≤ 25 words per sentence; ≤ 200 words per paragraph.
+- **Style**: ≤ 25 words per sentence, ≤ 200 words per paragraph.
 
-### 2. Testing
-- **Reproducibility**: All results must be reproducible from the raw data.
-- **Naming**: Test files must start with `test_` and use alphanumeric names.
-
-### 3. Commitment (Gitmoji)
-Commits must follow the project's semantic style:
-- **Format**: `[Emoji] [Imperative Verb] [Summary]`
-- **Example**: `✨ Add kernel density estimation for Clarion Island`
-- **Priority**: Explain **why** the change was made in the message body.
-
----
-
-## Documentation Strategy Summary
-
-| File | Level | Audience | Focus |
-| :--- | :--- | :--- | :--- |
-| `README.md` | **User** | General Users | What the project is and how to use it. |
-| `AGENTS.md` | **Developer** | Developers | How to build, code, and contribute (this file). |
-| `TODO.md`   | **Roadmap** | Team | What needs to be done next. |
-
----
+### Commits (Gitmoji)
+- Format: `[Emoji] [Imperative Verb] [Summary]` with blank line then body explaining why.
+- Emoji examples: ➕ feature, 🗺️ map, 🎨 style/format, ✅ task tracking, 📝 docs.
 
 ## Task Management: The Gold Workflow
 
-This project uses a **"Gold" workflow** inspired by Test-Driven Development's concept of *grabbing for the gold* (Kent Beck, *TDD By Example*).
+GitHub Issues define Golds (collections of related tasks). TODO.md is the active workspace showing only the current Gold. Tasks are completed one at a time using TDD cycles (Red → Green → Refactor). Completed tasks are checked off in TODO.md and synced to the GitHub Issue.
 
-In TDD, **"the gold"** is a clear specification of target behavior reached through small, incremental steps: Red → Green → Refactor.
+- **Gold**: A GitHub Issue with a set of related tasks.
+- **TODO.md**: Shows ONLY the current Gold's tasks.
+- **Switching Golds**: Replace TODO.md with the new issue's tasks after syncing completed ones.
 
-This project applies that same concept to task management:
+## Documentation Map
 
-### Definitions
-
-| Term | Meaning |
-|------|---------|
-| **Gold** | A GitHub Issue containing a collection of related tasks that represent a target behavior or deliverable |
-| **TODO.md** | The active workspace that shows ONLY the tasks for the Gold you're currently working on |
-| **Task** | One small, completable step toward reaching the Gold |
-
-### How It Works
-
-```
-┌─────────────────────────────────────────────────┐
-│        GitHub Issues (Permanent Gold Store)     │
-├─────────────────────────────────────────────────┤
-│ Issue #1: "Write Methods Section" [GOLD]        │
-│   ├── [ ] Add site selection justification      │
-│   └── [ ] Explain oceanographic context         │
-│                                                 │
-│ Issue #2: "ANP Intersection Analysis" [GOLD]    │
-│   ├── [ ] Define overlap index formula          │
-│   └── [ ] Specify vector vs raster approach     │
-└─────────────────────────────────────────────────┘
-                        ↓
-              (You pick a Gold to work on)
-                        ↓
-┌─────────────────────────────────────────────────┐
-│         TODO.md (Active Workspace)              │
-│  = The Gold you're grabbing for RIGHT NOW       │
-├─────────────────────────────────────────────────┤
-│ # WORKING ON: Issue #2 - ANP Intersection       │
-│                                                 │
-│ - [ ] Define overlap index formula              │
-│ - [ ] Specify vector vs raster approach         │
-│                                                 │
-│ # DONE                                          │
-│ - [x] (completed tasks)                         │
-└─────────────────────────────────────────────────┘
-                        ↓
-              [TDD Cycle: Red-Green-Refactor]
-              [Complete one task at a time]
-              [Until you reach the Gold]
-```
-
-### The Workflow
-
-1. **Choose a Gold**: Pick a GitHub Issue to work on
-2. **Load TODO.md**: Copy that issue's tasks into TODO.md (replacing previous content)
-3. **Grab for the Gold**: Work through each task using TDD cycles
-4. **Mark Progress**: Check off tasks in both TODO.md and the GitHub Issue
-5. **Switching Golds**: When done (or changing focus), replace TODO.md with the new issue's tasks
-6. **Cleanup**: Before switching Golds, ensure all completed tasks in TODO.md are marked as complete in the GitHub Issue (the Permanent Gold Store), then clear TODO.md.
-
-### Why This Works
-
-| Benefit | Explanation |
-|---------|--------------|
-| **Focus** | TODO.md shows only ONE Gold at a time — no clutter |
-| **Clarity** | The Gold (Issue) defines exactly what "done" looks like |
-| **TDD-Aligned** | Small tasks = small increments = Red-Green-Refactor |
-| **Traceability** | GitHub Issues are permanent; TODO.md is ephemeral workspace |
-| **Flexibility** | Switch Golds anytime by updating TODO.md |
-
-### Summary
-
-> **GitHub Issues are Golds. TODO.md is the Gold you're grabbing for right now.**
-
+| File | Audience | Focus |
+|------|----------|-------|
+| `README.md` | End Users | What the project is and how to use it |
+| `AGENTS.md` | Developers | How to build, code, and contribute (this file) |
+| `DOCS.md` | Developers | API, CLI, and data model reference |
+| `CHANGELOG.md` | Developers | Version history following SemVer |
+| `TODO.md` | Team | Current active Gold and backlog |
