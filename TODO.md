@@ -10,9 +10,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 #### Guadalupe Island
 
-- [ ] Add **explicit justification for site selection**
-    - Why Guadalupe is appropriate for identifying core areas
-    - Why this colony is representative of the eastern Pacific population
 - [ ] Link site to research objectives (core areas + overlap with ANPs)
 - [ ] Connect physical characteristics (isolation, size) to movement ecology
 
