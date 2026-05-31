@@ -54,6 +54,8 @@ results_first_paper: \
 	data/processed/individual_kde_guadalupe_map.rds \
 	reports/figures/gps_albatross_50_percent_individual_kde_ars_guadalupe.png \
 	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png \
+	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_without_mpa.png \
+	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_with_mpa.png \
 	reports/figures/gps_albatross_50_percent_representative_assessment_ars_guadalupe.png \
 	reports/figures/gps_albatross_geographic_points_by_trip_guadalupe.png \
 	reports/figures/gps_albatross_geographic_points_raw_guadalupe.png \
@@ -137,6 +139,29 @@ reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png: \
 	Rscript -e "bycatch::render_potential_kba(bycatch::get_domain_specific_options())" \
 		--gpkg-path data/processed/kba_polygons_guadalupe.gpkg \
 		--output-path $@
+
+# Custom KBA map without MPA overlay — uses src/ plot style consistent with other project maps
+data/processed/kba_mpa_intersection_guadalupe.gpkg: \
+	data/processed/kba_polygons_guadalupe.gpkg \
+	data/processed/mexico_mpa.gpkg
+	$(checkDirectories)
+	Rscript src/export_kba_mpa_intersection.R
+
+reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_without_mpa.png: \
+	data/processed/kba_polygons_guadalupe.gpkg \
+	data/external/Exclusive_economic_zone_Mexico.shp \
+	data/processed/bounding_box.json
+	$(checkDirectories)
+	Rscript src/plot_potential_kba_guadalupe.R
+
+reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_with_mpa.png: \
+	data/processed/kba_mpa_intersection_guadalupe.gpkg \
+	data/processed/kba_polygons_guadalupe.gpkg \
+	data/processed/mexico_mpa.gpkg \
+	data/external/Exclusive_economic_zone_Mexico.shp \
+	data/processed/mexico_eez_bounding_box_zoom_in.json
+	$(checkDirectories)
+	Rscript src/plot_kba_mpa_intersection.R
 
 # 4437 = 47 individuals in Clarion Island (2023) + 4390 individuals in Guadalupe Island
 
