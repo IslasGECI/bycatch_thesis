@@ -22,8 +22,22 @@ Actions:
     4. Unit of completion:
         — Question with sub-bullets: all sub-bullets must be addressed before deleting the checkbox.
         — Question without sub-bullets: delete the checkbox once its answer is written.
-    5. After finishing a round, start a new round. Continue until a complete round passes with zero questions answered.
-    6. Phase 0 ends when a full round produces no answered questions, even if some TODO.md questions remain unanswered.
+     5. After finishing a round, start a new round. Continue until a complete round passes with zero questions answered.
+     6. Phase 0 ends when a full round produces no answered questions, even if some TODO.md questions remain unanswered.
+
+Turn-by-turn interaction protocol:
+    a. The agent asks exactly one question from TODO.md, quoting the checkbox text as written.
+    b. The user answers in English, Spanish, or Spanglish.
+    c. The agent translates the answer into proper English:
+        — Fix grammar and spelling only.
+        — Add no words beyond what is minimally necessary to form a correct English sentence.
+        — Generate no new content.
+    d. The agent writes the corrected answer into the corresponding section of `papers/first-paper/13_methods.md`.
+    e. The agent evaluates whether the answer actually answered the question:
+        — If yes: delete the checkbox (and its sub-bullets, if any) from TODO.md.
+        — If no: keep the answer in 13_methods.md anyway, notify the user why it missed, and offer to commit-and-skip or try again.
+    f. Commit both `TODO.md` and `13_methods.md`.
+    g. Report back and offer to undo the commit or move to the next question.
 
 # Phase 1: Extract
 Input:
