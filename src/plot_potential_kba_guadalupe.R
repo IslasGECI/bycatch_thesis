@@ -2,11 +2,10 @@
 # Título: Grafica el polígono rojo del KBA (sitio potencial) del albatros de Laysan
 #
 # Contexto (Por qué):
-# bycatch::render_potential_kba() genera un mapa que combina una superficie
-# de densidad azul con un contorno rojo para las celdas que cumplen el umbral
-# de sitio potencial (potentialSite = TRUE). Este script replica únicamente
-# el contorno rojo del KBA sobre la ZEE y la costa para producir un mapa
-# consistente con el estilo del resto del proyecto.
+# bycatch::render_potential_kba() combina una densidad azul con un contorno
+# rojo para las celdas que cumplen el umbral de sitio potencial. Este script
+# replica el contorno rojo sobre la ZEE y la costa para integrarlo al estilo
+# visual del resto del proyecto.
 #
 # Descripción (Qué / Cómo):
 # Lee el GeoPackage de polígonos KBA, filtra las celdas con potentialSite = TRUE,
@@ -106,10 +105,13 @@ kba_red_polygon_sf <- kba_polygons_sf |>
 # para que coincida con el sistema de referencia de los polígonos KBA
 mexico_eez_wgs84_sf <- mexico_eez_sf |>
   st_transform(target_crs)
-# Extrae las coordenadas del bounding box de zoom in para los límites del mapa
+# Extrae la longitud oeste del bounding box de zoom in para el límite izquierdo del mapa
 bbox_lon_min <- bbox_config$bbox$lon_min
+# Extrae la longitud este del bounding box de zoom in para el límite derecho del mapa
 bbox_lon_max <- bbox_config$bbox$lon_max
+# Extrae la latitud sur del bounding box de zoom in para el límite inferior del mapa
 bbox_lat_min <- bbox_config$bbox$lat_min
+# Extrae la latitud norte del bounding box de zoom in para el límite superior del mapa
 bbox_lat_max <- bbox_config$bbox$lat_max
 # Construye el mapa temático con el contorno rojo del sitio potencial KBA
 # sobre la costa y la ZEE como contexto geográfico

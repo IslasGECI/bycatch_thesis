@@ -120,11 +120,13 @@ kba_red_polygon_sf <- kba_polygons_sf |>
 # para que coincida con el sistema de referencia de los polígonos KBA y AMP
 mexico_eez_wgs84_sf <- mexico_eez_sf |>
   st_transform(target_crs)
-# Extrae las coordenadas del bounding box de zoom in para definir los
-# límites del mapa centrados en la región de la ZEE mexicana
+# Extrae la longitud oeste del bounding box de zoom in para el límite izquierdo del mapa
 bbox_lon_min <- bbox_config$bbox$lon_min
+# Extrae la longitud este del bounding box de zoom in para el límite derecho del mapa
 bbox_lon_max <- bbox_config$bbox$lon_max
+# Extrae la latitud sur del bounding box de zoom in para el límite inferior del mapa
 bbox_lat_min <- bbox_config$bbox$lat_min
+# Extrae la latitud norte del bounding box de zoom in para el límite superior del mapa
 bbox_lat_max <- bbox_config$bbox$lat_max
 # Construye el mapa temático con cinco capas espaciales que muestran la
 # relación entre el sitio potencial KBA y las AMP
