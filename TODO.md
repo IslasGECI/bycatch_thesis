@@ -6,9 +6,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ## Materials
 
-- [ ] Tambien me falta el Hola Mundo
-
-
 ### Site description
 
 #### Guadalupe Island
