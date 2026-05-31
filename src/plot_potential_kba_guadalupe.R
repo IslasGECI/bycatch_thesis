@@ -11,13 +11,14 @@
 # Descripción (Qué / Cómo):
 # Lee el GeoPackage de polígonos KBA, filtra las celdas con potentialSite = TRUE,
 # fusiona sus geometrías en un solo polígono y lo grafica como contorno rojo
-# sobre la ZEE de México y la línea de costa. Usa el bounding box regional
-# (zoom out) como extensión. Exporta la figura como PNG.
+# sobre la ZEE de México y la línea de costa. Usa el mismo bounding box de
+# zoom in que el mapa de intersección con AMP para mantener coherencia visual.
+# Exporta la figura como PNG.
 #
 # Entradas:
 # data/processed/kba_polygons_guadalupe.gpkg
 # data/external/Exclusive_economic_zone_Mexico.shp
-# data/processed/bounding_box.json
+# data/processed/mexico_eez_bounding_box_zoom_in.json
 #
 # Salida:
 # reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_without_mpa.png
@@ -47,8 +48,9 @@ library(tidyverse) # Proporciona ggplot2 para graficar y dplyr para filtrar y ag
 input_kba_path <- "data/processed/kba_polygons_guadalupe.gpkg"
 # Ruta del shapefile de la Zona Económica Exclusiva de México
 input_eez_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
-# Ruta del archivo JSON con los límites del bounding box regional (zoom out)
-input_bbox_json_path <- "data/processed/bounding_box.json"
+# Ruta del archivo JSON con los límites del bounding box de zoom in para
+# mantener coherencia visual con el mapa de intersección KBA ∩ AMP
+input_bbox_json_path <- "data/processed/mexico_eez_bounding_box_zoom_in.json"
 # Ruta del archivo PNG que almacenará el mapa del polígono rojo del KBA
 output_figure_path <- "reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_without_mpa.png"
 
@@ -61,7 +63,7 @@ target_crs <- 4326
 coast_fill_color <- "gray90" # Color de relleno para el continente
 coast_line_color <- "gray50" # Color del contorno de la línea de costa
 eez_fill_color <- "#93C5FD" # Color de relleno semitransparente para la ZEE
-eez_fill_alpha <- 0.3 # Transparencia del relleno de la ZEE para ver capas subyacentes
+eez_fill_alpha <- 0.2 # Transparencia del relleno de la ZEE para ver capas subyacentes
 eez_line_color <- "#1E3A8A" # Color del contorno de la ZEE
 kba_polygon_border_color <- "#DC2626" # Color rojo del contorno del sitio potencial KBA
 kba_polygon_border_width <- 0.8 # Grosor del contorno rojo del KBA
@@ -82,8 +84,8 @@ mexico_eez_sf <- st_read(input_eez_shapefile_path, quiet = TRUE)
 # Descarga los límites políticos mundiales desde Natural Earth para usar
 # como fondo de costa en el mapa; escala media equilibra detalle y velocidad
 world_coastline_sf <- ne_countries(scale = coastline_scale, returnclass = "sf")
-# Carga los límites del bounding box regional desde el archivo JSON para
-# establecer la extensión geográfica del mapa
+# Carga los límites del bounding box de zoom in desde el archivo JSON para
+# establecer la extensión geográfica del mapa (misma que el mapa con AMP)
 bbox_config <- fromJSON(input_bbox_json_path)
 
 
@@ -104,7 +106,7 @@ kba_red_polygon_sf <- kba_polygons_sf |>
 # para que coincida con el sistema de referencia de los polígonos KBA
 mexico_eez_wgs84_sf <- mexico_eez_sf |>
   st_transform(target_crs)
-# Extrae las coordenadas del bounding box regional para los límites del mapa
+# Extrae las coordenadas del bounding box de zoom in para los límites del mapa
 bbox_lon_min <- bbox_config$bbox$lon_min
 bbox_lon_max <- bbox_config$bbox$lon_max
 bbox_lat_min <- bbox_config$bbox$lat_min
@@ -119,8 +121,8 @@ plot_kba_guadalupe <- ggplot() +
     color = coast_line_color,
     linewidth = 0.2
   ) +
-  # Capa de la ZEE de México con relleno semitransparente para mostrar
-  # la jurisdicción marítima sin ocultar las capas inferiores
+  # Capa de la ZEE de México con relleno semitransparente para definir el
+  # contexto marítimo de jurisdicción mexicana sin ocultar las capas internas
   geom_sf(
     data = mexico_eez_wgs84_sf,
     fill = eez_fill_color,
@@ -136,8 +138,8 @@ plot_kba_guadalupe <- ggplot() +
     color = kba_polygon_border_color,
     linewidth = kba_polygon_border_width
   ) +
-  # Limita la extensión del mapa al bounding box regional (zoom out) que
-  # cubre el Pacífico Norte donde forrajean los albatros de ambas colonias
+  # Limita la extensión del mapa al bounding box de zoom in para mantener
+  # la misma vista que el mapa de intersección KBA ∩ AMP
   coord_sf(
     xlim = c(bbox_lon_min, bbox_lon_max),
     ylim = c(bbox_lat_min, bbox_lat_max),

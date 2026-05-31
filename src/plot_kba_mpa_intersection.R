@@ -65,12 +65,12 @@ target_crs <- 4326
 # Colores para las capas del mapa
 coast_fill_color <- "gray90" # Color de relleno para el continente
 coast_line_color <- "gray50" # Color del contorno de la línea de costa
-eez_fill_color <- "#93C5FD" # Color de relleno semitransparente para la ZEE
-eez_fill_alpha <- 0.2 # Transparencia del relleno de la ZEE para ver capas subyacentes
+eez_fill_color <- NA # Sin relleno para la ZEE (solo contorno)
+eez_fill_alpha <- NA # Sin transparencia porque la ZEE no tiene relleno
 eez_line_color <- "#1E3A8A" # Color del contorno de la ZEE
-mpa_fill_color <- "#60A5FA" # Color de relleno para las Áreas Marinas Protegidas
-mpa_fill_alpha <- 0.3 # Transparencia del relleno de las AMP para ver la ZEE subyacente
-mpa_line_color <- "#1D4ED8" # Color del contorno de las AMP
+mpa_fill_color <- "#86EFAC" # Color de relleno verde claro para las Áreas Marinas Protegidas
+mpa_fill_alpha <- 0.3 # Transparencia del relleno de las AMP para ver capas subyacentes
+mpa_line_color <- "#166534" # Color del contorno verde oscuro de las AMP
 kba_polygon_border_color <- "#DC2626" # Color rojo del contorno del sitio potencial KBA
 kba_polygon_border_width <- 0.8 # Grosor del contorno rojo del KBA
 intersection_fill_color <- "#22C55E" # Color de relleno destacado para la intersección KBA ∩ AMP
@@ -137,16 +137,15 @@ plot_kba_mpa_intersection <- ggplot() +
     color = coast_line_color,
     linewidth = 0.2
   ) +
-  # Capa de la ZEE de México con relleno semitransparente que define el
-  # contexto marítimo de jurisdicción mexicana
+  # Capa de la ZEE de México solo con contorno (sin relleno) para definir el
+  # contexto marítimo de jurisdicción mexicana sin obstruir las capas internas
   geom_sf(
     data = mexico_eez_wgs84_sf,
-    fill = eez_fill_color,
-    alpha = eez_fill_alpha,
+    fill = NA,
     color = eez_line_color,
     linewidth = 0.3
   ) +
-  # Capa de las Áreas Marinas Protegidas que muestra la extensión de las
+  # Capa de las Áreas Marinas Protegidas en verde que muestra la extensión de las
   # zonas marinas bajo protección legal en México
   geom_sf(
     data = mexico_mpa_sf,

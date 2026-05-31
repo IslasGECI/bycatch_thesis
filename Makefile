@@ -150,7 +150,7 @@ data/processed/kba_mpa_intersection_guadalupe.gpkg: \
 reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_without_mpa.png: \
 	data/processed/kba_polygons_guadalupe.gpkg \
 	data/external/Exclusive_economic_zone_Mexico.shp \
-	data/processed/bounding_box.json
+	data/processed/mexico_eez_bounding_box_zoom_in.json
 	$(checkDirectories)
 	Rscript src/plot_potential_kba_guadalupe.R
 
