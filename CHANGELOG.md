@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.2.0] - 2026-05-30
+
 ### Added
 
 - Custom KBA map for Guadalupe without MPA overlay (red polygon contour on EEZ and coastline)
@@ -61,5 +63,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Clarion individual KDE PNG target (unreferenced in any paper, function removed)
 
-[Unreleased]: https://github.com/IslasGECI/bycatch_thesis/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/IslasGECI/bycatch_thesis/compare/v0.2.0...HEAD
+[v0.2.0]: https://github.com/IslasGECI/bycatch_thesis/releases/tag/v0.2.0
 [v0.1.0]: https://github.com/IslasGECI/bycatch_thesis/releases/tag/v0.1.0
