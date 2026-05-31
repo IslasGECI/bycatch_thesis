@@ -51,7 +51,7 @@ reports/anteproyecto.docx reports/anteproyecto.pdf: \
 
 results_first_paper: \
 	data/processed/trips_summary_guadalupe.csv \
-	data/processed/individual_kde_guadalupe_map.rds \
+	data/processed/individual_kde_guadalupe.rds \
 	reports/figures/gps_albatross_50_percent_individual_kde_ars_guadalupe.png \
 	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png \
 	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_without_mpa.png \
@@ -66,7 +66,7 @@ results_second_paper: \
 	data/processed/trips_summary_all.csv \
 	data/processed/trips_summary_clarion.csv \
 	data/processed/trips_summary_guadalupe.csv \
-	data/processed/individual_kde_all_map.rds \
+	data/processed/individual_kde_all.rds \
 	reports/figures/gps_albatross_50_percent_individual_kde_ars_all.png \
 	reports/figures/gps_albatross_50_percent_potential_kba_ars_all.png \
 	reports/figures/gps_albatross_50_percent_representative_assessment_ars_all.png \
@@ -241,46 +241,18 @@ reports/figures/gps_albatross_50_percent_representative_assessment_ars_all.png: 
 		--rds-path data/processed/representative_assessment_all.rds \
 		--output-path $@
 
-# Note: create_individual_kde output changed from .gpkg to .rds in bycatch v0.9.2.
-# The render target for the KDE map also changed from --gpkg-path to --rds-path.
-data/processed/individual_kde_guadalupe_map.rds: \
-	data/processed/trips_geographic_points_guadalupe.csv \
-	config_trips_guadalupe.json \
-	data/processed/trips_summary_guadalupe.csv
-	$(checkDirectories)
-	Rscript -e "bycatch::create_individual_kde(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/trips_geographic_points_guadalupe.csv \
-		--config-path config_trips_guadalupe.json \
-		--percentage-distribution 50 \
-		--smoothing-method scale_ARS \
-		--trips-summary-path data/processed/trips_summary_guadalupe.csv \
-		--output-path $@
-
 reports/figures/gps_albatross_50_percent_individual_kde_ars_guadalupe.png: \
-	data/processed/individual_kde_guadalupe_map.rds
+	data/processed/individual_kde_guadalupe.rds
 	$(checkDirectories)
 	Rscript -e "bycatch::render_individual_kde(bycatch::get_domain_specific_options())" \
-		--rds-path data/processed/individual_kde_guadalupe_map.rds \
-		--output-path $@
-
-data/processed/individual_kde_all_map.rds: \
-	data/processed/trips_geographic_points_all.csv \
-	config_trips_all.json \
-	data/processed/trips_summary_all.csv
-	$(checkDirectories)
-	Rscript -e "bycatch::create_individual_kde(bycatch::get_domain_specific_options())" \
-		--data-path data/processed/trips_geographic_points_all.csv \
-		--config-path config_trips_all.json \
-		--percentage-distribution 50 \
-		--smoothing-method scale_ARS \
-		--trips-summary-path data/processed/trips_summary_all.csv \
+		--rds-path data/processed/individual_kde_guadalupe.rds \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_individual_kde_ars_all.png: \
-	data/processed/individual_kde_all_map.rds
+	data/processed/individual_kde_all.rds
 	$(checkDirectories)
 	Rscript -e "bycatch::render_individual_kde(bycatch::get_domain_specific_options())" \
-		--rds-path data/processed/individual_kde_all_map.rds \
+		--rds-path data/processed/individual_kde_all.rds \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_kernel_density_guadalupe.png: \
