@@ -39,8 +39,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Data processing
 
-- [ ] Specify **projection**
-    - equal-area CRS used for KDE
 - [ ] Explain handling of:
     - multi-year data
     - unequal sampling effort
