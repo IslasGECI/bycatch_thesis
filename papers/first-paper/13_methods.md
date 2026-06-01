@@ -184,6 +184,8 @@ The dependent variable is the overlap index.
 We based our methodology on [@beal2021track2kba].
 We used the R package track2KBA [@beal2021track2kba] to split individual tracks, calculate KDE, and find core areas (50% UD; potential KBA).
 Fieberg & Kochanny quantified home-range overlap using the utilization distribution.
+Our implementation follows [@beal2021track2kba] completely.
+No deviations.
 
 # Data analysis
 
