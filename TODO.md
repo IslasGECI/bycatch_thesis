@@ -41,9 +41,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Statistical analyses
 
-- [ ] Either:
-    - describe statistical tests used
-    - OR explicitly state no inferential statistics were used
 - [ ] Justify choice:
     - why spatial metrics are sufficient (if applicable)
 

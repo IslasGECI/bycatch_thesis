@@ -202,6 +202,8 @@ All GPS were programmed to record one position every 10 minutes.
 
 ## Statistical analyses
 
+No inferential statistics were used.
+
 ## Limitations and assumptions
 
 One limitation is that the GPS data only correspond to the reproductive season.
