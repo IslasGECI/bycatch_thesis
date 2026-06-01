@@ -33,7 +33,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 #### Overlap of core areas with ANPs
 
-- [ ] Explain ecological meaning of overlap
 - [ ] Justify why this metric answers your second question
 
 ### Studies that support your methodology

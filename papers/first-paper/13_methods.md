@@ -174,6 +174,7 @@ This index is directional: HR_{i,j} ≠ HR_{j,i}.
 It ignores the utilization distribution and treats all space within the home range as equally used.
 Source: Kernohan et al. (2001); White & Garrott (1990).
 Area-based (proportional) overlap measures the proportion of core area that is overlapped by MPA/ANP area.
+This is a measure of core habitat protection coverage — it tells you what fraction of the animal's most intensively used space (where it spends 50% of its time) is actually inside the protected area.
 
 The independent variables are the core areas used by the albatrosses and the ANP polygons.
 The dependent variable is the overlap index.
