@@ -30,10 +30,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Specific questions
 
-- [ ] Add explicit mapping:
-    - Question 1 → KDE → core areas
-    - Question 2 → overlap analysis → index
-
 #### Key areas used by Laysan albatrosses
 
 - [ ] Define **unit of analysis**

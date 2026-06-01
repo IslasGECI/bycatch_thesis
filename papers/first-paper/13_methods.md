@@ -109,6 +109,9 @@ CatLog-S2, Perthold Engineering (USA).
 - We aim to identify the key areas used by Laysan albatrosses in the Mexican Pacific.
 - We also aim to determine whether these key areas overlap with existing ANPs.
 
+Question 1: We split the tracks into individual trips; then we do kernel density estimations for each individual trip (we assess the representativeness of the sample data: not an input of the next step); finally, we determine the core areas (potential key biodiversity areas (KBA)).
+Question 2: We take the core areas and intersect them with the MPA/ANP, then we evaluate/quantify the level of overlap.
+
 ### Key areas used by Laysan albatrosses
 
 From the GPS trajectories, we calculated kernel density estimation (KDE) to define the key areas.
