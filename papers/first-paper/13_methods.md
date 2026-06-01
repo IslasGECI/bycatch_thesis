@@ -214,3 +214,5 @@ However, we are not distinguishing between years.
 One limitation is that the GPS data only correspond to the reproductive season.
 We do not know if the core areas used by the albatrosses during the non-reproductive season are different.
 However, it is during the reproductive season when the population could be most vulnerable.
+The fact that data were collected only during the breeding season means that the effectiveness of the protection that the MPA provides to the Laysan albatross is determined only for the breeding season.
+We cannot speak of the protection provided by the MPA during the rest of the year.

@@ -43,8 +43,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Limitations and assumptions
 
-- [ ] Explain how limitations affect interpretation
-
 ## Cross-section fixes (apply across multiple sections)
 
 - [ ] Add **“why” statements** at the beginning of each subsection
