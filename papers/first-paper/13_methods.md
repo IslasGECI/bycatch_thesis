@@ -168,6 +168,11 @@ A total of {{ clarion_n_total }} individuals were tracked in Clarion Island betw
 ### Overlap of core areas with ANPs
 
 We calculated the overlap index to quantify the overlap of the core areas with the ANP polygons.
+The overlap index is area-based (proportional) overlap: HR_{i,j} = A_{i,j} / A_i.
+HR_{i,j} measures the proportion of animal i's home range that is overlapped by animal j's home range.
+This index is directional: HR_{i,j} ≠ HR_{j,i}.
+It ignores the utilization distribution and treats all space within the home range as equally used.
+Source: Kernohan et al. (2001); White & Garrott (1990).
 
 The independent variables are the core areas used by the albatrosses and the ANP polygons.
 The dependent variable is the overlap index.

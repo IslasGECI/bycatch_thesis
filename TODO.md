@@ -33,8 +33,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 #### Overlap of core areas with ANPs
 
-- [ ] Define **overlap index explicitly**
-    - formula or algorithm
 - [ ] Specify spatial method:
     - intersection (vector) or raster approach
 - [ ] Define units:
