@@ -173,6 +173,7 @@ HR_{i,j} measures the proportion of animal i's home range that is overlapped by 
 This index is directional: HR_{i,j} ≠ HR_{j,i}.
 It ignores the utilization distribution and treats all space within the home range as equally used.
 Source: Kernohan et al. (2001); White & Garrott (1990).
+Area-based (proportional) overlap measures the proportion of core area that is overlapped by MPA/ANP area.
 
 The independent variables are the core areas used by the albatrosses and the ANP polygons.
 The dependent variable is the overlap index.
