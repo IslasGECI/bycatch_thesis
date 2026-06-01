@@ -43,9 +43,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Limitations and assumptions
 
-- [ ] Add **methodological assumptions**:
-    - KDE assumptions (smoothing, independence)
-    - representativeness assumptions
 - [ ] Explain how limitations affect interpretation
 
 ## Cross-section fixes (apply across multiple sections)
