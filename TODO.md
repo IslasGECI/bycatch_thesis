@@ -10,8 +10,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 #### Guadalupe Island
 
-- [ ] Connect physical characteristics (isolation, size) to movement ecology
-
 #### Feeding areas
 
 - [ ] Explain **why oceanographic context matters methodologically**
