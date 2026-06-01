@@ -12,10 +12,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 #### Feeding areas
 
-- [ ] Link environmental variability to:
-    - KDE scale (h)
-    - multi-year aggregation
-
 #### Time period
 
 - [ ] Justify **multi-year aggregation**
