@@ -22,8 +22,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Data collection
 
-- [ ] Explain:
-    - sampling frequency (10 min) and why it is adequate
 - [ ] Clarify:
     - deployment protocol (duration, recovery)
 - [ ] Fix missing information:
