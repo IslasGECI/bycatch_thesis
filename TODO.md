@@ -14,8 +14,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 #### Time period
 
-- [ ] Justify **multi-year aggregation**
-    - Why combining 2014–2026 is valid
 - [ ] Explain how interannual variability is handled analytically
 - [ ] Clarify whether data are pooled or stratified by year
 

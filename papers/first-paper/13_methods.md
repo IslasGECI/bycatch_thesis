@@ -45,9 +45,11 @@ This food availability will affect where the albatrosses feed, which will determ
 ### Time period
 
 The data were collected from 2014 to 2026.
-During this period, the study site was affected by the "Blob". [[ What year? ]]
-
-A time period of more than a decade allows us to account for interannual variability in the use of key areas by Laysan albatrosses.
+We want to determine the core areas that are constant over time.
+MPA (ANP) are constant over time.
+If we are going to evaluate how effective they are to protect the core areas for the albatrosses, then we need a long time period to make sure we are obtaining persistent patterns.
+A 12-year period (2014–2026) is long enough to evaluate MPA (ANP) effectiveness.
+A shorter period might not be enough because of interannual variability.
 
 ## Study species or system
 
