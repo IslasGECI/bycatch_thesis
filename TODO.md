@@ -16,7 +16,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Study species or system
 
-- [ ] Remove redundant ecological descriptions
 - [ ] Keep only traits that affect:
     - movement (central-place foraging)
     - trip structure
