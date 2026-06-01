@@ -41,9 +41,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Statistical analyses
 
-- [ ] Justify choice:
-    - why spatial metrics are sufficient (if applicable)
-
 ### Limitations and assumptions
 
 - [ ] Expand limitations:
