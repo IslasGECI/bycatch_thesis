@@ -24,7 +24,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 - [ ] Clarify:
     - deployment protocol (duration, recovery)
-- [ ] Ensure consistency in number of individuals (align with Experimental design)
 
 ## Experimental design
 
@@ -116,6 +115,7 @@ Podemos empezar a escribir el primer borrador de la sección de:
 - [ ] Remove fishing-related language (title and text)
 - [ ] Fix inconsistencies:
     - number of individuals
+- [ ] Ensure consistency in number of individuals (align with Experimental design)
 - [ ] Ensure reproducibility:
     - all parameters specified
     - all steps described
