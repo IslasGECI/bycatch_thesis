@@ -49,8 +49,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
     - ARS
     - representativeness
     - potential sites
-- [ ] Fix inconsistencies:
-    - number of individuals
 - [ ] Ensure consistency in number of individuals (align with Experimental design)
 - [ ] Ensure reproducibility:
     - all parameters specified
