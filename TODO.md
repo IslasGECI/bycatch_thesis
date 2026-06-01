@@ -24,8 +24,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 - [ ] Clarify:
     - deployment protocol (duration, recovery)
-- [ ] Fix missing information:
-    - replace “XXX”
 - [ ] Ensure consistency in number of individuals (align with Experimental design)
 
 ## Experimental design
@@ -134,6 +132,8 @@ Podemos empezar a escribir el primer borrador de la sección de:
 - [ ] Ensure reproducibility:
     - all parameters specified
     - all steps described
+- [ ] Fix missing information:
+    - replace "XXX"
 
 ## Final validation (after edits)
 
