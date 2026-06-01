@@ -50,6 +50,9 @@ MPA (ANP) are constant over time.
 If we are going to evaluate how effective they are to protect the core areas for the albatrosses, then we need a long time period to make sure we are obtaining persistent patterns.
 A 12-year period (2014–2026) is long enough to evaluate MPA (ANP) effectiveness.
 A shorter period might not be enough because of interannual variability.
+We assess the degree of representativeness of the data.
+We don't consider the interannual variability directly.
+We just verify the time period is long enough to be representative despite the interannual variability.
 
 ## Study species or system
 

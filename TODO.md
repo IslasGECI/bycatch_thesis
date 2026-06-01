@@ -14,7 +14,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 #### Time period
 
-- [ ] Explain how interannual variability is handled analytically
 - [ ] Clarify whether data are pooled or stratified by year
 
 ### Study species or system
