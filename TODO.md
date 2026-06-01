@@ -18,7 +18,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Ethical considerations and permits
 
-- [ ] No major issues
 - [ ] Optional: specify permit IDs or agencies more precisely
 
 ### Data collection
