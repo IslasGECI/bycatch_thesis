@@ -30,7 +30,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Specific questions
 
-- [ ] Keep as is (clear)
 - [ ] Add explicit mapping:
     - Question 1 → KDE → core areas
     - Question 2 → overlap analysis → index
