@@ -192,6 +192,8 @@ No deviations.
 ## Data processing
 
 We used the R package track2KBA.
+We removed points within 60 km around the colony.
+We follow the track2KBA methodology, which calls for removing incomplete trips.
 
 Records are every 10 minutes.
 

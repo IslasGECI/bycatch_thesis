@@ -39,10 +39,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Data processing
 
-- [ ] Describe full preprocessing pipeline:
-    - filtering steps:
-      - near-colony points (if removed)
-      - incomplete trips
 - [ ] Describe temporal handling:
     - resampling or consistency checks
 - [ ] Specify **projection**
