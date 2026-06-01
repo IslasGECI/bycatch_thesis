@@ -58,7 +58,7 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ## Final validation (after edits)
 
-- [ ] Can a reader reproduce KDE?
+- [ ] Can a reader reproduce core areas (potential KBA)?
 - [ ] Can a reader reproduce overlap index?
 - [ ] Are all parameters defined?
 - [ ] Does every subsection answer both:
