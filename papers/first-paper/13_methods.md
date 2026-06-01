@@ -53,6 +53,7 @@ A shorter period might not be enough because of interannual variability.
 We assess the degree of representativeness of the data.
 We don't consider the interannual variability directly.
 We just verify the time period is long enough to be representative despite the interannual variability.
+All the data are pooled together without accounting for the year.
 
 ## Study species or system
 
