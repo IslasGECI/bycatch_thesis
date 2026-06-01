@@ -32,10 +32,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 #### Core areas used by Laysan albatrosses
 
-- [ ] Expand KDE description:
-    - specify UD level
-    - specify smoothing parameter (h)
-    - explain how h is chosen
 - [ ] Add **justification for KDE**
     - why KDE is appropriate
 - [ ] Clarify:

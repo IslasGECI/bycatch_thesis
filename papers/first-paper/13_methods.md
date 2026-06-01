@@ -119,6 +119,11 @@ Guadalupe Island is one colony, which has multiple individuals; each individual 
 Each trip is the smallest unit of analysis.
 Core areas refer to the 50% Utilization Distribution (UD).
 From the GPS trajectories, we calculated kernel density estimation (KDE) to define the core areas.
+The UD level is 50%.
+The Area-Restricted Search scale uses First Passage Time analysis (adehabitatLT).
+FPT variance peaks are identified per individual.
+Peaks are selected by peakMethod (default "first").
+Then the median across individuals is taken.
 
 The independent variable is the GPS locations of the albatrosses.
 The dependent variable is the core areas used by the albatrosses.
