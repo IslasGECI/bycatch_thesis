@@ -58,6 +58,76 @@ Actions:
     3. Assign a heading name and level marker.
     4. Provisional names are acceptable; they will be refined in Phases 3–4.
 
+```
+## Data Collection / Field Methods
+- Equipment and tools used (instruments, GPS collars, camera traps, net hauls, quadrats, transects, telemetry)
+- Measured variables (body size, sex, age class, behavior, environmental covariates)
+- Observational procedures / protocols
+- Sample sizes
+- Sampling techniques (transects, plots, trapping, surveys, net hauls, quadrats)
+- Specific field methods and protocols
+- Timing, preservation, and processing steps
+
+## Data Processing / Derived Variables / Quality Control
+- Derivation of secondary variables (home range estimation, movement metrics)
+- Filtering, cleaning, smoothing, outlier removal
+- Interpolation and resampling
+- Preprocessing and transformations
+- Treatment of missing values
+- How raw observations became analyzable variables
+
+## Ethical Considerations / Permits / Approvals
+- Animal care protocols (IACUC, Animal Ethics committee)
+- CITES permits
+- Collection permits and site permissions
+- Ethical approval numbers
+- Institutional approvals
+
+## Laboratory / Molecular Methods (if applicable)
+- Diet analysis, stable isotope analysis, hormone assays
+- DNA extraction, PCR protocols, primers, sequencing platforms
+- Quality control steps (blank samples, replicates)
+
+## Measurements and Variables
+- Predictor / explanatory / independent variables
+- Quality control procedures
+- Response / dependent variables
+- Units of measurement
+
+## Statistical Analysis / Modeling
+- Assumptions testing
+- Definitions of key analytical terms (e.g., 95% UD contour, overlap indices)
+- Fixed and random effects specification
+- Model selection and validation (AIC, cross-validation, bootstrapping, sensitivity analysis)
+- Model specification (GLMs, GAMMs, mixed-effects models, MaxEnt, Hidden Markov Models)
+- Parameter selection (bandwidth, smoothing parameters, priors)
+- Significance levels / significance criteria / uncertainty measures (e.g., α = 0.05)
+- Software packages and versions (R, SPSS, MATLAB, Python, program MARK)
+
+## Study Area / Study System / Site Description
+- Climate, topography, land use, oceanographic context
+- For lab studies: experimental setting, facilities, mesocosms
+- Geographic location and coordinates
+- Habitat characteristics and environmental conditions / ecosystem characteristics
+- Justification for site selection
+
+## Study Design / Experimental Design / Sampling Design
+- Overall approach (observational, experimental, comparative)
+- Replication, controls, treatments, randomization
+- Sampling design (randomized, stratified, systematic, opportunistic)
+- Sampling units
+- Temporal and spatial scale
+- Temporal scope (duration, seasons, frequency)
+
+## Study Species / Organism Information
+- For field studies: capture, marking, tracking, identification methods
+- For lab studies: organisms, plant materials, cell lines, genetic stocks
+- Handling procedures
+- Husbandry / care protocols
+- Selection criteria / source of individuals (wild-caught, captive, cultured)
+- Target species identification (scientific and common name, taxonomic authority)
+```
+
 # Phase 2: Build Initial Outline
 Input:
     • Answers labeled with L2 or L3 headings.

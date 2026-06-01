@@ -1,6 +1,6 @@
 ## Materials
 
-## Study Area / Study System / Site Description
+## Study Area
 
 Seabirds nest on the islands.
 The islands are protected natural areas.
@@ -37,7 +37,7 @@ The California Current enriches the water with nutrients, which makes food more 
 ENSO variability might increase or reduce food availability in certain areas.
 This food availability will affect where the albatrosses feed, which will determine what the core areas are.
 
-## Study Species / Organism Information
+## Study Species
 
 Seabirds are marine organisms and are only found on land to reproduce.
 Tracking devices are installed while individuals are breeding on the island.
@@ -57,7 +57,7 @@ They are at the nest, make a foraging trip, and return to the nest.
 Seabirds are top predators and serve as umbrella species.
 If the ANPs serve to protect these species, we can infer that they serve to protect the marine ecosystem.
 
-## Study Design / Experimental Design / Sampling Design
+## Experimental Design
 
 ### Time period
 
@@ -72,7 +72,7 @@ We don't consider the interannual variability directly.
 We just verify the time period is long enough to be representative despite the interannual variability.
 All the data are pooled together without accounting for the year.
 
-## Data Collection / Field Methods
+## Field Methods
 
 We attached GPS units to XXX Laysan albatross individuals on Guadalupe Island from 2014 to 2026.
 Additionally, we attached GPS units to 26 individuals on Clarion Island from 2018 to 2022.
@@ -124,7 +124,7 @@ A total of {{ clarion_n_total }} individuals were tracked in Clarion Island betw
 | 2020 | 6 |
 | 2022 | 4 |
 
-## Ethical Considerations / Permits / Approvals
+## Ethical Considerations
 
 Ethical considerations and permits are required by Mexican authorities.
 The study was conducted under the permits from the following institutions:
@@ -145,8 +145,6 @@ The independent variables are the core areas used by the albatrosses and the ANP
 The dependent variable is the overlap index.
 
 ## Data analysis
-
-## Statistical Analysis / Modeling
 
 No inferential statistics were used.
 
@@ -188,7 +186,7 @@ Source: Kernohan et al. (2001); White & Garrott (1990).
 Area-based (proportional) overlap measures the proportion of core area that is overlapped by MPA/ANP area.
 This is a measure of core habitat protection coverage — it tells you what fraction of the animal's most intensively used space (where it spends 50% of its time) is actually inside the protected area.
 
-## Data Processing / Derived Variables / Quality Control
+## Data Processing
 
 We used the R package track2KBA.
 We removed points within 60 km around the colony.
