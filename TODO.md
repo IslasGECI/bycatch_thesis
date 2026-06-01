@@ -16,8 +16,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Study species or system
 
-- [ ] Add **explicit justification**:
-    - Why Laysan albatross is appropriate for this analysis
 - [ ] Link species behavior to:
     - need for trip segmentation (if used)
     - spatial scale of analysis

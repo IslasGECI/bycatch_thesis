@@ -59,6 +59,9 @@ All the data are pooled together without accounting for the year.
 
 We are studying the key area used by Laysan albatrosses in the Mexican Pacific and its overlap with protected natural areas (ANP).
 In particular, we focus on the albatrosses that nest on Guadalupe Island and Clarion Island.
+Laysan albatross is an umbrella species.
+If we find that MPA/ANP adequately protect the core areas of Laysan albatross, we can be sure that MPA/ANP also protect multiple species.
+Their trophic level tells us that if the Laysan albatross does well, it means that the lower trophic levels do well as well.
 
 Albatrosses are seabirds.
 Seabirds are marine organisms.
