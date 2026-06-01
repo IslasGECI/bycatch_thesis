@@ -39,86 +39,104 @@ Turn-by-turn interaction protocol:
     f. Commit both `TODO.md` and `13_methods.md`.
     g. Report back and offer to undo the commit or move to the next question.
 
-# Phase 1: Extract
+# Phase 1: Assign Heading Levels
 Input:
-    • Completed worksheet.
+    • `13_methods.md` with answers grouped under topic-prompt headings from the worksheet.
 Output:
-    • A flat list of statements.
-Actions:
-    1. Collect every answer from the worksheet.
-    2. Split answers into sentences where necessary.
-    3. Ignore the worksheet categories from this point onward.
-
-# Phase 2: Classify
-Input:
-    • List of sentences.
-Output:
-    • Sentences assigned to containers.
-Containers:
-    • Shared methods
-        ◦ Study area
-        ◦ Data sources
-        ◦ Data preparation
-    • Objective 1
-    • Objective 2
-    • Objective 3
-    • Unassigned
+    • Each answer labeled with a manuscript heading level:
+        — `## Heading name` for Level 2 (standalone subsection topic)
+        — `### Heading name` for Level 3 (nested subtopic)
+    • No numerical section numbers. Numbers are applied during manuscript formatting.
 Rules:
-    1. Every sentence gets exactly one home.
-    2. No duplication.
-    3. Information shared across Objectives is promoted to Shared Methods.
-    4. Information belongs where it is produced, not where it is later consumed.
-
-# Phase 3: Build the Dependency Structure
-Input:
-    • Classified sentences.
-Output:
-    • Hierarchical outline.
+    1. A Level 2 heading marks a major methodological topic that can stand alone as its own subsection.
+    2. A Level 3 heading marks information nested within a Level 2 subsection.
+    3. One answer cannot be both L2 and L3.
+    4. Heading names are descriptive (e.g., `## Site description`, `### Guadalupe Island`).
 Actions:
-    1. Identify analyses within each Objective.
-    2. Determine dependencies among analyses.
-    3. Order analyses by dependency.
-    4. Within each analysis, arrange information according to analytical workflow:
-        ◦ Inputs
-        ◦ Processing
-        ◦ Models/calculations
-        ◦ Outputs
-        ◦ Evaluation/assumptions
-Result:
-    • A hierarchical outline.
+    1. Read each answer from `13_methods.md`.
+    2. Decide: is this a standalone subsection topic (L2) or a nested subtopic (L3)?
+    3. Assign a heading name and level marker.
+    4. Provisional names are acceptable; they will be refined in Phases 3–4.
+
+# Phase 2: Build Initial Outline
+Input:
+    • Answers labeled with L2 or L3 headings.
+Output:
+    • A hierarchical outline with `##` and `###` headings.
+Actions:
+    1. Group all answers under the same L2 heading together.
+    2. Within each L2 group, order L3 sub-subsections logically.
+    3. If an L2 heading has only one response and no distinct sub-subsections, keep it as a flat L2.
+    4. Result: a complete outline with each response placed under its heading.
+Rules:
+    1. Every response belongs under exactly one heading.
+    2. No duplication — each response appears once.
+    3. An L3 heading must always have a parent L2 heading.
+
+# Phase 3: Review Flow
+Input:
+    • Initial hierarchical outline.
+Output:
+    • Reordered outline with logical flow.
+Actions:
+    1. Verify that information flows in the standard order:
+         Materials → Experimental design → Data analysis
+    2. Within Materials, review subsection order (e.g., site before species, species before data collection).
+    3. Within Experimental design, review order (questions before supporting methodology).
+    4. Within Data analysis, review order (processing before analyses, assumptions last).
+    5. Reorder headings as needed. Update indentation to reflect new parent-child relationships.
+Rule:
+    1. Reordering changes sequence only — it does not split or merge sections.
 
 # Phase 4: Refactor the Outline
 Input:
-    • Hierarchical outline.
+    • Reordered outline.
 Output:
-    • Manuscript-oriented outline.
+    • Refactored outline with section boundaries adjusted.
 Actions:
-    1. Review shared-methods sections.
-    2. Split, merge, rename, promote, or demote sections.
-    3. Allow the final section structure to emerge from the content.
-    4. Remove structural artifacts introduced during classification.
-Result:
-    • A manuscript outline.
+    1. Split: if an L2 subsection contains too many distinct topics, promote some L3s to new L2s.
+    2. Merge: if two L2 subsections are too thin, merge them under one L2.
+    3. Promote: if an L3 has grown to deserve its own L2 subsection, change `###` to `##`.
+    4. Demote: if an L2 is a single narrow topic, change `##` to `###` and nest it under a broader L2.
+    5. Rename: adjust heading names to be more precise.
+    6. Remove structural artifacts introduced during Phase 1 labeling.
+    7. Allow the final section structure — the one particular to your paper — to emerge from the content.
 
 # Phase 5: Design Paragraphs
 Input:
-    • Manuscript outline.
+    • Refactored outline with content under each heading.
 Output:
-    • Paragraph-level outline.
+    • Paragraph-level blueprint for each subsection.
 Actions:
-    1. Decide paragraph boundaries.
-    2. Decide sentence order within paragraphs.
-    3. Add transitions between analyses and sections.
-Result:
-    • A paragraph-level blueprint.
+    1. Within each heading, read the responses assigned to it.
+    2. Identify the main ideas in those responses.
+    3. Identify information that supports each main idea.
+    4. Decide paragraph boundaries:
+        — One main idea per paragraph.
+        — Separate main ideas go into separate paragraphs.
+    5. For each paragraph, plan:
+        a. Topic sentence — states the purpose of the paragraph.
+        b. Supporting sentences — develop the topic sentence.
+        c. Transition sentence — connects to the next paragraph.
+    6. Plan transitions between adjacent paragraphs and between subsections.
 
 # Phase 6: Draft
 Input:
-    • Paragraph-level outline.
+    • Paragraph-level blueprint.
 Output:
-    • Methods section prose.
+    • Methods section prose in `13_methods.md`.
 Actions:
-    1. Convert bullets into prose.
-    2. Introduce analyses, not Objectives.
-    3. Explain what was done and why each method was required.
-    4. Eliminate redundancy.
+    1. Write the topic sentence that states the paragraph's purpose.
+    2. Write supporting sentences below the idea they support.
+    3. Keep main ideas in separate paragraphs. Do not worry if paragraphs are only 1–2 sentences.
+    4. After each subsection, review:
+        — Is each main idea in its own paragraph?
+        — Have all supporting sentences been assigned to a paragraph?
+        — Does the logical flow between paragraphs work?
+    5. Rearrange paragraphs within a subsection if the flow is wrong.
+    6. Add missing information to ensure each main idea is fully supported.
+    7. Write without editing — get everything on the page first.
+    8. After all subsections are drafted:
+        — Eliminate redundancy.
+        — Introduce analyses by name, not by Objective or heading.
+        — Ensure every method explains both what was done and why.
