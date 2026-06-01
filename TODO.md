@@ -16,10 +16,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Study species or system
 
-- [ ] Link species behavior to:
-    - need for trip segmentation (if used)
-    - spatial scale of analysis
-
 ### Ethical considerations and permits
 
 - [ ] No major issues
