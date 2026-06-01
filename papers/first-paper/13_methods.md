@@ -124,6 +124,8 @@ The Area-Restricted Search scale uses First Passage Time analysis (adehabitatLT)
 FPT variance peaks are identified per individual.
 Peaks are selected by peakMethod (default "first").
 Then the median across individuals is taken.
+KDE has been widely used to determine Utilization Distribution (UD).
+KDE was selected because a wide range of users are familiar with its use, which facilitates the communication of results among decision makers.
 
 The independent variable is the GPS locations of the albatrosses.
 The dependent variable is the core areas used by the albatrosses.
