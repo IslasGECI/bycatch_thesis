@@ -35,8 +35,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Studies that support your methodology
 
-- [ ] Cite KDE foundational methods if needed
-
 ## Data analysis
 
 ### Data processing
