@@ -57,7 +57,7 @@ All the data are pooled together without accounting for the year.
 
 ## Study species or system
 
-We are studying the key area used by Laysan albatrosses in the Mexican Pacific and its overlap with protected natural areas (ANP).
+We are studying the core area used by Laysan albatrosses in the Mexican Pacific and its overlap with protected natural areas (ANP).
 In particular, we focus on the albatrosses that nest on Guadalupe Island and Clarion Island.
 Laysan albatross is an umbrella species.
 If we find that MPA/ANP adequately protect the core areas of Laysan albatross, we can be sure that MPA/ANP also protect multiple species.
@@ -106,21 +106,22 @@ CatLog-S2, Perthold Engineering (USA).
 
 ## Specific questions
 
-- We aim to identify the key areas used by Laysan albatrosses in the Mexican Pacific.
-- We also aim to determine whether these key areas overlap with existing ANPs.
+- We aim to identify the core areas used by Laysan albatrosses in the Mexican Pacific.
+- We also aim to determine whether these core areas overlap with existing ANPs.
 
 Question 1: We split the tracks into individual trips; then we do kernel density estimations for each individual trip (we assess the representativeness of the sample data: not an input of the next step); finally, we determine the core areas (potential key biodiversity areas (KBA)).
 Question 2: We take the core areas and intersect them with the MPA/ANP, then we evaluate/quantify the level of overlap.
 
-### Key areas used by Laysan albatrosses
+### Core areas used by Laysan albatrosses
 
 The unit of analysis is the trip.
 Guadalupe Island is one colony, which has multiple individuals; each individual makes multiple trips per season.
 Each trip is the smallest unit of analysis.
-From the GPS trajectories, we calculated kernel density estimation (KDE) to define the key areas.
+Core areas refer to the 50% Utilization Distribution (UD).
+From the GPS trajectories, we calculated kernel density estimation (KDE) to define the core areas.
 
 The independent variable is the GPS locations of the albatrosses.
-The dependent variable is the key areas used by the albatrosses.
+The dependent variable is the core areas used by the albatrosses.
 
 
 A total of XXX individuals were tracked in Guadalupe Island between 2014 and 2026.
@@ -149,11 +150,11 @@ A total of {{ clarion_n_total }} individuals were tracked in Clarion Island betw
 | 2020 | 6 |
 | 2022 | 4 |
 
-### Overlap of key areas with ANPs
+### Overlap of core areas with ANPs
 
-We calculated the overlap index to quantify the overlap of the key areas with the ANP polygons.
+We calculated the overlap index to quantify the overlap of the core areas with the ANP polygons.
 
-The independent variables are the key areas used by the albatrosses and the ANP polygons.
+The independent variables are the core areas used by the albatrosses and the ANP polygons.
 The dependent variable is the overlap index.
 
 ## Studies that support your methodology
@@ -173,5 +174,5 @@ Records are every 10 minutes.
 ## Limitations and assumptions
 
 One limitation is that the GPS data only correspond to the reproductive season.
-We do not know if the key areas used by the albatrosses during the non-reproductive season are different.
+We do not know if the core areas used by the albatrosses during the non-reproductive season are different.
 However, it is during the reproductive season when the population could be most vulnerable.

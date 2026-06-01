@@ -30,10 +30,8 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Specific questions
 
-#### Key areas used by Laysan albatrosses
+#### Core areas used by Laysan albatrosses
 
-- [ ] Define **what “key areas” means**
-    - (e.g., 50% UD)
 - [ ] Expand KDE description:
     - specify UD level
     - specify smoothing parameter (h)
@@ -49,7 +47,7 @@ Podemos empezar a escribir el primer borrador de la sección de:
     - number of individuals
     - temporal coverage
 
-#### Overlap of key areas with ANPs
+#### Overlap of core areas with ANPs
 
 - [ ] Define **overlap index explicitly**
     - formula or algorithm
