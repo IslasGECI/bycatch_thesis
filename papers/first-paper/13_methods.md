@@ -194,6 +194,7 @@ No deviations.
 We used the R package track2KBA.
 We removed points within 60 km around the colony.
 We follow the track2KBA methodology, which calls for removing incomplete trips.
+The following track2KBA functions were used: formatFields to normalize GPS field names and date-time format, tripSplit to split GPS fixes into individual foraging trips, tripSummary to summarize trip metrics, projectTracks to project into an equal-area azimuthal projection, findScale to estimate the ARS smoothing scale via First Passage Time, estSpaceUse to compute kernel density estimates for each individual, repAssess to bootstrap and assess sample representativeness, and findSite to identify potential KBA polygons meeting thresholds.
 
 Records are every 10 minutes.
 We did not do any resampling or consistency checks.

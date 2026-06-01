@@ -39,10 +39,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Data processing
 
-- [ ] Explicitly list track2KBA steps used:
-    - tripSplit (if used)
-    - projectTracks
-    - estSpaceUse
 - [ ] Ensure consistency with Results:
     - ARS method
     - 50% UD
