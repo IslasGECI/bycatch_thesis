@@ -1,4 +1,4 @@
-# Phase 0: Answer the Worksheet
+# Phase 1: Answer the Worksheet
 Input:
     • TODO.md — the worksheet questionnaire.
         ◦ Each unchecked checkbox (with its indented sub-bullets) is one question.
@@ -23,7 +23,7 @@ Actions:
         — Question with sub-bullets: all sub-bullets must be addressed before deleting the checkbox.
         — Question without sub-bullets: delete the checkbox once its answer is written.
     5. After finishing a round, start a new round. Continue until a complete round passes with zero questions answered.
-    6. Phase 0 ends when a full round produces no answered questions, even if some TODO.md questions remain unanswered.
+    6. Phase 1 ends when a full round produces no answered questions, even if some TODO.md questions remain unanswered.
 
 Turn-by-turn interaction protocol:
     a. The agent asks exactly one question from TODO.md, quoting the checkbox text as written.
@@ -39,109 +39,77 @@ Turn-by-turn interaction protocol:
     f. Commit both `TODO.md` and `13_methods.md`.
     g. Report back and offer to undo the commit or move to the next question.
 
-# Phase 1: Assign Heading Levels
+# Phase 2: Build Outline
 Input:
-    • `13_methods.md` with answers grouped under topic-prompt headings from the worksheet.
+    • `13_methods.md` with answers from the worksheet.
 Output:
-    • Each answer labeled with a manuscript heading level:
-        — `## Heading name` for Level 2 (standalone subsection topic)
-        — `### Heading name` for Level 3 (nested subtopic)
-    • No numerical section numbers. Numbers are applied during manuscript formatting.
-Rules:
-    1. A Level 2 heading marks a major methodological topic that can stand alone as its own subsection.
-    2. A Level 3 heading marks information nested within a Level 2 subsection.
-    3. One answer cannot be both L2 and L3.
-    4. Heading names are descriptive (e.g., `## Site description`, `### Guadalupe Island`).
+    • A hierarchical outline with `##` and `###` manuscript headings.
 Actions:
-    1. Read each answer from `13_methods.md`.
-    2. Decide: is this a standalone subsection topic (L2) or a nested subtopic (L3)?
-    3. Assign a heading name and level marker.
-    4. Provisional names are acceptable; they will be refined in Phases 3–4.
+    1. Write all standard headings (L2 and L3) from the Reference list into `13_methods.md`, alongside the existing worksheet headings.
+    2. For each answer, decide which standard heading it best belongs under and move it there. Place answers under the most specific matching L3; if no L3 matches, place directly under the L2.
+    3. After all answers are moved, delete every heading that has no content under it — both worksheet headings that lost their answers and standard headings that received none.
+    4. Order surviving headings in the standard sequence. Within each L2, order surviving L3 sub-subsections logically.
+Rules:
+    1. Every answer belongs under exactly one heading.
+    2. No duplication — each answer appears once in the outline.
+    3. An L3 heading must always have a parent L2 heading.
+    4. A heading survives only if it has at least one answer beneath it.
+Reference — standard headings for Methods sections:
 
 ```
-## Data Collection / Field Methods
-- Equipment and tools used (instruments, GPS collars, camera traps, net hauls, quadrats, transects, telemetry)
-- Measured variables (body size, sex, age class, behavior, environmental covariates)
-- Observational procedures / protocols
-- Sample sizes
-- Sampling techniques (transects, plots, trapping, surveys, net hauls, quadrats)
-- Specific field methods and protocols
-- Timing, preservation, and processing steps
-
-## Data Processing / Derived Variables / Quality Control
-- Derivation of secondary variables (home range estimation, movement metrics)
-- Filtering, cleaning, smoothing, outlier removal
-- Interpolation and resampling
-- Preprocessing and transformations
-- Treatment of missing values
-- How raw observations became analyzable variables
-
-## Ethical Considerations / Permits / Approvals
-- Animal care protocols (IACUC, Animal Ethics committee)
-- CITES permits
-- Collection permits and site permissions
-- Ethical approval numbers
-- Institutional approvals
-
-## Laboratory / Molecular Methods (if applicable)
-- Diet analysis, stable isotope analysis, hormone assays
-- DNA extraction, PCR protocols, primers, sequencing platforms
-- Quality control steps (blank samples, replicates)
-
-## Measurements and Variables
-- Predictor / explanatory / independent variables
-- Quality control procedures
-- Response / dependent variables
-- Units of measurement
-
-## Statistical Analysis / Modeling
-- Assumptions testing
-- Definitions of key analytical terms (e.g., 95% UD contour, overlap indices)
-- Fixed and random effects specification
-- Model selection and validation (AIC, cross-validation, bootstrapping, sensitivity analysis)
-- Model specification (GLMs, GAMMs, mixed-effects models, MaxEnt, Hidden Markov Models)
-- Parameter selection (bandwidth, smoothing parameters, priors)
-- Significance levels / significance criteria / uncertainty measures (e.g., α = 0.05)
-- Software packages and versions (R, SPSS, MATLAB, Python, program MARK)
-
 ## Study Area / Study System / Site Description
-- Climate, topography, land use, oceanographic context
-- For lab studies: experimental setting, facilities, mesocosms
-- Geographic location and coordinates
-- Habitat characteristics and environmental conditions / ecosystem characteristics
-- Justification for site selection
-
-## Study Design / Experimental Design / Sampling Design
-- Overall approach (observational, experimental, comparative)
-- Replication, controls, treatments, randomization
-- Sampling design (randomized, stratified, systematic, opportunistic)
-- Sampling units
-- Temporal and spatial scale
-- Temporal scope (duration, seasons, frequency)
+### Climate, topography, land use, oceanographic context
+### Geographic location and coordinates
+### Habitat characteristics and environmental conditions
+### Justification for site selection
 
 ## Study Species / Organism Information
-- For field studies: capture, marking, tracking, identification methods
-- For lab studies: organisms, plant materials, cell lines, genetic stocks
-- Handling procedures
-- Husbandry / care protocols
-- Selection criteria / source of individuals (wild-caught, captive, cultured)
-- Target species identification (scientific and common name, taxonomic authority)
-```
+### Target species identification
+### Selection criteria / source of individuals
+### Handling procedures
 
-# Phase 2: Build Initial Outline
-Input:
-    • Answers labeled with L2 or L3 headings.
-Output:
-    • A hierarchical outline with `##` and `###` headings.
-Actions:
-    1. Group all answers under the same L2 heading together.
-    2. Within each L2 group, order L3 sub-subsections logically.
-    3. If an L2 heading has only one response and no distinct sub-subsections, keep it as a flat L2.
-    4. Result: a complete outline with each response placed under its heading.
-Rules:
-    1. Every response belongs under exactly one heading.
-    2. No duplication — each response appears once.
-    3. An L3 heading must always have a parent L2 heading.
+## Materials
+
+## Experimental Design
+### Overall approach (observational, experimental, comparative)
+### Sampling design (randomized, stratified, systematic, opportunistic)
+### Sampling units
+### Temporal and spatial scale
+### Temporal scope (duration, seasons, frequency)
+
+## Data Collection / Field Methods
+### Equipment and tools used
+### Measured variables
+### Observational procedures / protocols
+### Sample sizes
+### Sampling techniques
+### Specific field methods and protocols
+### Timing, preservation, and processing steps
+
+## Data Analysis
+### Derivation of secondary variables
+### Filtering, cleaning, smoothing, outlier removal
+### Interpolation and resampling
+### Preprocessing and transformations
+### Treatment of missing values
+
+## Ethical Considerations / Permits / Approvals
+### Animal care protocols
+### Collection permits and site permissions
+### Ethical approval numbers
+### Institutional approvals
+
+## Measurements and Variables
+### Predictor / explanatory / independent variables
+### Response / dependent variables
+### Units of measurement
+
+## Statistical Analysis / Modeling
+### Definitions of key analytical terms
+### Model specification
+### Parameter selection
+### Software packages and versions
+```
 
 # Phase 3: Review Flow
 Input:
@@ -169,7 +137,7 @@ Actions:
     3. Promote: if an L3 has grown to deserve its own L2 subsection, change `###` to `##`.
     4. Demote: if an L2 is a single narrow topic, change `##` to `###` and nest it under a broader L2.
     5. Rename: adjust heading names to be more precise.
-    6. Remove structural artifacts introduced during Phase 1 labeling.
+    6. Remove structural artifacts introduced during Phase 2 (e.g., placeholder headings that survived the cleanup).
     7. Allow the final section structure — the one particular to your paper — to emerge from the content.
 
 # Phase 5: Design Paragraphs
