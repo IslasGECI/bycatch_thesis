@@ -196,6 +196,8 @@ We removed points within 60 km around the colony.
 We follow the track2KBA methodology, which calls for removing incomplete trips.
 
 Records are every 10 minutes.
+We did not do any resampling or consistency checks.
+All GPS were programmed to record one position every 10 minutes.
 
 ## Statistical analyses
 

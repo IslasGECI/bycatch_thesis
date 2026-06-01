@@ -39,8 +39,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Data processing
 
-- [ ] Describe temporal handling:
-    - resampling or consistency checks
 - [ ] Specify **projection**
     - equal-area CRS used for KDE
 - [ ] Explain handling of:
