@@ -22,8 +22,8 @@ Actions:
     4. Unit of completion:
         — Question with sub-bullets: all sub-bullets must be addressed before deleting the checkbox.
         — Question without sub-bullets: delete the checkbox once its answer is written.
-     5. After finishing a round, start a new round. Continue until a complete round passes with zero questions answered.
-     6. Phase 0 ends when a full round produces no answered questions, even if some TODO.md questions remain unanswered.
+    5. After finishing a round, start a new round. Continue until a complete round passes with zero questions answered.
+    6. Phase 0 ends when a full round produces no answered questions, even if some TODO.md questions remain unanswered.
 
 Turn-by-turn interaction protocol:
     a. The agent asks exactly one question from TODO.md, quoting the checkbox text as written.
