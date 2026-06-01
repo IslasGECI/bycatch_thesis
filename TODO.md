@@ -45,7 +45,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ## Cross-section fixes (apply across multiple sections)
 
-- [ ] Add **“why” statements** at the beginning of each subsection
 - [ ] Ensure all methods in Results are described in Methods:
     - ARS
     - representativeness

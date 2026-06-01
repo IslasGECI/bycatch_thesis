@@ -27,6 +27,7 @@ The most relevant colony is Guadalupe Island.
 
 ### Clarion Island
 
+Clarion Island has the second largest colony.
 Clarion Island is the most remote of Mexico's Revillagigedo Islands.
 It is located 700 kilometres from the Mexican mainland.
 It has a tropical climate.
@@ -74,6 +75,7 @@ If the ANPs serve to protect these species, we can infer that they serve to prot
 
 ## Ethical considerations and permits
 
+Ethical considerations and permits are required by Mexican authorities.
 The study was conducted under the permits from the following institutions:
 Ministry of the Interior, Ministry of Environment and Natural Resources, and the National Commission for Protected Natural Areas.
 [[ Add specific permit IDs or agencies if possible ]]
