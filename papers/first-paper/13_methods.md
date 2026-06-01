@@ -138,6 +138,8 @@ The dependent variable is the core areas used by the albatrosses.
 
 
 A total of XXX individuals were tracked in Guadalupe Island between 2014 and 2026.
+The number of individuals and the number of seasons were determined by the amount of resources available.
+The representativeness of the data was assessed a posteriori.
 
 | Year | Number of individuals |
 | ---- | --------------------- |

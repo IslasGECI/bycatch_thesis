@@ -31,10 +31,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 #### Core areas used by Laysan albatrosses
 
-- [ ] Justify sample size adequacy
-    - number of individuals
-    - temporal coverage
-
 #### Overlap of core areas with ANPs
 
 - [ ] Define **overlap index explicitly**
