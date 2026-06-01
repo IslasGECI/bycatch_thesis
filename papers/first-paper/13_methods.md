@@ -128,6 +128,10 @@ KDE has been widely used to determine Utilization Distribution (UD).
 KDE was selected because a wide range of users are familiar with its use, which facilitates the communication of results among decision makers.
 KDEs are calculated for individual trips.
 Then the KDEs from individual trips are combined to obtain a pooled density, from which the core area (50% UD) is obtained.
+Representativeness refers to how well the sample represents the population.
+For this purpose, individual trips are subsampled, and KDEs are calculated and combined to obtain the UD.
+From the resulting area, we evaluate how many data points that were not selected in the subsample fall outside.
+That gives us an idea of whether the sample size is sufficiently representative of the population for the results to be valid for the entire population.
 
 The independent variable is the GPS locations of the albatrosses.
 The dependent variable is the core areas used by the albatrosses.

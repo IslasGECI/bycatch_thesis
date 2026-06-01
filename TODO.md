@@ -31,9 +31,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 #### Core areas used by Laysan albatrosses
 
-- [ ] Add **representativeness concept**
-    - define it
-    - explain why it matters
 - [ ] Justify sample size adequacy
     - number of individuals
     - temporal coverage
