@@ -22,6 +22,8 @@ Guadalupe Island hosts the largest breeding colony of Laysan albatrosses in the 
 Guadalupe Island hosts the biggest colony in the Mexican Pacific.
 This paper is about albatrosses in the Mexican EEZ.
 The other colonies within the Mexican EEZ are smaller and not successful.
+To determine the core areas (and the overlap with MPA/ANP) we have to study the most relevant colonies.
+The most relevant colony is Guadalupe Island.
 
 ### Clarion Island
 

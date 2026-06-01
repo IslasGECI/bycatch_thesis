@@ -10,7 +10,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 #### Guadalupe Island
 
-- [ ] Link site to research objectives (core areas + overlap with ANPs)
 - [ ] Connect physical characteristics (isolation, size) to movement ecology
 
 #### Feeding areas
