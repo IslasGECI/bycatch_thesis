@@ -32,8 +32,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 #### Key areas used by Laysan albatrosses
 
-- [ ] Define **unit of analysis**
-    - individual vs trip vs population
 - [ ] Define **what “key areas” means**
     - (e.g., 50% UD)
 - [ ] Expand KDE description:

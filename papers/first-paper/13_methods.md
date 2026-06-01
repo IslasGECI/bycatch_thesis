@@ -114,6 +114,9 @@ Question 2: We take the core areas and intersect them with the MPA/ANP, then we 
 
 ### Key areas used by Laysan albatrosses
 
+The unit of analysis is the trip.
+Guadalupe Island is one colony, which has multiple individuals; each individual makes multiple trips per season.
+Each trip is the smallest unit of analysis.
 From the GPS trajectories, we calculated kernel density estimation (KDE) to define the key areas.
 
 The independent variable is the GPS locations of the albatrosses.
