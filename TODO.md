@@ -35,7 +35,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Studies that support your methodology
 
-- [ ] Expand beyond a single citation
 - [ ] Explain:
     - what part of the method comes from track2KBA
 - [ ] Describe:
