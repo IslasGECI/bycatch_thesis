@@ -182,7 +182,7 @@ The dependent variable is the overlap index.
 ## Studies that support your methodology
 
 We based our methodology on [@beal2021track2kba].
-track2KBA (Beal et al., DOI: 10.1111/2041-210X.13713) is an R package for identifying important sites for biodiversity from tracking data.
+We used the R package track2KBA [@beal2021track2kba] to split individual tracks, calculate KDE, and find core areas (50% UD; potential KBA).
 Fieberg & Kochanny quantified home-range overlap using the utilization distribution.
 
 # Data analysis
