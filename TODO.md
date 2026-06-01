@@ -12,9 +12,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 #### Feeding areas
 
-- [ ] Explain **why oceanographic context matters methodologically**
-    - How California Current influences foraging range
-    - How ENSO variability affects spatial use
 - [ ] Link environmental variability to:
     - KDE scale (h)
     - multi-year aggregation

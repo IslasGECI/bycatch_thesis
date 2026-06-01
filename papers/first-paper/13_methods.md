@@ -35,8 +35,12 @@ It measures 8.6 km at its longest part from the eastern end to the western end.
 
 ### Feeding areas
 
-The feeding area of the Laysan albatrosses nesting on Guadalupe Island and Clarion Island is affected by the California Current.
-Additionally, the entire study area is affected by El Niño and La Niña events.
+The core areas were determined by tracking albatrosses during the reproductive season.
+When the albatrosses leave the nest, it is to feed themselves and bring food for the chick.
+Their food availability and distribution (fish, squid, etc.) are determined by oceanographic factors.
+The California Current enriches the water with nutrients, which makes food more available.
+ENSO variability might increase or reduce food availability in certain areas.
+This food availability will affect where the albatrosses feed, which will determine what the core areas are.
 
 ### Time period
 
