@@ -39,9 +39,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Data processing
 
-- [ ] Explain handling of:
-    - multi-year data
-    - unequal sampling effort
 - [ ] Explicitly list track2KBA steps used:
     - tripSplit (if used)
     - projectTracks
