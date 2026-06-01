@@ -1,15 +1,9 @@
-# Materials
+## Materials
 
-## Site description
+## Study Area / Study System / Site Description
 
 Seabirds nest on the islands.
 The islands are protected natural areas.
-
-Seabirds are marine organisms and are only found on land to reproduce.
-Tracking devices are installed while individuals are breeding on the island.
-
-We attached GPS units to XXX Laysan albatross individuals on Guadalupe Island from 2014 to 2026.
-Additionally, we attached GPS units to 26 individuals on Clarion Island from 2018 to 2022.
 
 ### Guadalupe Island
 
@@ -43,20 +37,10 @@ The California Current enriches the water with nutrients, which makes food more 
 ENSO variability might increase or reduce food availability in certain areas.
 This food availability will affect where the albatrosses feed, which will determine what the core areas are.
 
-### Time period
+## Study Species / Organism Information
 
-The data were collected from 2014 to 2026.
-We want to determine the core areas that are constant over time.
-MPA (ANP) are constant over time.
-If we are going to evaluate how effective they are to protect the core areas for the albatrosses, then we need a long time period to make sure we are obtaining persistent patterns.
-A 12-year period (2014–2026) is long enough to evaluate MPA (ANP) effectiveness.
-A shorter period might not be enough because of interannual variability.
-We assess the degree of representativeness of the data.
-We don't consider the interannual variability directly.
-We just verify the time period is long enough to be representative despite the interannual variability.
-All the data are pooled together without accounting for the year.
-
-## Study species or system
+Seabirds are marine organisms and are only found on land to reproduce.
+Tracking devices are installed while individuals are breeding on the island.
 
 We are studying the core area used by Laysan albatrosses in the Mexican Pacific and its overlap with protected natural areas (ANP).
 In particular, we focus on the albatrosses that nest on Guadalupe Island and Clarion Island.
@@ -73,17 +57,25 @@ They are at the nest, make a foraging trip, and return to the nest.
 Seabirds are top predators and serve as umbrella species.
 If the ANPs serve to protect these species, we can infer that they serve to protect the marine ecosystem.
 
-## Ethical considerations and permits
+## Study Design / Experimental Design / Sampling Design
 
-Ethical considerations and permits are required by Mexican authorities.
-The study was conducted under the permits from the following institutions:
-Ministry of the Interior, Ministry of Environment and Natural Resources, and the National Commission for Protected Natural Areas.
-[[ Add specific permit IDs or agencies if possible ]]
+### Time period
 
-No albatross individuals were harmed during the study.
-[[ Explain how albatross are trapped. Is there a standard for this? ]]
+The data were collected from 2014 to 2026.
+We want to determine the core areas that are constant over time.
+MPA (ANP) are constant over time.
+If we are going to evaluate how effective they are to protect the core areas for the albatrosses, then we need a long time period to make sure we are obtaining persistent patterns.
+A 12-year period (2014–2026) is long enough to evaluate MPA (ANP) effectiveness.
+A shorter period might not be enough because of interannual variability.
+We assess the degree of representativeness of the data.
+We don't consider the interannual variability directly.
+We just verify the time period is long enough to be representative despite the interannual variability.
+All the data are pooled together without accounting for the year.
 
-## Data collection
+## Data Collection / Field Methods
+
+We attached GPS units to XXX Laysan albatross individuals on Guadalupe Island from 2014 to 2026.
+Additionally, we attached GPS units to 26 individuals on Clarion Island from 2018 to 2022.
 
 GPS loggers have the appropriate accuracy and precision for the study.
 Other devices, like GLS, are not accurate enough to determine core areas.
@@ -103,41 +95,6 @@ From 2025 to 2026: GPS datalogger with accelerometer and UHF model Axy-Trek Remo
 In Clarion Island, from 2018 to 2022 we used the following GPS devices: i-gotU model GT-120 by Mobile Action (Taiwan).
 CatLog-S, Catnip Technologies (China).
 CatLog-S2, Perthold Engineering (USA).
-
-# Experimental design
-
-## Specific questions
-
-- We aim to identify the core areas used by Laysan albatrosses in the Mexican Pacific.
-- We also aim to determine whether these core areas overlap with existing ANPs.
-
-Question 1: We split the tracks into individual trips; then we do kernel density estimations for each individual trip (we assess the representativeness of the sample data: not an input of the next step); finally, we determine the core areas (potential key biodiversity areas (KBA)).
-Question 2: We take the core areas and intersect them with the MPA/ANP, then we evaluate/quantify the level of overlap.
-
-### Core areas used by Laysan albatrosses
-
-The unit of analysis is the trip.
-Guadalupe Island is one colony, which has multiple individuals; each individual makes multiple trips per season.
-Each trip is the smallest unit of analysis.
-Core areas refer to the 50% Utilization Distribution (UD).
-From the GPS trajectories, we calculated kernel density estimation (KDE) to define the core areas.
-The UD level is 50%.
-The Area-Restricted Search scale uses First Passage Time analysis (adehabitatLT).
-FPT variance peaks are identified per individual.
-Peaks are selected by peakMethod (default "first").
-Then the median across individuals is taken.
-KDE has been widely used to determine Utilization Distribution (UD).
-KDE was selected because a wide range of users are familiar with its use, which facilitates the communication of results among decision makers.
-KDEs are calculated for individual trips.
-Then the KDEs from individual trips are combined to obtain a pooled density, from which the core area (50% UD) is obtained.
-Representativeness refers to how well the sample represents the population.
-For this purpose, individual trips are subsampled, and KDEs are calculated and combined to obtain the UD.
-From the resulting area, we evaluate how many data points that were not selected in the subsample fall outside.
-That gives us an idea of whether the sample size is sufficiently representative of the population for the results to be valid for the entire population.
-
-The independent variable is the GPS locations of the albatrosses.
-The dependent variable is the core areas used by the albatrosses.
-
 
 A total of XXX individuals were tracked in Guadalupe Island between 2014 and 2026.
 The number of individuals and the number of seasons were determined by the amount of resources available.
@@ -167,6 +124,59 @@ A total of {{ clarion_n_total }} individuals were tracked in Clarion Island betw
 | 2020 | 6 |
 | 2022 | 4 |
 
+## Ethical Considerations / Permits / Approvals
+
+Ethical considerations and permits are required by Mexican authorities.
+The study was conducted under the permits from the following institutions:
+Ministry of the Interior, Ministry of Environment and Natural Resources, and the National Commission for Protected Natural Areas.
+[[ Add specific permit IDs or agencies if possible ]]
+
+No albatross individuals were harmed during the study.
+[[ Explain how albatross are trapped. Is there a standard for this? ]]
+
+## Experimental design
+
+## Measurements and Variables
+
+The independent variable is the GPS locations of the albatrosses.
+The dependent variable is the core areas used by the albatrosses.
+
+The independent variables are the core areas used by the albatrosses and the ANP polygons.
+The dependent variable is the overlap index.
+
+## Data analysis
+
+## Statistical Analysis / Modeling
+
+No inferential statistics were used.
+
+We based our methodology on [@beal2021track2kba].
+We used the R package track2KBA [@beal2021track2kba] to split individual tracks, calculate KDE, and find core areas (50% UD; potential KBA).
+Fieberg & Kochanny quantified home-range overlap using the utilization distribution.
+Our implementation follows [@beal2021track2kba] completely.
+No deviations.
+
+### Core areas used by Laysan albatrosses
+
+The unit of analysis is the trip.
+Guadalupe Island is one colony, which has multiple individuals; each individual makes multiple trips per season.
+Each trip is the smallest unit of analysis.
+Core areas refer to the 50% Utilization Distribution (UD).
+From the GPS trajectories, we calculated kernel density estimation (KDE) to define the core areas.
+The UD level is 50%.
+The Area-Restricted Search scale uses First Passage Time analysis (adehabitatLT).
+FPT variance peaks are identified per individual.
+Peaks are selected by peakMethod (default "first").
+Then the median across individuals is taken.
+KDE has been widely used to determine Utilization Distribution (UD).
+KDE was selected because a wide range of users are familiar with its use, which facilitates the communication of results among decision makers.
+KDEs are calculated for individual trips.
+Then the KDEs from individual trips are combined to obtain a pooled density, from which the core area (50% UD) is obtained.
+Representativeness refers to how well the sample represents the population.
+For this purpose, individual trips are subsampled, and KDEs are calculated and combined to obtain the UD.
+From the resulting area, we evaluate how many data points that were not selected in the subsample fall outside.
+That gives us an idea of whether the sample size is sufficiently representative of the population for the results to be valid for the entire population.
+
 ### Overlap of core areas with ANPs
 
 We calculated the overlap index to quantify the overlap of the core areas with the ANP polygons.
@@ -178,20 +188,7 @@ Source: Kernohan et al. (2001); White & Garrott (1990).
 Area-based (proportional) overlap measures the proportion of core area that is overlapped by MPA/ANP area.
 This is a measure of core habitat protection coverage — it tells you what fraction of the animal's most intensively used space (where it spends 50% of its time) is actually inside the protected area.
 
-The independent variables are the core areas used by the albatrosses and the ANP polygons.
-The dependent variable is the overlap index.
-
-## Studies that support your methodology
-
-We based our methodology on [@beal2021track2kba].
-We used the R package track2KBA [@beal2021track2kba] to split individual tracks, calculate KDE, and find core areas (50% UD; potential KBA).
-Fieberg & Kochanny quantified home-range overlap using the utilization distribution.
-Our implementation follows [@beal2021track2kba] completely.
-No deviations.
-
-# Data analysis
-
-## Data processing
+## Data Processing / Derived Variables / Quality Control
 
 We used the R package track2KBA.
 We removed points within 60 km around the colony.
@@ -201,10 +198,6 @@ The following track2KBA functions were used: formatFields to normalize GPS field
 Records are every 10 minutes.
 We did not do any resampling or consistency checks.
 All GPS were programmed to record one position every 10 minutes.
-
-## Statistical analyses
-
-No inferential statistics were used.
 
 ## Limitations and assumptions
 
