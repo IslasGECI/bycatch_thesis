@@ -83,6 +83,9 @@ No albatross individuals were harmed during the study.
 
 ## Data collection
 
+GPS loggers have the appropriate accuracy and precision for the study.
+Other devices, like GLS, are not accurate enough to determine core areas.
+The 10-minute frequency allows recording multiple trips per individual per season.
 We attached the GPS to the albatrosses.
 The GPS loggers were attached to the albatross individuals with Tesa tape (#4651, Tesa AG, Hamburg, Germany).
 [[ Explain how the tape is attached. Is there a standard protocol for this? ]]

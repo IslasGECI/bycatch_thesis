@@ -22,8 +22,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Data collection
 
-- [ ] Add **justification for device selection**
-    - Why these GPS loggers are appropriate
 - [ ] Explain:
     - sampling frequency (10 min) and why it is adequate
 - [ ] Clarify:
