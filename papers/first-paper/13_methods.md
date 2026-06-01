@@ -126,6 +126,8 @@ Peaks are selected by peakMethod (default "first").
 Then the median across individuals is taken.
 KDE has been widely used to determine Utilization Distribution (UD).
 KDE was selected because a wide range of users are familiar with its use, which facilitates the communication of results among decision makers.
+KDEs are calculated for individual trips.
+Then the KDEs from individual trips are combined to obtain a pooled density, from which the core area (50% UD) is obtained.
 
 The independent variable is the GPS locations of the albatrosses.
 The dependent variable is the core areas used by the albatrosses.

@@ -31,8 +31,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 #### Core areas used by Laysan albatrosses
 
-- [ ] Clarify:
-    - individual KDE vs pooled KDE
 - [ ] Add **representativeness concept**
     - define it
     - explain why it matters
