@@ -206,6 +206,11 @@ No inferential statistics were used.
 
 ## Limitations and assumptions
 
+We collected data from Clarion and San Benedicto islands, but the sample was small.
+All the results are based on the Guadalupe Island colony, which we believe is representative since it is much bigger than the rest.
+The GPS logger only collects data during the breeding season, which does not cover the whole year.
+Different years have different numbers of GPS devices, individuals, and trips.
+However, we are not distinguishing between years.
 One limitation is that the GPS data only correspond to the reproductive season.
 We do not know if the core areas used by the albatrosses during the non-reproductive season are different.
 However, it is during the reproductive season when the population could be most vulnerable.

@@ -43,10 +43,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 ### Limitations and assumptions
 
-- [ ] Expand limitations:
-    - spatial bias (colony-based sampling)
-    - device limitations
-    - temporal gaps
 - [ ] Add **methodological assumptions**:
     - KDE assumptions (smoothing, independence)
     - representativeness assumptions
