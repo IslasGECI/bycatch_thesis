@@ -52,6 +52,8 @@ Seabirds are marine organisms.
 They are on land only during their reproductive stage.
 During the reproductive and nesting season, they make foraging trips.
 They are at the nest, make a foraging trip, and return to the nest.
+[[ Explain that this foraging-trip behaviour is what allows GPS tracking to capture the spatial footprint of the colony's resource use. ]]
+[[ Transition: move from the species' general ecology to the specific study objective — mapping core areas and their overlap with ANPs. ]]
 
 We are studying the core area used by Laysan albatrosses in the Mexican Pacific and its overlap with protected natural areas (ANP).
 In particular, we focus on the albatrosses that nest on Guadalupe Island and Clarion Island.
@@ -60,6 +62,7 @@ Seabirds are top predators and serve as umbrella species.
 If we find that MPA/ANP adequately protect the core areas of Laysan albatross, we can be sure that MPA/ANP also protect multiple species.
 Their trophic level tells us that if the Laysan albatross does well, it means that the lower trophic levels do well as well.
 If the ANPs serve to protect these species, we can infer that they serve to protect the marine ecosystem.
+[[ Transition: move from the species rationale to the specific study design — the temporal scope of data collection. ]]
 
 ## Study Design
 
