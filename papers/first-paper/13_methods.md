@@ -5,7 +5,7 @@
 
 Seabirds nest on the islands.
 The islands are protected natural areas.
-[[ Explain that because seabirds rely on these islands for breeding, the protection status of both the terrestrial and marine areas around them is relevant to the study. ]]
+[[ Why is the protected status of the islands relevant to seabird nesting? ]]
 [[ Transition: introduce Guadalupe Island as the primary study site. ]]
 
 ### Guadalupe Island
@@ -29,7 +29,7 @@ It is located 700 kilometres from the Mexican mainland.
 It has a tropical climate.
 It has an area of 19.8 km$^2$.
 It measures 8.6 km at its longest part from the eastern end to the western end.
-[[ Explain that although Clarion hosts a smaller colony than Guadalupe, it provides a comparative site in a different oceanographic regime. ]]
+[[ Why is Clarion Island relevant to this study despite having a smaller colony? ]]
 [[ Transition: move from site descriptions to the oceanographic factors that determine foraging areas. ]]
 
 ### Feeding areas
@@ -52,7 +52,7 @@ Seabirds are marine organisms.
 They are on land only during their reproductive stage.
 During the reproductive and nesting season, they make foraging trips.
 They are at the nest, make a foraging trip, and return to the nest.
-[[ Explain that this foraging-trip behaviour is what allows GPS tracking to capture the spatial footprint of the colony's resource use. ]]
+[[ How does the foraging-trip behaviour enable GPS tracking to capture core areas? ]]
 [[ Transition: move from the species' general ecology to the specific study objective — mapping core areas and their overlap with ANPs. ]]
 
 We are studying the core area used by Laysan albatrosses in the Mexican Pacific and its overlap with protected natural areas (ANP).
@@ -80,9 +80,9 @@ We just verify the time period is long enough to be representative despite the i
 All the data are pooled together without accounting for the year.
 [[ Transition: move from the multi-year rationale to the seasonal coverage limitation. ]]
 
-[[ Topic: explain that tracking covers only the reproductive season (November to May), with no data from June to October. ]]
+[[ Topic: what seasonal coverage did the tracking data have? ]]
 [[ Evidence: state the months when GPS loggers were deployed and why the non-breeding season was not sampled. ]]
-[[ Explanation: clarify that the study deliberately focuses on the breeding season because that is when the population is most vulnerable and when core foraging areas are used most intensively. ]]
+[[ Explanation: why does the study focus only on the breeding season? ]]
 [[ Transition: move from study design to the specific field methods used for data collection. ]]
 
 ## Field Methods
@@ -104,7 +104,7 @@ This frequency is low enough for the battery to last the whole season and track 
 We attached the GPS to the albatrosses.
 The GPS loggers were attached to the albatross individuals with Tesa tape (#4651, Tesa AG, Hamburg, Germany).
 [[ Explain how the tape is attached. Is there a standard protocol for this? ]]
-[[ Explanation: explain why Tesa tape was chosen — it is strong enough to stay attached during foraging trips but degrades over time, allowing the logger to fall off without recapture. ]]
+[[ Explanation: why was Tesa tape chosen for attaching the GPS loggers? ]]
 [[ Transition: move from attachment method to the specific GPS models used across years and islands. ]]
 
 In Guadalupe Island we used the following GPS devices: From 2014 to 2016: model GiSPy-4SB by Techno Smart (Italy).
@@ -115,7 +115,7 @@ From 2025 to 2026: GPS datalogger with accelerometer and UHF model Axy-Trek Remo
 In Clarion Island, from 2018 to 2022 we used the following GPS devices: i-gotU model GT-120 by Mobile Action (Taiwan).
 CatLog-S, Catnip Technologies (China).
 CatLog-S2, Perthold Engineering (USA).
-[[ Explanation: note that device models changed over time due to availability and technological advances, but all loggers used similar GPS technology adequate for the study. ]]
+[[ Explanation: why did the GPS device models vary across years? ]]
 [[ Transition: move from device descriptions to the sample-size tables that summarise the tracking effort per year. ]]
 
 [[ Topic: introduce the sample-size tables that show the number of individuals tracked per year at each colony. ]]
@@ -144,7 +144,7 @@ A total of {{ clarion_n_total }} individuals were tracked in Clarion Island betw
 | 2020 | 6 |
 | 2022 | 4 |
 
-[[ Explanation: the tables show that sample size was largest in 2018–2019 for Guadalupe and in 2019 for Clarion, with fewer individuals in other years. ]]
+[[ Explanation: what patterns do the sample sizes reveal about tracking effort? ]]
 [[ Transition: move from data collection (field methods) to the processing steps applied to the GPS data. ]]
 
 ## Data Processing
@@ -161,13 +161,13 @@ The following track2KBA functions were used:
 - `estSpaceUse()` to compute kernel density estimates for each individual
 - `repAssess()` to bootstrap and assess sample representativeness
 - `findSite()` to identify potential KBA polygons meeting thresholds
-[[ Explanation: explain that track2KBA was chosen because it is a standardised pipeline for identifying potential KBAs from tracking data, and the 60 km buffer removes colony-centred commuting fixes to focus on actual foraging areas. ]]
+[[ Explanation: why was track2KBA chosen for processing the GPS data? ]]
 [[ Transition: move from the preprocessing pipeline to the recording frequency of the raw GPS data. ]]
 
 Records are every 10 minutes.
 We did not do any resampling or consistency checks.
 All GPS were programmed to record one position every 10 minutes.
-[[ Explanation: note that no resampling was needed because all loggers used the same 10-minute schedule, making the data internally consistent. ]]
+[[ Explanation: why was no resampling or consistency check performed? ]]
 [[ Transition: move from data processing to the statistical analysis of the processed data. ]]
 
 ## Data Analysis
@@ -178,7 +178,7 @@ We based our methodology on [@beal2021track2kba].
 We used the R package track2KBA [@beal2021track2kba] to split individual tracks, calculate KDE, and find core areas (50% UD; potential KBA).
 Our implementation follows [@beal2021track2kba] completely.
 No deviations.
-[[ Explanation: explain that Beal et al. (2021) provides a validated, published methodology for identifying potential KBAs from tracking data, so replicating it ensures the results are comparable with other KBA studies. ]]
+[[ Explanation: why was the Beal et al. (2021) methodology chosen? ]]
 [[ Transition: move from the general analytical approach to the specific analysis of core areas used by Laysan albatrosses. ]]
 
 ### Core areas used by Laysan albatrosses
@@ -237,12 +237,12 @@ Ethical considerations and permits are required by Mexican authorities.
 The study was conducted under the permits from the following institutions:
 Ministry of the Interior, Ministry of Environment and Natural Resources, and the National Commission for Protected Natural Areas.
 [[ Add specific permit IDs or agencies if possible ]]
-[[ Explanation: explain that these permits are legally required because the study involves handling a protected species within federally managed natural protected areas. ]]
+[[ Explanation: why are these permits required for this study? ]]
 [[ Transition: move from permitting to the ethical treatment of the animals during the study. ]]
 
 No albatross individuals were harmed during the study.
 [[ Explain how albatross are trapped. Is there a standard for this? ]]
-[[ Explanation: explain that the trapping and handling protocol follows established ethical guidelines for seabird fieldwork, minimising stress and ensuring no lasting harm. ]]
+[[ Explanation: how does the trapping protocol ensure no harm to the albatrosses? ]]
 [[ Transition: move from ethical considerations to the methodological limitations of the study. ]]
 
 ## Methodological Considerations
@@ -253,7 +253,7 @@ All the results are based on the Guadalupe Island colony, which we believe is re
 [[ Transition: move from site generalisability to the consistency of sampling effort across years. ]]
 
 Different years have different numbers of GPS devices, individuals, and trips.
-[[ Evidence: provide examples of the variation — e.g., Guadalupe had 36 individuals in 2019 but only 2 in 2016. ]]
+[[ Evidence: provide examples of how the number of individuals varied across years. ]]
 However, we are not distinguishing between years.
 [[ Transition: move from uneven sampling to the broader limitation of seasonal coverage. ]]
 
