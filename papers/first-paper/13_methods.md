@@ -64,7 +64,7 @@ If the ANPs serve to protect these species, we can infer that they serve to prot
 The data were collected from 2014 to 2026.
 We want to determine the core areas that are constant over time.
 MPA (ANP) are constant over time.
-If we are going to evaluate how effective they are to protect the core areas for the albatrosses, then we need a long time period to make sure we are obtaining persistent patterns.
+To evaluate how effectively MPAs protect the core areas for albatrosses, we need a long time period to obtain persistent patterns.
 A 12-year period (2014–2026) is long enough to evaluate MPA (ANP) effectiveness.
 A shorter period might not be enough because of interannual variability.
 We assess the degree of representativeness of the data.
@@ -170,10 +170,11 @@ KDE has been widely used to determine Utilization Distribution (UD).
 KDE was selected because a wide range of users are familiar with its use, which facilitates the communication of results among decision makers.
 KDEs are calculated for individual trips.
 Then the KDEs from individual trips are combined to obtain a pooled density, from which the core area (50% UD) is obtained.
+
 Representativeness refers to how well the sample represents the population.
 For this purpose, individual trips are subsampled, and KDEs are calculated and combined to obtain the UD.
 From the resulting area, we evaluate how many data points that were not selected in the subsample fall outside.
-That gives us an idea of whether the sample size is sufficiently representative of the population for the results to be valid for the entire population.
+That indicates whether the sample size is sufficiently representative of the population for the results to be valid for the entire population.
 
 ### Overlap of core areas with ANPs
 
@@ -184,14 +185,22 @@ This index is directional: HR_{i,j} $\neq$ HR_{j,i}.
 It ignores the utilization distribution and treats all space within the home range as equally used.
 Source: Kernohan et al. (2001); White & Garrott (1990).
 Area-based (proportional) overlap measures the proportion of core area that is overlapped by MPA/ANP area.
-This is a measure of core habitat protection coverage — it tells you what fraction of the animal's most intensively used space (where it spends 50% of its time) is actually inside the protected area.
+This measure of core habitat protection coverage tells us what fraction of the animal's most intensively used space is inside the protected area.
 
 ## Data Processing
 
 We used the R package track2KBA.
 We removed points within 60 km around the colony.
 We follow the track2KBA methodology, which calls for removing incomplete trips.
-The following track2KBA functions were used: formatFields to normalize GPS field names and date-time format, tripSplit to split GPS fixes into individual foraging trips, tripSummary to summarize trip metrics, projectTracks to project into an equal-area azimuthal projection, findScale to estimate the ARS smoothing scale via First Passage Time, estSpaceUse to compute kernel density estimates for each individual, repAssess to bootstrap and assess sample representativeness, and findSite to identify potential KBA polygons meeting thresholds.
+The following track2KBA functions were used:
+- `formatFields()` to normalize GPS field names and date-time format
+- `tripSplit()` to split GPS fixes into individual foraging trips
+- `tripSummary()` to summarize trip metrics
+- `projectTracks()` to project into an equal-area azimuthal projection
+- `findScale()` to estimate the ARS smoothing scale via First Passage Time
+- `estSpaceUse()` to compute kernel density estimates for each individual
+- `repAssess()` to bootstrap and assess sample representativeness
+- `findSite()` to identify potential KBA polygons meeting thresholds
 
 Records are every 10 minutes.
 We did not do any resampling or consistency checks.
@@ -207,5 +216,5 @@ However, we are not distinguishing between years.
 One limitation is that the GPS data only correspond to the reproductive season.
 We do not know if the core areas used by the albatrosses during the non-reproductive season are different.
 However, it is during the reproductive season when the population could be most vulnerable.
-The fact that data were collected only during the breeding season means that the effectiveness of the protection that the MPA provides to the Laysan albatross is determined only for the breeding season.
+Because data were collected only during the breeding season, MPA protection effectiveness for the Laysan albatross is determined only for that period.
 We cannot speak of the protection provided by the MPA during the rest of the year.
