@@ -178,6 +178,8 @@ We based our methodology on [@beal2021track2kba].
 We used the R package track2KBA [@beal2021track2kba] to split individual tracks, calculate KDE, and find core areas (50% UD; potential KBA).
 Our implementation follows [@beal2021track2kba] completely.
 No deviations.
+[[ Explanation: explain that Beal et al. (2021) provides a validated, published methodology for identifying potential KBAs from tracking data, so replicating it ensures the results are comparable with other KBA studies. ]]
+[[ Transition: move from the general analytical approach to the specific analysis of core areas used by Laysan albatrosses. ]]
 
 ### Core areas used by Laysan albatrosses
 
@@ -207,6 +209,7 @@ Representativeness refers to how well the sample represents the population.
 For this purpose, individual trips are subsampled, and KDEs are calculated and combined to obtain the UD.
 From the resulting area, we evaluate how many data points that were not selected in the subsample fall outside.
 That indicates whether the sample size is sufficiently representative of the population for the results to be valid for the entire population.
+[[ Transition: move from identifying core areas to quantifying their spatial overlap with ANPs. ]]
 
 ### Overlap of core areas with ANPs
 
@@ -226,6 +229,7 @@ It ignores the utilization distribution and treats all space within the home ran
 Source: Kernohan et al. (2001); White & Garrott (1990).
 Area-based (proportional) overlap measures the proportion of core area that is overlapped by MPA/ANP area.
 This measure of core habitat protection coverage tells us what fraction of the animal's most intensively used space is inside the protected area.
+[[ Transition: move from the analytical results to the ethical framework under which the data were collected. ]]
 
 ## Ethical Considerations
 
