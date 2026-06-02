@@ -199,7 +199,6 @@ data/processed/individual_kde_guadalupe.rds: \
 		--data-path data/processed/trips_geographic_points_guadalupe.csv \
 		--config-path config_trips_guadalupe.json \
 		--percentage-distribution 50 \
-		--smoothing-method scale_ARS \
 		--trips-summary-path data/processed/trips_summary_guadalupe.csv \
 		--output-path $@
 
@@ -221,7 +220,6 @@ data/processed/individual_kde_all.rds: \
 		--data-path data/processed/trips_geographic_points_all.csv \
 		--config-path config_trips_all.json \
 		--percentage-distribution 50 \
-		--smoothing-method scale_ARS \
 		--trips-summary-path data/processed/trips_summary_all.csv \
 		--output-path $@
 
