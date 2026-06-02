@@ -51,10 +51,9 @@ They are at the nest, make a foraging trip, and return to the nest.
 We are studying the core area used by Laysan albatrosses in the Mexican Pacific and its overlap with protected natural areas (ANP).
 In particular, we focus on the albatrosses that nest on Guadalupe Island and Clarion Island.
 Laysan albatross is an umbrella species.
+Seabirds are top predators and serve as umbrella species.
 If we find that MPA/ANP adequately protect the core areas of Laysan albatross, we can be sure that MPA/ANP also protect multiple species.
 Their trophic level tells us that if the Laysan albatross does well, it means that the lower trophic levels do well as well.
-
-Seabirds are top predators and serve as umbrella species.
 If the ANPs serve to protect these species, we can infer that they serve to protect the marine ecosystem.
 
 ## Study Design
