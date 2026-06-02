@@ -78,6 +78,12 @@ We assess the degree of representativeness of the data.
 We don't consider the interannual variability directly.
 We just verify the time period is long enough to be representative despite the interannual variability.
 All the data are pooled together without accounting for the year.
+[[ Transition: move from the multi-year rationale to the seasonal coverage limitation. ]]
+
+[[ Topic: explain that tracking covers only the reproductive season (November to May), with no data from June to October. ]]
+[[ Evidence: state the months when GPS loggers were deployed and why the non-breeding season was not sampled. ]]
+[[ Explanation: clarify that the study deliberately focuses on the breeding season because that is when the population is most vulnerable and when core foraging areas are used most intensively. ]]
+[[ Transition: move from study design to the specific field methods used for data collection. ]]
 
 ## Field Methods
 
