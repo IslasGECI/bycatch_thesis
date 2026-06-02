@@ -180,7 +180,7 @@ That gives us an idea of whether the sample size is sufficiently representative 
 We calculated the overlap index to quantify the overlap of the core areas with the ANP polygons.
 The overlap index is area-based (proportional) overlap: HR_{i,j} = A_{i,j} / A_i.
 HR_{i,j} measures the proportion of animal i's home range that is overlapped by animal j's home range.
-This index is directional: HR_{i,j} ≠ HR_{j,i}.
+This index is directional: HR_{i,j} $\neq$ HR_{j,i}.
 It ignores the utilization distribution and treats all space within the home range as equally used.
 Source: Kernohan et al. (2001); White & Garrott (1990).
 Area-based (proportional) overlap measures the proportion of core area that is overlapped by MPA/ANP area.
