@@ -161,10 +161,14 @@ The following track2KBA functions were used:
 - `estSpaceUse()` to compute kernel density estimates for each individual
 - `repAssess()` to bootstrap and assess sample representativeness
 - `findSite()` to identify potential KBA polygons meeting thresholds
+[[ Explanation: explain that track2KBA was chosen because it is a standardised pipeline for identifying potential KBAs from tracking data, and the 60 km buffer removes colony-centred commuting fixes to focus on actual foraging areas. ]]
+[[ Transition: move from the preprocessing pipeline to the recording frequency of the raw GPS data. ]]
 
 Records are every 10 minutes.
 We did not do any resampling or consistency checks.
 All GPS were programmed to record one position every 10 minutes.
+[[ Explanation: note that no resampling was needed because all loggers used the same 10-minute schedule, making the data internally consistent. ]]
+[[ Transition: move from data processing to the statistical analysis of the processed data. ]]
 
 ## Data Analysis
 
