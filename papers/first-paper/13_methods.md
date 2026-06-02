@@ -237,10 +237,13 @@ Ethical considerations and permits are required by Mexican authorities.
 The study was conducted under the permits from the following institutions:
 Ministry of the Interior, Ministry of Environment and Natural Resources, and the National Commission for Protected Natural Areas.
 [[ Add specific permit IDs or agencies if possible ]]
+[[ Explanation: explain that these permits are legally required because the study involves handling a protected species within federally managed natural protected areas. ]]
+[[ Transition: move from permitting to the ethical treatment of the animals during the study. ]]
 
 No albatross individuals were harmed during the study.
 [[ Explain how albatross are trapped. Is there a standard for this? ]]
-
+[[ Explanation: explain that the trapping and handling protocol follows established ethical guidelines for seabird fieldwork, minimising stress and ensuring no lasting harm. ]]
+[[ Transition: move from ethical considerations to the methodological limitations of the study. ]]
 
 ## Methodological Considerations
 
