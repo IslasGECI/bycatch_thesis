@@ -8,12 +8,11 @@ The islands are protected natural areas.
 
 ### Guadalupe Island
 
+Guadalupe Island hosts the largest breeding colony of Laysan albatrosses in the eastern Pacific [@hernandez2019sexual].
 Guadalupe Island is located 300 km west of the coast of Baja California.
 It is an oceanic island of volcanic origin.
 It has an area of 244 km$^2$.
 It measures 30 km at its longest part from the southern end to the northern end.
-
-Guadalupe Island hosts the largest breeding colony of Laysan albatrosses in the eastern Pacific [@hernandez2019sexual].
 Guadalupe Island hosts the biggest colony in the Mexican Pacific.
 This paper is about albatrosses in the Mexican EEZ.
 The other colonies within the Mexican EEZ are smaller and not successful.
