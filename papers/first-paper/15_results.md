@@ -9,4 +9,8 @@
 
 ![50% potential site derived using the ARS method from Laysan Albatross tracking data (2014–2026 seasons) for the Guadalupe Island colony.](reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png)
 
+![50% potential KBA for the Guadalupe Island colony without the MPA overlay.](reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_without_mpa.png)
+
+![50% potential KBA for the Guadalupe Island colony with the MPA overlay.](reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_with_mpa.png)
+
 \FloatBarrier
