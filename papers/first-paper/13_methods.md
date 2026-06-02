@@ -248,10 +248,14 @@ No albatross individuals were harmed during the study.
 ## Methodological Considerations
 
 We collected data from Clarion and San Benedicto islands, but the sample was small.
+[[ Evidence: state the number of individuals tracked at Clarion and San Benedicto to quantify how small the sample was. ]]
 All the results are based on the Guadalupe Island colony, which we believe is representative since it is much bigger than the rest.
+[[ Transition: move from site generalisability to the consistency of sampling effort across years. ]]
 
 Different years have different numbers of GPS devices, individuals, and trips.
+[[ Evidence: provide examples of the variation — e.g., Guadalupe had 36 individuals in 2019 but only 2 in 2016. ]]
 However, we are not distinguishing between years.
+[[ Transition: move from uneven sampling to the broader limitation of seasonal coverage. ]]
 
 The GPS logger only collects data during the breeding season, which does not cover the whole year.
 One limitation is that the GPS data only correspond to the reproductive season.
