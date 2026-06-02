@@ -78,6 +78,10 @@ All the data are pooled together without accounting for the year.
 We attached GPS units to XXX Laysan albatross individuals on Guadalupe Island from 2014 to 2026.
 Additionally, we attached GPS units to 26 individuals on Clarion Island from 2018 to 2022.
 
+A total of XXX individuals were tracked in Guadalupe Island between 2014 and 2026.
+The number of individuals and the number of seasons were determined by the amount of resources available.
+The representativeness of the data was assessed a posteriori.
+
 GPS loggers have the appropriate accuracy and precision for the study.
 Other devices, like GLS, are not accurate enough to determine core areas.
 The 10-minute frequency allows recording multiple trips per individual per season.
@@ -96,10 +100,6 @@ From 2025 to 2026: GPS datalogger with accelerometer and UHF model Axy-Trek Remo
 In Clarion Island, from 2018 to 2022 we used the following GPS devices: i-gotU model GT-120 by Mobile Action (Taiwan).
 CatLog-S, Catnip Technologies (China).
 CatLog-S2, Perthold Engineering (USA).
-
-A total of XXX individuals were tracked in Guadalupe Island between 2014 and 2026.
-The number of individuals and the number of seasons were determined by the amount of resources available.
-The representativeness of the data was assessed a posteriori.
 
 | Year | Number of individuals |
 | ---- | --------------------- |
