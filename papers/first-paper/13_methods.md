@@ -100,9 +100,12 @@ The 10-minute frequency allows recording multiple trips per individual per seaso
 We programmed the GPS to record one position every 10 minutes.
 This frequency is high enough for the data to be representative and identify moments when the individual stops or goes slow.
 This frequency is low enough for the battery to last the whole season and track multiple trips.
+[[ Transition: move from the rationale for GPS selection to the physical attachment procedure. ]]
 We attached the GPS to the albatrosses.
 The GPS loggers were attached to the albatross individuals with Tesa tape (#4651, Tesa AG, Hamburg, Germany).
 [[ Explain how the tape is attached. Is there a standard protocol for this? ]]
+[[ Explanation: explain why Tesa tape was chosen — it is strong enough to stay attached during foraging trips but degrades over time, allowing the logger to fall off without recapture. ]]
+[[ Transition: move from attachment method to the specific GPS models used across years and islands. ]]
 
 In Guadalupe Island we used the following GPS devices: From 2014 to 2016: model GiSPy-4SB by Techno Smart (Italy).
 From 2017 to 2018: i-gotU model GT-120 by Mobile Action (Taiwan).
@@ -112,6 +115,10 @@ From 2025 to 2026: GPS datalogger with accelerometer and UHF model Axy-Trek Remo
 In Clarion Island, from 2018 to 2022 we used the following GPS devices: i-gotU model GT-120 by Mobile Action (Taiwan).
 CatLog-S, Catnip Technologies (China).
 CatLog-S2, Perthold Engineering (USA).
+[[ Explanation: note that device models changed over time due to availability and technological advances, but all loggers used similar GPS technology adequate for the study. ]]
+[[ Transition: move from device descriptions to the sample-size tables that summarise the tracking effort per year. ]]
+
+[[ Topic: introduce the sample-size tables that show the number of individuals tracked per year at each colony. ]]
 
 | Year | Number of individuals |
 | ---- | --------------------- |
@@ -136,6 +143,9 @@ A total of {{ clarion_n_total }} individuals were tracked in Clarion Island betw
 | 2019 | 9 |
 | 2020 | 6 |
 | 2022 | 4 |
+
+[[ Explanation: the tables show that sample size was largest in 2018–2019 for Guadalupe and in 2019 for Clarion, with fewer individuals in other years. ]]
+[[ Transition: move from data collection (field methods) to the processing steps applied to the GPS data. ]]
 
 ## Data Processing
 
