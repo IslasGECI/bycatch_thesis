@@ -150,7 +150,6 @@ No inferential statistics were used.
 
 We based our methodology on [@beal2021track2kba].
 We used the R package track2KBA [@beal2021track2kba] to split individual tracks, calculate KDE, and find core areas (50% UD; potential KBA).
-Fieberg & Kochanny quantified home-range overlap using the utilization distribution.
 Our implementation follows [@beal2021track2kba] completely.
 No deviations.
 
@@ -192,6 +191,7 @@ The dependent variable is the overlap index.
 
 **Analysis**
 
+Fieberg & Kochanny quantified home-range overlap using the utilization distribution.
 We calculated the overlap index to quantify the overlap of the core areas with the ANP polygons.
 The overlap index is area-based (proportional) overlap: HR_{i,j} = A_{i,j} / A_i.
 HR_{i,j} measures the proportion of animal i's home range that is overlapped by animal j's home range.
