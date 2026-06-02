@@ -5,6 +5,8 @@
 
 Seabirds nest on the islands.
 The islands are protected natural areas.
+[[ Explain that because seabirds rely on these islands for breeding, the protection status of both the terrestrial and marine areas around them is relevant to the study. ]]
+[[ Transition: introduce Guadalupe Island as the primary study site. ]]
 
 ### Guadalupe Island
 
@@ -27,6 +29,8 @@ It is located 700 kilometres from the Mexican mainland.
 It has a tropical climate.
 It has an area of 19.8 km$^2$.
 It measures 8.6 km at its longest part from the eastern end to the western end.
+[[ Explain that although Clarion hosts a smaller colony than Guadalupe, it provides a comparative site in a different oceanographic regime. ]]
+[[ Transition: move from site descriptions to the oceanographic factors that determine foraging areas. ]]
 
 ### Feeding areas
 
@@ -36,6 +40,7 @@ Their food availability and distribution (fish, squid, etc.) are determined by o
 The California Current enriches the water with nutrients, which makes food more available.
 ENSO variability might increase or reduce food availability in certain areas.
 This food availability will affect where the albatrosses feed, which will determine what the core areas are.
+[[ Transition: move from the study area description to the study species — why Laysan albatross in particular. ]]
 
 ## Study Species
 
