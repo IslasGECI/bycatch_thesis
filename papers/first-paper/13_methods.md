@@ -1,4 +1,5 @@
-## Materials
+
+# Methods
 
 ## Study Area
 
@@ -57,7 +58,7 @@ They are at the nest, make a foraging trip, and return to the nest.
 Seabirds are top predators and serve as umbrella species.
 If the ANPs serve to protect these species, we can infer that they serve to protect the marine ecosystem.
 
-## Experimental Design
+## Study Design
 
 ### Time period
 
@@ -124,27 +125,26 @@ A total of {{ clarion_n_total }} individuals were tracked in Clarion Island betw
 | 2020 | 6 |
 | 2022 | 4 |
 
-## Ethical Considerations
+## Data Processing
 
-Ethical considerations and permits are required by Mexican authorities.
-The study was conducted under the permits from the following institutions:
-Ministry of the Interior, Ministry of Environment and Natural Resources, and the National Commission for Protected Natural Areas.
-[[ Add specific permit IDs or agencies if possible ]]
+We used the R package track2KBA.
+We removed points within 60 km around the colony.
+We follow the track2KBA methodology, which calls for removing incomplete trips.
+The following track2KBA functions were used:
+- `formatFields()` to normalize GPS field names and date-time format
+- `tripSplit()` to split GPS fixes into individual foraging trips
+- `tripSummary()` to summarize trip metrics
+- `projectTracks()` to project into an equal-area azimuthal projection
+- `findScale()` to estimate the ARS smoothing scale via First Passage Time
+- `estSpaceUse()` to compute kernel density estimates for each individual
+- `repAssess()` to bootstrap and assess sample representativeness
+- `findSite()` to identify potential KBA polygons meeting thresholds
 
-No albatross individuals were harmed during the study.
-[[ Explain how albatross are trapped. Is there a standard for this? ]]
+Records are every 10 minutes.
+We did not do any resampling or consistency checks.
+All GPS were programmed to record one position every 10 minutes.
 
-## Experimental design
-
-## Measurements and Variables
-
-The independent variable is the GPS locations of the albatrosses.
-The dependent variable is the core areas used by the albatrosses.
-
-The independent variables are the core areas used by the albatrosses and the ANP polygons.
-The dependent variable is the overlap index.
-
-## Data analysis
+## Data Analysis
 
 No inferential statistics were used.
 
@@ -155,6 +155,13 @@ Our implementation follows [@beal2021track2kba] completely.
 No deviations.
 
 ### Core areas used by Laysan albatrosses
+
+**Measurements and Variables**
+
+The independent variable is the GPS locations of the albatrosses.
+The dependent variable is the core areas used by the albatrosses.
+
+**Analysis**
 
 The unit of analysis is the trip.
 Guadalupe Island is one colony, which has multiple individuals; each individual makes multiple trips per season.
@@ -178,6 +185,13 @@ That indicates whether the sample size is sufficiently representative of the pop
 
 ### Overlap of core areas with ANPs
 
+**Measurements and Variables**
+
+The independent variables are the core areas used by the albatrosses and the ANP polygons.
+The dependent variable is the overlap index.
+
+**Analysis**
+
 We calculated the overlap index to quantify the overlap of the core areas with the ANP polygons.
 The overlap index is area-based (proportional) overlap: HR_{i,j} = A_{i,j} / A_i.
 HR_{i,j} measures the proportion of animal i's home range that is overlapped by animal j's home range.
@@ -187,26 +201,18 @@ Source: Kernohan et al. (2001); White & Garrott (1990).
 Area-based (proportional) overlap measures the proportion of core area that is overlapped by MPA/ANP area.
 This measure of core habitat protection coverage tells us what fraction of the animal's most intensively used space is inside the protected area.
 
-## Data Processing
+## Ethical Considerations
 
-We used the R package track2KBA.
-We removed points within 60 km around the colony.
-We follow the track2KBA methodology, which calls for removing incomplete trips.
-The following track2KBA functions were used:
-- `formatFields()` to normalize GPS field names and date-time format
-- `tripSplit()` to split GPS fixes into individual foraging trips
-- `tripSummary()` to summarize trip metrics
-- `projectTracks()` to project into an equal-area azimuthal projection
-- `findScale()` to estimate the ARS smoothing scale via First Passage Time
-- `estSpaceUse()` to compute kernel density estimates for each individual
-- `repAssess()` to bootstrap and assess sample representativeness
-- `findSite()` to identify potential KBA polygons meeting thresholds
+Ethical considerations and permits are required by Mexican authorities.
+The study was conducted under the permits from the following institutions:
+Ministry of the Interior, Ministry of Environment and Natural Resources, and the National Commission for Protected Natural Areas.
+[[ Add specific permit IDs or agencies if possible ]]
 
-Records are every 10 minutes.
-We did not do any resampling or consistency checks.
-All GPS were programmed to record one position every 10 minutes.
+No albatross individuals were harmed during the study.
+[[ Explain how albatross are trapped. Is there a standard for this? ]]
 
-## Limitations and assumptions
+
+## Methodological Considerations
 
 We collected data from Clarion and San Benedicto islands, but the sample was small.
 All the results are based on the Guadalupe Island colony, which we believe is representative since it is much bigger than the rest.
