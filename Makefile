@@ -123,7 +123,6 @@ reports/figures/mexico_eez_bounding_box_zoom_out.png: \
 	Rscript src/plot_mexico_eez_bounding_box_union.R
 
 # 4390 = 645*2 pairs in the main island + 1550*2 pairs in the islets (https://doi.org/10.5281/zenodo.18343678)
-
 data/processed/kba_polygons_guadalupe.gpkg: \
 	data/processed/representative_assessment_guadalupe.rds
 	$(checkDirectories)
@@ -140,7 +139,6 @@ reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png: \
 		--gpkg-path data/processed/kba_polygons_guadalupe.gpkg \
 		--output-path $@
 
-# Custom KBA map without MPA overlay — uses src/ plot style consistent with other project maps
 data/processed/kba_mpa_intersection_guadalupe.gpkg: \
 	data/processed/kba_polygons_guadalupe.gpkg \
 	data/processed/mexico_mpa.gpkg
@@ -164,7 +162,6 @@ reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_with_mpa.pn
 	Rscript src/plot_kba_mpa_intersection.R
 
 # 4437 = 47 individuals in Clarion Island (2023) + 4390 individuals in Guadalupe Island
-
 data/processed/kba_polygons_all.gpkg: \
 	data/processed/representative_assessment_all.rds
 	$(checkDirectories)
@@ -188,8 +185,6 @@ reports/figures/gps_albatross_50_percent_representative_assessment_ars_guadalupe
 		--rds-path data/processed/representative_assessment_guadalupe.rds \
 		--output-path $@
 
-# create_processed_data was removed in bycatch v0.9.2.
-# Split into two steps: individual KDE cache → bootstrap assessment.
 data/processed/individual_kde_guadalupe.rds: \
 	data/processed/trips_geographic_points_guadalupe.csv \
 	config_trips_guadalupe.json \
