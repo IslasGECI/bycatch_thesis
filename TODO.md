@@ -1,21 +1,5 @@
 # Issue #12: 📝 Escribir la sección de Métodos
 
-Podemos empezar a escribir el primer borrador de la sección de:
-
-- [Métodos](https://github.com/IslasGECI/bycatch_thesis/blob/develop/13_methods.md)
-
-## Materials
-
-### Site description
-
-#### Guadalupe Island
-
-#### Feeding areas
-
-#### Time period
-
-### Study species or system
-
 ### Ethical considerations and permits
 
 - [ ] Required: specify permit IDs or agencies more precisely
@@ -24,24 +8,6 @@ Podemos empezar a escribir el primer borrador de la sección de:
 
 - [ ] Clarify:
     - deployment protocol (duration, recovery)
-
-## Experimental design
-
-### Specific questions
-
-#### Core areas used by Laysan albatrosses
-
-#### Overlap of core areas with ANPs
-
-### Studies that support your methodology
-
-## Data analysis
-
-### Data processing
-
-### Statistical analyses
-
-### Limitations and assumptions
 
 ## Cross-section fixes (apply across multiple sections)
 
