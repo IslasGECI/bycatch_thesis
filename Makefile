@@ -447,10 +447,7 @@ endef
 	check \
 	clean \
 	format \
-	init \
-	results_first_paper \
-	results_second_paper \
-	spellcheck
+	init
 
 clean:
 	rm --force *.pdf
@@ -459,7 +456,7 @@ clean:
 
 format:
 	R -e "library(styler)" \
-      -e "style_dir('src')"
+		-e "style_dir('src')"
 
 check:
 	src/check_manuscript_style.sh 'papers/first-paper/1?_*.md'
