@@ -1,4 +1,4 @@
-personal_ws-1.1 en 52 utf-8
+personal_ws-1.1 en 55 utf-8
 accelerometer
 adehabitatlt
 anp
@@ -8,6 +8,7 @@ ars
 axy
 azimuthal
 baja
+Beal
 benedicto
 catlog
 datalogger
@@ -16,6 +17,7 @@ el
 enso
 fieberg
 floatbarrier
+generalizability
 fpt
 garrott
 gispy
@@ -43,6 +45,7 @@ peakmethod
 perthold
 phoebastria
 posteriori
+preprocessing
 representativeness
 revillagigedo
 subsample

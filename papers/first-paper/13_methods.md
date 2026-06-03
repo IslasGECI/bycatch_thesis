@@ -250,7 +250,7 @@ No albatross individuals were harmed during the study.
 We collected data from Clarion and San Benedicto islands, but the sample was small.
 [[ Evidence: state the number of individuals tracked at Clarion and San Benedicto to quantify how small the sample was. ]]
 All the results are based on the Guadalupe Island colony, which we believe is representative since it is much bigger than the rest.
-[[ Transition: move from site generalisability to the consistency of sampling effort across years. ]]
+[[ Transition: move from site generalizability to the consistency of sampling effort across years. ]]
 
 Different years have different numbers of GPS devices, individuals, and trips.
 [[ Evidence: provide examples of how the number of individuals varied across years. ]]
