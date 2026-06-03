@@ -1,4 +1,4 @@
-personal_ws-1.1 en 55 utf-8
+personal_ws-1.1 en 58 utf-8
 accelerometer
 adehabitatlt
 anp
@@ -8,6 +8,7 @@ ars
 axy
 azimuthal
 baja
+basemap
 Beal
 benedicto
 catlog
@@ -27,6 +28,7 @@ gps
 guadalupe
 immutabilis
 interannual
+interpretability
 kba
 kde
 kdes
@@ -48,6 +50,7 @@ posteriori
 preprocessing
 representativeness
 revillagigedo
+shapefiles
 subsample
 subsampled
 tesa
