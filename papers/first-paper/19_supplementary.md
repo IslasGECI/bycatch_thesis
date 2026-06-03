@@ -28,3 +28,48 @@ The resulting study area represents the intersection between biologically inform
 All analyses of spatial use and potential interactions with anthropogenic activities are restricted to specific areas.
 These areas are both ecologically utilized by the species and legally under Mexican management.
 
+![Raw GPS tracking locations of Laysan albatrosses from Clarion Island.](reports/figures/gps_albatross_geographic_points_raw_clarion.png)
+
+The figure shows the spatial distribution of raw GPS fixes obtained from Laysan albatrosses breeding on Clarion Island.
+Each point represents a single GPS recording at 10-minute intervals during the breeding season.
+
+![Raw GPS tracking locations of Laysan albatrosses from Guadalupe Island.](reports/figures/gps_albatross_geographic_points_raw_guadalupe.png)
+
+The figure shows the spatial distribution of raw GPS fixes from Laysan albatrosses breeding on Guadalupe Island across all tracking years.
+Each point represents a single GPS recording at 10-minute intervals during the breeding season.
+
+![Raw GPS tracking locations of Laysan albatrosses from Guadalupe Island in 2025.](reports/figures/gps_albatross_geographic_points_raw_guadalupe_2025.png)
+
+The figure presents the spatial distribution of raw GPS fixes obtained from Laysan albatrosses breeding on Guadalupe Island during the 2025 breeding season.
+The tracks illustrate the foraging range and movement patterns of individuals from the largest colony in the Mexican Pacific.
+
+![Mexico's Exclusive Economic Zone (EEZ).](reports/figures/mexico_eez.png)
+
+The figure displays the polygon of Mexico's Exclusive Economic Zone as defined by international law.
+This maritime zone delineates the area where Mexico exercises sovereign rights over marine resources.
+
+![Base map of Mexico and its islands.](reports/figures/mexico_map.png)
+
+The figure presents a reference map of Mexico, including both the continental landmass and its associated islands.
+This basemap provides geographic context for the spatial analyses conducted in this study.
+
+![Map of Mexico derived from Natural Earth data.](reports/figures/mexico_naturalearth.png)
+
+The figure shows Mexico's political boundaries using publicly available cartographic data from Natural Earth.
+This dataset provides a lightweight, reproducible alternative to locally stored shapefiles.
+
+![Map of Mexico with cartographic elements from Natural Earth.](reports/figures/mexico_naturalearth_pro.png)
+
+The figure extends the Natural Earth basemap with professional cartographic elements, including a scale bar and a north arrow.
+These additions improve readability and geographic interpretability for publication-ready figures.
+
+![Marine Protected Areas (MPAs) of Mexico.](reports/figures/mexico_mpa.png)
+
+The figure displays the Marine Protected Areas within Mexico's jurisdiction.
+These polygons represent the spatial intersection of Protected Natural Areas (ANPs) with marine waters, excluding terrestrial portions.
+
+![Protected Natural Areas (ANPs) of Mexico.](reports/figures/mexico_pna.png)
+
+The figure shows all 232 Protected Natural Areas of Mexico as defined by the National Commission for Protected Natural Areas.
+These areas form the legal framework for biodiversity conservation and are used as the reference layer for overlap analyses with albatross core areas.
+

@@ -1,13 +1,4 @@
 all: \
-	articles \
-	dangling \
-	maps \
-	old_method \
-	results_clarion
-
-SHELL := /bin/bash
-
-articles: \
 	reports/anteproyecto.docx \
 	reports/anteproyecto.pdf \
 	reports/first_paper.docx \
@@ -15,10 +6,30 @@ articles: \
 	reports/second_paper.docx \
 	reports/second_paper.pdf
 
+SHELL := /bin/bash
+
 reports/first_paper.docx reports/first_paper.pdf: \
+	data/processed/individual_kde_guadalupe.rds \
+	data/processed/trips_summary_guadalupe.csv \
 	papers/first-paper/10_metadata.yaml \
-	reports/first_paper.md \
-	results_first_paper
+	reports/figures/gps_albatross_50_percent_individual_kde_ars_guadalupe.png \
+	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png \
+	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_with_mpa.png \
+	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_without_mpa.png \
+	reports/figures/gps_albatross_50_percent_representative_assessment_ars_guadalupe.png \
+	reports/figures/gps_albatross_geographic_points_by_trip_guadalupe.png \
+	reports/figures/gps_albatross_geographic_points_raw_clarion.png \
+	reports/figures/gps_albatross_geographic_points_raw_guadalupe.png \
+	reports/figures/gps_albatross_geographic_points_raw_guadalupe_2025.png \
+	reports/figures/mexico_eez.png \
+	reports/figures/mexico_eez_bounding_box_zoom_in.png \
+	reports/figures/mexico_eez_bounding_box_zoom_out.png \
+	reports/figures/mexico_map.png \
+	reports/figures/mexico_mpa.png \
+	reports/figures/mexico_naturalearth.png \
+	reports/figures/mexico_naturalearth_pro.png \
+	reports/figures/mexico_pna.png \
+	reports/first_paper.md
 	$(checkDirectories)
 	pandoc --include-in-header=options.sty --metadata-file=papers/first-paper/10_metadata.yaml --metadata=documentclass:article --table-of-contents --citeproc --output=$@ reports/first_paper.md
 
@@ -29,11 +40,20 @@ reports/first_paper.md: data/processed/methods.json $(first_paper_sources)
 	cat $(first_paper_sources) > papers/first-paper/first_paper.mustache
 	mustache data/processed/methods.json papers/first-paper/first_paper.mustache > $@
 
-
 reports/second_paper.docx reports/second_paper.pdf: \
+	data/processed/individual_kde_all.rds \
+	data/processed/trips_summary_all.csv \
+	data/processed/trips_summary_clarion.csv \
+	data/processed/trips_summary_guadalupe.csv \
 	papers/second-paper/20_metadata.yaml \
-	reports/second_paper.md \
-	results_second_paper
+	reports/figures/gps_albatross_50_percent_individual_kde_ars_all.png \
+	reports/figures/gps_albatross_50_percent_potential_kba_ars_all.png \
+	reports/figures/gps_albatross_50_percent_representative_assessment_ars_all.png \
+	reports/figures/gps_albatross_geographic_points_by_trip_all.png \
+	reports/figures/longline_events_map.png \
+	reports/figures/mexico_eez_bounding_box_zoom_in.png \
+	reports/figures/mexico_eez_bounding_box_zoom_out.png \
+	reports/second_paper.md
 	$(checkDirectories)
 	pandoc --include-in-header=options.sty --metadata-file=papers/second-paper/20_metadata.yaml --metadata=documentclass:article --table-of-contents --citeproc --output=$@ reports/second_paper.md
 
@@ -48,51 +68,6 @@ reports/anteproyecto.docx reports/anteproyecto.pdf: \
 	papers/proposal/01_proposal.md
 	$(checkDirectories)
 	pandoc --metadata-file=papers/proposal/00_metadata.yaml --citeproc --output=$@ papers/proposal/01_proposal.md
-
-results_first_paper: \
-	data/processed/trips_summary_guadalupe.csv \
-	data/processed/individual_kde_guadalupe.rds \
-	reports/figures/gps_albatross_50_percent_individual_kde_ars_guadalupe.png \
-	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png \
-	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_without_mpa.png \
-	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_with_mpa.png \
-	reports/figures/gps_albatross_50_percent_representative_assessment_ars_guadalupe.png \
-	reports/figures/gps_albatross_geographic_points_by_trip_guadalupe.png \
-	reports/figures/gps_albatross_geographic_points_raw_guadalupe.png \
-	reports/figures/mexico_eez_bounding_box_zoom_in.png \
-	reports/figures/mexico_eez_bounding_box_zoom_out.png
-
-results_second_paper: \
-	data/processed/trips_summary_all.csv \
-	data/processed/trips_summary_clarion.csv \
-	data/processed/trips_summary_guadalupe.csv \
-	data/processed/individual_kde_all.rds \
-	reports/figures/gps_albatross_50_percent_individual_kde_ars_all.png \
-	reports/figures/gps_albatross_50_percent_potential_kba_ars_all.png \
-	reports/figures/gps_albatross_50_percent_representative_assessment_ars_all.png \
-	reports/figures/gps_albatross_geographic_points_by_trip_all.png \
-	reports/figures/mexico_eez_bounding_box_zoom_in.png \
-	reports/figures/mexico_eez_bounding_box_zoom_out.png
-
-results_clarion: \
-	data/processed/trips_summary_clarion.csv \
-	reports/figures/gps_albatross_geographic_points_raw_clarion.png
-
-maps: \
-	reports/figures/longline_events_map.png \
-	reports/figures/mexico_eez.png \
-	reports/figures/mexico_map.png \
-	reports/figures/mexico_mpa.png \
-	reports/figures/mexico_naturalearth.png \
-	reports/figures/mexico_naturalearth_pro.png \
-	reports/figures/mexico_pna.png
-
-old_method: \
-	reports/figures/gps_albatross_50_percent_kernel_density_guadalupe.png \
-	reports/figures/gps_albatross_kernel_density_guadalupe.png
-
-dangling: \
-	reports/figures/gps_albatross_geographic_points_raw_guadalupe_2025.png
 
 reports/figures/mexico_eez.png: data/external/Exclusive_economic_zone_Mexico.shp
 	$(checkDirectories)
@@ -247,34 +222,6 @@ reports/figures/gps_albatross_50_percent_individual_kde_ars_all.png: \
 	Rscript -e "bycatch::render_individual_kde(bycatch::get_domain_specific_options())" \
 		--rds-path data/processed/individual_kde_all.rds \
 		--output-path $@
-
-reports/figures/gps_albatross_50_percent_kernel_density_guadalupe.png: \
-	data/processed/trips_geographic_points_guadalupe.csv \
-	data/raw/division_politica_paises.shp \
-	data/raw/division_politica_paises.shx \
-	data/raw/rosewind.png
-	$(checkDirectories)
-	geci-plot-cli plot-kernel-density \
-		--geographic-data-path data/processed/trips_geographic_points_guadalupe.csv \
-		--global-shapefile-data-path data/raw/division_politica_paises.shp \
-		--path-rose-wind data/raw/rosewind.png \
-		--selected-contour "50_contour" \
-		--bandwidth 0.005 \
-		--result-map-path $@
-
-reports/figures/gps_albatross_kernel_density_guadalupe.png: \
-	data/processed/trips_geographic_points_guadalupe.csv \
-	data/raw/division_politica_paises.shp \
-	data/raw/division_politica_paises.shx \
-	data/raw/rosewind.png
-	$(checkDirectories)
-	geci-plot-cli plot-kernel-density \
-		--geographic-data-path data/processed/trips_geographic_points_guadalupe.csv \
-		--global-shapefile-data-path data/raw/division_politica_paises.shp \
-		--path-rose-wind data/raw/rosewind.png \
-		--selected-contour "All_contours" \
-		--bandwidth 0.005 \
-		--result-map-path $@
 
 reports/figures/gps_albatross_geographic_points_raw_guadalupe.png: \
 	data/raw/gps-albatros-guadalupe.csv \
@@ -495,18 +442,12 @@ define checkDirectories
 	mkdir --parents $(@D)
 endef
 
-
 .PHONY: \
 	all \
-	articles \
 	check \
 	clean \
-	dangling \
 	format \
 	init \
-	maps \
-	old_method \
-	results_clarion \
 	results_first_paper \
 	results_second_paper \
 	spellcheck
