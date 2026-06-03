@@ -25,7 +25,7 @@ The most relevant colony is Guadalupe Island.
 
 Clarion Island has the second largest colony.
 Clarion Island is the most remote of Mexico's Revillagigedo Islands.
-It is located 700 kilometres from the Mexican mainland.
+It is located 700 kilometers from the Mexican mainland.
 It has a tropical climate.
 It has an area of 19.8 km$^2$.
 It measures 8.6 km at its longest part from the eastern end to the western end.
@@ -35,7 +35,7 @@ It measures 8.6 km at its longest part from the eastern end to the western end.
 ### Feeding areas
 
 The core areas were determined by tracking albatrosses during the reproductive season.
-When the albatrosses leave the nest, it is to feed themselves and bring food for the chick.
+During the breeding season, albatrosses leave their nest only to feed themselves and bring food for the chick.
 Their food availability and distribution (fish, squid, etc.) are determined by oceanographic factors.
 The California Current enriches the water with nutrients, which makes food more available.
 ENSO variability might increase or reduce food availability in certain areas.
@@ -52,7 +52,7 @@ Seabirds are marine organisms.
 They are on land only during their reproductive stage.
 During the reproductive and nesting season, they make foraging trips.
 They are at the nest, make a foraging trip, and return to the nest.
-[[ How does the foraging-trip behaviour enable GPS tracking to capture core areas? ]]
+[[ How does the foraging-trip behavior enable GPS tracking to capture core areas? ]]
 [[ Transition: move from the species' general ecology to the specific study objective — mapping core areas and their overlap with ANPs. ]]
 
 We are studying the core area used by Laysan albatrosses in the Mexican Pacific and its overlap with protected natural areas (ANP).
@@ -60,7 +60,7 @@ In particular, we focus on the albatrosses that nest on Guadalupe Island and Cla
 Laysan albatross is an umbrella species.
 Seabirds are top predators and serve as umbrella species.
 If we find that MPA/ANP adequately protect the core areas of Laysan albatross, we can be sure that MPA/ANP also protect multiple species.
-Their trophic level tells us that if the Laysan albatross does well, it means that the lower trophic levels do well as well.
+Their trophic level tells us that if the Laysan albatross does well, the lower trophic levels are thriving.
 If the ANPs serve to protect these species, we can infer that they serve to protect the marine ecosystem.
 [[ Transition: move from the species rationale to the specific study design — the temporal scope of data collection. ]]
 
@@ -75,8 +75,8 @@ To evaluate how effectively MPAs protect the core areas for albatrosses, we need
 A 12-year period (2014–2026) is long enough to evaluate MPA (ANP) effectiveness.
 A shorter period might not be enough because of interannual variability.
 We assess the degree of representativeness of the data.
-We don't consider the interannual variability directly.
-We just verify the time period is long enough to be representative despite the interannual variability.
+We do not consider the interannual variability directly.
+We verify that the time period is long enough to be representative despite the interannual variability.
 All the data are pooled together without accounting for the year.
 [[ Transition: move from the multi-year rationale to the seasonal coverage limitation. ]]
 
@@ -95,7 +95,7 @@ The number of individuals and the number of seasons were determined by the amoun
 The representativeness of the data was assessed a posteriori.
 
 GPS loggers have the appropriate accuracy and precision for the study.
-Other devices, like GLS, are not accurate enough to determine core areas.
+Other devices, such as GLS loggers, are not accurate enough to determine core areas.
 The 10-minute frequency allows recording multiple trips per individual per season.
 We programmed the GPS to record one position every 10 minutes.
 This frequency is high enough for the data to be representative and identify moments when the individual stops or goes slow.
@@ -151,7 +151,7 @@ A total of {{ clarion_n_total }} individuals were tracked in Clarion Island betw
 
 We used the R package track2KBA.
 We removed points within 60 km around the colony.
-We follow the track2KBA methodology, which calls for removing incomplete trips.
+We followed the track2KBA methodology, which called for removing incomplete trips.
 The following track2KBA functions were used:
 - `formatFields()` to normalize GPS field names and date-time format
 - `tripSplit()` to split GPS fixes into individual foraging trips
@@ -176,8 +176,7 @@ No inferential statistics were used.
 
 We based our methodology on [@beal2021track2kba].
 We used the R package track2KBA [@beal2021track2kba] to split individual tracks, calculate KDE, and find core areas (50% UD; potential KBA).
-Our implementation follows [@beal2021track2kba] completely.
-No deviations.
+We followed [@beal2021track2kba] without deviation.
 [[ Explanation: why was the Beal et al. (2021) methodology chosen? ]]
 [[ Transition: move from the general analytical approach to the specific analysis of core areas used by Laysan albatrosses. ]]
 
