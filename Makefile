@@ -514,6 +514,7 @@ endef
 clean:
 	rm --force *.pdf
 	rm --force --recursive data
+	rm --force --recursive reports
 
 format:
 	R -e "library(styler)" \
