@@ -513,23 +513,7 @@ endef
 
 clean:
 	rm --force *.pdf
-	rm --force --recursive data/processed
-	rm --force --recursive data/raw
-	rm --force --recursive reports
-	rm --force data/processed/bounding_box.json
-	rm --force data/external/232_ANP-ITRF08_04072025.cpg
-	rm --force data/external/232_ANP-ITRF08_04072025.dbf
-	rm --force data/external/232_ANP-ITRF08_04072025.prj
-	rm --force data/external/232_ANP-ITRF08_04072025.s*
-	rm --force data/external/Exclusive_economic_zone_Mexico.cpg
-	rm --force data/external/Exclusive_economic_zone_Mexico.dbf
-	rm --force data/external/Exclusive_economic_zone_Mexico.prj
-	rm --force data/external/Exclusive_economic_zone_Mexico.s*
-	rm --force data/external/Mexico_e_islas_wgs84.cpg
-	rm --force data/external/Mexico_e_islas_wgs84.dbf
-	rm --force data/external/Mexico_e_islas_wgs84.prj
-	rm --force data/external/Mexico_e_islas_wgs84.qmd
-	rm --force data/external/Mexico_e_islas_wgs84.s*
+	rm --force --recursive data
 
 format:
 	R -e "library(styler)" \
