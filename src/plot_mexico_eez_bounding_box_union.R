@@ -75,6 +75,7 @@ line_bbox_width <- 1 # Grosor de línea de los bounding boxes
 # Colores para los puntos GPS según la isla de origen
 color_guadalupe <- "#8ECFB0"
 color_clarion <- "#F4A7A1"
+color_san_benedicto <- "#6CB4EE"
 
 # Tamaño y transparencia de los puntos GPS en el mapa
 gps_point_size <- 0.3
@@ -161,7 +162,8 @@ plot_map <- ggplot() +
   scale_color_manual(
     values = c(
       "Guadalupe" = color_guadalupe,
-      "Clarion" = color_clarion
+      "Clarion" = color_clarion,
+      "San Benedicto" = color_san_benedicto
     )
   ) +
   # Capa del bounding box de zoom que muestra el área de intersección
