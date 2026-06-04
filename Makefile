@@ -235,6 +235,15 @@ reports/figures/gps_albatross_geographic_points_raw_guadalupe.png: \
 		--path-rose-wind data/raw/rosewind.png \
 		--result-map-path $@
 
+data/processed/radar_signal_geographic_points.csv: \
+	data/raw/radar-signal-albatros-guadalupe.csv \
+	data/raw/gps-albatros-guadalupe.csv
+	$(checkDirectories)
+	Rscript -e "seabirdtracking::write_radar_signal_coordinates(seabirdtracking::get_domain_specific_options())" \
+		--tracking-data-path data/raw/gps-albatros-guadalupe.csv \
+		--radar-signal-path data/raw/radar-signal-albatros-guadalupe.csv \
+		--output-path $@
+
 reports/figures/gps_albatross_geographic_points_raw_guadalupe_2025.png: \
 	data/processed/gps_albatross_guadalupe_2025.csv \
 	data/raw/division_politica_paises.shp \
@@ -338,6 +347,10 @@ reports/figures/gps_albatross_geographic_points_raw_clarion.png: \
 		--result-map-path $@
 
 data/raw/gps-albatros-clarion.csv:
+	$(checkDirectories)
+	descarga_datos $(@F) $(@D) seabird_tracking
+
+data/raw/radar-signal-albatros-guadalupe.csv:
 	$(checkDirectories)
 	descarga_datos $(@F) $(@D) seabird_tracking
 
