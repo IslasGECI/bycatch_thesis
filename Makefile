@@ -346,6 +346,18 @@ reports/figures/gps_albatross_geographic_points_raw_clarion.png: \
 		--path-rose-wind data/raw/rosewind.png \
 		--result-map-path $@
 
+reports/figures/gps_albatross_geographic_points_raw_san_benedicto.png: \
+	data/raw/gps-albatros-san-benedicto.csv \
+	data/raw/division_politica_paises.shp \
+	data/raw/division_politica_paises.shx \
+	data/raw/rosewind.png
+	$(checkDirectories)
+	geci-plot-cli plot-geographic-points \
+		--geographic-data-path data/raw/gps-albatros-san-benedicto.csv \
+		--global-shapefile-data-path data/raw/division_politica_paises.shp \
+		--path-rose-wind data/raw/rosewind.png \
+		--result-map-path $@
+
 data/raw/gps-albatros-clarion.csv:
 	$(checkDirectories)
 	descarga_datos $(@F) $(@D) seabird_tracking
@@ -367,6 +379,10 @@ data/raw/breeding_status_albatross_guadalupe.csv:
 	descarga_datos $(@F) $(@D) seabird_tracking
 
 data/raw/datapackage.json:
+	$(checkDirectories)
+	descarga_datos $(@F) $(@D) seabird_tracking
+
+data/raw/gps-albatros-san-benedicto.csv:
 	$(checkDirectories)
 	descarga_datos $(@F) $(@D) seabird_tracking
 

@@ -69,6 +69,13 @@
                 "path": "shp/division_politica_paises",
                 "type": "shp",
                 "filename": "division_politica_paises.shp"
+            },
+            {
+                "source": "tabular_data_packages",
+                "version": "b7be6959ab9f3b6eac94029081580d418ed23d25",
+                "path": "seabird_tracking",
+                "type": "csv",
+                "filename": "gps-albatros-san-benedicto.csv"
             }
         ],
         "requirements": [
