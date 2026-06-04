@@ -443,7 +443,10 @@ reports/figures/longline_events_map.png: data/external/oorg_2025_geci_longline_e
 	$(checkDirectories)
 	Rscript src/plot_longline_events.R
 
-data/processed/gps_albatross_all.csv: data/raw/gps-albatros-clarion.csv data/raw/gps-albatros-guadalupe.csv
+data/processed/gps_albatross_all.csv: \
+	data/raw/gps-albatros-clarion.csv \
+	data/raw/gps-albatros-guadalupe.csv \
+	data/raw/gps-albatros-san-benedicto.csv
 	$(checkDirectories)
 	Rscript src/join_gps_data.R
 
