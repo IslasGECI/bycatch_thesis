@@ -326,9 +326,18 @@ data/processed/trips_geographic_points_clarion.csv: \
 		--config-path config_trips_clarion.json \
 		--output-path $@
 
+data/processed/trips_geographic_points_san_benedicto.csv: \
+	data/raw/gps-albatros-san-benedicto.csv
+	$(checkDirectories)
+	Rscript -e "bycatch::create_trips(bycatch::get_domain_specific_options())" \
+		--data-path data/raw/gps-albatros-san-benedicto.csv \
+		--config-path config_trips_san_benedicto.json \
+		--output-path $@
+
 data/processed/trips_geographic_points_all.csv: \
 	data/processed/trips_geographic_points_clarion.csv \
-	data/processed/trips_geographic_points_guadalupe.csv
+	data/processed/trips_geographic_points_guadalupe.csv \
+	data/processed/trips_geographic_points_san_benedicto.csv
 	rm --force $@
 	Rscript src/join_trip_data.R
 
@@ -348,9 +357,18 @@ data/processed/trips_summary_clarion.csv: \
 		--config-path config_trips_clarion.json \
 		--output-path $@
 
+data/processed/trips_summary_san_benedicto.csv: \
+	data/processed/trips_geographic_points_san_benedicto.csv
+	$(checkDirectories)
+	Rscript -e "bycatch::create_trips_summary(bycatch::get_domain_specific_options())" \
+		--data-path data/processed/trips_geographic_points_san_benedicto.csv \
+		--config-path config_trips_san_benedicto.json \
+		--output-path $@
+
 data/processed/trips_summary_all.csv: \
 	data/processed/trips_summary_clarion.csv \
-	data/processed/trips_summary_guadalupe.csv
+	data/processed/trips_summary_guadalupe.csv \
+	data/processed/trips_summary_san_benedicto.csv
 	rm --force $@
 	csvstack data/processed/trips_summary_*.csv > $@
 
