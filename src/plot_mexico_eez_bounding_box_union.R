@@ -74,8 +74,8 @@ line_bbox_width <- 1 # Grosor de línea de los bounding boxes
 
 # Colores para los puntos GPS según la isla de origen
 color_guadalupe <- "#8ECFB0"
-color_clarion <- "#F4A7A1"
-color_san_benedicto <- "#6CB4EE"
+color_clarion <- "#6CB4EE"
+color_san_benedicto <- "#F4A7A1"
 
 # Tamaño y transparencia de los puntos GPS en el mapa
 gps_point_size <- 0.3
