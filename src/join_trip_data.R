@@ -2,19 +2,20 @@
 # Título: Concatena los puntos geográficos de viajes de alimentación de albatros
 #
 # Contexto (Por qué):
-# Los datos GPS de albatros de las islas Guadalupe y Clarión contienen
-# puntos geográficos de viajes de alimentación. Las columnas de ambos
-# archivos no coinciden exactamente, por lo que es necesario combinarlos
+# Los datos GPS de albatros de las islas Guadalupe, Clarión y San Benedicto
+# contienen puntos geográficos de viajes de alimentación. Las columnas de
+# los archivos no coinciden exactamente, por lo que es necesario combinarlos
 # en un único dataset estandarizado para los análisis posteriores.
 #
 # Descripción (Qué / Cómo):
-# Carga los dos archivos CSV de puntos geográficos de viajes, los combina
+# Carga los tres archivos CSV de puntos geográficos de viajes, los combina
 # mediante bind_rows() que alinea automáticamente las columnas por nombre
 # y exporta el resultado como un archivo CSV unificado para el pipeline.
 #
 # Entradas:
 # data/processed/trips_geographic_points_clarion.csv
 # data/processed/trips_geographic_points_guadalupe.csv
+# data/processed/trips_geographic_points_san_benedicto.csv
 #
 # Salida:
 # data/processed/trips_geographic_points_all.csv
@@ -35,7 +36,9 @@ library(tidyverse) # Proporciona readr para importar CSVs y dplyr para combinar 
 input_file_clarion_path <- "data/processed/trips_geographic_points_clarion.csv"
 # Ruta del archivo CSV con los puntos geográficos de viajes de Guadalupe
 input_file_guadalupe_path <- "data/processed/trips_geographic_points_guadalupe.csv"
-# Ruta del archivo CSV de salida con los puntos combinados de ambas colonias
+# Ruta del archivo CSV con los puntos geográficos de viajes de San Benedicto
+input_file_san_benedicto_path <- "data/processed/trips_geographic_points_san_benedicto.csv"
+# Ruta del archivo CSV de salida con los puntos combinados de las tres colonias
 output_file_combined_path <- "data/processed/trips_geographic_points_all.csv"
 
 
@@ -44,12 +47,14 @@ output_file_combined_path <- "data/processed/trips_geographic_points_all.csv"
 clarion_data <- read_csv(input_file_clarion_path, show_col_types = FALSE)
 # Importa los puntos geográficos de viajes de la colonia de Guadalupe
 guadalupe_data <- read_csv(input_file_guadalupe_path, show_col_types = FALSE)
+# Importa los puntos geográficos de viajes de la colonia de San Benedicto
+san_benedicto_data <- read_csv(input_file_san_benedicto_path, show_col_types = FALSE)
 
 
 # ==== PROCESAMIENTO / ANÁLISIS ====
-# Combina ambas tablas alineando las columnas por nombre para obtener
-# un único dataset con todos los viajes de alimentación de ambas colonias
-combined_data <- bind_rows(clarion_data, guadalupe_data)
+# Combina las tres tablas alineando las columnas por nombre para obtener
+# un único dataset con todos los viajes de alimentación de las tres colonias
+combined_data <- bind_rows(clarion_data, guadalupe_data, san_benedicto_data)
 
 
 # ==== SALIDA ====
