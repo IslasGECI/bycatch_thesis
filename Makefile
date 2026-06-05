@@ -101,6 +101,7 @@ reports/figures/mexico_eez_bounding_box_zoom_out.png: \
 data/processed/kba_polygons_guadalupe.gpkg: \
 	data/processed/representative_assessment_guadalupe.rds
 	$(checkDirectories)
+	rm --force $@
 	Rscript -e "bycatch::create_potential_kba(bycatch::get_domain_specific_options())" \
 		--rds-path data/processed/representative_assessment_guadalupe.rds \
 		--percentage-distribution 50 \
@@ -160,6 +161,7 @@ reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_with_mpa.pn
 data/processed/kba_polygons_all.gpkg: \
 	data/processed/representative_assessment_all.rds
 	$(checkDirectories)
+	rm --force $@
 	Rscript -e "bycatch::create_potential_kba(bycatch::get_domain_specific_options())" \
 		--rds-path data/processed/representative_assessment_all.rds \
 		--percentage-distribution 50 \
