@@ -35,6 +35,14 @@ reports/first_paper.docx reports/first_paper.pdf: \
 
 first_paper_sources := $(wildcard papers/first-paper/1?_*.md)
 
+data/processed/methods.json: \
+	src/export_tracking_dates.R \
+	data/raw/gps-albatros-guadalupe.csv \
+	data/raw/gps-albatros-clarion.csv \
+	data/raw/gps-albatros-san-benedicto.csv
+	$(checkDirectories)
+	Rscript src/export_tracking_dates.R
+
 reports/first_paper.md: data/processed/methods.json $(first_paper_sources)
 	$(checkDirectories)
 	cat $(first_paper_sources) > papers/first-paper/first_paper.mustache

@@ -85,12 +85,18 @@ All the data are pooled together without accounting for the year.
 [[ Explanation: why does the study focus only on the breeding season? ]]
 [[ Transition: move from study design to the specific field methods used for data collection. ]]
 
+| Colony | Min Date | Max Date |
+|--------|----------|----------|
+| Guadalupe | {{ guadalupe_min_date }} | {{ guadalupe_max_date }} |
+| Clarion | {{ clarion_min_date }} | {{ clarion_max_date }} |
+| San Benedicto | {{ san_benedicto_min_date }} | {{ san_benedicto_max_date }} |
+
 ## Field Methods
 
-We attached GPS units to XXX Laysan albatross individuals on Guadalupe Island from 2014 to 2026.
-Additionally, we attached GPS units to 26 individuals on Clarion Island from 2018 to 2022.
+We attached GPS units to {{ guadalupe_n_total }} Laysan albatross individuals on Guadalupe Island from {{ guadalupe_min_year }} to {{ guadalupe_max_year }}.
+Additionally, we attached GPS units to {{ clarion_n_total }} individuals on Clarion Island from {{ clarion_min_year }} to {{ clarion_max_year }}.
 
-A total of XXX individuals were tracked in Guadalupe Island between 2014 and 2026.
+A total of {{ guadalupe_n_total }} individuals were tracked in Guadalupe Island between {{ guadalupe_min_year }} and {{ guadalupe_max_year }}.
 The number of individuals and the number of seasons were determined by the amount of resources available.
 The representativeness of the data was assessed a posteriori.
 
@@ -135,7 +141,7 @@ CatLog-S2, Perthold Engineering (USA).
 | 2025 | 10 |
 | 2026 | XXX |
 
-A total of {{ clarion_n_total }} individuals were tracked in Clarion Island between 2018 and 2022.
+A total of {{ clarion_n_total }} individuals were tracked in Clarion Island between {{ clarion_min_year }} and {{ clarion_max_year }}.
 
 | Year | Number of individuals |
 | ---- | --------------------- |

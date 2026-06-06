@@ -33,15 +33,10 @@ These areas are both ecologically utilized by the species and legally under Mexi
 The figure shows the spatial distribution of raw GPS fixes obtained from Laysan albatrosses breeding on Clarion Island.
 Each point represents a single GPS recording at 10-minute intervals during the breeding season.
 
-![Raw GPS tracking locations of Laysan albatrosses from Guadalupe Island.](reports/figures/gps_albatross_geographic_points_raw_guadalupe.png)
+![Raw GPS tracking locations of Laysan albatrosses from Guadalupe Island.](reports/figures/gps_albatross_geographic_points_raw_all.png)
 
-The figure shows the spatial distribution of raw GPS fixes from Laysan albatrosses breeding on Guadalupe Island across all tracking years.
+The figure shows the spatial distribution of raw GPS fixes from Laysan albatrosses breeding on Guadalupe, Clarion and San Benedicto islands across all tracking years.
 Each point represents a single GPS recording at 10-minute intervals during the breeding season.
-
-![Raw GPS tracking locations of Laysan albatrosses from Guadalupe Island in 2025.](reports/figures/gps_albatross_geographic_points_raw_guadalupe_2025.png)
-
-The figure presents the spatial distribution of raw GPS fixes obtained from Laysan albatrosses breeding on Guadalupe Island during the 2025 breeding season.
-The tracks illustrate the foraging range and movement patterns of individuals from the largest colony in the Mexican Pacific.
 
 ![Mexico's Exclusive Economic Zone (EEZ).](reports/figures/mexico_eez.png)
 
