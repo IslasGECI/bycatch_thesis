@@ -37,7 +37,6 @@
 
 
 # ==== CONFIGURACIÓN ====
-library(jsonlite) # Proporciona fromJSON para leer el bounding box de configuración
 library(rnaturalearth) # Proporciona ne_countries() para descargar límites políticos mundiales
 library(rnaturalearthdata) # Proporciona los datos cartográficos base de Natural Earth
 library(sf) # Proporciona st_read para importar geometrías y st_transform para reproyectar
@@ -47,9 +46,6 @@ library(tidyverse) # Proporciona ggplot2 para graficar y dplyr para filtrar y ag
 input_kba_path <- "data/processed/kba_polygons_all.gpkg"
 # Ruta del shapefile de la Zona Económica Exclusiva de México
 input_eez_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
-# Ruta del archivo JSON con los límites del bounding box de zoom in para
-# mantener coherencia visual con el mapa de intersección KBA ∩ AMP
-input_bbox_json_path <- "data/processed/mexico_eez_bounding_box_zoom_in.json"
 # Ruta del archivo PNG que almacenará el mapa del polígono rojo del KBA
 output_figure_path <- "reports/figures/gps_albatross_50_percent_potential_kba_ars_all.png"
 
@@ -83,11 +79,6 @@ mexico_eez_sf <- st_read(input_eez_shapefile_path, quiet = TRUE)
 # Descarga los límites políticos mundiales desde Natural Earth para usar
 # como fondo de costa en el mapa; escala media equilibra detalle y velocidad
 world_coastline_sf <- ne_countries(scale = coastline_scale, returnclass = "sf")
-# Carga los límites del bounding box de zoom in desde el archivo JSON para
-# establecer la extensión geográfica del mapa (misma que el mapa con AMP)
-bbox_config <- fromJSON(input_bbox_json_path)
-
-
 # ==== PROCESAMIENTO / ANÁLISIS ====
 # Desactiva la validación S2 para evitar errores por geometrías inválidas
 # en los polígonos KBA durante el filtrado y la fusión espacial
@@ -105,14 +96,12 @@ kba_red_polygon_sf <- kba_polygons_sf |>
 # para que coincida con el sistema de referencia de los polígonos KBA
 mexico_eez_wgs84_sf <- mexico_eez_sf |>
   st_transform(target_crs)
-# Extrae la longitud oeste del bounding box de zoom in para el límite izquierdo del mapa
-bbox_lon_min <- bbox_config$bbox$lon_min
-# Extrae la longitud este del bounding box de zoom in para el límite derecho del mapa
-bbox_lon_max <- bbox_config$bbox$lon_max
-# Extrae la latitud sur del bounding box de zoom in para el límite inferior del mapa
-bbox_lat_min <- bbox_config$bbox$lat_min
-# Extrae la latitud norte del bounding box de zoom in para el límite superior del mapa
-bbox_lat_max <- bbox_config$bbox$lat_max
+# Define los límites del mapa centrados en el Pacífico de la península de Baja
+# California para mostrar el sitio potencial KBA de ambas colonias
+bbox_lon_min <- -125
+bbox_lon_max <- -105
+bbox_lat_min <- 15
+bbox_lat_max <- 35
 # Construye el mapa temático con el contorno rojo del sitio potencial KBA
 # sobre la costa y la ZEE como contexto geográfico
 plot_kba_all <- ggplot() +

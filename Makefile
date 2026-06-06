@@ -170,8 +170,7 @@ data/processed/kba_polygons_all.gpkg: \
 
 reports/figures/gps_albatross_50_percent_potential_kba_ars_all.png: \
 	data/processed/kba_polygons_all.gpkg \
-	data/external/Exclusive_economic_zone_Mexico.shp \
-	data/processed/mexico_eez_bounding_box_zoom_in.json
+	data/external/Exclusive_economic_zone_Mexico.shp
 	$(checkDirectories)
 	Rscript src/plot_potential_kba_all.R
 
