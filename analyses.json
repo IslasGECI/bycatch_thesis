@@ -95,7 +95,7 @@
             "data/processed/trips_summary_clarion.csv",
             "data/processed/trips_summary_guadalupe.csv",
             "reports/figures/gps_albatross_50_percent_individual_kde_ars_all.png",
-            "reports/figures/gps_albatross_50_percent_potential_kba_ars_all.png",
+            "reports/figures/gps_albatross_50_percent_potential_kba_ars_all_without_mpa.png",
             "reports/figures/gps_albatross_50_percent_representative_assessment_ars_all.png",
             "reports/figures/gps_albatross_geographic_points_by_trip_all.png",
             "reports/figures/mexico_eez_bounding_box_zoom_in.png",

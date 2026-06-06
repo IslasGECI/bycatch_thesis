@@ -20,7 +20,7 @@
 # data/processed/mexico_eez_bounding_box_zoom_in.json
 #
 # Salida:
-# reports/figures/gps_albatross_50_percent_potential_kba_ars_all.png
+# reports/figures/gps_albatross_50_percent_potential_kba_ars_all_without_mpa.png
 #
 # Dependencias:
 # jsonlite
@@ -47,7 +47,7 @@ input_kba_path <- "data/processed/kba_polygons_all.gpkg"
 # Ruta del shapefile de la Zona Económica Exclusiva de México
 input_eez_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
 # Ruta del archivo PNG que almacenará el mapa del polígono rojo del KBA
-output_figure_path <- "reports/figures/gps_albatross_50_percent_potential_kba_ars_all.png"
+output_figure_path <- "reports/figures/gps_albatross_50_percent_potential_kba_ars_all_without_mpa.png"
 
 # Escala de la línea de costa mundial para el fondo del mapa
 coastline_scale <- "medium"
@@ -140,7 +140,7 @@ plot_kba_all <- ggplot() +
   theme_minimal() +
   # Etiquetas del mapa en inglés para integrarse al reporte del segundo artículo
   labs(
-    title = "Potential KBA for Laysan Albatross — Clarion and Guadalupe Islands",
+    title = "Potential KBA for Laysan Albatross — Guadalupe, Clarion and San Benito Islands",
     subtitle = "50% kernel density estimate with ARS smoothing",
     x = "Longitude",
     y = "Latitude"

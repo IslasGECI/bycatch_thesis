@@ -47,7 +47,7 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	data/processed/trips_summary_guadalupe.csv \
 	papers/second-paper/20_metadata.yaml \
 	reports/figures/gps_albatross_50_percent_individual_kde_ars_all.png \
-	reports/figures/gps_albatross_50_percent_potential_kba_ars_all.png \
+	reports/figures/gps_albatross_50_percent_potential_kba_ars_all_without_mpa.png \
 	reports/figures/gps_albatross_50_percent_representative_assessment_ars_all.png \
 	reports/figures/gps_albatross_geographic_points_by_trip_all.png \
 	reports/figures/longline_events_map.png \
@@ -168,7 +168,7 @@ data/processed/kba_polygons_all.gpkg: \
 		--population-size 4437 \
 		--output-path $@
 
-reports/figures/gps_albatross_50_percent_potential_kba_ars_all.png: \
+reports/figures/gps_albatross_50_percent_potential_kba_ars_all_without_mpa.png: \
 	data/processed/kba_polygons_all.gpkg \
 	data/external/Exclusive_economic_zone_Mexico.shp
 	$(checkDirectories)
