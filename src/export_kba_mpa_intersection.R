@@ -8,17 +8,18 @@
 # qué fracción del KBA está protegida dentro del sistema de AMP.
 #
 # Descripción (Qué / Cómo):
-# Lee el GeoPackage de polígonos KBA de la colonia Guadalupe y el GeoPackage
-# de Áreas Marinas Protegidas de México. Verifica que ambas capas compartan
-# el mismo CRS. Calcula la intersección espacial con st_intersection().
-# Exporta el resultado como GeoPackage para graficarlo en el siguiente paso.
+# Lee el GeoPackage de polígonos KBA de las colonias Guadalupe, Clarion y San
+# Benedicto y el GeoPackage de Áreas Marinas Protegidas de México. Verifica que
+# ambas capas compartan el mismo CRS. Calcula la intersección espacial con
+# st_intersection(). Exporta el resultado como GeoPackage para graficarlo en el
+# siguiente paso.
 #
 # Entradas:
-# data/processed/kba_polygons_guadalupe.gpkg
+# data/processed/kba_polygons_all.gpkg
 # data/processed/mexico_mpa.gpkg
 #
 # Salida:
-# data/processed/kba_mpa_intersection_guadalupe.gpkg
+# data/processed/kba_mpa_intersection_all.gpkg
 #
 # Dependencias:
 # sf
@@ -35,16 +36,16 @@
 library(sf) # Proporciona st_read para importar geometrías y st_intersection para operaciones espaciales
 library(tidyverse) # Proporciona el operador pipe |> para flujos de datos lineales
 
-# Ruta del GeoPackage con los polígonos KBA de la colonia Guadalupe
-input_kba_path <- "data/processed/kba_polygons_guadalupe.gpkg"
+# Ruta del GeoPackage con los polígonos KBA de todas las colonias
+input_kba_path <- "data/processed/kba_polygons_all.gpkg"
 # Ruta del GeoPackage con las Áreas Marinas Protegidas de México
 input_mpa_path <- "data/processed/mexico_mpa.gpkg"
 # Ruta del GeoPackage que almacenará la intersección espacial KBA ∩ AMP
-output_gpkg_path <- "data/processed/kba_mpa_intersection_guadalupe.gpkg"
+output_gpkg_path <- "data/processed/kba_mpa_intersection_all.gpkg"
 
 
 # ==== ENTRADAS ====
-# Importa los polígonos KBA de la colonia Guadalupe desde el GeoPackage
+# Importa los polígonos KBA de todas las colonias desde el GeoPackage
 # generado por bycatch::create_potential_kba()
 kba_polygons_sf <- st_read(input_kba_path, quiet = TRUE)
 # Importa las Áreas Marinas Protegidas de México desde el GeoPackage

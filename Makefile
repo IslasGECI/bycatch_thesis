@@ -14,7 +14,7 @@ reports/first_paper.docx reports/first_paper.pdf: \
 	papers/first-paper/10_metadata.yaml \
 	reports/figures/gps_albatross_50_percent_individual_kde_ars_guadalupe.png \
 	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png \
-	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_with_mpa.png \
+	reports/figures/gps_albatross_50_percent_potential_kba_ars_all_with_mpa.png \
 	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_without_mpa.png \
 	reports/figures/gps_albatross_50_percent_representative_assessment_ars_guadalupe.png \
 	reports/figures/gps_albatross_geographic_points_by_trip_guadalupe.png \
@@ -135,8 +135,8 @@ reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png: \
 		--gpkg-path data/processed/kba_polygons_guadalupe.gpkg \
 		--output-path $@
 
-data/processed/kba_mpa_intersection_guadalupe.gpkg: \
-	data/processed/kba_polygons_guadalupe.gpkg \
+data/processed/kba_mpa_intersection_all.gpkg: \
+	data/processed/kba_polygons_all.gpkg \
 	data/processed/mexico_mpa.gpkg
 	$(checkDirectories)
 	Rscript src/export_kba_mpa_intersection.R
@@ -148,12 +148,11 @@ reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_without_mpa
 	$(checkDirectories)
 	Rscript src/plot_potential_kba_guadalupe.R
 
-reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_with_mpa.png: \
-	data/processed/kba_mpa_intersection_guadalupe.gpkg \
-	data/processed/kba_polygons_guadalupe.gpkg \
+reports/figures/gps_albatross_50_percent_potential_kba_ars_all_with_mpa.png: \
+	data/processed/kba_mpa_intersection_all.gpkg \
+	data/processed/kba_polygons_all.gpkg \
 	data/processed/mexico_mpa.gpkg \
-	data/external/Exclusive_economic_zone_Mexico.shp \
-	data/processed/mexico_eez_bounding_box_zoom_in.json
+	data/external/Exclusive_economic_zone_Mexico.shp
 	$(checkDirectories)
 	Rscript src/plot_kba_mpa_intersection.R
 
