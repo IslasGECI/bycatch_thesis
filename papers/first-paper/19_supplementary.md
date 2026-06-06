@@ -4,8 +4,8 @@
 ![Spatial overlap between Laysan albatross tracking data and Mexico’s Exclusive Economic Zone (EEZ).](reports/figures/mexico_eez_bounding_box_zoom_out.png)
 
 The figure presents the spatial distribution of GPS tracking data of Laysan albatrosses (_Phoebastria immutabilis_).
-These data originate from two breeding colonies in relation to the Mexican Exclusive Economic Zone (EEZ).
-Individual movement trajectories are shown as continuous lines (colored by colony: green for Guadalupe Island and pink for Clarion Island).
+These data originate from three breeding colonies in relation to the Mexican Exclusive Economic Zone (EEZ).
+Individual movement trajectories are shown as continuous lines (colored by colony: green for Guadalupe Island, pink for Clarion Island, and coral for San Benedicto Island).
 
 A large rectangular bounding box (purple; 10–60°N, 110–170°W) delineates the full domain of the GPS tracking data.
 Within this broader domain, a smaller focal region (orange box; 15–35°N, 110–125°W) is delineated.
@@ -13,7 +13,8 @@ This focal region corresponds to albatross GPS data intersecting Mexico's EEZ (b
 
 Tracks from Guadalupe Island are primarily distributed in the California Current system, extending northwestward into offshore pelagic waters.
 Individuals from Clarion Island (pink) exhibit broader latitudinal movements, including incursions into tropical and subtropical regions before converging toward productive foraging grounds off Baja California.
-Both populations show spatial convergence along the western coast of the Baja California Peninsula, suggesting shared use of ecologically important foraging habitats.
+Tracks from San Benedicto Island (coral) show a similar coastal distribution to Clarion Island, concentrated near the southern Baja California Peninsula.
+All three populations show spatial convergence along the western coast of the Baja California Peninsula, suggesting shared use of ecologically important foraging habitats.
 
 ![Spatial delimitation of the study area within the Mexican Exclusive Economic Zone (EEZ) based on albatross tracking data.](reports/figures/mexico_eez_bounding_box_zoom_in.png)
 
@@ -33,7 +34,7 @@ These areas are both ecologically utilized by the species and legally under Mexi
 The figure shows the spatial distribution of raw GPS fixes obtained from Laysan albatrosses breeding on Clarion Island.
 Each point represents a single GPS recording at 10-minute intervals during the breeding season.
 
-![Raw GPS tracking locations of Laysan albatrosses from Guadalupe Island.](reports/figures/gps_albatross_geographic_points_raw_all.png)
+![Raw GPS tracking locations of Laysan albatrosses from the Guadalupe, Clarion and San Benedicto island colonies.](reports/figures/gps_albatross_geographic_points_raw_all.png)
 
 The figure shows the spatial distribution of raw GPS fixes from Laysan albatrosses breeding on Guadalupe, Clarion and San Benedicto islands across all tracking years.
 Each point represents a single GPS recording at 10-minute intervals during the breeding season.
