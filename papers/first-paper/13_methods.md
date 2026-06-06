@@ -124,31 +124,31 @@ CatLog-S2, Perthold Engineering (USA).
 [[ Explanation: why did the GPS device models vary across years? ]]
 [[ Transition: move from device descriptions to the sample-size tables that summarise the tracking effort per year. ]]
 
-[[ Topic: introduce the sample-size tables that show the number of individuals tracked per year at each colony. ]]
+[[ Topic: introduce the sample-size tables that show the number of individuals tracked per season at each colony. ]]
 
-| Year | Number of individuals |
-| ---- | --------------------- |
-| 2014 | 15 |
-| 2015 |  4 |
-| 2016 |  2 |
-| 2017 |  6 |
-| 2018 | 20 |
-| 2019 | 36 |
-| 2020 |  5 |
-| 2021 |  5 |
-| 2022 |  4 |
-| 2023 |  7 |
-| 2025 | 10 |
-| 2026 | XXX |
+**Guadalupe Island**
 
-A total of {{ clarion_n_total }} individuals were tracked in Clarion Island between {{ clarion_min_year }} and {{ clarion_max_year }}.
+| Season | Start date | End date | Number of individuals |
+|--------|------------|----------|----------------------|
+{{#guadalupe_seasons}}
+| {{season}} | {{start}} | {{end}} | {{n}} |
+{{/guadalupe_seasons}}
 
-| Year | Number of individuals |
-| ---- | --------------------- |
-| 2018 | 7 |
-| 2019 | 9 |
-| 2020 | 6 |
-| 2022 | 4 |
+**Clarion Island**
+
+| Season | Start date | End date | Number of individuals |
+|--------|------------|----------|----------------------|
+{{#clarion_seasons}}
+| {{season}} | {{start}} | {{end}} | {{n}} |
+{{/clarion_seasons}}
+
+**San Benedicto Island**
+
+| Season | Start date | End date | Number of individuals |
+|--------|------------|----------|----------------------|
+{{#san_benedicto_seasons}}
+| {{season}} | {{start}} | {{end}} | {{n}} |
+{{/san_benedicto_seasons}}
 
 [[ Explanation: what patterns do the sample sizes reveal about tracking effort? ]]
 [[ Transition: move from data collection (field methods) to the processing steps applied to the GPS data. ]]

@@ -135,33 +135,189 @@ san_benedicto_n_total <- san_benedicto_data |>
   pull(name) |>
   n_distinct()
 
-# Combina todos los valores calculados en una lista plana con nombres
-# descriptivos que sirven como claves para el mustache del artículo
+# ==== PROCESAMIENTO DE TEMPORADAS ====
+# Prepara los registros de Guadalupe para agruparlos por temporada de
+# rastreo: octubre-septiembre en lugar de año calendario
+guadalupe_with_season <- guadalupe_data |>
+  filter(!is.na(date), !is.na(name)) |>
+  mutate(
+    # Extrae el año numérico de los primeros cuatro caracteres de la fecha
+    year = as.numeric(str_sub(date, 1, 4)),
+    # Extrae el mes numérico de los caracteres 6 y 7 de la fecha ISO
+    month = as.numeric(str_sub(date, 6, 7)),
+    # Asigna cada registro a la temporada Oct-Sep: los meses antes de
+    # octubre pertenecen a la temporada que inició el año anterior
+    season_year = if_else(month >= 10, year, year - 1)
+  )
+# Calcula el rango de temporadas con datos en la colonia Guadalupe para
+# construir la secuencia completa de temporadas consecutivas
+guadalupe_season_range <- guadalupe_with_season |>
+  summarise(
+    min_season = min(season_year),
+    max_season = max(season_year)
+  )
+# Crea una secuencia completa de temporadas desde la primera hasta la
+# última para incluir temporadas sin rastreo en la tabla del artículo
+guadalupe_season_complete <- tibble(
+  season_year = seq(
+    guadalupe_season_range$min_season,
+    guadalupe_season_range$max_season
+  )
+)
+# Agrupa los registros por temporada y calcula las fechas extremas y el
+# número de individuos únicos rastreados en cada temporada con datos
+guadalupe_season_stats <- guadalupe_with_season |>
+  group_by(season_year) |>
+  summarise(
+    start = min(date),
+    end = max(date),
+    n = n_distinct(name),
+    .groups = "drop"
+  )
+# Combina la secuencia completa con las estadísticas calculadas para
+# rellenar las temporadas sin datos con valores de ausencia
+guadalupe_seasons_full <- guadalupe_season_complete |>
+  left_join(guadalupe_season_stats, by = "season_year") |>
+  mutate(
+    # Usa "--" para la fecha de inicio en temporadas sin rastreo GPS
+    start = if_else(is.na(start), "--", start),
+    # Usa "--" para la fecha de término en temporadas sin rastreo GPS
+    end = if_else(is.na(end), "--", end),
+    # Usa cero para el conteo de individuos en temporadas sin rastreo
+    n = if_else(is.na(n), 0L, n),
+    # Crea la etiqueta de temporada con formato AAAA-AAAA para la tabla
+    season = paste0(season_year, "-", season_year + 1)
+  ) |>
+  # Ordena las temporadas de la más antigua a la más reciente antes de
+  # descartar la columna season_year que solo sirve para el ordenamiento
+  arrange(season_year) |>
+  # Conserva solo las columnas que aparecerán en la tabla del artículo
+  select(season, start, end, n)
+
+
+# Prepara los registros de Clarion para el agrupamiento por temporada
+# octubre-septiembre siguiendo el mismo procedimiento que Guadalupe
+clarion_with_season <- clarion_data |>
+  filter(!is.na(date), !is.na(name)) |>
+  mutate(
+    year = as.numeric(str_sub(date, 1, 4)),
+    month = as.numeric(str_sub(date, 6, 7)),
+    season_year = if_else(month >= 10, year, year - 1)
+  )
+# Calcula el rango de temporadas con datos en la colonia Clarion
+clarion_season_range <- clarion_with_season |>
+  summarise(
+    min_season = min(season_year),
+    max_season = max(season_year)
+  )
+# Crea la secuencia completa de temporadas consecutivas para Clarion
+clarion_season_complete <- tibble(
+  season_year = seq(
+    clarion_season_range$min_season,
+    clarion_season_range$max_season
+  )
+)
+# Agrupa los registros de Clarion por temporada y calcula fechas y conteos
+clarion_season_stats <- clarion_with_season |>
+  group_by(season_year) |>
+  summarise(
+    start = min(date),
+    end = max(date),
+    n = n_distinct(name),
+    .groups = "drop"
+  )
+# Combina la secuencia completa con las estadísticas para incluir
+# temporadas sin datos de Clarion en la tabla del artículo
+clarion_seasons_full <- clarion_season_complete |>
+  left_join(clarion_season_stats, by = "season_year") |>
+  mutate(
+    start = if_else(is.na(start), "--", start),
+    end = if_else(is.na(end), "--", end),
+    n = if_else(is.na(n), 0L, n),
+    season = paste0(season_year, "-", season_year + 1)
+  ) |>
+  arrange(season_year) |>
+  select(season, start, end, n)
+
+
+# Prepara los registros de San Benedicto para el agrupamiento por
+# temporada octubre-septiembre siguiendo el mismo procedimiento
+san_benedicto_with_season <- san_benedicto_data |>
+  filter(!is.na(date), !is.na(name)) |>
+  mutate(
+    year = as.numeric(str_sub(date, 1, 4)),
+    month = as.numeric(str_sub(date, 6, 7)),
+    season_year = if_else(month >= 10, year, year - 1)
+  )
+# Calcula el rango de temporadas con datos en San Benedicto
+san_benedicto_season_range <- san_benedicto_with_season |>
+  summarise(
+    min_season = min(season_year),
+    max_season = max(season_year)
+  )
+# Crea la secuencia completa de temporadas consecutivas para San Benedicto
+san_benedicto_season_complete <- tibble(
+  season_year = seq(
+    san_benedicto_season_range$min_season,
+    san_benedicto_season_range$max_season
+  )
+)
+# Agrupa los registros de San Benedicto por temporada y calcula fechas y conteos
+san_benedicto_season_stats <- san_benedicto_with_season |>
+  group_by(season_year) |>
+  summarise(
+    start = min(date),
+    end = max(date),
+    n = n_distinct(name),
+    .groups = "drop"
+  )
+# Combina la secuencia completa con las estadísticas para incluir
+# temporadas sin datos de San Benedicto en la tabla del artículo
+san_benedicto_seasons_full <- san_benedicto_season_complete |>
+  left_join(san_benedicto_season_stats, by = "season_year") |>
+  mutate(
+    start = if_else(is.na(start), "--", start),
+    end = if_else(is.na(end), "--", end),
+    n = if_else(is.na(n), 0L, n),
+    season = paste0(season_year, "-", season_year + 1)
+  ) |>
+  arrange(season_year) |>
+  select(season, start, end, n)
+
+
+# ==== ENSAMBLE DE LA SALIDA ====
+# Combina los valores planos con las tablas de temporadas en una lista
+# única que el motor de mustache usa para resolver todas las variables
 methods_list <- list(
   guadalupe_n_total = guadalupe_n_total,
   guadalupe_min_date = guadalupe_min_date,
   guadalupe_max_date = guadalupe_max_date,
   guadalupe_min_year = guadalupe_min_year,
   guadalupe_max_year = guadalupe_max_year,
+  guadalupe_seasons = guadalupe_seasons_full,
   clarion_n_total = clarion_n_total,
   clarion_min_date = clarion_min_date,
   clarion_max_date = clarion_max_date,
   clarion_min_year = clarion_min_year,
   clarion_max_year = clarion_max_year,
+  clarion_seasons = clarion_seasons_full,
   san_benedicto_n_total = san_benedicto_n_total,
   san_benedicto_min_date = san_benedicto_min_date,
   san_benedicto_max_date = san_benedicto_max_date,
   san_benedicto_min_year = san_benedicto_min_year,
-  san_benedicto_max_year = san_benedicto_max_year
+  san_benedicto_max_year = san_benedicto_max_year,
+  san_benedicto_seasons = san_benedicto_seasons_full
 )
 
 
 # ==== SALIDA ====
-# Exporta la lista plana como JSON para que el motor de mustache
-# resuelva las variables en el texto del primer artículo
+# Exporta la lista completa como JSON para que el motor de mustache
+# resuelva las variables en el texto del primer artículo, usando el
+# formato renglón para conservar la estructura tabular de temporadas
 write_json(
   methods_list,
   output_json_path,
   pretty = TRUE,
-  auto_unbox = TRUE
+  auto_unbox = TRUE,
+  dataframe = "rows"
 )
