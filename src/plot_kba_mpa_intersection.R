@@ -113,9 +113,9 @@ sf_use_s2(FALSE)
 # rojo que renderiza bycatch::render_potential_kba(), y las fusiona en un
 # solo contorno para graficarlo como referencia
 kba_red_polygon_sf <- kba_polygons_sf |>
-    filter(potentialSite == TRUE) |>
-    # summarise() sin argumentos disuelve la geometría automáticamente en sf
-    summarise()
+  filter(potentialSite == TRUE) |>
+  # summarise() sin argumentos disuelve la geometría automáticamente en sf
+  summarise()
 # Transforma la ZEE de NSIDC EASE-Grid Global a coordenadas geográficas WGS84
 # para que coincida con el sistema de referencia de los polígonos KBA y AMP
 mexico_eez_wgs84_sf <- mexico_eez_sf |>

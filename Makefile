@@ -169,11 +169,11 @@ data/processed/kba_polygons_all.gpkg: \
 		--output-path $@
 
 reports/figures/gps_albatross_50_percent_potential_kba_ars_all.png: \
-	data/processed/kba_polygons_all.gpkg
+	data/processed/kba_polygons_all.gpkg \
+	data/external/Exclusive_economic_zone_Mexico.shp \
+	data/processed/mexico_eez_bounding_box_zoom_in.json
 	$(checkDirectories)
-	Rscript -e "bycatch::render_potential_kba(bycatch::get_domain_specific_options())" \
-		--gpkg-path data/processed/kba_polygons_all.gpkg \
-		--output-path $@
+	Rscript src/plot_potential_kba_all.R
 
 reports/figures/gps_albatross_50_percent_representative_assessment_ars_guadalupe.png: \
 	data/processed/representative_assessment_guadalupe.rds
