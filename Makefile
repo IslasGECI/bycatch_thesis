@@ -263,6 +263,18 @@ reports/figures/gps_albatross_geographic_points_raw_guadalupe.png: \
 		--path-rose-wind data/raw/rosewind.png \
 		--result-map-path $@
 
+reports/figures/radar_signal_geographic_points_albatross_guadalupe.png: \
+	data/processed/radar_signal_geographic_points.csv \
+	data/raw/division_politica_paises.shp \
+	data/raw/division_politica_paises.shx \
+	data/raw/rosewind.png
+	$(checkDirectories)
+	geci-plot-cli render-radar-signal-geographic-points \
+		--radar-signal-data-path data/processed/radar_signal_geographic_points.csv \
+		--global-shapefile-data-path data/raw/division_politica_paises.shp \
+		--path-rose-wind data/raw/rosewind.png \
+		--result-map-path $@
+
 data/processed/radar_signal_geographic_points.csv: \
 	data/raw/radar-signal-albatros-guadalupe.csv \
 	data/raw/gps-albatros-guadalupe.csv
