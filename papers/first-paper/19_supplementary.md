@@ -16,11 +16,6 @@ Individuals from Clarion Island (pink) exhibit broader latitudinal movements, in
 Tracks from San Benedicto Island (coral) show a similar coastal distribution to Clarion Island, concentrated near the southern Baja California Peninsula.
 All three populations show spatial convergence along the western coast of the Baja California Peninsula, suggesting shared use of ecologically important foraging habitats.
 
-![Raw GPS tracking locations of Laysan albatrosses from the Guadalupe, Clarion and San Benedicto island colonies.](reports/figures/gps_albatross_geographic_points_raw_all.png)
-
-The figure shows the spatial distribution of raw GPS fixes from Laysan albatrosses breeding on Guadalupe, Clarion and San Benedicto islands across all tracking years.
-Each point represents a single GPS recording at 10-minute intervals during the breeding season.
-
 ![Marine Protected Areas (MPAs) of Mexico.](reports/figures/mexico_mpa.png)
 
 The figure displays the Marine Protected Areas within Mexico's jurisdiction.

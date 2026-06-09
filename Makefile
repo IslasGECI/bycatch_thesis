@@ -13,8 +13,8 @@ reports/first_paper.docx reports/first_paper.pdf: \
 	data/processed/trips_summary_guadalupe.csv \
 	papers/first-paper/10_metadata.yaml \
 	reports/figures/gps_albatross_50_percent_potential_kba_ars_all_with_mpa.png \
-	reports/figures/gps_albatross_geographic_points_by_trip_guadalupe.png \
 	reports/figures/gps_albatross_geographic_points_raw_clarion.png \
+	reports/figures/gps_albatross_geographic_points_raw_all.png \
 	reports/figures/mexico_eez.png \
 	reports/figures/mexico_eez_bounding_box_zoom_in.png \
 	reports/figures/mexico_eez_bounding_box_zoom_out.png \
@@ -282,18 +282,6 @@ data/processed/gps_albatross_guadalupe_2025.csv: \
 		--date-column-name date \
 		--output-path $@
 
-reports/figures/gps_albatross_geographic_points_by_trip_guadalupe.png: \
-	data/processed/trips_geographic_points_guadalupe.csv \
-	data/raw/division_politica_paises.shp \
-	data/raw/division_politica_paises.shx \
-	data/raw/rosewind.png
-	$(checkDirectories)
-	geci-plot-cli plot-geographic-points-by-trip \
-		--geographic-data-path data/processed/trips_geographic_points_guadalupe.csv \
-		--global-shapefile-data-path data/raw/division_politica_paises.shp \
-		--path-rose-wind data/raw/rosewind.png \
-		--result-map-path $@
-
 reports/figures/gps_albatross_geographic_points_by_trip_all.png: \
 	data/processed/trips_geographic_points_all.csv \
 	data/raw/division_politica_paises.shp \
@@ -388,6 +376,30 @@ reports/figures/gps_albatross_geographic_points_raw_san_benedicto.png: \
 	$(checkDirectories)
 	geci-plot-cli plot-geographic-points \
 		--geographic-data-path data/raw/gps-albatros-san-benedicto.csv \
+		--global-shapefile-data-path data/raw/division_politica_paises.shp \
+		--path-rose-wind data/raw/rosewind.png \
+		--result-map-path $@
+
+reports/figures/gps_albatross_geographic_points_raw_guadalupe.png: \
+	data/raw/gps-albatros-guadalupe.csv \
+	data/raw/division_politica_paises.shp \
+	data/raw/division_politica_paises.shx \
+	data/raw/rosewind.png
+	$(checkDirectories)
+	geci-plot-cli plot-geographic-points \
+		--geographic-data-path data/raw/gps-albatros-guadalupe.csv \
+		--global-shapefile-data-path data/raw/division_politica_paises.shp \
+		--path-rose-wind data/raw/rosewind.png \
+		--result-map-path $@
+
+reports/figures/gps_albatross_geographic_points_raw_all.png: \
+	data/processed/gps_albatross_all.csv \
+	data/raw/division_politica_paises.shp \
+	data/raw/division_politica_paises.shx \
+	data/raw/rosewind.png
+	$(checkDirectories)
+	geci-plot-cli plot-geographic-points \
+		--geographic-data-path data/processed/gps_albatross_all.csv \
 		--global-shapefile-data-path data/raw/division_politica_paises.shp \
 		--path-rose-wind data/raw/rosewind.png \
 		--result-map-path $@

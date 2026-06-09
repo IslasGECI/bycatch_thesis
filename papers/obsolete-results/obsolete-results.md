@@ -11,9 +11,24 @@ The resulting study area represents the intersection between biologically inform
 All analyses of spatial use and potential interactions with anthropogenic activities are restricted to specific areas.
 These areas are both ecologically utilized by the species and legally under Mexican management.
 
+![Raw GPS tracking locations of Laysan albatrosses from Guadalupe Island.](reports/figures/gps_albatross_geographic_points_raw_guadalupe.png)
+
+The figure shows the spatial distribution of raw GPS fixes obtained from Laysan albatrosses breeding on Guadalupe Island.
+Each point represents a single GPS recording at 10-minute intervals during the breeding season.
+
 ![Raw GPS tracking locations of Laysan albatrosses from Clarion Island.](reports/figures/gps_albatross_geographic_points_raw_clarion.png)
 
 The figure shows the spatial distribution of raw GPS fixes obtained from Laysan albatrosses breeding on Clarion Island.
+Each point represents a single GPS recording at 10-minute intervals during the breeding season.
+
+![Raw GPS tracking locations of Laysan albatrosses from San Benedicto Island.](reports/figures/gps_albatross_geographic_points_raw_san_benedicto.png)
+
+The figure shows the spatial distribution of raw GPS fixes obtained from Laysan albatrosses breeding on San Benedicto Island.
+Each point represents a single GPS recording at 10-minute intervals during the breeding season.
+
+![Raw GPS tracking locations of Laysan albatrosses from the Guadalupe, Clarion and San Benedicto island colonies.](reports/figures/gps_albatross_geographic_points_raw_all.png)
+
+The figure shows the spatial distribution of raw GPS fixes from Laysan albatrosses breeding on Guadalupe, Clarion and San Benedicto islands across all tracking years.
 Each point represents a single GPS recording at 10-minute intervals during the breeding season.
 
 ![Mexico's Exclusive Economic Zone (EEZ).](reports/figures/mexico_eez.png)
@@ -35,4 +50,10 @@ This dataset provides a lightweight, reproducible alternative to locally stored 
 
 The figure extends the Natural Earth basemap with professional cartographic elements, including a scale bar and a north arrow.
 These additions improve readability and geographic interpretability for publication-ready figures.
+
+![Continuous hot-spot map of GFW longline fishing events.](reports/figures/gfw_longline_hotspot_map_all.png)
+
+![Radar signal geographic points of Laysan albatrosses from Guadalupe Island.](reports/figures/radar_signal_geographic_points_albatross_guadalupe.png)
+
+![VMS hot-spot map for Guadalupe Island.](reports/figures/vms_hotspot_map_guadalupe.png)
 
