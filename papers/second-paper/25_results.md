@@ -8,4 +8,6 @@
 
 ![Map of longline fishing events from Global Fishing Watch data.](reports/figures/longline_events_map.png)
 
+![Hot-spot classification of GFW longline fishing events.](reports/figures/gfw_longline_hotspot_binary_map_all.png)
+
 \FloatBarrier
