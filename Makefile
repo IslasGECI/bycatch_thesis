@@ -12,15 +12,9 @@ reports/first_paper.docx reports/first_paper.pdf: \
 	data/processed/individual_kde_guadalupe.rds \
 	data/processed/trips_summary_guadalupe.csv \
 	papers/first-paper/10_metadata.yaml \
-	reports/figures/gps_albatross_50_percent_individual_kde_ars_guadalupe.png \
-	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png \
 	reports/figures/gps_albatross_50_percent_potential_kba_ars_all_with_mpa.png \
-	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_without_mpa.png \
-	reports/figures/gps_albatross_50_percent_representative_assessment_ars_guadalupe.png \
 	reports/figures/gps_albatross_geographic_points_by_trip_guadalupe.png \
 	reports/figures/gps_albatross_geographic_points_raw_clarion.png \
-	reports/figures/gps_albatross_geographic_points_raw_guadalupe.png \
-	reports/figures/gps_albatross_geographic_points_raw_guadalupe_2025.png \
 	reports/figures/mexico_eez.png \
 	reports/figures/mexico_eez_bounding_box_zoom_in.png \
 	reports/figures/mexico_eez_bounding_box_zoom_out.png \
@@ -59,6 +53,7 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	reports/figures/gps_albatross_50_percent_representative_assessment_ars_all.png \
 	reports/figures/gps_albatross_geographic_points_by_trip_all.png \
 	reports/figures/longline_events_map.png \
+	reports/figures/gfw_longline_hotspot_binary_map_all.png \
 	reports/figures/mexico_eez_bounding_box_zoom_in.png \
 	reports/figures/mexico_eez_bounding_box_zoom_out.png \
 	reports/second_paper.md
@@ -76,6 +71,12 @@ reports/anteproyecto.docx reports/anteproyecto.pdf: \
 	papers/proposal/01_proposal.md
 	$(checkDirectories)
 	pandoc --metadata-file=papers/proposal/00_metadata.yaml --citeproc --output=$@ papers/proposal/01_proposal.md
+
+reports/obsolete_results.docx reports/obsolete_results.pdf: \
+	papers/obsolete-results/00_metadata.yaml \
+	papers/obsolete-results/obsolete-results.md
+	$(checkDirectories)
+	pandoc --metadata-file=papers/obsolete-results/00_metadata.yaml --output=$@ papers/obsolete-results/obsolete-results.md
 
 reports/figures/mexico_eez.png: data/external/Exclusive_economic_zone_Mexico.shp
 	$(checkDirectories)
@@ -163,25 +164,11 @@ reports/figures/gfw_longline_hotspot_binary_map_all.png: \
 	$(checkDirectories)
 	Rscript src/plot_gfw_longline_hotspot_binary.R
 
-reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png: \
-	data/processed/kba_polygons_guadalupe.gpkg
-	$(checkDirectories)
-	Rscript -e "bycatch::render_potential_kba(bycatch::get_domain_specific_options())" \
-		--gpkg-path data/processed/kba_polygons_guadalupe.gpkg \
-		--output-path $@
-
 data/processed/kba_mpa_intersection_all.gpkg: \
 	data/processed/kba_polygons_all.gpkg \
 	data/processed/mexico_mpa.gpkg
 	$(checkDirectories)
 	Rscript src/export_kba_mpa_intersection.R
-
-reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_without_mpa.png: \
-	data/processed/kba_polygons_guadalupe.gpkg \
-	data/external/Exclusive_economic_zone_Mexico.shp \
-	data/processed/mexico_eez_bounding_box_zoom_in.json
-	$(checkDirectories)
-	Rscript src/plot_potential_kba_guadalupe.R
 
 reports/figures/gps_albatross_50_percent_potential_kba_ars_all_with_mpa.png: \
 	data/processed/kba_mpa_intersection_all.gpkg \
@@ -207,13 +194,6 @@ reports/figures/gps_albatross_50_percent_potential_kba_ars_all_without_mpa.png: 
 	data/external/Exclusive_economic_zone_Mexico.shp
 	$(checkDirectories)
 	Rscript src/plot_potential_kba_all.R
-
-reports/figures/gps_albatross_50_percent_representative_assessment_ars_guadalupe.png: \
-	data/processed/representative_assessment_guadalupe.rds
-	$(checkDirectories)
-	Rscript -e "bycatch::render_representative_assessment(bycatch::get_domain_specific_options())" \
-		--rds-path data/processed/representative_assessment_guadalupe.rds \
-		--output-path $@
 
 data/processed/individual_kde_guadalupe.rds: \
 	data/processed/trips_geographic_points_guadalupe.csv \
@@ -264,31 +244,12 @@ reports/figures/gps_albatross_50_percent_representative_assessment_ars_all.png: 
 		--rds-path data/processed/representative_assessment_all.rds \
 		--output-path $@
 
-reports/figures/gps_albatross_50_percent_individual_kde_ars_guadalupe.png: \
-	data/processed/individual_kde_guadalupe.rds
-	$(checkDirectories)
-	Rscript -e "bycatch::render_individual_kde(bycatch::get_domain_specific_options())" \
-		--rds-path data/processed/individual_kde_guadalupe.rds \
-		--output-path $@
-
 reports/figures/gps_albatross_50_percent_individual_kde_ars_all.png: \
 	data/processed/individual_kde_all.rds
 	$(checkDirectories)
 	Rscript -e "bycatch::render_individual_kde(bycatch::get_domain_specific_options())" \
 		--rds-path data/processed/individual_kde_all.rds \
 		--output-path $@
-
-reports/figures/gps_albatross_geographic_points_raw_guadalupe.png: \
-	data/raw/gps-albatros-guadalupe.csv \
-	data/raw/division_politica_paises.shp \
-	data/raw/division_politica_paises.shx \
-	data/raw/rosewind.png
-	$(checkDirectories)
-	geci-plot-cli plot-geographic-points \
-		--geographic-data-path data/raw/gps-albatros-guadalupe.csv \
-		--global-shapefile-data-path data/raw/division_politica_paises.shp \
-		--path-rose-wind data/raw/rosewind.png \
-		--result-map-path $@
 
 reports/figures/radar_signal_geographic_points_albatross_guadalupe.png: \
 	data/processed/radar_signal_geographic_points.csv \
@@ -310,18 +271,6 @@ data/processed/radar_signal_geographic_points.csv: \
 		--tracking-data-path data/raw/gps-albatros-guadalupe.csv \
 		--radar-signal-path data/raw/radar-signal-albatros-guadalupe.csv \
 		--output-path $@
-
-reports/figures/gps_albatross_geographic_points_raw_guadalupe_2025.png: \
-	data/processed/gps_albatross_guadalupe_2025.csv \
-	data/raw/division_politica_paises.shp \
-	data/raw/division_politica_paises.shx \
-	data/raw/rosewind.png
-	$(checkDirectories)
-	geci-plot-cli plot-geographic-points \
-		--geographic-data-path data/processed/gps_albatross_guadalupe_2025.csv \
-		--global-shapefile-data-path data/raw/division_politica_paises.shp \
-		--path-rose-wind data/raw/rosewind.png \
-		--result-map-path $@
 
 data/processed/gps_albatross_guadalupe_2025.csv: \
 	data/raw/gps-albatros-guadalupe.csv 
