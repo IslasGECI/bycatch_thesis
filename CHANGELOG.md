@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- GFW longline hot-spot analysis pipeline: long-format event reshaping, grid counting, Getis-Ord Gi* computation, continuous and binary hot-spot maps
+- Binary hot-spot classification map (`gfw_longline_hotspot_binary_map_all.png`) for GFW longline fishing events
+- Obsolete-results archive (`papers/obsolete-results/`) with build target `reports/obsolete_results.pdf`
+- Build rules for `gps_albatross_geographic_points_raw_all.png` and `gps_albatross_geographic_points_raw_guadalupe.png`
+- Gulf of California KML boundary file (`data/raw/gulf_of_california.kml`)
+- GFW longline hot-spot binary map as prerequisite of the second paper PDF
+
+### Changed
+
+- All figures consolidated to all-colony (`_all`) versions; single-colony Guadalupe figures removed
+- Raw GPS points figure moved from active supplementary to obsolete-results archive
+- Duplicate figures between first and second papers removed from the second paper
+- Obsolete figure descriptions moved from supplementary to archive
+
+### Removed
+
+- Six Guadalupe-only figure Makefile targets (`*ars_guadalupe*`, `*raw_guadalupe*`, `*by_trip_guadalupe*`)
+- `mexico_eez_bounding_box_zoom_in.png` reference from active manuscripts (only in archive)
+- `gps_albatross_geographic_points_raw_all.png` reference from first paper supplementary
+- Dangling Makefile target `reports/figures/gulf_of_california.png`
+
+### Fixed
+
+- `plot_mexico_map.R` and `plot_mexico_pna.R`: added `quiet = TRUE` to `st_read()` calls to suppress verbose output
+- Second paper PDF prerequisites now include all referenced PNGs
+- All Makefile PNG targets now have corresponding references in `papers/**/*.md`
+- Added missing Makefile prerequisite for the GFW longline hot-spot binary map in the second paper target
+
 ## [v0.2.0] - 2026-05-30
 
 ### Added

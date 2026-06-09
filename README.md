@@ -19,28 +19,7 @@ Request the latest PDFs from the project director. The figures and reports are r
 
 You need access credentials to download the seabird GPS tracking data. Contact the data steward to obtain your credentials.
 
-## Run the project
-
-The project runs inside a Docker container to ensure all dependencies are available.
-
-```bash
-docker-compose run --rm islasgeci
-```
-
-Inside the container, build the first article:
-
-```bash
-make reports/first_paper.pdf
-```
-
-Or build all outputs:
-
-```bash
-make articles
-```
-
 ## Coming soon
 
 - Bycatch risk maps from vessel monitoring system (VMS) data
-- Interaction hotspot identification from AIS vessel trajectories
 - Behavioural classification of foraging versus transit events
