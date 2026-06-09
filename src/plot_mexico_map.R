@@ -50,7 +50,7 @@ fig_dpi <- 300
 # ==== ENTRADAS ====
 # Importa el shapefile de México e islas como un objeto sf; el archivo
 # ya está en coordenadas geográficas WGS84 (EPSG:4326)
-shape_data <- st_read(mexico_shapefile_path)
+shape_data <- st_read(mexico_shapefile_path, quiet = TRUE)
 
 
 # ==== PROCESAMIENTO / ANÁLISIS ====

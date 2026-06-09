@@ -49,7 +49,7 @@ fig_dpi <- 300
 # ==== ENTRADAS ====
 # Importa el shapefile de Áreas Naturales Protegidas como un objeto sf;
 # el archivo contiene 232 polígonos en el sistema de referencia ITRF08
-shape_data <- st_read(pna_shapefile_path)
+shape_data <- st_read(pna_shapefile_path, quiet = TRUE)
 
 
 # ==== PROCESAMIENTO / ANÁLISIS ====
