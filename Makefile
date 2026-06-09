@@ -136,6 +136,26 @@ reports/figures/vms_hotspot_map_guadalupe.png: \
 	$(checkDirectories)
 	Rscript src/plot_vms_hotspot.R
 
+# Cuenta puntos de palangre de GFW por celda de la rejilla del KDE
+data/processed/gfw_longline_in_grid.gpkg: \
+  data/processed/longline_events_long.csv \
+  data/processed/individual_kde_all.rds
+	$(checkDirectories)
+	Rscript src/export_gfw_longline_in_grid.R
+
+# Aplica Getis-Ord Gi* a los conteos de palangre de GFW por celda
+data/processed/gfw_longline_hotspot_all.gpkg: \
+  data/processed/gfw_longline_in_grid.gpkg
+	$(checkDirectories)
+	Rscript src/compute_gfw_longline_hotspot.R
+
+# Grafica el mapa de hot spots de palangre de GFW
+reports/figures/gfw_longline_hotspot_map_all.png: \
+  data/processed/gfw_longline_hotspot_all.gpkg \
+  data/processed/mexico_eez_bounding_box_zoom_in.json
+	$(checkDirectories)
+	Rscript src/plot_gfw_longline_hotspot.R
+
 reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png: \
 	data/processed/kba_polygons_guadalupe.gpkg
 	$(checkDirectories)
@@ -476,6 +496,12 @@ data/external/Mexico_e_islas_wgs84.shp:
 reports/figures/mexico_pna.png: data/external/232_ANP-ITRF08_04072025.shp
 	$(checkDirectories)
 	Rscript src/plot_mexico_pna.R
+
+# Reorganiza los eventos de palangre de GFW a formato largo por punto extremo
+data/processed/longline_events_long.csv: \
+  data/external/oorg_2025_geci_longline_events_v20260402.csv
+	$(checkDirectories)
+	Rscript src/export_longline_events_long.R
 
 reports/figures/longline_events_map.png: data/external/oorg_2025_geci_longline_events_v20260402.csv
 	$(checkDirectories)
