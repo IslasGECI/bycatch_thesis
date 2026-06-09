@@ -149,12 +149,19 @@ data/processed/gfw_longline_hotspot_all.gpkg: \
 	$(checkDirectories)
 	Rscript src/compute_gfw_longline_hotspot.R
 
-# Grafica el mapa de hot spots de palangre de GFW
+# Grafica el mapa continuo de hot spots de palangre de GFW
 reports/figures/gfw_longline_hotspot_map_all.png: \
   data/processed/gfw_longline_hotspot_all.gpkg \
   data/processed/mexico_eez_bounding_box_zoom_in.json
 	$(checkDirectories)
 	Rscript src/plot_gfw_longline_hotspot.R
+
+# Grafica el mapa binario de hot spots de palangre de GFW
+reports/figures/gfw_longline_hotspot_binary_map_all.png: \
+  data/processed/gfw_longline_hotspot_all.gpkg \
+  data/processed/mexico_eez_bounding_box_zoom_in.json
+	$(checkDirectories)
+	Rscript src/plot_gfw_longline_hotspot_binary.R
 
 reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe.png: \
 	data/processed/kba_polygons_guadalupe.gpkg
