@@ -1,4 +1,4 @@
-personal_ws-1.1 en 58 utf-8
+personal_ws-1.1 en 59 utf-8
 accelerometer
 adehabitatlt
 anp
@@ -21,6 +21,7 @@ floatbarrier
 generalizability
 fpt
 garrott
+gfw
 gispy
 gls
 gotu
