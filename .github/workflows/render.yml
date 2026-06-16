@@ -1,4 +1,4 @@
-name: Render report
+name: Render paper draft and upload results
 on:
   schedule:
     - cron: '0 7 * * 3'
@@ -40,7 +40,7 @@ jobs:
           reports/*.docx
           reports/*.pdf
           reports/figures/*.png
-        retention-days: 20
+        retention-days: 14
     - name: Push latest Docker image to Docker Hub
       run: docker push islasgeci/bycatch_thesis:latest
     - name: Push four-digit week tag to Docker Hub
