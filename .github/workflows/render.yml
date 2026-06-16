@@ -1,11 +1,11 @@
-name: Render paper draft and upload results
+name: Render papers
 on:
   schedule:
     - cron: '0 7 * * 3'
   workflow_dispatch:
 jobs:
   build-image:
-    name: Build Docker image 🐋
+    name: Build Docker image, generate papers, and upload results
     runs-on: ubuntu-latest
     env:
       BITBUCKET_PASSWORD: ${{ secrets.BITBUCKET_PASSWORD }}
