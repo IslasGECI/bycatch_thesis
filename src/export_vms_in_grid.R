@@ -16,7 +16,7 @@
 # GeoPackage con una columna de conteo por celda.
 #
 # Entradas:
-# data/external/vessel_data_pacific_2014.csv
+# data/external/vessel_data_pacific.csv
 # data/processed/individual_kde_guadalupe.rds
 #
 # Salida:
@@ -47,7 +47,7 @@ library(sf)
 library(adehabitatHR)
 
 # Ruta del archivo CSV con las trayectorias VMS de embarcaciones
-input_vms_csv_path <- "data/external/vessel_data_pacific_2014.csv"
+input_vms_csv_path <- "data/external/vessel_data_pacific.csv"
 
 # Ruta del archivo RDS con el KDE individual de Guadalupe
 input_kde_rds_path <- "data/processed/individual_kde_guadalupe.rds"
@@ -60,7 +60,7 @@ crs_vms_wgs84 <- 4326
 
 # Vector con los nombres de las columnas del CSV que necesitamos
 # para evitar leer todo el archivo y reducir el consumo de memoria
-selected_columns <- c("lat", "lon", "seg_id", "datetime", "hours")
+selected_columns <- c("lat", "lon", "seg_id", "datetime")
 
 
 # ==== ENTRADAS ====

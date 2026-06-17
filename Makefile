@@ -119,7 +119,7 @@ data/processed/kba_polygons_guadalupe.gpkg: \
 
 # Cuenta puntos VMS por celda de la rejilla del KDE
 data/processed/vms_in_grid.gpkg: \
-  data/external/vessel_data_pacific_2014.csv \
+  data/external/vessel_data_pacific.csv \
   data/processed/individual_kde_guadalupe.rds
 	$(checkDirectories)
 	Rscript src/export_vms_in_grid.R

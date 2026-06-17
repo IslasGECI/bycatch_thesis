@@ -195,7 +195,7 @@ hotspot_map <- ggplot() +
   # Etiquetas del mapa descriptivas del análisis THS
   labs(
     title = "Hot spots de congestión de embarcaciones pesqueras",
-    subtitle = "Getis-Ord Gi* sobre datos VMS de 2014 en el Pacífico Mexicano",
+    subtitle = "Getis-Ord Gi* sobre datos VMS de 2014 a 2025 en el Pacífico Mexicano",
     x = "Longitud",
     y = "Latitud"
   ) +
