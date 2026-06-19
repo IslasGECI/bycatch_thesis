@@ -17,7 +17,7 @@
 # de conteo por celda.
 #
 # Entradas:
-# data/processed/longline_events_without_gulf_of_california.csv
+# data/processed/longline_events_in_eez_without_gulf_of_california.csv
 # data/processed/individual_kde_all.rds
 #
 # Salida:
@@ -48,7 +48,7 @@ library(sf)
 library(adehabitatHR)
 
 # Ruta del archivo CSV con los eventos de palangre en formato largo
-input_longline_csv_path <- "data/processed/longline_events_without_gulf_of_california.csv"
+input_longline_csv_path <- "data/processed/longline_events_in_eez_without_gulf_of_california.csv"
 
 # Ruta del archivo RDS con el KDE individual de todas las colonias
 input_kde_rds_path <- "data/processed/individual_kde_all.rds"

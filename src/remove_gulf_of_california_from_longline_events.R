@@ -18,10 +18,11 @@
 #
 # Entradas:
 # data/raw/gulf_of_california.kml
+# data/external/Exclusive_economic_zone_Mexico.shp
 # data/processed/longline_events_long.csv
 #
 # Salida:
-# data/processed/longline_events_without_gulf_of_california.csv
+# data/processed/longline_events_in_eez_without_gulf_of_california.csv
 #
 # Dependencias:
 # sf
@@ -44,12 +45,13 @@ library(sf)
 
 # Ruta del archivo KML con el polígono del Golfo de California
 input_gulf_kml_path <- "data/raw/gulf_of_california.kml"
+input_eez_mexico_shp_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
 
 # Ruta del archivo CSV con los eventos de palangre en formato largo
 input_longline_csv_path <- "data/processed/longline_events_long.csv"
 
 # Ruta del archivo CSV de salida sin eventos dentro del Golfo
-output_longline_csv_path <- "data/processed/longline_events_without_gulf_of_california.csv"
+output_longline_csv_path <- "data/processed/longline_events_in_eez_without_gulf_of_california.csv"
 
 # CRS geográfico WGS84 en el que están codificados tanto el KML
 # como las coordenadas de los puntos de palangre en el CSV
@@ -62,6 +64,10 @@ crs_wgs84 <- 4326
 # que define el límite geográfico para filtrar los eventos que caen
 # dentro de esta zona que está fuera del área de estudio
 gulf_polygon <- st_read(input_gulf_kml_path, quiet = TRUE)
+eez_mexico_polygon <- st_read(input_eez_mexico_shp_path, quiet = TRUE)
+
+mexico_eez_wgs84 <- eez_mexico_polygon |>
+  st_transform(crs_wgs84)
 
 # Lee el CSV de eventos de palangre en formato largo que contiene
 # las coordenadas de inicio y fin de cada operación de pesca en
@@ -93,20 +99,22 @@ longline_points_sf <- st_as_sf(
 # Golfo de California usando la matriz densa de evaluación espacial
 # que compara cada punto contra el único polígono de referencia
 is_inside_gulf_matrix <- st_within(longline_points_sf, gulf_polygon, sparse = FALSE)
+is_inside_eez_mexico_matrix <- st_within(longline_points_sf, mexico_eez_wgs84[2, ], sparse = FALSE)
 
 # Convierte la matriz de una columna a un vector lógico donde cada
 # posición indica si el punto correspondiente está dentro del Golfo
 is_inside_gulf_vector <- is_inside_gulf_matrix[, 1]
+is_inside_eez_vector <- is_inside_eez_mexico_matrix[, 1]
 
 # Conserva únicamente los puntos de palangre que NO están dentro
 # del Golfo de California para limitar el análisis de hot spots a
 # las aguas del Pacífico mexicano utilizadas por los albatros
-longline_outside_gulf_sf <- longline_points_sf[!is_inside_gulf_vector, ]
+longline_inside_eez_outside_gulf_sf <- longline_points_sf[is_inside_eez_vector & !is_inside_gulf_vector, ]
 
 # Elimina la columna de geometría espacial para devolver la tabla
 # a un formato plano de CSV con las columnas originales de latitud,
 # longitud y metadatos de cada evento de palangre
-longline_outside_gulf_table <- longline_outside_gulf_sf |>
+longline_inside_eez_outside_gulf_table <- longline_inside_eez_outside_gulf_sf |>
   st_drop_geometry()
 
 
@@ -115,4 +123,4 @@ longline_outside_gulf_table <- longline_outside_gulf_sf |>
 # Escribe el CSV con los eventos de palangre fuera del Golfo de
 # California para que el script de conteo por celda de la rejilla
 # del KDE procese únicamente puntos del área de estudio del Pacífico
-write_csv(longline_outside_gulf_table, output_longline_csv_path)
+write_csv(longline_inside_eez_outside_gulf_table, output_longline_csv_path)
