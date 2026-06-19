@@ -9,12 +9,13 @@
 # colonias estudiadas e introduciría ruido en el análisis espacial.
 #
 # Descripción (Qué / Cómo):
-# Lee el archivo KML que define el polígono del Golfo de California
-# como referencia espacial para filtrar. Lee el CSV de eventos de
-# palangre en formato largo con coordenadas de inicio y fin por fila.
-# Convierte cada fila a un punto geográfico y conserva únicamente
-# los puntos que caen fuera del polígono del Golfo de California.
-# Escribe el resultado como CSV con la misma estructura original.
+# Lee el archivo KML del Golfo de California y el shapefile de la
+# ZEE mexicana como referencias espaciales para filtrar. Lee el CSV
+# de eventos de palangre en formato largo con coordenadas de inicio
+# y fin por fila. Convierte cada fila a un punto geográfico y
+# conserva únicamente los puntos que caen dentro de la ZEE del
+# Pacífico mexicano pero fuera del Golfo de California. Escribe el
+# resultado como CSV con la misma estructura original.
 #
 # Entradas:
 # data/raw/gulf_of_california.kml
@@ -29,7 +30,8 @@
 # tidyverse
 #
 # Notas:
-# - El filtro espacial usa el CRS geográfico WGS84 de ambos archivos
+# - El filtro espacial usa el CRS geográfico WGS84 de los tres archivos
+# - La capa 2 del shapefile de ZEE corresponde al Pacífico mexicano
 # - Los puntos exactamente sobre el borde del polígono se conservan
 # - La columna geometry se elimina antes de escribir el CSV de salida
 # ==========================================
@@ -64,8 +66,13 @@ crs_wgs84 <- 4326
 # que define el límite geográfico para filtrar los eventos que caen
 # dentro de esta zona que está fuera del área de estudio
 gulf_polygon <- st_read(input_gulf_kml_path, quiet = TRUE)
+
+# Importa el shapefile de la Zona Económica Exclusiva de México que
+# contiene múltiples capas para filtrar los eventos que ocurren dentro de aguas mexicanas
 eez_mexico_polygon <- st_read(input_eez_mexico_shp_path, quiet = TRUE)
 
+# Transforma la EEZ a coordenadas geográficas WGS84 para que los límites
+# del bounding box definidos en grados coincidan con la geometría
 mexico_eez_wgs84 <- eez_mexico_polygon |>
   st_transform(crs_wgs84)
 
@@ -99,16 +106,26 @@ longline_points_sf <- st_as_sf(
 # Golfo de California usando la matriz densa de evaluación espacial
 # que compara cada punto contra el único polígono de referencia
 is_inside_gulf_matrix <- st_within(longline_points_sf, gulf_polygon, sparse = FALSE)
-is_inside_eez_mexico_matrix <- st_within(longline_points_sf, mexico_eez_wgs84[2, ], sparse = FALSE)
 
-# Convierte la matriz de una columna a un vector lógico donde cada
+# Índice de la capa del shapefile de ZEE que corresponde al Pacífico
+# mexicano
+pacific_eez_shp_layer <- 2
+
+# Determina qué puntos de palangre caen dentro de la ZEE del Pacífico
+# mexicano usando la capa seleccionada del shapefile transformado a
+# WGS84 para que coincida con el CRS de los puntos de palangre
+is_inside_eez_mexico_matrix <- st_within(longline_points_sf, mexico_eez_wgs84[pacific_eez_shp_layer, ], sparse = FALSE)
+
+# Convierte cada matriz de una columna a vectores lógicos donde cada
 # posición indica si el punto correspondiente está dentro del Golfo
+# de California o dentro de la ZEE del Pacífico mexicano
 is_inside_gulf_vector <- is_inside_gulf_matrix[, 1]
 is_inside_eez_vector <- is_inside_eez_mexico_matrix[, 1]
 
-# Conserva únicamente los puntos de palangre que NO están dentro
-# del Golfo de California para limitar el análisis de hot spots a
-# las aguas del Pacífico mexicano utilizadas por los albatros
+# Conserva únicamente los puntos de palangre que están dentro de la
+# ZEE del Pacífico mexicano pero fuera del Golfo de California para
+# limitar el análisis de hot spots a las aguas del Pacífico mexicano
+# que son utilizadas por los albatros de las colonias estudiadas
 longline_inside_eez_outside_gulf_sf <- longline_points_sf[is_inside_eez_vector & !is_inside_gulf_vector, ]
 
 # Elimina la columna de geometría espacial para devolver la tabla
@@ -120,7 +137,8 @@ longline_inside_eez_outside_gulf_table <- longline_inside_eez_outside_gulf_sf |>
 
 # ==== SALIDA ====
 
-# Escribe el CSV con los eventos de palangre fuera del Golfo de
-# California para que el script de conteo por celda de la rejilla
-# del KDE procese únicamente puntos del área de estudio del Pacífico
+# Escribe el CSV con los eventos de palangre dentro de la ZEE del
+# Pacífico mexicano pero fuera del Golfo de California para que el
+# script de conteo por celda de la rejilla del KDE procese solamente
+# puntos del área de estudio del Pacífico mexicano
 write_csv(longline_inside_eez_outside_gulf_table, output_longline_csv_path)
