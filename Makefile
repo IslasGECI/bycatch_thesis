@@ -139,7 +139,7 @@ reports/figures/vms_hotspot_map_guadalupe.png: \
 
 # Cuenta puntos de palangre de GFW por celda de la rejilla del KDE
 data/processed/gfw_longline_in_grid.gpkg: \
-  data/processed/longline_events_without_gulf_of_california.csv \
+  data/processed/longline_events_in_eez_without_gulf_of_california.csv \
   data/processed/individual_kde_all.rds
 	$(checkDirectories)
 	Rscript src/export_gfw_longline_in_grid.R
@@ -471,12 +471,13 @@ data/processed/longline_events_long.csv: \
 	$(checkDirectories)
 	Rscript src/export_longline_events_long.R
 
-# Elimina los eventos de palangre de GFW que caen dentro del Golfo de California
-data/processed/longline_events_without_gulf_of_california.csv: \
- data/processed/longline_events_long.csv
+# Elimina los eventos de palangre de GFW que caen dentro del Golfo de California y fuera de la ZEE de México
+data/processed/longline_events_in_eez_without_gulf_of_california.csv: \
+	data/external/Exclusive_economic_zone_Mexico.shp \
+	data/processed/longline_events_long.csv \
+	data/raw/gulf_of_california.kml
 	$(checkDirectories)
 	Rscript src/remove_gulf_of_california_from_longline_events.R
-
 
 reports/figures/longline_events_map.png: data/external/oorg_2025_geci_longline_events_v20260402.csv
 	$(checkDirectories)
