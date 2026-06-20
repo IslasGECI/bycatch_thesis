@@ -10,4 +10,6 @@
 
 ![Hot-spot classification of GFW longline fishing events.](reports/figures/gfw_longline_hotspot_binary_map_all.png)
 
+![Overlay of the 50% potential KBA (Laysan Albatross) with GFW longline hot-spot classification.](reports/figures/kba_and_gfw_longline_hotspot_map.png)
+
 \FloatBarrier

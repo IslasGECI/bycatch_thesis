@@ -54,6 +54,7 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	reports/figures/gps_albatross_geographic_points_by_trip_all.png \
 	reports/figures/longline_events_map.png \
 	reports/figures/gfw_longline_hotspot_binary_map_all.png \
+	reports/figures/kba_and_gfw_longline_hotspot_map.png \
 	reports/figures/mexico_eez_bounding_box_zoom_in.png \
 	reports/figures/mexico_eez_bounding_box_zoom_out.png \
 	reports/second_paper.md
@@ -163,6 +164,23 @@ reports/figures/gfw_longline_hotspot_binary_map_all.png: \
   data/processed/mexico_eez_bounding_box_zoom_in.json
 	$(checkDirectories)
 	Rscript src/plot_gfw_longline_hotspot_binary.R
+
+# Calcula la intersección entre el sitio potencial KBA y las celdas hot spot de palangre de GFW
+data/processed/kba_hotspot_intersection.gpkg: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/gfw_longline_hotspot_all.gpkg
+	$(checkDirectories)
+	Rscript src/export_kba_hotspot_intersection.R
+
+# Grafica el mapa combinado de KBA y hot spots de palangre de GFW
+reports/figures/kba_and_gfw_longline_hotspot_map.png: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/gfw_longline_hotspot_all.gpkg \
+  data/processed/kba_hotspot_intersection.gpkg \
+  data/processed/mexico_mpa.gpkg \
+  data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_kba_and_gfw_longline_hotspot.R
 
 data/processed/kba_mpa_intersection_all.gpkg: \
 	data/processed/kba_polygons_all.gpkg \
