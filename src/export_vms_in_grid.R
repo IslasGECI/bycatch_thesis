@@ -17,7 +17,7 @@
 #
 # Entradas:
 # data/external/vessel_data_pacific.csv
-# data/processed/individual_kde_guadalupe.rds
+# data/processed/individual_kde_all.rds
 #
 # Salida:
 # data/processed/vms_in_grid.gpkg
@@ -49,8 +49,8 @@ library(adehabitatHR)
 # Ruta del archivo CSV con las trayectorias VMS de embarcaciones
 input_vms_csv_path <- "data/external/vessel_data_pacific.csv"
 
-# Ruta del archivo RDS con el KDE individual de Guadalupe
-input_kde_rds_path <- "data/processed/individual_kde_guadalupe.rds"
+# Ruta del archivo RDS con el KDE individuales
+input_kde_rds_path <- "data/processed/individual_kde_all.rds"
 
 # Ruta del archivo GeoPackage de salida con los conteos por celda
 output_gpkg_path <- "data/processed/vms_in_grid.gpkg"

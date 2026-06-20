@@ -121,19 +121,19 @@ data/processed/kba_polygons_guadalupe.gpkg: \
 # Cuenta puntos VMS por celda de la rejilla del KDE
 data/processed/vms_in_grid.gpkg: \
   data/external/vessel_data_pacific.csv \
-  data/processed/individual_kde_guadalupe.rds
+  data/processed/individual_kde_all.rds
 	$(checkDirectories)
 	Rscript src/export_vms_in_grid.R
 
 # Aplica Getis-Ord Gi* a los conteos VMS por celda
-data/processed/vms_hotspot_guadalupe.gpkg: \
+data/processed/vms_hotspot.gpkg: \
   data/processed/vms_in_grid.gpkg
 	$(checkDirectories)
 	Rscript src/compute_vms_hotspot.R
 
 # Grafica el mapa de hot spots de congestión VMS
-reports/figures/vms_hotspot_map_guadalupe.png: \
-  data/processed/vms_hotspot_guadalupe.gpkg \
+reports/figures/vms_hotspot_map.png: \
+  data/processed/vms_hotspot.gpkg \
   data/processed/mexico_eez_bounding_box_zoom_in.json
 	$(checkDirectories)
 	Rscript src/plot_vms_hotspot.R

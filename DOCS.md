@@ -34,9 +34,9 @@ Binary hot-spot classification (z ≥ 1.96) of GFW longline fishing events. Scri
 
 Continuous hot-spot map of GFW longline fishing events using a viridis inferno palette. Script: `src/plot_gfw_longline_hotspot.R`.
 
-### reports/figures/vms_hotspot_map_guadalupe.png
+### reports/figures/vms_hotspot_map.png
 
-Getis-Ord Gi* hot-spot map of VMS fishing vessel trajectories for Guadalupe Island. Script: `src/plot_vms_hotspot.R`.
+Getis-Ord Gi* hot-spot map of VMS fishing vessel trajectories. Script: `src/plot_vms_hotspot.R`.
 
 ## Pipeline Stages
 

@@ -18,7 +18,7 @@
 # data/processed/vms_in_grid.gpkg
 #
 # Salida:
-# data/processed/vms_hotspot_guadalupe.gpkg
+# data/processed/vms_hotspot.gpkg
 #
 # Dependencias:
 # tidyverse
@@ -49,7 +49,7 @@ library(spdep)
 input_gpkg_path <- "data/processed/vms_in_grid.gpkg"
 
 # Ruta del GeoPackage de salida con los z-scores de Getis-Ord Gi*
-output_gpkg_path <- "data/processed/vms_hotspot_guadalupe.gpkg"
+output_gpkg_path <- "data/processed/vms_hotspot.gpkg"
 
 # Nombre de la columna que contiene el conteo de puntos VMS por
 # celda sobre la cual se calculará el estadístico Gi*

@@ -17,11 +17,11 @@
 # superpone la línea de costa mundial como contexto geográfico.
 #
 # Entradas:
-# data/processed/vms_hotspot_guadalupe.gpkg
+# data/processed/vms_hotspot.gpkg
 # data/processed/mexico_eez_bounding_box_zoom_in.json
 #
 # Salida:
-# reports/figures/vms_hotspot_map_guadalupe.png
+# reports/figures/vms_hotspot_map.png
 #
 # Dependencias:
 # tidyverse
@@ -58,14 +58,14 @@ library(rnaturalearth)
 library(rnaturalearthdata)
 
 # Ruta del GeoPackage con los z-scores de Getis-Ord Gi*
-input_gpkg_path <- "data/processed/vms_hotspot_guadalupe.gpkg"
+input_gpkg_path <- "data/processed/vms_hotspot.gpkg"
 
 # Ruta del archivo JSON con los límites del bounding box de zoom in para
 # limitar la extensión del mapa a la región de la ZEE de México
 input_bbox_json_path <- "data/processed/mexico_eez_bounding_box_zoom_in.json"
 
 # Ruta del archivo PNG que almacenará el mapa de hot spots
-output_png_path <- "reports/figures/vms_hotspot_map_guadalupe.png"
+output_png_path <- "reports/figures/vms_hotspot_map.png"
 
 # Escala de la línea de costa mundial para el fondo del mapa
 coastline_scale <- "medium"

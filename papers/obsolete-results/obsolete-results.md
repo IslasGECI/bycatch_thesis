@@ -55,5 +55,5 @@ These additions improve readability and geographic interpretability for publicat
 
 ![Radar signal geographic points of Laysan albatrosses from Guadalupe Island.](reports/figures/radar_signal_geographic_points_albatross_guadalupe.png)
 
-![VMS hot-spot map for Guadalupe Island.](reports/figures/vms_hotspot_map_guadalupe.png)
+![VMS hot-spot map of fishing vessel traffic.](reports/figures/vms_hotspot_map.png)
 
