@@ -217,27 +217,33 @@ plot_kba_hotspot_combined <- ggplot() +
     color = NA
   ) +
 
-  # Escala discreta de colores que asigna naranja a los hot spots
-  # verdaderos y verde a los no hot spots, con etiquetas descriptivas
-  # en español para la interpretación del mapa
+  # Escala discreta de colores que asigna púrpura al sitio potencial
+  # KBA, verde a los no hot spots y naranja a los hot spots, con
+  # etiquetas descriptivas para la interpretación del mapa. El orden
+  # de la leyenda se controla con breaks para que coincida con la
+  # jerarquía visual del mapa
   scale_fill_manual(
+    breaks = c("potential_kba", "FALSE", "TRUE"),
     values = c(
-      "TRUE" = hot_spot_fill_color,
-      "FALSE" = non_hot_spot_fill_color
+      "potential_kba" = kba_fill_color,
+      "FALSE" = non_hot_spot_fill_color,
+      "TRUE" = hot_spot_fill_color
     ),
     labels = c(
-      "TRUE" = "Hot spot (z >= 1.96)",
-      "FALSE" = "No hot spot (z < 1.96)"
+      "potential_kba" = "Potential KBA",
+      "FALSE" = "No hot spot (z < 1.96)",
+      "TRUE" = "Hot spot (z >= 1.96)"
     ),
     name = "Clasificación Gi*"
   ) +
 
   # Capa del relleno púrpura del sitio potencial KBA que se dibuja sobre
   # las celdas de palangre para que el color púrpura oculte las celdas
-  # verdes dentro del área de alimentación del albatros
+  # verdes dentro del área de alimentación del albatros. El mapeo a
+  # fill con una constante genera una entrada en la leyenda para el KBA
   geom_sf(
     data = kba_union_sf,
-    fill = kba_fill_color,
+    mapping = aes(fill = "potential_kba"),
     color = NA
   ) +
 
