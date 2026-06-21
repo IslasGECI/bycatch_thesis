@@ -16,7 +16,7 @@
 # GeoPackage con una columna de conteo por celda.
 #
 # Entradas:
-# data/external/vessel_trajectories_longline.csv
+# data/processed/vessel_trajectories_longline.csv
 # data/processed/individual_kde_all.rds
 #
 # Salida:
@@ -47,7 +47,8 @@ library(sf)
 library(adehabitatHR)
 
 # Ruta del archivo CSV con las trayectorias VMS de embarcaciones
-input_vms_csv_path <- "data/external/vessel_trajectories_longline.csv"
+# palangreras filtradas por ZEE del Pacífico mexicano
+input_vms_csv_path <- "data/processed/vessel_trajectories_longline.csv"
 
 # Ruta del archivo RDS con el KDE individuales
 input_kde_rds_path <- "data/processed/individual_kde_all.rds"
@@ -138,7 +139,7 @@ n_points_count <- lengths(n_points_per_cell)
 # Agrega el conteo de puntos VMS como una nueva columna en la
 # rejilla para tener ambos datos en un solo objeto espacial
 grid_with_counts <- grid_cells |>
-  mutate(n_points_vms = n_points_count)
+  mutate(n_points_vms_longline = n_points_count)
 
 
 # ==== SALIDA ====
