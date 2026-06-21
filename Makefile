@@ -385,6 +385,12 @@ data/processed/radar_signal_in_grid.gpkg: \
 	$(checkDirectories)
 	Rscript src/export_radar_signal_in_grid.R
 
+# Aplica Getis-Ord Gi* a las sumas de señal de radar por celda
+data/processed/radar_signal_hotspot.gpkg: \
+  data/processed/radar_signal_in_grid.gpkg
+	$(checkDirectories)
+	Rscript src/compute_radar_signal_hotspot.R
+
 data/processed/gps_albatross_guadalupe_2025.csv: \
 	data/raw/gps-albatros-guadalupe.csv 
 	$(checkDirectories)
