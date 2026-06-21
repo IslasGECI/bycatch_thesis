@@ -352,6 +352,12 @@ data/processed/radar_signal_geographic_points.csv: \
 		--radar-signal-path data/raw/radar-signal-albatros-guadalupe.csv \
 		--output-path $@
 
+data/processed/radar_signal_geographic_points_in_eez.csv: \
+	data/processed/radar_signal_geographic_points.csv \
+	data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/remove_outside_eez_from_radar_signal_geographic_points.R
+
 data/processed/gps_albatross_guadalupe_2025.csv: \
 	data/raw/gps-albatros-guadalupe.csv 
 	$(checkDirectories)
