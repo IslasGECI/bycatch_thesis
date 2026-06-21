@@ -57,3 +57,5 @@ These additions improve readability and geographic interpretability for publicat
 
 ![VMS hot-spot map of fishing vessel traffic.](reports/figures/vms_hotspot_map.png)
 
+![VMS binary hot-spot classification of fishing vessel traffic.](reports/figures/vms_hotspot_binary_map.png)
+

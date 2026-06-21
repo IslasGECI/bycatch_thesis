@@ -139,6 +139,13 @@ reports/figures/vms_hotspot_map.png: \
 	$(checkDirectories)
 	Rscript src/plot_vms_hotspot.R
 
+# Grafica el mapa binario de hot spots de congestión VMS
+reports/figures/vms_hotspot_binary_map.png: \
+  data/processed/vms_hotspot.gpkg \
+  data/processed/mexico_eez_bounding_box_zoom_in.json
+	$(checkDirectories)
+	Rscript src/plot_vms_hotspot_binary.R
+
 # Cuenta puntos de palangre de GFW por celda de la rejilla del KDE
 data/processed/gfw_longline_in_grid.gpkg: \
   data/processed/longline_events_in_eez_without_gulf_of_california.csv \
