@@ -10,11 +10,13 @@
 #
 # Descripción (Qué / Cómo):
 # Lee el CSV de trayectorias VMS del Pacífico y el CSV de información de
-# embarcaciones. Filtra la tabla de embarcaciones para conservar solo
-# aquellas con palangre como arte de pesca (gear_longline == 1). Selecciona
-# la columna clave y las columnas de tipo de arte. Aplica una unión interna
-# por el identificador vessel_rnpa para conservar solo las trayectorias de
-# embarcaciones palangreras. Escribe el resultado como CSV.
+# embarcaciones. Filtra las trayectorias VMS para conservar únicamente los
+# puntos dentro de la ZEE del Pacífico mexicano (código eez == 8429).
+# Filtra la tabla de embarcaciones para conservar solo aquellas con palangre
+# como arte de pesca (gear_longline == 1). Selecciona la columna clave y las
+# columnas de tipo de arte. Aplica una unión interna por el identificador
+# vessel_rnpa para conservar solo las trayectorias de embarcaciones
+# palangreras dentro de la ZEE mexicana. Escribe el resultado como CSV.
 #
 # Entradas:
 # data/external/vessel_data_pacific.csv
@@ -27,6 +29,7 @@
 # tidyverse
 #
 # Notas:
+# - El filtro espacial por eez == 8429 conserva solo la ZEE del Pacífico mexicano
 # - El filtro previo a la unión reduce el número de filas en el join
 # - Solo se incorporan las columnas gear_longline y gear_type
 # ==========================================
@@ -84,6 +87,12 @@ vessel_info_tbl <- read_csv(
 
 # ==== PROCESAMIENTO / ANÁLISIS ====
 
+# Filtra las trayectorias VMS para conservar únicamente los puntos que
+# caen dentro de la ZEE del Pacífico mexicano (código 8429), descartando
+# los puntos en alta mar (eez == 0) o dentro de ZEE de otros países
+vessel_data_pacific_filtered_tbl <- vessel_data_pacific_tbl |>
+  filter(eez == 8429)
+
 # Filtra la tabla de embarcaciones para conservar solo aquellas cuyo arte
 # de pesca incluye palangre (gear_longline == 1), reduciendo el número de
 # filas que entran en la unión y asegurando que el resultado contenga
@@ -97,11 +106,11 @@ vessel_info_longline_tbl <- vessel_info_tbl |>
 vessel_info_selected_tbl <- vessel_info_longline_tbl |>
   select(all_of(key_column_name), all_of(gear_column_names))
 
-# Aplica una unión interna entre las trayectorias VMS y la información
-# seleccionada de embarcaciones palangreras usando el identificador
-# vessel_rnpa como clave, lo que conserva solo los puntos de embarcaciones
-# que usan palangre como arte de pesca
-vessel_trajectories_longline_tbl <- vessel_data_pacific_tbl |>
+# Aplica una unión interna entre las trayectorias VMS filtradas por ZEE
+# mexicana y la información seleccionada de embarcaciones palangreras
+# usando el identificador vessel_rnpa como clave, lo que conserva solo
+# los puntos de embarcaciones que usan palangre dentro de la ZEE mexicana
+vessel_trajectories_longline_tbl <- vessel_data_pacific_filtered_tbl |>
   inner_join(vessel_info_selected_tbl, by = key_column_name)
 
 
