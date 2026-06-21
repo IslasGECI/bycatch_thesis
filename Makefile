@@ -214,6 +214,36 @@ reports/figures/kba_and_vms_hotspot_map.png: \
 	$(checkDirectories)
 	Rscript src/plot_kba_and_vms_hotspot.R
 
+# Cuenta puntos VMS de palangre por celda de la rejilla del KDE
+data/processed/vms_longline_in_grid.gpkg: \
+  data/processed/vessel_trajectories_longline.csv \
+  data/processed/individual_kde_all.rds
+	$(checkDirectories)
+	Rscript src/export_vms_longline_in_grid.R
+
+# Aplica Getis-Ord Gi* a los conteos VMS de palangre por celda
+data/processed/vms_longline_hotspot.gpkg: \
+  data/processed/vms_longline_in_grid.gpkg
+	$(checkDirectories)
+	Rscript src/compute_vms_longline_hotspot.R
+
+# Calcula la intersección entre el sitio potencial KBA y las celdas hot spot de congestión VMS de palangre
+data/processed/kba_vms_longline_hotspot_intersection.gpkg: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/vms_longline_hotspot.gpkg
+	$(checkDirectories)
+	Rscript src/export_kba_vms_longline_hotspot_intersection.R
+
+# Grafica el mapa combinado de KBA y hot spots de congestión VMS de palangre
+reports/figures/kba_and_vms_longline_hotspot_map.png: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/vms_longline_hotspot.gpkg \
+  data/processed/kba_vms_longline_hotspot_intersection.gpkg \
+  data/processed/mexico_mpa.gpkg \
+  data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_kba_and_vms_longline_hotspot.R
+
 data/processed/kba_mpa_intersection_all.gpkg: \
 	data/processed/kba_polygons_all.gpkg \
 	data/processed/mexico_mpa.gpkg
