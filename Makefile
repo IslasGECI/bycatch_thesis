@@ -126,8 +126,8 @@ data/processed/vms_in_grid.gpkg: \
 	$(checkDirectories)
 	Rscript src/export_vms_in_grid.R
 
-# Enriquece las trayectorias VMS con las columnas de arte de pesca de las embarcaciones
-data/processed/vessel_trajectories_with_gear.csv: \
+# Filtra las trayectorias VMS para conservar solo embarcaciones palangreras
+data/processed/vessel_trajectories_longline.csv: \
   data/external/vessel_data_pacific.csv \
   data/external/vessel_info.csv
 	$(checkDirectories)
