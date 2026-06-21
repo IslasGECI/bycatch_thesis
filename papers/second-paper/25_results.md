@@ -12,4 +12,6 @@
 
 ![Overlay of the 50% potential KBA (Laysan Albatross) with GFW longline hot-spot classification.](reports/figures/kba_and_gfw_longline_hotspot_map.png)
 
+![Overlay of the 50% potential KBA (Laysan Albatross) with VMS vessel traffic hot-spot classification.](reports/figures/kba_and_vms_hotspot_map.png)
+
 \FloatBarrier

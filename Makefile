@@ -55,6 +55,7 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	reports/figures/longline_events_map.png \
 	reports/figures/gfw_longline_hotspot_binary_map_all.png \
 	reports/figures/kba_and_gfw_longline_hotspot_map.png \
+	reports/figures/kba_and_vms_hotspot_map.png \
 	reports/figures/mexico_eez_bounding_box_zoom_in.png \
 	reports/figures/mexico_eez_bounding_box_zoom_out.png \
 	reports/second_paper.md
@@ -181,6 +182,23 @@ reports/figures/kba_and_gfw_longline_hotspot_map.png: \
   data/external/Exclusive_economic_zone_Mexico.shp
 	$(checkDirectories)
 	Rscript src/plot_kba_and_gfw_longline_hotspot.R
+
+# Calcula la intersección entre el sitio potencial KBA y las celdas hot spot de congestión VMS
+data/processed/kba_vms_hotspot_intersection.gpkg: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/vms_hotspot.gpkg
+	$(checkDirectories)
+	Rscript src/export_kba_vms_hotspot_intersection.R
+
+# Grafica el mapa combinado de KBA y hot spots de congestión VMS
+reports/figures/kba_and_vms_hotspot_map.png: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/vms_hotspot.gpkg \
+  data/processed/kba_vms_hotspot_intersection.gpkg \
+  data/processed/mexico_mpa.gpkg \
+  data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_kba_and_vms_hotspot.R
 
 data/processed/kba_mpa_intersection_all.gpkg: \
 	data/processed/kba_polygons_all.gpkg \
