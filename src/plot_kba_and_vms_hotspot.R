@@ -189,25 +189,6 @@ plot_kba_hotspot_combined <- ggplot() +
     linewidth = coast_line_width
   ) +
 
-  # Capa de la ZEE de México solo con contorno (sin relleno) para definir
-  # el contexto marítimo de jurisdicción mexicana sin obstruir las capas
-  # internas
-  geom_sf(
-    data = mexico_eez_wgs84_sf,
-    fill = NA,
-    color = eez_line_color,
-    linewidth = eez_line_width
-  ) +
-
-  # Capa de las Áreas Marinas Protegidas solo con contorno verde (sin
-  # relleno) para mostrar su ubicación sin ocultar las capas subyacentes
-  geom_sf(
-    data = mexico_mpa_sf,
-    fill = NA,
-    color = mpa_line_color,
-    linewidth = mpa_line_width
-  ) +
-
   # Capa de las celdas con puntos VMS coloreadas según la clasificación
   # binaria: naranja para hot spots con agrupación significativa y verde
   # para no hot spots
@@ -254,6 +235,24 @@ plot_kba_hotspot_combined <- ggplot() +
     data = kba_vms_hotspot_intersection_sf,
     fill = intersection_fill_color,
     color = NA
+  ) +
+
+  # Capa de la ZEE de México solo con contorno (sin relleno) para definir
+  # el contexto marítimo de jurisdicción mexicana sobre las capas de datos
+  geom_sf(
+    data = mexico_eez_wgs84_sf,
+    fill = NA,
+    color = eez_line_color,
+    linewidth = eez_line_width
+  ) +
+
+  # Capa de las Áreas Marinas Protegidas solo con contorno verde (sin
+  # relleno) para mostrar su ubicación sobre las capas de datos
+  geom_sf(
+    data = mexico_mpa_sf,
+    fill = NA,
+    color = mpa_line_color,
+    linewidth = mpa_line_width
   ) +
 
   # Limita la extensión del mapa al bounding box centrado en la ZEE de
