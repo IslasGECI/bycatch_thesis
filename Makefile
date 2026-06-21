@@ -56,6 +56,7 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	reports/figures/gfw_longline_hotspot_binary_map_all.png \
 	reports/figures/kba_and_gfw_longline_hotspot_map.png \
 	reports/figures/kba_and_vms_hotspot_map.png \
+	reports/figures/radar_signal_geographic_points_in_eez.png \
 	reports/figures/mexico_eez_bounding_box_zoom_in.png \
 	reports/figures/mexico_eez_bounding_box_zoom_out.png \
 	reports/second_paper.md
@@ -339,6 +340,18 @@ reports/figures/radar_signal_geographic_points_albatross_guadalupe.png: \
 	$(checkDirectories)
 	geci-plot-cli render-radar-signal-geographic-points \
 		--radar-signal-data-path data/processed/radar_signal_geographic_points.csv \
+		--global-shapefile-data-path data/raw/division_politica_paises.shp \
+		--path-rose-wind data/raw/rosewind.png \
+		--result-map-path $@
+
+reports/figures/radar_signal_geographic_points_in_eez.png: \
+	data/processed/radar_signal_geographic_points_in_eez.csv \
+	data/raw/division_politica_paises.shp \
+	data/raw/division_politica_paises.shx \
+	data/raw/rosewind.png
+	$(checkDirectories)
+	geci-plot-cli render-radar-signal-geographic-points \
+		--radar-signal-data-path data/processed/radar_signal_geographic_points_in_eez.csv \
 		--global-shapefile-data-path data/raw/division_politica_paises.shp \
 		--path-rose-wind data/raw/rosewind.png \
 		--result-map-path $@
