@@ -1,8 +1,8 @@
 all: \
-	reports/anteproyecto.docx \
 	reports/anteproyecto.pdf \
 	reports/first_paper.docx \
 	reports/first_paper.pdf \
+	reports/obsolete_results.pdf \
 	reports/second_paper.docx \
 	reports/second_paper.pdf
 
@@ -56,6 +56,7 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	reports/figures/gfw_longline_hotspot_binary_map_all.png \
 	reports/figures/kba_and_gfw_longline_hotspot_map.png \
 	reports/figures/kba_and_vms_hotspot_map.png \
+	reports/figures/kba_and_vms_longline_hotspot_map.png \
 	reports/figures/radar_signal_geographic_points_in_eez.png \
 	reports/figures/mexico_eez_bounding_box_zoom_in.png \
 	reports/figures/mexico_eez_bounding_box_zoom_out.png \
@@ -77,7 +78,13 @@ reports/anteproyecto.docx reports/anteproyecto.pdf: \
 
 reports/obsolete_results.docx reports/obsolete_results.pdf: \
 	papers/obsolete-results/00_metadata.yaml \
-	papers/obsolete-results/obsolete-results.md
+	papers/obsolete-results/obsolete-results.md \
+	reports/figures/gfw_longline_hotspot_map_all.png \
+	reports/figures/gps_albatross_geographic_points_raw_guadalupe.png \
+	reports/figures/gps_albatross_geographic_points_raw_san_benedicto.png \
+	reports/figures/radar_signal_geographic_points_albatross_guadalupe.png \
+	reports/figures/vms_hotspot_binary_map.png \
+	reports/figures/vms_hotspot_map.png
 	$(checkDirectories)
 	pandoc --metadata-file=papers/obsolete-results/00_metadata.yaml --output=$@ papers/obsolete-results/obsolete-results.md
 
