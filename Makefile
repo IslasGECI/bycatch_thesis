@@ -126,6 +126,13 @@ data/processed/vms_in_grid.gpkg: \
 	$(checkDirectories)
 	Rscript src/export_vms_in_grid.R
 
+# Enriquece las trayectorias VMS con las columnas de arte de pesca de las embarcaciones
+data/processed/vessel_trajectories_with_gear.csv: \
+  data/external/vessel_data_pacific.csv \
+  data/external/vessel_info.csv
+	$(checkDirectories)
+	Rscript src/create_vessel_joined_longline.R
+
 # Aplica Getis-Ord Gi* a los conteos VMS por celda
 data/processed/vms_hotspot.gpkg: \
   data/processed/vms_in_grid.gpkg
