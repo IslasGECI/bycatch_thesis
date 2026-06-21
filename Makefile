@@ -378,6 +378,13 @@ data/processed/radar_signal_geographic_points_in_eez.csv: \
 	$(checkDirectories)
 	Rscript src/remove_outside_eez_from_radar_signal_geographic_points.R
 
+# Suma valores de señal de radar por celda de la rejilla del KDE
+data/processed/radar_signal_in_grid.gpkg: \
+  data/processed/radar_signal_geographic_points_in_eez.csv \
+  data/processed/individual_kde_all.rds
+	$(checkDirectories)
+	Rscript src/export_radar_signal_in_grid.R
+
 data/processed/gps_albatross_guadalupe_2025.csv: \
 	data/raw/gps-albatros-guadalupe.csv 
 	$(checkDirectories)
