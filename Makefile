@@ -252,6 +252,13 @@ reports/figures/kba_and_vms_longline_hotspot_map.png: \
 	$(checkDirectories)
 	Rscript src/plot_kba_and_vms_longline_hotspot.R
 
+# Calcula la intersección entre el sitio potencial KBA y las celdas hot spot de señal de radar
+data/processed/kba_radar_signal_hotspot_intersection.gpkg: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/radar_signal_hotspot.gpkg
+	$(checkDirectories)
+	Rscript src/export_kba_radar_signal_hotspot_intersection.R
+
 data/processed/kba_mpa_intersection_all.gpkg: \
 	data/processed/kba_polygons_all.gpkg \
 	data/processed/mexico_mpa.gpkg
