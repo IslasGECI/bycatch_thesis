@@ -57,6 +57,7 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	reports/figures/kba_and_gfw_longline_hotspot_map.png \
 	reports/figures/kba_and_vms_hotspot_map.png \
 	reports/figures/kba_and_vms_longline_hotspot_map.png \
+	reports/figures/kba_and_radar_signal_hotspot_map.png \
 	reports/figures/radar_signal_geographic_points_in_eez.png \
 	reports/figures/mexico_eez_bounding_box_zoom_in.png \
 	reports/figures/mexico_eez_bounding_box_zoom_out.png \
@@ -258,6 +259,16 @@ data/processed/kba_radar_signal_hotspot_intersection.gpkg: \
   data/processed/radar_signal_hotspot.gpkg
 	$(checkDirectories)
 	Rscript src/export_kba_radar_signal_hotspot_intersection.R
+
+# Grafica el mapa combinado de KBA y hot spots de señal de radar
+reports/figures/kba_and_radar_signal_hotspot_map.png: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/radar_signal_hotspot.gpkg \
+  data/processed/kba_radar_signal_hotspot_intersection.gpkg \
+  data/processed/mexico_mpa.gpkg \
+  data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_kba_and_radar_signal_hotspot.R
 
 data/processed/kba_mpa_intersection_all.gpkg: \
 	data/processed/kba_polygons_all.gpkg \
