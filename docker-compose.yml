@@ -6,8 +6,8 @@ services:
     image: islasgeci/bycatch_thesis:latest
     command: bash
     environment:
-      BITBUCKET_USERNAME: $BITBUCKET_USERNAME
-      BITBUCKET_PASSWORD: $BITBUCKET_PASSWORD
+      BITBUCKET_API_TOKEN: $BITBUCKET_API_TOKEN
+      BITBUCKET_EMAIL: $BITBUCKET_EMAIL
     volumes:
       - $PWD:/workdir
     depends_on:
