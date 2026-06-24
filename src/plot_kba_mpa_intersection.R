@@ -67,8 +67,7 @@ eez_line_color <- "#1E3A8A" # Color del contorno de la ZEE
 mpa_fill_color <- "#86EFAC" # Color de relleno verde claro para las Áreas Marinas Protegidas
 mpa_fill_alpha <- 0.3 # Transparencia del relleno de las AMP para ver capas subyacentes
 mpa_line_color <- "#166534" # Color del contorno verde oscuro de las AMP
-kba_polygon_border_color <- "#DC2626" # Color rojo del contorno del sitio potencial KBA
-kba_polygon_border_width <- 0.8 # Grosor del contorno rojo del KBA
+kba_fill_color <- "#8B5CF6" # Color de relleno púrpura del sitio potencial KBA
 intersection_fill_color <- "#22C55E" # Color de relleno destacado para la intersección KBA ∩ AMP
 intersection_fill_alpha <- 0.7 # Transparencia moderada para resaltar la intersección
 intersection_line_color <- "#166534" # Color del contorno de la intersección
@@ -145,14 +144,13 @@ plot_kba_mpa_intersection <- ggplot() +
     color = mpa_line_color,
     linewidth = 0.3
   ) +
-  # Capa del contorno rojo del sitio potencial KBA (sin relleno) que
-  # replica el polígono rojo de mapSite() como referencia del área de
-  # alimentación del albatros antes de la intersección con las AMP
+  # Capa del relleno púrpura del sitio potencial KBA que replica la
+  # representación del área de alimentación del albatros de manera
+  # consistente con los demás mapas de hot spots del proyecto
   geom_sf(
     data = kba_red_polygon_sf,
-    fill = NA,
-    color = kba_polygon_border_color,
-    linewidth = kba_polygon_border_width
+    fill = kba_fill_color,
+    color = NA
   ) +
   # Capa de la intersección KBA ∩ AMP con color destacado que muestra
   # la fracción del sitio potencial KBA que está bajo protección legal
