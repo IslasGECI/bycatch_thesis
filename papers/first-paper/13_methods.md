@@ -115,7 +115,7 @@ The GPS loggers were attached to the albatross individuals with Tesa tape (#4651
 
 In Guadalupe Island we used the following GPS devices: From 2014 to 2016: model GiSPy-4SB by Techno Smart (Italy).
 From 2017 to 2018: i-gotU model GT-120 by Mobile Action (Taiwan).
-From 2019 to 2023: XXX.
+From 2019 to 2023: ATS1 model Nodo-2018 by ACMOS (Mexico).
 From 2025 to 2026: GPS datalogger with accelerometer and UHF model Axy-Trek Remote by Techno Smart (Italy).
 
 In Clarion Island, from 2018 to 2022 we used the following GPS devices: i-gotU model GT-120 by Mobile Action (Taiwan).
