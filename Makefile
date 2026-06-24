@@ -276,6 +276,12 @@ data/processed/kba_mpa_intersection_all.gpkg: \
 	$(checkDirectories)
 	Rscript src/export_kba_mpa_intersection.R
 
+data/processed/kba_mpa_intersection_guadalupe.gpkg: \
+	data/processed/kba_polygons_guadalupe.gpkg \
+	data/processed/mexico_mpa.gpkg
+	$(checkDirectories)
+	Rscript src/export_kba_guadalupe_mpa_intersection.R
+
 reports/figures/gps_albatross_50_percent_potential_kba_ars_all_with_mpa.png: \
 	data/processed/kba_mpa_intersection_all.gpkg \
 	data/processed/kba_polygons_all.gpkg \
@@ -283,6 +289,14 @@ reports/figures/gps_albatross_50_percent_potential_kba_ars_all_with_mpa.png: \
 	data/external/Exclusive_economic_zone_Mexico.shp
 	$(checkDirectories)
 	Rscript src/plot_kba_mpa_intersection.R
+
+reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_with_mpa.png: \
+	data/processed/kba_mpa_intersection_guadalupe.gpkg \
+	data/processed/kba_polygons_guadalupe.gpkg \
+	data/processed/mexico_mpa.gpkg \
+	data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_kba_guadalupe_mpa_intersection.R
 
 # 4437 = 47 individuals in Clarion Island (2023) + 4390 individuals in Guadalupe Island
 data/processed/kba_polygons_all.gpkg: \
