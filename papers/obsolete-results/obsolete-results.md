@@ -59,3 +59,5 @@ These additions improve readability and geographic interpretability for publicat
 
 ![VMS binary hot-spot classification of fishing vessel traffic.](reports/figures/vms_hotspot_binary_map.png)
 
+![KBA intersection with Marine Protected Areas for the Guadalupe Island colony.](reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_with_mpa.png)
+

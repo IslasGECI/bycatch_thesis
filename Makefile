@@ -57,6 +57,9 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	reports/figures/kba_and_gfw_longline_hotspot_map.png \
 	reports/figures/kba_and_vms_hotspot_map.png \
 	reports/figures/kba_and_vms_longline_hotspot_map.png \
+	reports/figures/kba_and_vms_trawler_hotspot_map.png \
+	reports/figures/kba_and_vms_purse_seine_hotspot_map.png \
+	reports/figures/kba_and_vms_other_hotspot_map.png \
 	reports/figures/kba_and_radar_signal_hotspot_map.png \
 	reports/figures/radar_signal_geographic_points_in_eez.png \
 	reports/figures/mexico_eez_bounding_box_zoom_in.png \
@@ -84,6 +87,7 @@ reports/obsolete_results.docx reports/obsolete_results.pdf: \
 	reports/figures/gps_albatross_geographic_points_raw_guadalupe.png \
 	reports/figures/gps_albatross_geographic_points_raw_san_benedicto.png \
 	reports/figures/radar_signal_geographic_points_albatross_guadalupe.png \
+	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_with_mpa.png \
 	reports/figures/vms_hotspot_binary_map.png \
 	reports/figures/vms_hotspot_map.png
 	$(checkDirectories)
