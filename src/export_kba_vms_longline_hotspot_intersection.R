@@ -118,4 +118,4 @@ kba_longline_hotspot_intersection_sf <- st_intersection(kba_union_sf, hotspot_ce
 # Escribe la intersección KBA ∩ hot spot VMS de palangre como
 # GeoPackage para que el script de graficado pueda leerla sin
 # recalcular la operación espacial
-st_write(kba_longline_hotspot_intersection_sf, output_intersection_path, quiet = TRUE)
+st_write(kba_longline_hotspot_intersection_sf, output_intersection_path, delete_dsn = TRUE, quiet = TRUE)

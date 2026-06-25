@@ -144,8 +144,7 @@ data/processed/vms_in_grid.gpkg: \
 
 # Filtra las trayectorias VMS para conservar solo embarcaciones palangreras
 data/processed/vessel_trajectories_longline.csv: \
-  data/external/vessel_data_pacific.csv \
-  data/external/vessel_info.csv
+  data/processed/vessel_trajectories.csv
 	$(checkDirectories)
 	Rscript src/create_vessel_joined_longline.R
 
