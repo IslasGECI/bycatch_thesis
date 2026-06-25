@@ -128,9 +128,16 @@ data/processed/kba_polygons_guadalupe.gpkg: \
 		--population-size 4390 \
 		--output-path $@
 
+# Filtra las trayectorias VMS para conservar puntos dentro de la ZEE mexicana
+data/processed/vessel_trajectories.csv: \
+  data/external/vessel_data_pacific.csv \
+  data/external/vessel_info.csv
+	$(checkDirectories)
+	Rscript src/create_vessel_joined.R
+
 # Cuenta puntos VMS por celda de la rejilla del KDE
 data/processed/vms_in_grid.gpkg: \
-  data/external/vessel_data_pacific.csv \
+  data/processed/vessel_trajectories.csv \
   data/processed/individual_kde_all.rds
 	$(checkDirectories)
 	Rscript src/export_vms_in_grid.R

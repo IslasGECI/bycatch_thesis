@@ -47,7 +47,7 @@ library(sf)
 library(adehabitatHR)
 
 # Ruta del archivo CSV con las trayectorias VMS de embarcaciones
-input_vms_csv_path <- "data/external/vessel_data_pacific.csv"
+input_vms_csv_path <- "data/processed/vessel_trajectories.csv"
 
 # Ruta del archivo RDS con el KDE individuales
 input_kde_rds_path <- "data/processed/individual_kde_all.rds"
