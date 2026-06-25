@@ -1,5 +1,6 @@
-personal_ws-1.1 en 59 utf-8
+personal_ws-1.1 en 61 utf-8
 accelerometer
+acmos
 adehabitatlt
 anp
 anps
@@ -41,6 +42,7 @@ longline
 mpa
 mpas
 neq
+nodo
 Niña
 niño
 of
