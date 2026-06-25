@@ -1,25 +1,25 @@
 # ==========================================
-# Título: Calcula Getis-Ord Gi* sobre conteos VMS de palangre por celda
+# Título: Calcula Getis-Ord Gi* sobre conteos VMS por celda
 #
 # Contexto (Por qué):
-# Los puntos VMS de palangre por celda indican congestión de
-# embarcaciones palangreras, pero no toda celda con alto conteo
-# es un hot spot significativo. El estadístico Getis-Ord Gi*
-# identifica celdas con alta congestión rodeadas de otras celdas
-# con alta congestión.
+# Los puntos VMS por celda indican congestión de embarcaciones,
+# pero no toda celda con alto conteo es un hot spot significativo.
+# El estadístico Getis-Ord Gi* identifica celdas con alta
+# congestión rodeadas de otras celdas con alta congestión.
 #
 # Descripción (Qué / Cómo):
-# Lee el GeoPackage con los conteos de puntos VMS de palangre
-# por celda. Construye una matriz de vecindad Queen entre celdas
-# usando spdep. Calcula el estadístico Gi* (z-score) para cada
-# celda y su p-valor asociado. Escribe la rejilla con los
-# z-scores y p-valores como GeoPackage.
+# Recibe el nombre del arte de pesca como argumento (longline,
+# trawler, purse_seine, other). Lee el GeoPackage con los conteos
+# de puntos VMS de ese arte por celda. Construye una matriz de
+# vecindad Queen entre celdas usando spdep. Calcula el estadístico
+# Gi* (z-score) para cada celda y su p-valor asociado. Escribe la
+# rejilla con los z-scores y p-valores como GeoPackage.
 #
 # Entradas:
-# data/processed/vms_longline_in_grid.gpkg
+# data/processed/vms_{gear}_in_grid.gpkg
 #
 # Salida:
-# data/processed/vms_longline_hotspot.gpkg
+# data/processed/vms_{gear}_hotspot.gpkg
 #
 # Dependencias:
 # sf
@@ -46,16 +46,22 @@ library(sf)
 # cálculo del estadístico Getis-Ord Gi*
 library(spdep)
 
-# Ruta del GeoPackage con los conteos de puntos VMS de palangre
-# por celda de la rejilla del KDE
-input_gpkg_path <- "data/processed/vms_longline_in_grid.gpkg"
+# Lee el nombre del arte de pesca desde el primer argumento de la línea
+# de comandos (por ejemplo, "trawler", "purse_seine", "other") para
+# construir las rutas de los archivos de entrada y salida
+gear <- commandArgs(trailingOnly = TRUE)[1]
+
+# Ruta del GeoPackage con los conteos de puntos VMS del arte
+# de pesca especificado por celda de la rejilla del KDE
+input_gpkg_path <- paste0("data/processed/vms_", gear, "_in_grid.gpkg")
 
 # Ruta del GeoPackage de salida con los z-scores de Getis-Ord Gi*
-output_gpkg_path <- "data/processed/vms_longline_hotspot.gpkg"
+output_gpkg_path <- paste0("data/processed/vms_", gear, "_hotspot.gpkg")
 
-# Nombre de la columna que contiene el conteo de puntos VMS de
-# palangre por celda sobre la cual se calculará el estadístico Gi*
-column_name_vms_count <- "n_points_vms_longline"
+# Nombre de la columna que contiene el conteo de puntos VMS del
+# arte de pesca especificado por celda, sobre la cual se calculará
+# el estadístico Gi*
+column_name_vms_count <- paste0("n_points_vms_", gear)
 
 # Tipo de vecindad espacial para la matriz de pesos: TRUE usa
 # Queen contiguity (compartir borde o esquina entre celdas)
@@ -64,8 +70,8 @@ is_queen_contiguity <- TRUE
 
 # ==== ENTRADAS ====
 
-# Importa la rejilla con los conteos de puntos VMS de palangre
-# desde el GeoPackage generado por src/export_vms_longline_in_grid.R
+# Importa la rejilla con los conteos de puntos VMS desde el
+# GeoPackage generado por src/export_vms_by_gear_in_grid.R
 grid_with_counts <- st_read(input_gpkg_path, quiet = TRUE)
 
 
@@ -88,8 +94,8 @@ spatial_weights <- nb2listw(
   zero.policy = TRUE
 )
 
-# Extrae el vector de conteos de puntos VMS de palangre de la
-# rejilla para usarlo como variable de atributo en el estadístico Gi*
+# Extrae el vector de conteos de puntos VMS de la rejilla para
+# usarlo como variable de atributo en el estadístico Gi*
 vms_count_values <- grid_with_counts[[column_name_vms_count]]
 
 # Calcula el estadístico Getis-Ord Gi* para cada celda usando
@@ -144,5 +150,4 @@ grid_with_hotspots <- grid_with_counts |>
 # Escribe el GeoPackage con la rejilla, los conteos originales,
 # los z-scores de Getis-Ord Gi* y los p-valores para su uso en
 # la identificación de hot spots de congestión de embarcaciones
-# palangreras
 st_write(grid_with_hotspots, output_gpkg_path, delete_dsn = TRUE)

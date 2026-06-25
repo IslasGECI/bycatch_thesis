@@ -142,11 +142,26 @@ data/processed/vms_in_grid.gpkg: \
 	$(checkDirectories)
 	Rscript src/export_vms_in_grid.R
 
-# Filtra las trayectorias VMS para conservar solo embarcaciones palangreras
+# Filtra las trayectorias VMS por tipo de arte de pesca
 data/processed/vessel_trajectories_longline.csv: \
   data/processed/vessel_trajectories.csv
 	$(checkDirectories)
-	Rscript src/create_vessel_joined_longline.R
+	Rscript src/create_vessel_joined_by_gear.R longline
+
+data/processed/vessel_trajectories_trawler.csv: \
+  data/processed/vessel_trajectories.csv
+	$(checkDirectories)
+	Rscript src/create_vessel_joined_by_gear.R trawler
+
+data/processed/vessel_trajectories_purse_seine.csv: \
+  data/processed/vessel_trajectories.csv
+	$(checkDirectories)
+	Rscript src/create_vessel_joined_by_gear.R purse_seine
+
+data/processed/vessel_trajectories_other.csv: \
+  data/processed/vessel_trajectories.csv
+	$(checkDirectories)
+	Rscript src/create_vessel_joined_by_gear.R other
 
 # Aplica Getis-Ord Gi* a los conteos VMS por celda
 data/processed/vms_hotspot.gpkg: \
@@ -229,27 +244,78 @@ reports/figures/kba_and_vms_hotspot_map.png: \
 	$(checkDirectories)
 	Rscript src/plot_kba_and_vms_hotspot.R
 
-# Cuenta puntos VMS de palangre por celda de la rejilla del KDE
+# Cuenta puntos VMS por celda de la rejilla del KDE, por tipo de arte de pesca
 data/processed/vms_longline_in_grid.gpkg: \
   data/processed/vessel_trajectories_longline.csv \
   data/processed/individual_kde_all.rds
 	$(checkDirectories)
-	Rscript src/export_vms_longline_in_grid.R
+	Rscript src/export_vms_by_gear_in_grid.R longline
 
-# Aplica Getis-Ord Gi* a los conteos VMS de palangre por celda
+data/processed/vms_trawler_in_grid.gpkg: \
+  data/processed/vessel_trajectories_trawler.csv \
+  data/processed/individual_kde_all.rds
+	$(checkDirectories)
+	Rscript src/export_vms_by_gear_in_grid.R trawler
+
+data/processed/vms_purse_seine_in_grid.gpkg: \
+  data/processed/vessel_trajectories_purse_seine.csv \
+  data/processed/individual_kde_all.rds
+	$(checkDirectories)
+	Rscript src/export_vms_by_gear_in_grid.R purse_seine
+
+data/processed/vms_other_in_grid.gpkg: \
+  data/processed/vessel_trajectories_other.csv \
+  data/processed/individual_kde_all.rds
+	$(checkDirectories)
+	Rscript src/export_vms_by_gear_in_grid.R other
+
+# Aplica Getis-Ord Gi* a los conteos VMS por celda, por tipo de arte de pesca
 data/processed/vms_longline_hotspot.gpkg: \
   data/processed/vms_longline_in_grid.gpkg
 	$(checkDirectories)
-	Rscript src/compute_vms_longline_hotspot.R
+	Rscript src/compute_vms_by_gear_hotspot.R longline
 
-# Calcula la intersección entre el sitio potencial KBA y las celdas hot spot de congestión VMS de palangre
+data/processed/vms_trawler_hotspot.gpkg: \
+  data/processed/vms_trawler_in_grid.gpkg
+	$(checkDirectories)
+	Rscript src/compute_vms_by_gear_hotspot.R trawler
+
+data/processed/vms_purse_seine_hotspot.gpkg: \
+  data/processed/vms_purse_seine_in_grid.gpkg
+	$(checkDirectories)
+	Rscript src/compute_vms_by_gear_hotspot.R purse_seine
+
+data/processed/vms_other_hotspot.gpkg: \
+  data/processed/vms_other_in_grid.gpkg
+	$(checkDirectories)
+	Rscript src/compute_vms_by_gear_hotspot.R other
+
+# Calcula la intersección entre el sitio potencial KBA y las celdas hot spot de congestión VMS, por tipo de arte de pesca
 data/processed/kba_vms_longline_hotspot_intersection.gpkg: \
   data/processed/kba_polygons_all.gpkg \
   data/processed/vms_longline_hotspot.gpkg
 	$(checkDirectories)
-	Rscript src/export_kba_vms_longline_hotspot_intersection.R
+	Rscript src/export_kba_vms_by_gear_hotspot_intersection.R longline
 
-# Grafica el mapa combinado de KBA y hot spots de congestión VMS de palangre
+data/processed/kba_vms_trawler_hotspot_intersection.gpkg: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/vms_trawler_hotspot.gpkg
+	$(checkDirectories)
+	Rscript src/export_kba_vms_by_gear_hotspot_intersection.R trawler
+
+data/processed/kba_vms_purse_seine_hotspot_intersection.gpkg: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/vms_purse_seine_hotspot.gpkg
+	$(checkDirectories)
+	Rscript src/export_kba_vms_by_gear_hotspot_intersection.R purse_seine
+
+data/processed/kba_vms_other_hotspot_intersection.gpkg: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/vms_other_hotspot.gpkg
+	$(checkDirectories)
+	Rscript src/export_kba_vms_by_gear_hotspot_intersection.R other
+
+# Grafica el mapa combinado de KBA y hot spots de congestión VMS, por tipo de arte de pesca
 reports/figures/kba_and_vms_longline_hotspot_map.png: \
   data/processed/kba_polygons_all.gpkg \
   data/processed/vms_longline_hotspot.gpkg \
@@ -257,7 +323,34 @@ reports/figures/kba_and_vms_longline_hotspot_map.png: \
   data/processed/mexico_mpa.gpkg \
   data/external/Exclusive_economic_zone_Mexico.shp
 	$(checkDirectories)
-	Rscript src/plot_kba_and_vms_longline_hotspot.R
+	Rscript src/plot_kba_and_vms_by_gear_hotspot.R longline
+
+reports/figures/kba_and_vms_trawler_hotspot_map.png: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/vms_trawler_hotspot.gpkg \
+  data/processed/kba_vms_trawler_hotspot_intersection.gpkg \
+  data/processed/mexico_mpa.gpkg \
+  data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_kba_and_vms_by_gear_hotspot.R trawler
+
+reports/figures/kba_and_vms_purse_seine_hotspot_map.png: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/vms_purse_seine_hotspot.gpkg \
+  data/processed/kba_vms_purse_seine_hotspot_intersection.gpkg \
+  data/processed/mexico_mpa.gpkg \
+  data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_kba_and_vms_by_gear_hotspot.R purse_seine
+
+reports/figures/kba_and_vms_other_hotspot_map.png: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/vms_other_hotspot.gpkg \
+  data/processed/kba_vms_other_hotspot_intersection.gpkg \
+  data/processed/mexico_mpa.gpkg \
+  data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_kba_and_vms_by_gear_hotspot.R other
 
 # Calcula la intersección entre el sitio potencial KBA y las celdas hot spot de señal de radar
 data/processed/kba_radar_signal_hotspot_intersection.gpkg: \

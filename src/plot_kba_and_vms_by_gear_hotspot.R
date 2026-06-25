@@ -1,32 +1,33 @@
 # ==========================================
-# Título: Grafica el mapa combinado del sitio potencial KBA con los hot spots de congestión VMS de palangre
+# Título: Grafica el mapa combinado del sitio potencial KBA con los hot spots de congestión VMS
 #
 # Contexto (Por qué):
 # El polígono del KBA (potentialSite = TRUE) delimita la zona de
 # alimentación relevante del albatros de Laysan. Las celdas hot
-# spot de congestión VMS de palangre indican zonas con agrupación
-# significativa de tráfico de embarcaciones palangreras. El mapa
-# combinado superpone ambas capas para visualizar la congestión
-# de palangre dentro del área de alimentación del albatros.
+# spot de congestión VMS indican zonas con agrupación significativa
+# de tráfico de embarcaciones. El mapa combinado superpone ambas
+# capas para visualizar la congestión dentro del área de
+# alimentación del albatros.
 #
 # Descripción (Qué / Cómo):
-# Lee los polígonos KBA, las celdas hot spot VMS de palangre, la
-# intersección KBA ∩ hot spot VMS de palangre, las AMP, la ZEE y
-# la costa. Filtra el KBA a potentialSite = TRUE. Construye un
-# mapa con ggplot2 que superpone las celdas hot spot, el relleno
-# púrpura del KBA, el relleno rojo de la intersección, la ZEE,
-# las AMP y la costa. Usa el bounding box hardcodeado de la
-# región del Pacífico mexicano como extensión.
+# Recibe el nombre del arte de pesca como argumento (longline,
+# trawler, purse_seine, other). Lee los polígonos KBA, las celdas
+# hot spot VMS, la intersección KBA ∩ hot spot, las AMP, la ZEE y
+# la costa. Filtra el KBA a potentialSite = TRUE. Construye un mapa
+# con ggplot2 que superpone las celdas hot spot, el relleno púrpura
+# del KBA, el relleno rojo de la intersección, la ZEE, las AMP y la
+# costa. Usa el bounding box hardcodeado de la región del Pacífico
+# mexicano como extensión.
 #
 # Entradas:
 # data/processed/kba_polygons_all.gpkg
-# data/processed/vms_longline_hotspot.gpkg
-# data/processed/kba_vms_longline_hotspot_intersection.gpkg
+# data/processed/vms_{gear}_hotspot.gpkg
+# data/processed/kba_vms_{gear}_hotspot_intersection.gpkg
 # data/processed/mexico_mpa.gpkg
 # data/external/Exclusive_economic_zone_Mexico.shp
 #
 # Salida:
-# reports/figures/kba_and_vms_longline_hotspot_map.png
+# reports/figures/kba_and_vms_{gear}_hotspot_map.png
 #
 # Dependencias:
 # rnaturalearth
@@ -59,17 +60,33 @@ library(sf)
 library(tidyverse)
 # Proporciona ggplot2 para graficar y dplyr para filtrar y agrupar
 
+# Lee el nombre del arte de pesca desde el primer argumento de la línea
+# de comandos (por ejemplo, "trawler", "purse_seine", "other") para
+# construir las rutas de los archivos de entrada y salida
+gear <- commandArgs(trailingOnly = TRUE)[1]
+
+# Nombre legible del arte de pesca para insertar en el título del mapa,
+# usando un vector con nombre como diccionario de traducción
+gear_display <- c(
+  "longline" = "Longline",
+  "trawler" = "Trawler",
+  "purse_seine" = "Purse Seine",
+  "other" = "Other"
+)[gear]
+
 # Ruta del GeoPackage con los polígonos KBA originales para extraer el
 # contorno del sitio potencial (potentialSite = TRUE)
 input_kba_path <- "data/processed/kba_polygons_all.gpkg"
 
 # Ruta del GeoPackage con los z-scores de Getis-Ord Gi* para los puntos
-# VMS de palangre en la rejilla del KDE
-input_hotspot_path <- "data/processed/vms_longline_hotspot.gpkg"
+# VMS del arte de pesca especificado en la rejilla del KDE
+input_hotspot_path <- paste0("data/processed/vms_", gear, "_hotspot.gpkg")
 
-# Ruta del GeoPackage con la intersección KBA ∩ hot spot VMS de palangre
-# para resaltar las celdas con congestión significativa dentro del KBA
-input_intersection_path <- "data/processed/kba_vms_longline_hotspot_intersection.gpkg"
+# Ruta del GeoPackage con la intersección KBA ∩ hot spot VMS para
+# resaltar las celdas con congestión significativa dentro del KBA
+input_intersection_path <- paste0(
+  "data/processed/kba_vms_", gear, "_hotspot_intersection.gpkg"
+)
 
 # Ruta del GeoPackage con las Áreas Marinas Protegidas de México
 input_mpa_path <- "data/processed/mexico_mpa.gpkg"
@@ -78,8 +95,14 @@ input_mpa_path <- "data/processed/mexico_mpa.gpkg"
 input_eez_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
 
 # Ruta del archivo PNG que almacenará el mapa combinado de KBA y hot spots
-# de congestión VMS de palangre en el Pacífico mexicano
-output_figure_path <- "reports/figures/kba_and_vms_longline_hotspot_map.png"
+# de congestión VMS del arte de pesca especificado
+output_figure_path <- paste0(
+  "reports/figures/kba_and_vms_", gear, "_hotspot_map.png"
+)
+
+# Nombre de la columna de conteo de puntos VMS del arte de pesca
+# especificado, usada para filtrar celdas sin puntos
+n_points_column <- paste0("n_points_vms_", gear)
 
 # Escala de la línea de costa mundial para el fondo del mapa
 coastline_scale <- "medium"
@@ -119,12 +142,12 @@ fig_dpi <- 300
 kba_polygons_sf <- st_read(input_kba_path, quiet = TRUE)
 
 # Importa la rejilla con los z-scores de Getis-Ord Gi* desde el GeoPackage
-# generado por src/compute_vms_longline_hotspot.R
-longline_hotspot_sf <- st_read(input_hotspot_path, quiet = TRUE)
+# generado por src/compute_vms_by_gear_hotspot.R
+vms_hotspot_sf <- st_read(input_hotspot_path, quiet = TRUE)
 
-# Importa la intersección KBA ∩ hot spot VMS de palangre desde el GeoPackage
-# generado por src/export_kba_vms_longline_hotspot_intersection.R
-kba_longline_hotspot_intersection_sf <- st_read(input_intersection_path, quiet = TRUE)
+# Importa la intersección KBA ∩ hot spot VMS desde el GeoPackage generado
+# por src/export_kba_vms_by_gear_hotspot_intersection.R
+kba_hotspot_intersection_sf <- st_read(input_intersection_path, quiet = TRUE)
 
 # Importa las Áreas Marinas Protegidas de México como contexto de las
 # zonas marinas protegidas existentes
@@ -154,10 +177,10 @@ kba_union_sf <- kba_polygons_sf |>
   summarise()
 
 # Filtra la rejilla para conservar solo las celdas con al menos un punto
-# VMS de palangre para evitar saturar la visualización con las celdas
-# vacías que no aportan información sobre congestión de palangre
-grid_nonzero_sf <- longline_hotspot_sf |>
-  filter(n_points_vms_longline > 0) |>
+# VMS para evitar saturar la visualización con las celdas vacías que no
+# aportan información sobre congestión de embarcaciones
+grid_nonzero_sf <- vms_hotspot_sf |>
+  filter(.data[[n_points_column]] > 0) |>
   mutate(
     # Clasifica cada celda como hot spot o no hot spot según el umbral de
     # z-score >= 1.96 que corresponde a un nivel de significancia del 95%
@@ -172,15 +195,14 @@ mexico_eez_wgs84_sf <- mexico_eez_sf |>
 
 # Define los límites del mapa centrados en el Pacífico de la península de
 # Baja California para mostrar la intersección KBA con los hot spots de
-# congestión VMS de palangre en la región de la ZEE de México
+# congestión VMS en la región de la ZEE de México
 bbox_lon_min <- -125
 bbox_lon_max <- -105
 bbox_lat_min <- 15
 bbox_lat_max <- 35
 
 # Construye el mapa temático con seis capas espaciales que muestran la
-# relación entre el sitio potencial KBA y los hot spots de congestión
-# VMS de palangre
+# relación entre el sitio potencial KBA y los hot spots de congestión VMS
 plot_kba_hotspot_combined <- ggplot() +
 
   # Capa base de costa mundial como referencia geográfica regional para
@@ -192,9 +214,9 @@ plot_kba_hotspot_combined <- ggplot() +
     linewidth = coast_line_width
   ) +
 
-  # Capa de las celdas con puntos VMS de palangre coloreadas según la
-  # clasificación binaria: naranja para hot spots con agrupación
-  # significativa y verde para no hot spots
+  # Capa de las celdas con puntos VMS coloreadas según la clasificación
+  # binaria: naranja para hot spots con agrupación significativa y verde
+  # para no hot spots
   geom_sf(
     data = grid_nonzero_sf,
     mapping = aes(fill = is_hot_spot),
@@ -222,21 +244,20 @@ plot_kba_hotspot_combined <- ggplot() +
   ) +
 
   # Capa del relleno púrpura del sitio potencial KBA que se dibuja sobre
-  # las celdas VMS de palangre para que el color púrpura oculte las celdas
-  # verdes dentro del área de alimentación del albatros. El mapeo a fill
-  # con una constante genera una entrada en la leyenda para el KBA
+  # las celdas VMS para que el color púrpura oculte las celdas verdes
+  # dentro del área de alimentación del albatros. El mapeo a fill con una
+  # constante genera una entrada en la leyenda para el KBA
   geom_sf(
     data = kba_union_sf,
     mapping = aes(fill = "potential_kba"),
     color = NA
   ) +
 
-  # Capa de la intersección KBA ∩ hot spot VMS de palangre con relleno
-  # rojo que se dibuja sobre el KBA para resaltar las celdas con
-  # congestión significativa de palangre dentro del área de alimentación
-  # del albatros
+  # Capa de la intersección KBA ∩ hot spot VMS con relleno rojo que se
+  # dibuja sobre el KBA para resaltar las celdas con congestión
+  # significativa dentro del área de alimentación del albatros
   geom_sf(
-    data = kba_longline_hotspot_intersection_sf,
+    data = kba_hotspot_intersection_sf,
     fill = intersection_fill_color,
     color = NA
   ) +
@@ -271,9 +292,10 @@ plot_kba_hotspot_combined <- ggplot() +
   theme_minimal() +
 
   # Etiquetas del mapa en inglés para integrarse al reporte del segundo
-  # artículo del proyecto sobre riesgo de captura incidental
+  # artículo del proyecto sobre riesgo de captura incidental, con el
+  # nombre del arte de pesca insertado dinámicamente en el título
   labs(
-    title = "Potential KBA with VMS Longline Hotspots",
+    title = paste("Potential KBA with VMS", gear_display, "Hotspots"),
     subtitle = "Laysan Albatross — Guadalupe, Clarion and San Benedicto islands",
     x = "Longitude",
     y = "Latitude"

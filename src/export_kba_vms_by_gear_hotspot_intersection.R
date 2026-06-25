@@ -1,30 +1,31 @@
 # ==========================================
-# Título: Calcula la intersección entre el sitio potencial KBA y las celdas hot spot de congestión VMS de palangre
+# Título: Calcula la intersección entre el sitio potencial KBA y las celdas hot spot de congestión VMS
 #
 # Contexto (Por qué):
 # El polígono del KBA (potentialSite = TRUE) delimita la zona de
 # alimentación relevante del albatros de Laysan. Las celdas hot
-# spot de congestión VMS de palangre (z-score >= 1.96) indican
-# agrupación significativa de tráfico de embarcaciones palangreras.
-# Su intersección revela las celdas con congestión significativa
-# de palangre dentro del área de alimentación del albatros.
+# spot de congestión VMS (z-score >= 1.96) indican agrupación
+# significativa de tráfico de embarcaciones. Su intersección
+# revela las celdas con congestión significativa dentro del área
+# de alimentación del albatros.
 #
 # Descripción (Qué / Cómo):
-# Lee los polígonos KBA y las celdas con z-scores de Getis-Ord
-# Gi* para los puntos VMS de palangre. Filtra el KBA a
-# potentialSite = TRUE. Filtra las celdas a aquellas con z-score
-# >= 1.96 y al menos un punto VMS de palangre. Transforma las
-# celdas del CRS proyectado del KDE a WGS84 para que coincida
-# con el CRS del KBA. Calcula la intersección espacial entre el
-# polígono KBA fusionado y las celdas hot spot. Escribe el
-# resultado como GeoPackage.
+# Recibe el nombre del arte de pesca como argumento (longline,
+# trawler, purse_seine, other). Lee los polígonos KBA y las
+# celdas con z-scores de Getis-Ord Gi* para los puntos VMS de
+# ese arte. Filtra el KBA a potentialSite = TRUE. Filtra las
+# celdas a aquellas con z-score >= 1.96 y al menos un punto VMS.
+# Transforma las celdas del CRS proyectado del KDE a WGS84 para
+# que coincida con el CRS del KBA. Calcula la intersección
+# espacial entre el polígono KBA fusionado y las celdas hot spot.
+# Escribe el resultado como GeoPackage.
 #
 # Entradas:
 # data/processed/kba_polygons_all.gpkg
-# data/processed/vms_longline_hotspot.gpkg
+# data/processed/vms_{gear}_hotspot.gpkg
 #
 # Salida:
-# data/processed/kba_vms_longline_hotspot_intersection.gpkg
+# data/processed/kba_vms_{gear}_hotspot_intersection.gpkg
 #
 # Dependencias:
 # sf
@@ -48,17 +49,28 @@ library(sf)
 library(tidyverse)
 # Proporciona dplyr para filtrar filas con filter() y summarise()
 
+# Lee el nombre del arte de pesca desde el primer argumento de la línea
+# de comandos (por ejemplo, "trawler", "purse_seine", "other") para
+# construir las rutas de los archivos de entrada y salida
+gear <- commandArgs(trailingOnly = TRUE)[1]
+
 # Ruta del GeoPackage con los polígonos KBA originales para
 # extraer el contorno del sitio potencial (potentialSite = TRUE)
 input_kba_path <- "data/processed/kba_polygons_all.gpkg"
 
 # Ruta del GeoPackage con los z-scores de Getis-Ord Gi* para
-# los puntos VMS de palangre en la rejilla del KDE
-input_hotspot_path <- "data/processed/vms_longline_hotspot.gpkg"
+# los puntos VMS del arte de pesca especificado en la rejilla
+input_hotspot_path <- paste0("data/processed/vms_", gear, "_hotspot.gpkg")
 
 # Ruta del GeoPackage que almacenará la intersección entre el
-# polígono KBA y las celdas hot spot de congestión VMS de palangre
-output_intersection_path <- "data/processed/kba_vms_longline_hotspot_intersection.gpkg"
+# polígono KBA y las celdas hot spot de congestión VMS
+output_intersection_path <- paste0(
+  "data/processed/kba_vms_", gear, "_hotspot_intersection.gpkg"
+)
+
+# Nombre de la columna de conteo de puntos VMS del arte de pesca
+# especificado, usada para filtrar celdas sin puntos
+n_points_column <- paste0("n_points_vms_", gear)
 
 # Umbral de z-score para identificar hot spots significativos
 # 1.96 corresponde a p < 0.05 en una prueba bilateral
@@ -73,8 +85,8 @@ hot_spot_z_threshold <- 1.96
 kba_polygons_sf <- st_read(input_kba_path, quiet = TRUE)
 
 # Importa la rejilla con los z-scores de Getis-Ord Gi* desde el
-# GeoPackage generado por src/compute_vms_longline_hotspot.R
-longline_hotspot_sf <- st_read(input_hotspot_path, quiet = TRUE)
+# GeoPackage generado por src/compute_vms_by_gear_hotspot.R
+vms_hotspot_sf <- st_read(input_hotspot_path, quiet = TRUE)
 
 
 # ==== PROCESAMIENTO / ANÁLISIS ====
@@ -95,11 +107,11 @@ kba_union_sf <- kba_polygons_sf |>
   summarise()
 
 # Filtra la rejilla para conservar solo las celdas con al menos
-# un punto VMS de palangre y con z-score >= 1.96, que corresponden
-# a las celdas clasificadas como hot spot significativo de
-# congestión de embarcaciones palangreras
-hotspot_cells_sf <- longline_hotspot_sf |>
-  filter(n_points_vms_longline > 0) |>
+# un punto VMS del arte de pesca especificado y con z-score
+# >= 1.96, que corresponden a las celdas clasificadas como hot
+# spot significativo de congestión de embarcaciones
+hotspot_cells_sf <- vms_hotspot_sf |>
+  filter(.data[[n_points_column]] > 0) |>
   filter(gi_star_z_score >= hot_spot_z_threshold) |>
   # Transforma las celdas del CRS proyectado del KDE a coordenadas
   # geográficas WGS84 (EPSG:4326) para que coincida con el sistema
@@ -109,13 +121,13 @@ hotspot_cells_sf <- longline_hotspot_sf |>
 # Calcula la intersección espacial entre el polígono KBA fusionado
 # y las celdas hot spot para obtener la porción del área de
 # alimentación del albatros que coincide con congestión
-# significativa de embarcaciones palangreras
-kba_longline_hotspot_intersection_sf <- st_intersection(kba_union_sf, hotspot_cells_sf)
+# significativa de embarcaciones
+kba_hotspot_intersection_sf <- st_intersection(kba_union_sf, hotspot_cells_sf)
 
 
 # ==== SALIDA ====
 
-# Escribe la intersección KBA ∩ hot spot VMS de palangre como
-# GeoPackage para que el script de graficado pueda leerla sin
-# recalcular la operación espacial
-st_write(kba_longline_hotspot_intersection_sf, output_intersection_path, delete_dsn = TRUE, quiet = TRUE)
+# Escribe la intersección KBA ∩ hot spot VMS como GeoPackage para
+# que el script de graficado pueda leerla sin recalcular la
+# operación espacial
+st_write(kba_hotspot_intersection_sf, output_intersection_path, delete_dsn = TRUE, quiet = TRUE)

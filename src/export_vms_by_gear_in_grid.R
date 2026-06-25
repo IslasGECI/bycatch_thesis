@@ -8,19 +8,21 @@
 # proporciona esa partición.
 #
 # Descripción (Qué / Cómo):
-# Extrae la rejilla vacía del estUDm guardado en el RDS del
-# KDE individual. Convierte cada píxel de la rejilla a un
-# polígono usando el paquete sp. Lee los puntos VMS, los
-# reproyecta al CRS de la rejilla y cuenta cuántos puntos
-# caen dentro de cada celda. Escribe el resultado como
-# GeoPackage con una columna de conteo por celda.
+# Recibe el nombre del arte de pesca como argumento (longline,
+# trawler, purse_seine, other). Lee el CSV de trayectorias VMS
+# filtradas por ese arte. Extrae la rejilla vacía del estUDm
+# guardado en el RDS del KDE individual. Convierte cada píxel
+# de la rejilla a un polígono usando el paquete sp. Lee los
+# puntos VMS, los reproyecta al CRS de la rejilla y cuenta
+# cuántos puntos caen dentro de cada celda. Escribe el resultado
+# como GeoPackage con una columna de conteo por celda.
 #
 # Entradas:
-# data/processed/vessel_trajectories_longline.csv
+# data/processed/vessel_trajectories_{gear}.csv
 # data/processed/individual_kde_all.rds
 #
 # Salida:
-# data/processed/vms_longline_in_grid.gpkg
+# data/processed/vms_{gear}_in_grid.gpkg
 #
 # Dependencias:
 # adehabitatHR
@@ -30,7 +32,7 @@
 # Notas:
 # - La rejilla se hereda del KDE individual de 95 albatros
 # - Cada punto VMS cuenta como una observación sin ponderar
-# - Los punto VMS fuera de la extensión de la rejilla se ignoran
+# - Los puntos VMS fuera de la extensión de la rejilla se ignoran
 # ==========================================
 
 
@@ -46,15 +48,22 @@ library(sf)
 # Adjunta adehabitatHR para extraer la rejilla del estUDm
 library(adehabitatHR)
 
-# Ruta del archivo CSV con las trayectorias VMS de embarcaciones
-# palangreras filtradas por ZEE del Pacífico mexicano
-input_vms_csv_path <- "data/processed/vessel_trajectories_longline.csv"
+# Lee el nombre del arte de pesca desde el primer argumento de la línea
+# de comandos (por ejemplo, "trawler", "purse_seine", "other") para
+# construir las rutas de los archivos de entrada y salida
+gear <- commandArgs(trailingOnly = TRUE)[1]
+
+# Ruta del archivo CSV con las trayectorias VMS de embarcaciones del
+# arte de pesca especificado, filtradas por ZEE del Pacífico mexicano
+input_vms_csv_path <- paste0(
+  "data/processed/vessel_trajectories_", gear, ".csv"
+)
 
 # Ruta del archivo RDS con el KDE individuales
 input_kde_rds_path <- "data/processed/individual_kde_all.rds"
 
 # Ruta del archivo GeoPackage de salida con los conteos por celda
-output_gpkg_path <- "data/processed/vms_longline_in_grid.gpkg"
+output_gpkg_path <- paste0("data/processed/vms_", gear, "_in_grid.gpkg")
 
 # CRS geográfico WGS84 en el que están los puntos VMS crudos
 crs_vms_wgs84 <- 4326
@@ -62,6 +71,10 @@ crs_vms_wgs84 <- 4326
 # Vector con los nombres de las columnas del CSV que necesitamos
 # para evitar leer todo el archivo y reducir el consumo de memoria
 selected_columns <- c("lat", "lon", "seg_id", "datetime")
+
+# Nombre de la columna de conteo que se agregará a la rejilla,
+# construido a partir del arte de pesca (ej. n_points_vms_trawler)
+n_points_column <- paste0("n_points_vms_", gear)
 
 
 # ==== ENTRADAS ====
@@ -137,9 +150,10 @@ n_points_per_cell <- st_intersects(grid_cells, vms_points_projected)
 n_points_count <- lengths(n_points_per_cell)
 
 # Agrega el conteo de puntos VMS como una nueva columna en la
-# rejilla para tener ambos datos en un solo objeto espacial
+# rejilla usando el nombre dinámico construido a partir del arte
+# de pesca, para tener ambos datos en un solo objeto espacial
 grid_with_counts <- grid_cells |>
-  mutate(n_points_vms_longline = n_points_count)
+  mutate(!!n_points_column := n_points_count)
 
 
 # ==== SALIDA ====
