@@ -476,6 +476,14 @@ data/processed/ud_in_grid.gpkg: \
 	$(checkDirectories)
 	Rscript src/export_ud_in_grid.R
 
+# Producto normalizado de solapamiento de albatros con presencia de palangre
+data/processed/ud_vms_longline_udoi.gpkg: \
+  src/export_ud_vms_longline_udoi.R \
+  data/processed/ud_in_grid.gpkg \
+  data/processed/vms_longline_hotspot.gpkg
+	$(checkDirectories)
+	Rscript src/export_ud_vms_longline_udoi.R
+
 # Visualiza el conteo continuo de individuos (N_IND) por celda de la rejilla KDE
 reports/figures/ud_in_grid_map.png: \
   src/plot_ud_in_grid.R \
