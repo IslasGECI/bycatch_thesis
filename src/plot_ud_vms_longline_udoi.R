@@ -9,14 +9,16 @@
 #
 # Descripción (Qué / Cómo):
 # Lee el GeoPackage con el producto normalizado UDOI por celda de la
-# rejilla KDE generado por export_ud_vms_longline_udoi.R. Lee la costa
-# mundial, la ZEE de México y las áreas marinas protegidas como contexto
-# geográfico. Filtra las celdas sin coincidencia albatros-pesca para
-# evitar saturar el mapa. mapea UDOI con la paleta inferno. Construye
-# el mapa con ggplot2 y lo exporta como PNG.
+# rejilla KDE generado por export_ud_vms_longline_udoi.R. Lee el JSON
+# con el valor del índice UDOI. Lee la costa mundial, la ZEE de México
+# y las áreas marinas protegidas como contexto geográfico. Filtra las
+# celdas sin coincidencia albatros-pesca para evitar saturar el mapa.
+# Mapea UDOI con la paleta inferno. Construye el mapa con ggplot2 y lo
+# exporta como PNG.
 #
 # Entradas:
 # data/processed/ud_vms_longline_udoi.gpkg
+# data/processed/udoi.json
 # data/processed/mexico_mpa.gpkg
 # data/external/Exclusive_economic_zone_Mexico.shp
 #
@@ -28,12 +30,14 @@
 # rnaturalearthdata
 # sf
 # tidyverse
+# jsonlite
 #
 # Notas:
 # - Solo 1833 celdas tienen udoi_value mayor que cero
 # - El bounding box hardcodeado cubre el Pacífico de la península de
 #   Baja California donde se ubican las colonias de albatros
 # - La ZEE se transforma de CEA a WGS84 para compatibilidad espacial
+# - El título incluye el UDOI desde data/processed/udoi.json
 # ==========================================
 
 
@@ -55,6 +59,10 @@ library(tidyverse)
 # Proporciona ggplot2 para construir el mapa y dplyr para filtrar
 # las celdas de la rejilla sin coincidencia albatros-pesca
 
+library(jsonlite)
+# Proporciona fromJSON para leer el valor del índice UDOI desde el
+# archivo JSON generado por src/compute_udoi.R
+
 # Ruta del GeoPackage con el índice conjunto UDOI por celda generado
 # por export_ud_vms_longline_udoi.R como medida de riesgo conjunto
 input_udoi_gpkg_path <- "data/processed/ud_vms_longline_udoi.gpkg"
@@ -66,6 +74,10 @@ input_mpa_path <- "data/processed/mexico_mpa.gpkg"
 # Ruta del shapefile de la Zona Económica Exclusiva de México para
 # delimitar la jurisdicción marítima mexicana en el mapa
 input_eez_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
+
+# Ruta del archivo JSON con las estadísticas del índice UDOI generado
+# por src/compute_udoi.R para mostrar el valor calculado en el título
+input_udoi_json_path <- "data/processed/udoi.json"
 
 # Ruta del archivo PNG que almacenará el mapa del índice UDOI por
 # celda en la rejilla KDE para el reporte del segundo artículo
@@ -126,6 +138,10 @@ mexico_eez_sf <- st_read(input_eez_shapefile_path, quiet = TRUE)
 # usarlos como fondo de costa en el mapa de la región de estudio
 world_coastline_sf <- ne_countries(scale = coastline_scale, returnclass = "sf")
 
+# Importa las estadísticas del índice UDOI desde el archivo JSON para
+# extraer el valor calculado del índice de solapamiento conjunto
+udoi_stats <- fromJSON(input_udoi_json_path)
+
 
 # ==== PROCESAMIENTO / ANÁLISIS ====
 
@@ -140,6 +156,16 @@ udoi_positive_sf <- udoi_grid_sf |>
 # la costa, las AMP y el bounding box hardcodeado del mapa
 mexico_eez_wgs84_sf <- mexico_eez_sf |>
   st_transform(target_crs)
+
+# Extrae el valor del índice UDOI desde las estadísticas importadas
+# y lo redondea a entero para mostrarlo como porcentaje en el título
+udoi_percentage <- round(udoi_stats$udoi * 100)
+
+# Construye el título del mapa con el valor calculado del UDOI como
+# porcentaje redondeado para informar al lector del índice conjunto
+udoi_title <- paste0(
+  "Albatross-longline overlap index (UDOI = ", udoi_percentage, "%)"
+)
 
 # Desactiva la validación S2 para evitar errores por geometrías
 # inválidas durante el graficado con geom_sf cuando el paquete s2
@@ -221,10 +247,10 @@ plot_udoi_grid <- ggplot() +
   # las capas espaciales del mapa sin distracciones visuales
   theme_minimal() +
 
-  # Etiquetas del mapa en inglés para integrarse al reporte del
-  # segundo artículo del proyecto sobre riesgo de captura incidental
+  # Etiquetas del mapa en inglés con el valor calculado del índice
+  # UDOI en el título para informar al lector del solapamiento conjunto
   labs(
-    title = "Joint albatross-longline index (UDOI)",
+    title = udoi_title,
     subtitle = "Laysan Albatross — Guadalupe, Clarion and San Benedicto islands",
     x = "Longitude",
     y = "Latitude"
