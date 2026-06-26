@@ -101,6 +101,10 @@ mask_value_zero_fill_color <- "#C8D8D0"
 # ZEE o dentro del Golfo de California, distinguible del relleno
 # gris neutro de la costa
 
+# Índice de la capa del shapefile que corresponde a la ZEE del
+# Pacífico mexicano fuera del Golfo de California (capa 2)
+pacific_eez_shp_layer <- 2
+
 # Grosor de las líneas en las capas del mapa
 coast_line_width <- 0.2
 eez_line_width <- 0.3
@@ -120,8 +124,9 @@ fig_dpi <- 300
 eez_mask_grid_sf <- st_read(input_mask_gpkg_path, quiet = TRUE)
 
 # Importa el shapefile de la Zona Económica Exclusiva de México
-# para dibujar su contorno como referencia geográfica de la
-# jurisdicción marítima mexicana
+# con todas sus capas (Golfo de California y Pacífico) para
+# después seleccionar únicamente la del Pacífico mexicano y
+# dibujar su contorno como referencia geográfica
 mexico_eez_sf <- st_read(input_eez_shapefile_path, quiet = TRUE)
 
 # Importa las Áreas Marinas Protegidas de México desde el
@@ -136,10 +141,16 @@ world_coastline_sf <- ne_countries(scale = coastline_scale, returnclass = "sf")
 
 # ==== PROCESAMIENTO / ANÁLISIS ====
 
-# Transforma la ZEE del CRS original del shapefile a coordenadas
-# geográficas WGS84 para que coincida con el sistema de referencia
-# de las demás capas y con los límites del bounding box
-mexico_eez_wgs84_sf <- mexico_eez_sf |>
+# Selecciona únicamente la segunda capa del shapefile que
+# corresponde a la ZEE del Pacífico mexicano fuera del Golfo
+# de California, descartando la primera capa del Golfo
+mexico_eez_pacific_sf <- mexico_eez_sf[pacific_eez_shp_layer, ]
+
+# Transforma la ZEE del Pacífico del CRS original del shapefile
+# a coordenadas geográficas WGS84 para que coincida con el sistema
+# de referencia de las demás capas y con los límites del bounding
+# box
+mexico_eez_wgs84_sf <- mexico_eez_pacific_sf |>
   st_transform(target_crs)
 
 # Convierte la columna numérica in_eez_outside_gulf a caracter
@@ -192,6 +203,15 @@ plot_eez_mask <- ggplot() +
       "1" = mask_value_one_fill_color
     ),
     guide = "none"
+  ) +
+
+  # Capa base de costa mundial como referencia geográfica
+  # regional para ubicar visualmente la extensión del mapa
+  geom_sf(
+    data = world_coastline_sf,
+    fill = coast_fill_color,
+    color = coast_line_color,
+    linewidth = coast_line_width
   ) +
 
   # Capa del contorno de la ZEE de México sin relleno para
