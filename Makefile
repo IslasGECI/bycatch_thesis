@@ -12,16 +12,13 @@ reports/first_paper.docx reports/first_paper.pdf: \
 	data/processed/individual_kde_guadalupe.rds \
 	data/processed/trips_summary_guadalupe.csv \
 	papers/first-paper/10_metadata.yaml \
+	reports/figures/gps_albatross_50_percent_individual_kde_ars_all.png \
 	reports/figures/gps_albatross_50_percent_potential_kba_ars_all_with_mpa.png \
-	reports/figures/gps_albatross_geographic_points_raw_clarion.png \
-	reports/figures/gps_albatross_geographic_points_raw_all.png \
-	reports/figures/mexico_eez.png \
-	reports/figures/mexico_eez_bounding_box_zoom_in.png \
+	reports/figures/gps_albatross_50_percent_potential_kba_ars_all_without_mpa.png \
+	reports/figures/gps_albatross_50_percent_representative_assessment_ars_all.png \
+	reports/figures/gps_albatross_geographic_points_by_trip_all.png \
 	reports/figures/mexico_eez_bounding_box_zoom_out.png \
-	reports/figures/mexico_map.png \
 	reports/figures/mexico_mpa.png \
-	reports/figures/mexico_naturalearth.png \
-	reports/figures/mexico_naturalearth_pro.png \
 	reports/figures/mexico_pna.png \
 	reports/first_paper.md
 	$(checkDirectories)
@@ -48,9 +45,7 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	data/processed/trips_summary_clarion.csv \
 	data/processed/trips_summary_guadalupe.csv \
 	papers/second-paper/20_metadata.yaml \
-	reports/figures/gps_albatross_50_percent_individual_kde_ars_all.png \
 	reports/figures/gps_albatross_50_percent_potential_kba_ars_all_without_mpa.png \
-	reports/figures/gps_albatross_50_percent_representative_assessment_ars_all.png \
 	reports/figures/gps_albatross_geographic_points_by_trip_all.png \
 	reports/figures/longline_events_map.png \
 	reports/figures/gfw_longline_hotspot_binary_map_all.png \
@@ -62,7 +57,6 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	reports/figures/kba_and_vms_other_hotspot_map.png \
 	reports/figures/kba_and_radar_signal_hotspot_map.png \
 	reports/figures/radar_signal_geographic_points_in_eez.png \
-	reports/figures/mexico_eez_bounding_box_zoom_in.png \
 	reports/figures/mexico_eez_bounding_box_zoom_out.png \
 	reports/second_paper.md
 	$(checkDirectories)
@@ -84,10 +78,17 @@ reports/obsolete_results.docx reports/obsolete_results.pdf: \
 	papers/obsolete-results/00_metadata.yaml \
 	papers/obsolete-results/obsolete-results.md \
 	reports/figures/gfw_longline_hotspot_map_all.png \
+	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_with_mpa.png \
+	reports/figures/gps_albatross_geographic_points_raw_all.png \
+	reports/figures/gps_albatross_geographic_points_raw_clarion.png \
 	reports/figures/gps_albatross_geographic_points_raw_guadalupe.png \
 	reports/figures/gps_albatross_geographic_points_raw_san_benedicto.png \
+	reports/figures/mexico_eez.png \
+	reports/figures/mexico_eez_bounding_box_zoom_in.png \
+	reports/figures/mexico_map.png \
+	reports/figures/mexico_naturalearth.png \
+	reports/figures/mexico_naturalearth_pro.png \
 	reports/figures/radar_signal_geographic_points_albatross_guadalupe.png \
-	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_with_mpa.png \
 	reports/figures/vms_hotspot_binary_map.png \
 	reports/figures/vms_hotspot_map.png \
 	reports/figures/eez_mask_in_grid.png

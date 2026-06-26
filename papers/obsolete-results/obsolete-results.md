@@ -61,3 +61,5 @@ These additions improve readability and geographic interpretability for publicat
 
 ![KBA intersection with Marine Protected Areas for the Guadalupe Island colony.](reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_with_mpa.png)
 
+![EEZ mask grid — Gulf of California excluded. Gray cells are outside the Pacific EEZ or inside the Gulf of California; blue cells are inside the Pacific EEZ and outside the Gulf.](reports/figures/eez_mask_in_grid.png)
+
