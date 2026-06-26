@@ -469,6 +469,13 @@ reports/figures/gps_albatross_50_percent_representative_assessment_ars_all.png: 
 		--rds-path data/processed/representative_assessment_all.rds \
 		--output-path $@
 
+# Cuenta el solapamiento de áreas de distribución individuales (N_IND) por celda
+data/processed/ud_in_grid.gpkg: \
+  src/export_ud_in_grid.R \
+  data/processed/representative_assessment_all.rds
+	$(checkDirectories)
+	Rscript src/export_ud_in_grid.R
+
 reports/figures/gps_albatross_50_percent_individual_kde_ars_all.png: \
 	data/processed/individual_kde_all.rds
 	$(checkDirectories)
