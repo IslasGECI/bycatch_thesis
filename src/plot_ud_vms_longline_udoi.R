@@ -18,7 +18,7 @@
 #
 # Entradas:
 # data/processed/ud_vms_longline_udoi.gpkg
-# data/processed/udoi.json
+# data/processed/longline_udoi.json
 # data/processed/mexico_mpa.gpkg
 # data/external/Exclusive_economic_zone_Mexico.shp
 #
@@ -37,7 +37,7 @@
 # - El bounding box hardcodeado cubre el Pacífico de la península de
 #   Baja California donde se ubican las colonias de albatros
 # - La ZEE se transforma de CEA a WGS84 para compatibilidad espacial
-# - El título incluye el UDOI desde data/processed/udoi.json
+# - El título incluye el UDOI desde data/processed/longline_udoi.json
 # ==========================================
 
 
@@ -77,7 +77,7 @@ input_eez_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
 
 # Ruta del archivo JSON con las estadísticas del índice UDOI generado
 # por src/compute_udoi.R para mostrar el valor calculado en el título
-input_udoi_json_path <- "data/processed/udoi.json"
+input_udoi_json_path <- "data/processed/longline_udoi.json"
 
 # Ruta del archivo PNG que almacenará el mapa del índice UDOI por
 # celda en la rejilla KDE para el reporte del segundo artículo

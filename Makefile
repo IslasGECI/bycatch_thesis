@@ -487,7 +487,7 @@ data/processed/ud_vms_longline_udoi.gpkg: \
 	Rscript src/export_ud_vms_longline_udoi.R
 
 # Calcula el índice UDOI a partir del producto normalizado de solapamiento
-data/processed/udoi.json: \
+data/processed/longline_udoi.json: \
   src/compute_udoi.R \
   data/processed/ud_vms_longline_udoi.gpkg
 	$(checkDirectories)
@@ -497,7 +497,7 @@ data/processed/udoi.json: \
 reports/figures/ud_vms_longline_udoi_map.png: \
   src/plot_ud_vms_longline_udoi.R \
   data/processed/ud_vms_longline_udoi.gpkg \
-  data/processed/udoi.json \
+  data/processed/longline_udoi.json \
   data/processed/mexico_mpa.gpkg \
   data/external/Exclusive_economic_zone_Mexico.shp
 	$(checkDirectories)

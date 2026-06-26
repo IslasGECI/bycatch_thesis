@@ -20,7 +20,7 @@
 # data/processed/ud_vms_longline_udoi.gpkg
 #
 # Salida:
-# data/processed/udoi.json
+# data/processed/longline_udoi.json
 #
 # Dependencias:
 # sf
@@ -49,7 +49,7 @@ input_gpkg_path <- "data/processed/ud_vms_longline_udoi.gpkg"
 
 # Ruta del archivo JSON de salida con las estadisticas del indice
 # UDOI para su uso en reportes y analisis de solapamiento conjunto
-output_json_path <- "data/processed/udoi.json"
+output_json_path <- "data/processed/longline_udoi.json"
 
 # Nombre de la columna en el GeoPackage que contiene el producto
 # de las distribuciones normalizadas por celda (udoi_value)

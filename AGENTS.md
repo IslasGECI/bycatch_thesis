@@ -54,7 +54,7 @@ Continuous albatross utilization distribution (UD) surface and joint index with 
 2. `src/export_ud_vms_longline_udoi.R` — normalizes N_IND and VMS longline counts, applies EEZ mask, computes product per cell
 3. `src/compute_udoi.R` — reads the product grid, calculates UDOI = n_overlap × Σ(product) as a single statistic, writes JSON
 4. `src/plot_ud_vms_longline_udoi.R` — maps the joint index on EEZ + coastline + MPA context, reads UDOI value from JSON for dynamic title
-Outputs: `data/processed/ud_in_grid.gpkg`, `data/processed/ud_vms_longline_udoi.gpkg`, `data/processed/udoi.json`, `reports/figures/ud_vms_longline_udoi_map.png`.
+Outputs: `data/processed/ud_in_grid.gpkg`, `data/processed/ud_vms_longline_udoi.gpkg`, `data/processed/longline_udoi.json`, `reports/figures/ud_vms_longline_udoi_map.png`.
 
 ### GFW longline hot-spot pipeline
 Parallel to the VMS pipeline, a GFW longline hot-spot analysis exists:
