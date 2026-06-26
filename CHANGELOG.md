@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.3.0] - 2026-06-26
+
 ### Added
 
 - Albatross utilization distribution (UD) overlap pipeline: continuous N_IND surface via `track2KBA::findSite()`, joint albatross-longline index (UDOI), and UDOI computation script
@@ -105,6 +107,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Clarion individual KDE PNG target (unreferenced in any paper, function removed)
 
-[Unreleased]: https://github.com/IslasGECI/bycatch_thesis/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/IslasGECI/bycatch_thesis/compare/v0.3.0...HEAD
+[v0.3.0]: https://github.com/IslasGECI/bycatch_thesis/compare/v0.2.0...v0.3.0
 [v0.2.0]: https://github.com/IslasGECI/bycatch_thesis/releases/tag/v0.2.0
 [v0.1.0]: https://github.com/IslasGECI/bycatch_thesis/releases/tag/v0.1.0
