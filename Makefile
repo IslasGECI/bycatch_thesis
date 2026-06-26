@@ -89,7 +89,8 @@ reports/obsolete_results.docx reports/obsolete_results.pdf: \
 	reports/figures/radar_signal_geographic_points_albatross_guadalupe.png \
 	reports/figures/gps_albatross_50_percent_potential_kba_ars_guadalupe_with_mpa.png \
 	reports/figures/vms_hotspot_binary_map.png \
-	reports/figures/vms_hotspot_map.png
+	reports/figures/vms_hotspot_map.png \
+	reports/figures/eez_mask_in_grid.png
 	$(checkDirectories)
 	pandoc --metadata-file=papers/obsolete-results/00_metadata.yaml --output=$@ papers/obsolete-results/obsolete-results.md
 
@@ -527,6 +528,14 @@ data/processed/eez_mask_in_grid.gpkg: \
   data/raw/gulf_of_california.kml
 	$(checkDirectories)
 	Rscript src/export_eez_mask_in_grid.R
+
+# Grafica la máscara binaria de ZEE del Pacífico mexicano sobre la rejilla del KDE
+reports/figures/eez_mask_in_grid.png: \
+  data/processed/eez_mask_in_grid.gpkg \
+  data/external/Exclusive_economic_zone_Mexico.shp \
+  data/processed/mexico_mpa.gpkg
+	$(checkDirectories)
+	Rscript src/plot_eez_mask_in_grid.R
 
 # Aplica Getis-Ord Gi* a las sumas de señal de radar por celda
 data/processed/radar_signal_hotspot.gpkg: \
