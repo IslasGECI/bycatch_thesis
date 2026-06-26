@@ -520,6 +520,14 @@ data/processed/radar_signal_in_grid.gpkg: \
 	$(checkDirectories)
 	Rscript src/export_radar_signal_in_grid.R
 
+# Clasifica celdas de la rejilla del KDE dentro y fuera de la ZEE del Pacífico mexicano
+data/processed/eez_mask_in_grid.gpkg: \
+  data/processed/individual_kde_all.rds \
+  data/external/Exclusive_economic_zone_Mexico.shp \
+  data/raw/gulf_of_california.kml
+	$(checkDirectories)
+	Rscript src/export_eez_mask_in_grid.R
+
 # Aplica Getis-Ord Gi* a las sumas de señal de radar por celda
 data/processed/radar_signal_hotspot.gpkg: \
   data/processed/radar_signal_in_grid.gpkg
