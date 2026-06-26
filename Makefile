@@ -480,7 +480,8 @@ data/processed/ud_in_grid.gpkg: \
 data/processed/ud_vms_longline_udoi.gpkg: \
   src/export_ud_vms_longline_udoi.R \
   data/processed/ud_in_grid.gpkg \
-  data/processed/vms_longline_hotspot.gpkg
+  data/processed/vms_longline_hotspot.gpkg \
+  data/processed/eez_mask_in_grid.gpkg
 	$(checkDirectories)
 	Rscript src/export_ud_vms_longline_udoi.R
 
