@@ -57,6 +57,7 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	reports/figures/kba_and_vms_other_hotspot_map.png \
 	reports/figures/kba_and_radar_signal_hotspot_map.png \
 	reports/figures/radar_signal_geographic_points_in_eez.png \
+	reports/figures/ud_vms_longline_udoi_map.png \
 	reports/figures/mexico_eez_bounding_box_zoom_out.png \
 	reports/second_paper.md
 	$(checkDirectories)
@@ -484,6 +485,13 @@ data/processed/ud_vms_longline_udoi.gpkg: \
   data/processed/eez_mask_in_grid.gpkg
 	$(checkDirectories)
 	Rscript src/export_ud_vms_longline_udoi.R
+
+# Calcula el índice UDOI a partir del producto normalizado de solapamiento
+data/processed/udoi.json: \
+  src/compute_udoi.R \
+  data/processed/ud_vms_longline_udoi.gpkg
+	$(checkDirectories)
+	Rscript src/compute_udoi.R
 
 # Visualiza el índice conjunto albatros-palangre (UDOI) por celda de la rejilla KDE
 reports/figures/ud_vms_longline_udoi_map.png: \

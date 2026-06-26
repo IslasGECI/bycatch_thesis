@@ -26,4 +26,6 @@
 
 ![Radar signal geographic points of Laysan albatrosses from Guadalupe Island within the Mexican Pacific EEZ.](reports/figures/radar_signal_geographic_points_in_eez.png)
 
+![Joint albatross-longline index (UDOI) per KDE grid cell within the Mexican Pacific EEZ.](reports/figures/ud_vms_longline_udoi_map.png)
+
 \FloatBarrier
