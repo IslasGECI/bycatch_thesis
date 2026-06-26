@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Albatross utilization distribution (UD) overlap pipeline: continuous N_IND surface via `track2KBA::findSite()`, joint albatross-longline index (UDOI), and UDOI computation script
+- EEZ mask grid (`data/processed/eez_mask_in_grid.gpkg`) for filtering KDE cells inside Pacific Mexico EEZ
+- `src/export_ud_in_grid.R` — exports N_IND count per KDE grid cell from representative assessment
+- `src/export_ud_vms_longline_udoi.R` — computes the sum-normalized product of N_IND and VMS longline counts per cell, masked to EEZ
+- `src/compute_udoi.R` — calculates the Utilization Distribution Overlap Index (UDOI) from the joint probability grid and writes statistics to JSON
+- `src/plot_ud_vms_longline_udoi.R` — maps the joint index with coastline, EEZ, and MPA context; reads UDOI value from JSON for dynamic title
+- `data/processed/udoi.json` — computed UDOI statistics with full precision
+- `reports/figures/ud_vms_longline_udoi_map.png` — joint albatross-longline index map
+- EEZ mask applied to UDOI computation: both inputs zeroed outside Pacific Mexico EEZ before normalization
+- All new figures and JSON registered as Makefile prerequisites for the second paper PDF
 - GFW longline hot-spot analysis pipeline: long-format event reshaping, grid counting, Getis-Ord Gi* computation, continuous and binary hot-spot maps
 - Binary hot-spot classification map (`gfw_longline_hotspot_binary_map_all.png`) for GFW longline fishing events
 - Obsolete-results archive (`papers/obsolete-results/`) with build target `reports/obsolete_results.pdf`
@@ -22,6 +32,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Raw GPS points figure moved from active supplementary to obsolete-results archive
 - Duplicate figures between first and second papers removed from the second paper
 - Obsolete figure descriptions moved from supplementary to archive
+- UDOI computation now masks inputs by EEZ before normalization, making the index conditional on the Pacific Mexico EEZ
+- UDOI map title dynamically reads the computed UDOI percentage from JSON instead of hardcoding
 
 ### Removed
 

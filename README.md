@@ -21,5 +21,4 @@ You need access credentials to download the seabird GPS tracking data. Contact t
 
 ## Coming soon
 
-- Bycatch risk maps from vessel monitoring system (VMS) data
 - Behavioural classification of foraging versus transit events
