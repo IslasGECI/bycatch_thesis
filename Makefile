@@ -476,6 +476,15 @@ data/processed/ud_in_grid.gpkg: \
 	$(checkDirectories)
 	Rscript src/export_ud_in_grid.R
 
+# Visualiza el conteo continuo de individuos (N_IND) por celda de la rejilla KDE
+reports/figures/ud_in_grid_map.png: \
+  src/plot_ud_in_grid.R \
+  data/processed/ud_in_grid.gpkg \
+  data/processed/mexico_mpa.gpkg \
+  data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_ud_in_grid.R
+
 reports/figures/gps_albatross_50_percent_individual_kde_ars_all.png: \
 	data/processed/individual_kde_all.rds
 	$(checkDirectories)
