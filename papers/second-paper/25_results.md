@@ -28,4 +28,6 @@
 
 ![Joint albatross-longline index (UDOI) per KDE grid cell within the Mexican Pacific EEZ.](reports/figures/ud_vms_longline_udoi_map.png)
 
+![Joint albatross-trawler index (UDOI) per KDE grid cell within the Mexican Pacific EEZ.](reports/figures/ud_vms_trawler_udoi_map.png)
+
 \FloatBarrier

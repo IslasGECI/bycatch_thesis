@@ -7,6 +7,8 @@
 
 ![50% representative assessment derived using the ARS method from Laysan Albatross tracking data (2014–2026 seasons) for the Guadalupe, Clarion and San Benedicto island colonies.](reports/figures/gps_albatross_50_percent_representative_assessment_ars_all.png)
 
+![Continuous individual count (N_IND) per KDE grid cell from the three Laysan Albatross colonies.](reports/figures/ud_in_grid_map.png)
+
 ![50% potential KBA for the Guadalupe, Clarion and San Benedicto island colonies without the MPA overlay.](reports/figures/gps_albatross_50_percent_potential_kba_ars_all_without_mpa.png)
 
 ![50% potential KBA for the Guadalupe, Clarion and San Benedicto island colonies with the MPA overlay.](reports/figures/gps_albatross_50_percent_potential_kba_ars_all_with_mpa.png)

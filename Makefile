@@ -16,6 +16,7 @@ reports/first_paper.docx reports/first_paper.pdf: \
 	reports/figures/gps_albatross_50_percent_potential_kba_ars_all_with_mpa.png \
 	reports/figures/gps_albatross_50_percent_potential_kba_ars_all_without_mpa.png \
 	reports/figures/gps_albatross_50_percent_representative_assessment_ars_all.png \
+	reports/figures/ud_in_grid_map.png \
 	reports/figures/gps_albatross_geographic_points_by_trip_all.png \
 	reports/figures/mexico_eez_bounding_box_zoom_out.png \
 	reports/figures/mexico_mpa.png \
@@ -58,6 +59,7 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	reports/figures/kba_and_radar_signal_hotspot_map.png \
 	reports/figures/radar_signal_geographic_points_in_eez.png \
 	reports/figures/ud_vms_longline_udoi_map.png \
+	reports/figures/ud_vms_trawler_udoi_map.png \
 	reports/figures/mexico_eez_bounding_box_zoom_out.png \
 	reports/second_paper.md
 	$(checkDirectories)
