@@ -60,8 +60,8 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	reports/figures/radar_signal_geographic_points_in_eez.png \
 	reports/figures/ud_vms_longline_udoi_map.png \
 	reports/figures/ud_vms_trawler_udoi_map.png \
-	reports/figures/ud_vms_longline_trawler_udoi_map.png \
-	reports/figures/ud_vms_longline_trawler_classification_map.png \
+	reports/figures/ud_vms_all_gear_udoi_map.png \
+	reports/figures/ud_vms_all_gear_classification_map.png \
 	reports/figures/mexico_eez_bounding_box_zoom_out.png \
 	reports/second_paper.md
 	$(checkDirectories)
@@ -500,21 +500,21 @@ data/processed/ud_vms_trawler_udoi.gpkg: \
 	Rscript src/export_ud_vms_trawler_udoi.R
 
 # Producto normalizado de solapamiento de albatros con presencia de palangre y arrastre
-data/processed/ud_vms_longline_trawler_udoi.gpkg: \
-  src/export_ud_vms_longline_trawler_udoi.R \
+data/processed/ud_vms_all_gear_udoi.gpkg: \
+  src/export_ud_vms_all_gear_udoi.R \
   data/processed/ud_in_grid.gpkg \
   data/processed/vms_longline_hotspot.gpkg \
   data/processed/vms_trawler_hotspot.gpkg \
   data/processed/eez_mask_in_grid.gpkg
 	$(checkDirectories)
-	Rscript src/export_ud_vms_longline_trawler_udoi.R
+	Rscript src/export_ud_vms_all_gear_udoi.R
 
 # Calcula el índice UDOI de solapamiento albatros-palangre-arrastre
-data/processed/longline_trawler_udoi.json: \
-  src/compute_longline_trawler_udoi.R \
-  data/processed/ud_vms_longline_trawler_udoi.gpkg
+data/processed/all_gear_udoi.json: \
+  src/compute_all_gear_udoi.R \
+  data/processed/ud_vms_all_gear_udoi.gpkg
 	$(checkDirectories)
-	Rscript src/compute_longline_trawler_udoi.R
+	Rscript src/compute_all_gear_udoi.R
 
 # Calcula el índice UDOI a partir del producto normalizado de solapamiento
 data/processed/longline_udoi.json: \
@@ -551,30 +551,30 @@ reports/figures/ud_vms_trawler_udoi_map.png: \
 	Rscript src/plot_ud_vms_trawler_udoi.R
 
 # Visualiza el índice conjunto albatros-palangre-arrastre (UDOI) por celda de la rejilla KDE
-reports/figures/ud_vms_longline_trawler_udoi_map.png: \
-  src/plot_ud_vms_longline_trawler_udoi.R \
-  data/processed/ud_vms_longline_trawler_udoi.gpkg \
-  data/processed/longline_trawler_udoi.json \
+reports/figures/ud_vms_all_gear_udoi_map.png: \
+  src/plot_ud_vms_all_gear_udoi.R \
+  data/processed/ud_vms_all_gear_udoi.gpkg \
+  data/processed/all_gear_udoi.json \
   data/processed/mexico_mpa.gpkg \
   data/external/Exclusive_economic_zone_Mexico.shp
 	$(checkDirectories)
-	Rscript src/plot_ud_vms_longline_trawler_udoi.R
+	Rscript src/plot_ud_vms_all_gear_udoi.R
 
 # Clasifica el índice UDOI combinado en categorías por cuartiles
-data/processed/ud_vms_longline_trawler_class.gpkg: \
-  src/export_ud_vms_longline_trawler_class.R \
-  data/processed/ud_vms_longline_trawler_udoi.gpkg
+data/processed/ud_vms_all_gear_class.gpkg: \
+  src/export_ud_vms_all_gear_class.R \
+  data/processed/ud_vms_all_gear_udoi.gpkg
 	$(checkDirectories)
-	Rscript src/export_ud_vms_longline_trawler_class.R
+	Rscript src/export_ud_vms_all_gear_class.R
 
 # Visualiza la clasificación por cuartiles del índice UDOI combinado
-reports/figures/ud_vms_longline_trawler_classification_map.png: \
-  src/plot_ud_vms_longline_trawler_classification.R \
-  data/processed/ud_vms_longline_trawler_class.gpkg \
+reports/figures/ud_vms_all_gear_classification_map.png: \
+  src/plot_ud_vms_all_gear_classification.R \
+  data/processed/ud_vms_all_gear_class.gpkg \
   data/processed/mexico_mpa.gpkg \
   data/external/Exclusive_economic_zone_Mexico.shp
 	$(checkDirectories)
-	Rscript src/plot_ud_vms_longline_trawler_classification.R
+	Rscript src/plot_ud_vms_all_gear_classification.R
 
 # Visualiza el conteo continuo de individuos (N_IND) por celda de la rejilla KDE
 reports/figures/ud_in_grid_map.png: \

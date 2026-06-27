@@ -2,7 +2,7 @@
 # Título: Calcula el índice UDOI de solapamiento albatros-palangre-arrastre
 #
 # Contexto (Por qué):
-# La rejilla ud_vms_longline_trawler_udoi.gpkg contiene el producto de
+# La rejilla ud_vms_all_gear_udoi.gpkg contiene el producto de
 # las masas de probabilidad normalizadas de albatros con la suma de
 # palangre y arrastre por celda. El índice UDOI (Utilization
 # Distribution Overlap Index) sintetiza en un solo número el
@@ -18,10 +18,10 @@
 # como JSON.
 #
 # Entradas:
-# data/processed/ud_vms_longline_trawler_udoi.gpkg
+# data/processed/ud_vms_all_gear_udoi.gpkg
 #
 # Salida:
-# data/processed/longline_trawler_udoi.json
+# data/processed/all_gear_udoi.json
 #
 # Dependencias:
 # sf
@@ -46,12 +46,12 @@ library(jsonlite)
 
 # Ruta del GeoPackage con el producto normalizado de las masas de
 # probabilidad de albatros (N_IND) y la suma de palangre y arrastre
-# (n_points) por celda generado por export_ud_vms_longline_trawler_udoi.R
-input_gpkg_path <- "data/processed/ud_vms_longline_trawler_udoi.gpkg"
+# (n_points) por celda generado por export_ud_vms_all_gear_udoi.R
+input_gpkg_path <- "data/processed/ud_vms_all_gear_udoi.gpkg"
 
 # Ruta del archivo JSON de salida con las estadisticas del indice
 # UDOI para su uso en reportes y analisis de solapamiento conjunto
-output_json_path <- "data/processed/longline_trawler_udoi.json"
+output_json_path <- "data/processed/all_gear_udoi.json"
 
 # Nombre de la columna en el GeoPackage que contiene el producto
 # de las distribuciones normalizadas por celda (udoi_value)
@@ -67,7 +67,7 @@ cell_area_km2 <- 127.291418
 
 # Importa la rejilla con el producto normalizado de albatros y la
 # suma de palangre y arrastre desde el GeoPackage generado por
-# export_ud_vms_longline_trawler_udoi.R
+# export_ud_vms_all_gear_udoi.R
 udoi_grid_sf <- st_read(input_gpkg_path, quiet = TRUE)
 
 

@@ -16,10 +16,10 @@
 # resultado como GeoPackage con una columna de clase entera.
 #
 # Entradas:
-# data/processed/ud_vms_longline_trawler_udoi.gpkg
+# data/processed/ud_vms_all_gear_udoi.gpkg
 #
 # Salida:
-# data/processed/ud_vms_longline_trawler_class.gpkg
+# data/processed/ud_vms_all_gear_class.gpkg
 #
 # Dependencias:
 # sf
@@ -45,18 +45,18 @@ library(tidyverse)
 
 # Ruta del GeoPackage con el producto normalizado de solapamiento
 # de albatros con palangre y arrastre por celda de la rejilla KDE
-input_gpkg_path <- "data/processed/ud_vms_longline_trawler_udoi.gpkg"
+input_gpkg_path <- "data/processed/ud_vms_all_gear_udoi.gpkg"
 
 # Ruta del GeoPackage de salida con la clasificación por cuartiles
 # del índice UDOI combinado para las celdas dentro de la ZEE
-output_gpkg_path <- "data/processed/ud_vms_longline_trawler_class.gpkg"
+output_gpkg_path <- "data/processed/ud_vms_all_gear_class.gpkg"
 
 
 # ==== ENTRADAS ====
 
 # Importa la rejilla con el producto normalizado de albatros y la
 # suma de palangre y arrastre desde el GeoPackage generado por
-# export_ud_vms_longline_trawler_udoi.R
+# export_ud_vms_all_gear_udoi.R
 udoi_grid_sf <- st_read(input_gpkg_path, quiet = TRUE)
 
 

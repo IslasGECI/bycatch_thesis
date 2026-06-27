@@ -9,7 +9,7 @@
 #
 # Descripción (Qué / Cómo):
 # Lee el GeoPackage con la clasificación UDOI por celda de la rejilla
-# KDE generado por export_ud_vms_longline_trawler_class.R. Lee la
+# KDE generado por export_ud_vms_all_gear_class.R. Lee la
 # costa mundial, la ZEE de México y las áreas marinas protegidas como
 # contexto geográfico. Filtra las celdas sin solapamiento para no
 # saturar el mapa. Mapea las clases 1 a 4 con una escala discreta
@@ -17,12 +17,12 @@
 # exporta como PNG.
 #
 # Entradas:
-# data/processed/ud_vms_longline_trawler_class.gpkg
+# data/processed/ud_vms_all_gear_class.gpkg
 # data/processed/mexico_mpa.gpkg
 # data/external/Exclusive_economic_zone_Mexico.shp
 #
 # Salida:
-# reports/figures/ud_vms_longline_trawler_classification_map.png
+# reports/figures/ud_vms_all_gear_classification_map.png
 #
 # Dependencias:
 # rnaturalearth
@@ -57,8 +57,8 @@ library(sf)
 library(tidyverse)
 
 # Ruta del GeoPackage con la clasificación por cuartiles del índice
-# UDOI combinado generado por export_ud_vms_longline_trawler_class.R
-input_class_gpkg_path <- "data/processed/ud_vms_longline_trawler_class.gpkg"
+# UDOI combinado generado por export_ud_vms_all_gear_class.R
+input_class_gpkg_path <- "data/processed/ud_vms_all_gear_class.gpkg"
 
 # Ruta del GeoPackage con las Áreas Marinas Protegidas de México
 # que proporcionan contexto de conservación marina existente
@@ -70,7 +70,7 @@ input_eez_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
 
 # Ruta del archivo PNG que almacenará el mapa de clasificación por
 # cuartiles para el reporte del segundo artículo
-output_figure_path <- "reports/figures/ud_vms_longline_trawler_classification_map.png"
+output_figure_path <- "reports/figures/ud_vms_all_gear_classification_map.png"
 
 # Escala de la línea de costa mundial; "medium" balancea el detalle
 # geográfico con la velocidad de descarga desde Natural Earth
@@ -115,7 +115,7 @@ fig_dpi <- 300
 # ==== ENTRADAS ====
 
 # Importa la rejilla KDE con la clasificación por cuartiles desde el
-# GeoPackage generado por export_ud_vms_longline_trawler_class.R que
+# GeoPackage generado por export_ud_vms_all_gear_class.R que
 # contiene la columna entera udoi_class con valores de 0 a 4
 class_grid_sf <- st_read(input_class_gpkg_path, quiet = TRUE)
 

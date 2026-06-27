@@ -10,7 +10,7 @@
 #
 # Descripción (Qué / Cómo):
 # Lee el GeoPackage con el producto normalizado UDOI por celda de la
-# rejilla KDE generado por export_ud_vms_longline_trawler_udoi.R. Lee
+# rejilla KDE generado por export_ud_vms_all_gear_udoi.R. Lee
 # el JSON con el valor del índice UDOI. Lee la costa mundial, la ZEE
 # de México y las áreas marinas protegidas como contexto geográfico.
 # Filtra las celdas sin coincidencia albatros-pesca para evitar
@@ -18,13 +18,13 @@
 # mapa con ggplot2 y lo exporta como PNG.
 #
 # Entradas:
-# data/processed/ud_vms_longline_trawler_udoi.gpkg
-# data/processed/longline_trawler_udoi.json
+# data/processed/ud_vms_all_gear_udoi.gpkg
+# data/processed/all_gear_udoi.json
 # data/processed/mexico_mpa.gpkg
 # data/external/Exclusive_economic_zone_Mexico.shp
 #
 # Salida:
-# reports/figures/ud_vms_longline_trawler_udoi_map.png
+# reports/figures/ud_vms_all_gear_udoi_map.png
 #
 # Dependencias:
 # rnaturalearth
@@ -38,7 +38,7 @@
 # - El bounding box hardcodeado cubre el Pacífico de la península de
 #   Baja California donde se ubican las colonias de albatros
 # - La ZEE se transforma de CEA a WGS84 para compatibilidad espacial
-# - El título incluye el UDOI desde data/processed/longline_trawler_udoi.json
+# - El título incluye el UDOI desde data/processed/all_gear_udoi.json
 # ==========================================
 
 
@@ -62,12 +62,12 @@ library(tidyverse)
 
 library(jsonlite)
 # Proporciona fromJSON para leer el valor del índice UDOI desde el
-# archivo JSON generado por src/compute_longline_trawler_udoi.R
+# archivo JSON generado por src/compute_all_gear_udoi.R
 
 # Ruta del GeoPackage con el índice conjunto UDOI por celda generado
-# por export_ud_vms_longline_trawler_udoi.R como medida de riesgo
+# por export_ud_vms_all_gear_udoi.R como medida de riesgo
 # conjunto para palangre y arrastre
-input_udoi_gpkg_path <- "data/processed/ud_vms_longline_trawler_udoi.gpkg"
+input_udoi_gpkg_path <- "data/processed/ud_vms_all_gear_udoi.gpkg"
 
 # Ruta del GeoPackage con las Áreas Marinas Protegidas de México
 # que proporcionan contexto de conservación marina existente
@@ -78,13 +78,13 @@ input_mpa_path <- "data/processed/mexico_mpa.gpkg"
 input_eez_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
 
 # Ruta del archivo JSON con las estadísticas del índice UDOI generado
-# por src/compute_longline_trawler_udoi.R para mostrar el valor
+# por src/compute_all_gear_udoi.R para mostrar el valor
 # calculado en el título
-input_udoi_json_path <- "data/processed/longline_trawler_udoi.json"
+input_udoi_json_path <- "data/processed/all_gear_udoi.json"
 
 # Ruta del archivo PNG que almacenará el mapa del índice UDOI por
 # celda en la rejilla KDE para el reporte del segundo artículo
-output_figure_path <- "reports/figures/ud_vms_longline_trawler_udoi_map.png"
+output_figure_path <- "reports/figures/ud_vms_all_gear_udoi_map.png"
 
 # Escala de la línea de costa mundial; "medium" balancea el detalle
 # geográfico con la velocidad de descarga desde Natural Earth
@@ -126,7 +126,7 @@ fig_dpi <- 300
 # ==== ENTRADAS ====
 
 # Importa la rejilla KDE con el índice conjunto UDOI por celda desde
-# el GeoPackage generado por src/export_ud_vms_longline_trawler_udoi.R;
+# el GeoPackage generado por src/export_ud_vms_all_gear_udoi.R;
 # contiene el producto normalizado de albatros con la suma de palangre
 # y arrastre por celda
 udoi_grid_sf <- st_read(input_udoi_gpkg_path, quiet = TRUE)

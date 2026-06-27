@@ -30,7 +30,7 @@
 # data/processed/eez_mask_in_grid.gpkg
 #
 # Salida:
-# data/processed/ud_vms_longline_trawler_udoi.gpkg
+# data/processed/ud_vms_all_gear_udoi.gpkg
 #
 # Dependencias:
 # sf
@@ -79,7 +79,7 @@ input_eez_mask_path <- "data/processed/eez_mask_in_grid.gpkg"
 
 # Ruta del archivo GeoPackage de salida con el producto normalizado
 # de albatros y la suma de pesca combinada como índice conjunto
-output_gpkg_path <- "data/processed/ud_vms_longline_trawler_udoi.gpkg"
+output_gpkg_path <- "data/processed/ud_vms_all_gear_udoi.gpkg"
 
 
 # ==== ENTRADAS ====
