@@ -559,6 +559,13 @@ reports/figures/ud_vms_longline_trawler_udoi_map.png: \
 	$(checkDirectories)
 	Rscript src/plot_ud_vms_longline_trawler_udoi.R
 
+# Clasifica el índice UDOI combinado en categorías por cuartiles
+data/processed/ud_vms_longline_trawler_class.gpkg: \
+  src/export_ud_vms_longline_trawler_class.R \
+  data/processed/ud_vms_longline_trawler_udoi.gpkg
+	$(checkDirectories)
+	Rscript src/export_ud_vms_longline_trawler_class.R
+
 # Visualiza el conteo continuo de individuos (N_IND) por celda de la rejilla KDE
 reports/figures/ud_in_grid_map.png: \
   src/plot_ud_in_grid.R \
