@@ -192,13 +192,15 @@ normalized_trawler_points <- n_trawler_masked / n_total_trawler_points
 # Suma las distribuciones normalizadas de palangre y arrastre para
 # obtener una distribución combinada de pesca que pondera ambos
 # artes por su intensidad relativa dentro de la ZEE
-combined_fishing_distribution <- normalized_longline_points + normalized_trawler_points
+combined_fishing_distribution <- (normalized_longline_points + normalized_trawler_points) / 2
+n_combined_fishing_distribution <- sum(combined_fishing_distribution)
+normalized_combined_fishing_distribution <- combined_fishing_distribution / n_combined_fishing_distribution
 
 # Calcula el producto celda por celda de la distribución normalizada
 # de albatros con la distribución combinada de pesca para obtener un
 # índice conjunto que es alto solo donde los albatros coinciden con
 # alta intensidad de palangre, arrastre o ambos simultáneamente
-udoi_values <- normalized_individuals * combined_fishing_distribution
+udoi_values <- normalized_individuals * normalized_combined_fishing_distribution
 
 # Construye la rejilla de salida con la geometría original de la
 # rejilla del KDE y la nueva columna del producto normalizado;
