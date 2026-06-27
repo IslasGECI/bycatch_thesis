@@ -507,6 +507,13 @@ data/processed/ud_vms_longline_trawler_udoi.gpkg: \
 	$(checkDirectories)
 	Rscript src/export_ud_vms_longline_trawler_udoi.R
 
+# Calcula el índice UDOI de solapamiento albatros-palangre-arrastre
+data/processed/longline_trawler_udoi.json: \
+  src/compute_longline_trawler_udoi.R \
+  data/processed/ud_vms_longline_trawler_udoi.gpkg
+	$(checkDirectories)
+	Rscript src/compute_longline_trawler_udoi.R
+
 # Calcula el índice UDOI a partir del producto normalizado de solapamiento
 data/processed/longline_udoi.json: \
   src/compute_udoi.R \
