@@ -61,6 +61,7 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	reports/figures/ud_vms_longline_udoi_map.png \
 	reports/figures/ud_vms_trawler_udoi_map.png \
 	reports/figures/ud_vms_longline_trawler_udoi_map.png \
+	reports/figures/ud_vms_longline_trawler_classification_map.png \
 	reports/figures/mexico_eez_bounding_box_zoom_out.png \
 	reports/second_paper.md
 	$(checkDirectories)
@@ -565,6 +566,15 @@ data/processed/ud_vms_longline_trawler_class.gpkg: \
   data/processed/ud_vms_longline_trawler_udoi.gpkg
 	$(checkDirectories)
 	Rscript src/export_ud_vms_longline_trawler_class.R
+
+# Visualiza la clasificación por cuartiles del índice UDOI combinado
+reports/figures/ud_vms_longline_trawler_classification_map.png: \
+  src/plot_ud_vms_longline_trawler_classification.R \
+  data/processed/ud_vms_longline_trawler_class.gpkg \
+  data/processed/mexico_mpa.gpkg \
+  data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_ud_vms_longline_trawler_classification.R
 
 # Visualiza el conteo continuo de individuos (N_IND) por celda de la rejilla KDE
 reports/figures/ud_in_grid_map.png: \

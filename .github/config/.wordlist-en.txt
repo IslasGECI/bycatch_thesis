@@ -1,4 +1,6 @@
-personal_ws-1.1 en 61 utf-8
+personal_ws-1.1 en 65 utf-8
+Beal
+Niña
 accelerometer
 acmos
 adehabitatlt
@@ -10,8 +12,8 @@ axy
 azimuthal
 baja
 basemap
-Beal
 benedicto
+bycatch
 catlog
 datalogger
 eez
@@ -19,9 +21,9 @@ el
 enso
 fieberg
 floatbarrier
-generalizability
 fpt
 garrott
+generalizability
 gfw
 gispy
 gls
@@ -42,9 +44,8 @@ longline
 mpa
 mpas
 neq
-nodo
-Niña
 niño
+nodo
 of
 peakmethod
 perthold
