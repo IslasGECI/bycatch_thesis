@@ -548,6 +548,16 @@ reports/figures/ud_vms_trawler_udoi_map.png: \
 	$(checkDirectories)
 	Rscript src/plot_ud_vms_trawler_udoi.R
 
+# Visualiza el índice conjunto albatros-palangre-arrastre (UDOI) por celda de la rejilla KDE
+reports/figures/ud_vms_longline_trawler_udoi_map.png: \
+  src/plot_ud_vms_longline_trawler_udoi.R \
+  data/processed/ud_vms_longline_trawler_udoi.gpkg \
+  data/processed/longline_trawler_udoi.json \
+  data/processed/mexico_mpa.gpkg \
+  data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_ud_vms_longline_trawler_udoi.R
+
 # Visualiza el conteo continuo de individuos (N_IND) por celda de la rejilla KDE
 reports/figures/ud_in_grid_map.png: \
   src/plot_ud_in_grid.R \
