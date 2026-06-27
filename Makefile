@@ -60,6 +60,7 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	reports/figures/radar_signal_geographic_points_in_eez.png \
 	reports/figures/ud_vms_longline_udoi_map.png \
 	reports/figures/ud_vms_trawler_udoi_map.png \
+	reports/figures/ud_vms_longline_trawler_udoi_map.png \
 	reports/figures/mexico_eez_bounding_box_zoom_out.png \
 	reports/second_paper.md
 	$(checkDirectories)
