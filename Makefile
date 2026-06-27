@@ -497,6 +497,16 @@ data/processed/ud_vms_trawler_udoi.gpkg: \
 	$(checkDirectories)
 	Rscript src/export_ud_vms_trawler_udoi.R
 
+# Producto normalizado de solapamiento de albatros con presencia de palangre y arrastre
+data/processed/ud_vms_longline_trawler_udoi.gpkg: \
+  src/export_ud_vms_longline_trawler_udoi.R \
+  data/processed/ud_in_grid.gpkg \
+  data/processed/vms_longline_hotspot.gpkg \
+  data/processed/vms_trawler_hotspot.gpkg \
+  data/processed/eez_mask_in_grid.gpkg
+	$(checkDirectories)
+	Rscript src/export_ud_vms_longline_trawler_udoi.R
+
 # Calcula el índice UDOI a partir del producto normalizado de solapamiento
 data/processed/longline_udoi.json: \
   src/compute_udoi.R \
