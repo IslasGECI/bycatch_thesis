@@ -1,33 +1,31 @@
 # ==========================================
-# Título: Calcula el producto normalizado de solapamiento de albatros con presencia de palangre y arrastre
+# Título: Calcula el producto UDOI-ponderado de albatros con pesca combinada
 #
 # Contexto (Por qué):
-# Necesitamos una superficie conjunta que combine la concentración de
-# albatros (N_IND) con la intensidad de pesca de palangre y arrastre
-# (n_points) para identificar celdas donde ambas variables coinciden.
-# El producto de las distribuciones normalizadas de albatros con la
-# suma de las distribuciones de palangre y arrastre produce un índice
-# conjunto de riesgo de captura incidental.
+# Cada arte de pesca tiene un índice UDOI individual que mide su
+# solapamiento con la distribución de albatros. Al construir la
+# distribución combinada de pesca, ponderar cada arte por su UDOI
+# individual da más peso al arte que más coincide espacialmente con
+# los albatros, mejorando la relevancia ecológica del índice conjunto.
 #
 # Descripción (Qué / Cómo):
-# Lee el GeoPackage de solapamiento de albatros con la columna N_IND.
-# Lee los GeoPackages de hot spot de palangre y arrastre con sus
-# columnas de conteo de puntos. Lee la máscara binaria de ZEE del
-# Pacífico mexicano. Verifica que las cuatro cuadrículas tengan el
-# mismo número de filas y el mismo CRS. Aplica la máscara a las tres
-# columnas de valor para excluir celdas fuera de ZEE. Divide cada
-# columna por su suma total para normalizar ambas distribuciones a
-# una función de masa de probabilidad. Suma las distribuciones
-# normalizadas de palangre y arrastre. Calcula el producto celda por
-# celda de la distribución de albatros con la suma de las
-# distribuciones de pesca. Escribe el resultado como GeoPackage con
-# una sola columna.
+# Lee los GeoPackages de albatros, palangre, arrastre y la máscara
+# de ZEE. Lee los archivos JSON con los UDOI individuales de palangre
+# y arrastre. Verifica que todas las cuadrículas estén alineadas en
+# filas y CRS. Enmascara las celdas fuera de la ZEE del Pacífico.
+# Normaliza cada distribución a una función de masa de probabilidad
+# que suma 1. Ponderá la distribución de cada arte por su UDOI y las
+# combina con una media ponderada. Multiplica celda por celda la
+# distribución de albatros por la distribución combinada de pesca.
+# Escribe el producto como GeoPackage.
 #
 # Entradas:
 # data/processed/ud_in_grid.gpkg
 # data/processed/vms_longline_hotspot.gpkg
 # data/processed/vms_trawler_hotspot.gpkg
 # data/processed/eez_mask_in_grid.gpkg
+# data/processed/longline_udoi.json
+# data/processed/trawler_udoi.json
 #
 # Salida:
 # data/processed/ud_vms_all_gear_udoi.gpkg
@@ -35,17 +33,17 @@
 # Dependencias:
 # sf
 # tidyverse
+# jsonlite
 #
 # Notas:
-# - Las cuatro cuadrículas deben tener el mismo CRS, el mismo número de
-#   celdas y las mismas geometrías en el mismo orden de filas
-# - La máscara se aplica multiplicando cada columna por
-#   in_eez_outside_gulf antes de normalizar
-# - La normalización divide cada valor entre la suma total de su
-#   columna para que ambas distribuciones sumen 1
-# - El producto udoi_value representa la intersección ponderada de
-#   albatros con la pesca combinada dentro de la ZEE; valores altos
-#   indican coincidencia de albatros con cualquiera de los dos artes
+# - La ponderación por UDOI da más peso al arte con mayor solapamiento
+#   con albatros al construir la distribución combinada de pesca
+# - La máscara se aplica antes de normalizar para que las
+#   distribuciones reflejen solo las celdas dentro de la ZEE
+# - Cada distribución de arte se normaliza por su suma total dentro
+#   de la ZEE para que ambas tengan masa de probabilidad unitaria
+# - La re-normalización final de la distribución combinada garantiza
+#   que el producto con albatros sea una masa de probabilidad conjunta
 # ==========================================
 
 
@@ -58,6 +56,10 @@ library(sf)
 library(tidyverse)
 # Proporciona mutate para crear nuevas columnas dentro del flujo
 # de transformación de datos del ecosistema tidyverse
+
+library(jsonlite)
+# Proporciona fromJSON para leer los valores de UDOI individuales
+# de palangre y arrastre desde archivos JSON como pesos escalares
 
 # Ruta del GeoPackage con el conteo de individuos (N_IND) por celda
 # de la rejilla KDE generado por export_ud_in_grid.R como medida de
@@ -76,6 +78,16 @@ input_vms_trawler_path <- "data/processed/vms_trawler_hotspot.gpkg"
 # mexicano (in_eez_outside_gulf) para filtrar celdas fuera de la
 # zona de estudio antes de normalizar
 input_eez_mask_path <- "data/processed/eez_mask_in_grid.gpkg"
+
+# Ruta del archivo JSON con el índice UDOI de solapamiento
+# albatros-palangre generado por src/compute_udoi.R como peso
+# para ponderar la distribución de palangre en la combinación
+input_udoi_longline_path <- "data/processed/longline_udoi.json"
+
+# Ruta del archivo JSON con el índice UDOI de solapamiento
+# albatros-arrastre generado por src/compute_trawler_udoi.R como
+# peso para ponderar la distribución de arrastre en la combinación
+input_udoi_trawler_path <- "data/processed/trawler_udoi.json"
 
 # Ruta del archivo GeoPackage de salida con el producto normalizado
 # de albatros y la suma de pesca combinada como índice conjunto
@@ -189,12 +201,35 @@ normalized_longline_points <- n_longline_masked / n_total_longline_points
 # probabilidad que suma 1 dentro de la zona de estudio
 normalized_trawler_points <- n_trawler_masked / n_total_trawler_points
 
-# Suma las distribuciones normalizadas de palangre y arrastre para
-# obtener una distribución combinada de pesca que pondera ambos
-# artes por su intensidad relativa dentro de la ZEE
-combined_fishing_distribution <- (normalized_longline_points + normalized_trawler_points) / 2
-n_combined_fishing_distribution <- sum(combined_fishing_distribution)
-normalized_combined_fishing_distribution <- combined_fishing_distribution / n_combined_fishing_distribution
+# Lee el valor escalar del índice UDOI de solapamiento albatros-
+# palangre desde el JSON generado por src/compute_udoi.R para
+# usarlo como peso de la distribución de palangre en la combinación
+longline_udoi <- fromJSON(input_udoi_longline_path)$udoi
+
+# Lee el valor escalar del índice UDOI de solapamiento albatros-
+# arrastre desde el JSON generado por src/compute_trawler_udoi.R
+# para usarlo como peso de la distribución de arrastre
+trawler_udoi <- fromJSON(input_udoi_trawler_path)$udoi
+
+# Calcula la suma de ambos pesos UDOI como denominador de la media
+# ponderada para que la distribución combinada resultante sume 1
+sum_udoi_weights <- longline_udoi + trawler_udoi
+
+# Combina las distribuciones normalizadas de palangre y arrastre
+# ponderando cada arte por su índice UDOI individual para que el
+# arte con mayor solapamiento con albatros contribuya más en la
+# distribución combinada de pesca dentro de la ZEE
+combined_fishing_distribution <- (longline_udoi * normalized_longline_points + trawler_udoi * normalized_trawler_points) / sum_udoi_weights
+
+# Calcula la suma de la distribución combinada ponderada para
+# verificar que sume 1 (la media ponderada con pesos normalizados
+# garantiza masa de probabilidad unitaria)
+combined_fishing_integral <- sum(combined_fishing_distribution)
+
+# Re-normaliza la distribución combinada dividiendo entre su suma
+# para garantizar que la masa de probabilidad sea exactamente 1
+# antes de multiplicarla por la distribución de albatros
+normalized_combined_fishing_distribution <- combined_fishing_distribution / combined_fishing_integral
 
 # Calcula el producto celda por celda de la distribución normalizada
 # de albatros con la distribución combinada de pesca para obtener un

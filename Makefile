@@ -505,7 +505,9 @@ data/processed/ud_vms_all_gear_udoi.gpkg: \
   data/processed/ud_in_grid.gpkg \
   data/processed/vms_longline_hotspot.gpkg \
   data/processed/vms_trawler_hotspot.gpkg \
-  data/processed/eez_mask_in_grid.gpkg
+  data/processed/eez_mask_in_grid.gpkg \
+  data/processed/longline_udoi.json \
+  data/processed/trawler_udoi.json
 	$(checkDirectories)
 	Rscript src/export_ud_vms_all_gear_udoi.R
 
