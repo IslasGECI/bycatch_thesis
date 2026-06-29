@@ -13,8 +13,11 @@
 # columna normalized_combined_fishing. Lee la costa mundial, la
 # ZEE de México y las áreas marinas protegidas como contexto
 # geográfico. Filtra las celdas sin intensidad de pesca para evitar
-# saturar el mapa. Mapea la intensidad con la paleta inferno.
-# Construye el mapa con ggplot2 y lo exporta como PNG.
+# saturar el mapa. Escala la intensidad al rango [0, 70000] para que
+# log1p funcione igual que en los mapas de conteo de VMS. Mapea la
+# intensidad escalada con la paleta inferno usando trans = log1p que
+# comprime la cola superior sin mencionar la transformación en la
+# leyenda. Construye el mapa con ggplot2 y lo exporta como PNG.
 #
 # Entradas:
 # data/processed/combined_fishing_distribution.gpkg
@@ -35,7 +38,6 @@
 #   individual antes de normalizar a masa de probabilidad unitaria
 # - El bounding box hardcodeado cubre el Pacífico de la península de
 #   Baja California donde se ubican las colonias de albatros
-# - La ZEE se transforma de CEA a WGS84 para compatibilidad espacial
 # - La ZEE se transforma de CEA a WGS84 para compatibilidad espacial
 # ==========================================
 
@@ -108,6 +110,16 @@ viridis_direction <- -1
 # de pesca combinada ponderada por UDOI
 color_legend_name <- "Combined fishing intensity"
 
+# Factor de escala para re-mapear normalized_combined_fishing (rango
+# [0, 0.135]) al rango [0, 70000] que coincide con la escala de los
+# mapas de conteo de VMS, permitiendo usar log1p como transformación
+scaling_factor <- 70000
+
+# Valor máximo de la distribución combinada dentro de la ZEE; se usa
+# como denominador para que el valor máximo escalado sea exactamente
+# 70000, replicando el rango numérico de plot_vms_longline_n_points.R
+combined_fishing_maximum <- 0.134843
+
 # Dimensiones y resolución de la figura de salida en ppp (puntos por
 # pulgada) para publicación en el reporte del segundo artículo
 fig_width <- 10
@@ -148,9 +160,12 @@ world_coastline_sf <- ne_countries(scale = coastline_scale, returnclass = "sf")
 
 # Filtra la rejilla para conservar solo las celdas donde la
 # distribución combinada de pesca es mayor que cero; se omiten las
-# celdas sin intensidad de pesca que saturarían el mapa
+# celdas sin intensidad de pesca que saturarían el mapa. Escala la
+# intensidad al rango [0, 70000] para que log1p en la escala de color
+# funcione igual que en los mapas de conteo de VMS
 fishing_positive_sf <- combined_fishing_sf |>
-  filter(normalized_combined_fishing > 0)
+  filter(normalized_combined_fishing > 0) |>
+  mutate(scaled_combined_fishing = normalized_combined_fishing * scaling_factor / combined_fishing_maximum)
 
 # Transforma la ZEE de su proyección original CEA a coordenadas
 # geográficas WGS84 para que coincida con el sistema de referencia de
@@ -183,16 +198,19 @@ plot_fishing_grid <- ggplot() +
   # palangre y arrastre ponderados por su UDOI individual
   geom_sf(
     data = fishing_positive_sf,
-    mapping = aes(fill = normalized_combined_fishing),
+    mapping = aes(fill = scaled_combined_fishing),
     color = NA
   ) +
 
   # Escala secuencial de color con paleta inferno que mapea la
-  # intensidad de pesca combinada desde valores bajos en tonos
-  # oscuros hasta valores altos en tonos brillantes
+  # intensidad de pesca combinada transformada con log1p (log(1+x))
+  # para comprimir la cola superior y expandir la variación en valores
+  # bajos, mostrando las etiquetas de la leyenda en la escala original
+  # sin mencionar la transformación
   scale_fill_viridis_c(
     option = viridis_option,
     direction = viridis_direction,
+    trans = "log1p",
     name = color_legend_name
   ) +
 
@@ -232,7 +250,7 @@ plot_fishing_grid <- ggplot() +
   # Etiquetas del mapa en inglés para integrarse al reporte del
   # segundo artículo del proyecto sobre riesgo de captura incidental
   labs(
-    title = "UDOI-weighted combined fishing distribution",
+    title = "Combined fishing distribution",
     subtitle = "VMS longline and trawler — normalized probability mass",
     x = "Longitude",
     y = "Latitude"
