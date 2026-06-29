@@ -517,15 +517,23 @@ data/processed/ud_vms_trawler_udoi.gpkg: \
 	$(checkDirectories)
 	Rscript src/export_ud_vms_trawler_udoi.R
 
-# Producto normalizado de solapamiento de albatros con presencia de palangre y arrastre
-data/processed/ud_vms_all_gear_udoi.gpkg: \
-  src/export_ud_vms_all_gear_udoi.R \
-  data/processed/ud_in_grid.gpkg \
+# Distribución combinada de pesca ponderada por UDOI individual
+data/processed/combined_fishing_distribution.gpkg: \
+  src/export_combined_fishing_distribution.R \
   data/processed/vms_longline_hotspot.gpkg \
   data/processed/vms_trawler_hotspot.gpkg \
   data/processed/eez_mask_in_grid.gpkg \
   data/processed/longline_udoi.json \
   data/processed/trawler_udoi.json
+	$(checkDirectories)
+	Rscript src/export_combined_fishing_distribution.R
+
+# Producto UDOI de albatros con la distribución combinada de pesca
+data/processed/ud_vms_all_gear_udoi.gpkg: \
+  src/export_ud_vms_all_gear_udoi.R \
+  data/processed/ud_in_grid.gpkg \
+  data/processed/combined_fishing_distribution.gpkg \
+  data/processed/eez_mask_in_grid.gpkg
 	$(checkDirectories)
 	Rscript src/export_ud_vms_all_gear_udoi.R
 
