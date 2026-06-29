@@ -10,7 +10,7 @@
 # Descripción (Qué / Cómo):
 # Lee el GeoPackage con el producto normalizado de solapamiento por
 # celda. Extrae los valores positivos del índice y calcula sus tres
-# percentiles (p50, p75, p90). Asigna la clase 0 a las celdas sin
+# percentiles (p50, p75, p95). Asigna la clase 0 a las celdas sin
 # solapamiento (valor cero). Asigna las clases 1 a 4 a las celdas
 # con solapamiento según el percentil al que pertenezcan. Escribe el
 # resultado como GeoPackage con una columna de clase entera.
@@ -30,8 +30,8 @@
 # - La clase 0 indica celda sin solapamiento albatros-pesca
 # - Clase 1: riesgo mínimo (50 % inferior, ≤ percentil 50)
 # - Clase 2: riesgo bajo (siguiente 25 %, percentil 50–75)
-# - Clase 3: riesgo medio (siguiente 15 %, percentil 75–90)
-# - Clase 4: riesgo alto (10 % superior, > percentil 90)
+# - Clase 3: riesgo medio (siguiente 20 %, percentil 75–95)
+# - Clase 4: riesgo alto (5 % superior, > percentil 95)
 # ==========================================
 
 
@@ -86,9 +86,9 @@ threshold_1 <- quantile(positive_udoi_values, probs = 0.50)
 # límite superior de la categoría de riesgo bajo
 threshold_2 <- quantile(positive_udoi_values, probs = 0.75)
 
-# Calcula el percentil 90 de los valores positivos para definir el
+# Calcula el percentil 95 de los valores positivos para definir el
 # límite superior de la categoría de riesgo medio
-threshold_3 <- quantile(positive_udoi_values, probs = 0.90)
+threshold_3 <- quantile(positive_udoi_values, probs = 0.95)
 
 # Construye la rejilla de clasificación asignando la clase 0 a
 # celdas sin solapamiento (valor cero) y las clases 1 a 4 según
@@ -106,11 +106,11 @@ udoi_classification_sf <- udoi_grid_sf |>
       # Asigna clase 2 (riesgo bajo) a valores entre percentil 50 y 75
       # que representan el siguiente 25 % del solapamiento observado
       udoi_value <= threshold_2 ~ 2L,
-      # Asigna clase 3 (riesgo medio) a valores entre percentil 75 y 90
-      # que representan el siguiente 15 % del solapamiento observado
+      # Asigna clase 3 (riesgo medio) a valores entre percentil 75 y 95
+      # que representan el siguiente 20 % del solapamiento observado
       udoi_value <= threshold_3 ~ 3L,
       # Asigna clase 4 (riesgo alto) al resto de valores mayores al
-      # percentil 90 que representan el 10 % superior del solapamiento
+      # percentil 95 que representan el 5 % superior del solapamiento
       TRUE ~ 4L
     )
   ) |>
