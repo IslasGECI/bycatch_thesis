@@ -10,11 +10,11 @@
 # Descripción (Qué / Cómo):
 # Lee el GeoPackage con los z-scores de Getis-Ord Gi* por
 # celda. Filtra las celdas con al menos un punto VMS para
-# evitar saturar el mapa con 213 mil celdas vacías. Aplica
-# log1p (log(1+x)) al z-score para comprimir la cola superior
-# y revelar la gradación en los valores cercanos a cero.
-# Construye un mapa con ggplot2 usando la paleta inferno y
-# superpone la línea de costa mundial como contexto geográfico.
+# evitar saturar el mapa con 213 mil celdas vacías. Mapea
+# el z-score con escala log1p y paleta inferno para revelar
+# la gradación en valores cercanos a cero y comprimir la cola
+# superior. Superpone la línea de costa mundial como contexto
+# geográfico. Exporta el mapa como PNG.
 #
 # Entradas:
 # data/processed/vms_hotspot.gpkg
@@ -33,9 +33,11 @@
 # Notas:
 # - Solo grafica celdas con al menos un punto VMS (>213 mil
 #   celdas vacías se omiten para mantener el mapa legible)
-# - Hot spot definido como z-score > 1.96 (p < 0.05 bilateral)
-# - La paleta inferno de viridis mapea los z-scores de forma
-#   continua para revelar la gradación espacial del Gi*
+# - La escala de color usa log1p para comprimir la cola superior;
+#   la leyenda muestra los valores en la escala original sin
+#   mencionar la transformación
+# - Los breaks de la leyenda incluyen 0.5, 1 y 2 como referencias
+#   cercanas al umbral de significancia de z = 1.96
 # ==========================================
 
 
@@ -70,16 +72,20 @@ output_png_path <- "reports/figures/vms_hotspot_map.png"
 # Escala de la línea de costa mundial para el fondo del mapa
 coastline_scale <- "medium"
 
-# Umbral de z-score para identificar hot spots significativos
-# 1.96 corresponde a p < 0.05 en una prueba bilateral.
-# Este valor se conserva como referencia estadística aunque
-# ya no se usa para delinear bordes en el mapa
-hot_spot_z_threshold <- 1.96
-
 # Opción de la paleta secuencial inferno para la escala de z-score
 # 'inferno' ofrece una gradación oscuro→brillante perceptualmente
 # uniforme que revela la continuidad del estadístico Getis-Ord Gi*
 viridis_option <- "inferno"
+
+# Nombre de la leyenda de color que describe el estadístico
+# Getis-Ord Gi* sin mencionar la transformación log1p
+color_legend_name <- "Getis-Ord Gi* z-score"
+
+# Valores de la leyenda en la escala original que servirán como
+# puntos de referencia para interpretar la intensidad del patrón
+# espacial de congestión VMS; incluye 0.5, 1 y 2 cercanos al
+# umbral de significancia de z = 1.96
+legend_breaks <- c(0, 0.5, 1, 2, 5, 10, 50, 200)
 
 # Color de relleno para la línea de costa mundial
 coast_fill_color <- "gray90"
@@ -130,24 +136,19 @@ bbox_lat_max <- bbox_config$bbox$lat_max
 
 # Filtra la rejilla para conservar solo las celdas con al
 # menos un punto VMS y así evitar saturar la visualización
-# con las 213 mil celdas vacías que no aportan información
+# con las 213 mil celdas vacías que no aportan información;
+# la transformación log1p se aplica internamente en la escala
+# de color para no requerir una columna precalculada
 grid_nonzero <- vms_hotspot_sf |>
-  filter(n_points_vms > 0) |>
-  # Aplica log1p (log(1 + x)) al z-score para comprimir la
-  # cola superior (valores extremos hasta 200) y expandir
-  # los valores cercanos a cero donde se concentra la mayor
-  # parte de las celdas; log1p maneja ceros sin problemas
-  mutate(
-    log_gi_star_z_score = log1p(pmax(gi_star_z_score, 0))
-  )
+  filter(n_points_vms > 0)
 
 # Desactiva la validación S2 para evitar errores por geometrías
 # inválidas durante el graficado con geom_sf
 sf_use_s2(FALSE)
 
 # Construye el mapa temático con las celdas coloreadas por
-# el logaritmo del z-score para revelar la gradación espacial
-# del estadístico Getis-Ord Gi* en toda su distribución
+# el z-score con escala log1p para revelar la gradación
+# espacial del estadístico Getis-Ord Gi* en toda su distribución
 hotspot_map <- ggplot() +
 
   # Capa base de costa mundial como referencia geográfica
@@ -160,24 +161,25 @@ hotspot_map <- ggplot() +
   ) +
 
   # Capa de las celdas con puntos VMS coloreadas por el
-  # logaritmo del z-score para revelar la gradación en la
-  # cola baja donde se concentra la mayoría de las celdas;
-  # la transformación log1p comprime los valores extremos
-  # y expande la variación cerca de cero
+  # z-score original; la escala aplica log1p internamente
+  # para comprimir la cola superior y expandir la variación
+  # en valores cercanos a cero sin modificar el dato original
   geom_sf(
     data = grid_nonzero,
-    mapping = aes(fill = log_gi_star_z_score),
+    mapping = aes(fill = gi_star_z_score),
     color = NA
   ) +
 
-  # Escala secuencial de color que mapea los z-scores
-  # transformados (log1p) desde valores bajos en tonos
-  # oscuros hasta valores altos en tonos brillantes,
-  # usando la paleta inferno perceptualmente uniforme
+  # Escala secuencial de color con paleta inferno que mapea
+  # los z-scores transformados internamente con log1p para
+  # comprimir la cola superior; los breaks y etiquetas se
+  # muestran en la escala original sin mencionar la transformación
   scale_fill_viridis_c(
     option = "inferno",
     direction = -1,
-    name = "log(Z-score+1)\n(Getis-Ord Gi*)"
+    trans = "log1p",
+    breaks = legend_breaks,
+    name = color_legend_name
   ) +
 
   # Limita la extensión del mapa al bounding box de zoom in para

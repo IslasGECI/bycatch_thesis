@@ -54,6 +54,14 @@ Continuous hot-spot map of GFW longline fishing events using a viridis inferno p
 
 Getis-Ord Gi* hot-spot map of VMS fishing vessel trajectories. Script: `src/plot_vms_hotspot.R`.
 
+### reports/figures/vms_longline_n_points_map.png
+
+Raw VMS longline point count per KDE grid cell within the Mexican Pacific EEZ. Mapped with coastline, EEZ, and MPA context using the inferno palette. Script: `src/plot_vms_longline_n_points.R`.
+
+### reports/figures/vms_trawler_n_points_map.png
+
+Raw VMS trawler point count per KDE grid cell within the Mexican Pacific EEZ. Mapped with coastline, EEZ, and MPA context using the inferno palette. Script: `src/plot_vms_trawler_n_points.R`.
+
 ## Pipeline Stages
 
 ### 1. Data Preparation
@@ -90,6 +98,8 @@ Getis-Ord Gi* hot-spot map of VMS fishing vessel trajectories. Script: `src/plot
 | `gfw_longline_hotspot_map_all.png` | `src/plot_gfw_longline_hotspot.R` | hotspot gpkg + bbox json | continuous hot-spot map |
 | `gfw_longline_hotspot_binary_map_all.png` | `src/plot_gfw_longline_hotspot_binary.R` | hotspot gpkg + bbox json | binary hot-spot map |
 | `ud_vms_longline_udoi_map.png` | `src/plot_ud_vms_longline_udoi.R` | ud_vms_longline_udoi gpkg + udoi json + eez + mpa | joint albatross-longline index map |
+| `vms_longline_n_points_map.png` | `src/plot_vms_longline_n_points.R` | vms_longline_hotspot gpkg + mpa + eez | raw VMS longline point count per grid cell |
+| `vms_trawler_n_points_map.png` | `src/plot_vms_trawler_n_points.R` | vms_trawler_hotspot gpkg + mpa + eez | raw VMS trawler point count per grid cell |
 
 ## Maps
 

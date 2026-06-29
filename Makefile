@@ -56,6 +56,8 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	reports/figures/kba_and_vms_trawler_hotspot_map.png \
 	reports/figures/kba_and_vms_purse_seine_hotspot_map.png \
 	reports/figures/kba_and_vms_other_hotspot_map.png \
+	reports/figures/vms_longline_n_points_map.png \
+	reports/figures/vms_trawler_n_points_map.png \
 	reports/figures/kba_and_radar_signal_hotspot_map.png \
 	reports/figures/radar_signal_geographic_points_in_eez.png \
 	reports/figures/ud_vms_longline_udoi_map.png \
@@ -193,6 +195,22 @@ reports/figures/vms_hotspot_binary_map.png: \
   data/processed/mexico_eez_bounding_box_zoom_in.json
 	$(checkDirectories)
 	Rscript src/plot_vms_hotspot_binary.R
+
+# Grafica el conteo de puntos VMS de palangre por celda
+reports/figures/vms_longline_n_points_map.png: \
+  data/processed/vms_longline_hotspot.gpkg \
+  data/processed/mexico_mpa.gpkg \
+  data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_vms_longline_n_points.R
+
+# Grafica el conteo de puntos VMS de arrastre por celda
+reports/figures/vms_trawler_n_points_map.png: \
+  data/processed/vms_trawler_hotspot.gpkg \
+  data/processed/mexico_mpa.gpkg \
+  data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_vms_trawler_n_points.R
 
 # Cuenta puntos de palangre de GFW por celda de la rejilla del KDE
 data/processed/gfw_longline_in_grid.gpkg: \
