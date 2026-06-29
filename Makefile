@@ -58,6 +58,7 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	reports/figures/kba_and_vms_other_hotspot_map.png \
 	reports/figures/vms_longline_n_points_map.png \
 	reports/figures/vms_trawler_n_points_map.png \
+	reports/figures/combined_fishing_distribution_map.png \
 	reports/figures/kba_and_radar_signal_hotspot_map.png \
 	reports/figures/radar_signal_geographic_points_in_eez.png \
 	reports/figures/ud_vms_longline_udoi_map.png \
@@ -527,6 +528,15 @@ data/processed/combined_fishing_distribution.gpkg: \
   data/processed/trawler_udoi.json
 	$(checkDirectories)
 	Rscript src/export_combined_fishing_distribution.R
+
+# Visualiza la distribución combinada de pesca ponderada por UDOI
+reports/figures/combined_fishing_distribution_map.png: \
+  src/plot_combined_fishing_distribution.R \
+  data/processed/combined_fishing_distribution.gpkg \
+  data/processed/mexico_mpa.gpkg \
+  data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_combined_fishing_distribution.R
 
 # Producto UDOI de albatros con la distribución combinada de pesca
 data/processed/ud_vms_all_gear_udoi.gpkg: \

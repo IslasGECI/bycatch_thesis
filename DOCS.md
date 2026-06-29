@@ -62,6 +62,10 @@ Raw VMS longline point count per KDE grid cell within the Mexican Pacific EEZ. M
 
 Raw VMS trawler point count per KDE grid cell within the Mexican Pacific EEZ. Mapped with coastline, EEZ, and MPA context using the inferno palette. Script: `src/plot_vms_trawler_n_points.R`.
 
+### reports/figures/combined_fishing_distribution_map.png
+
+UDOI-weighted combined fishing distribution integrating VMS longline and trawler intensities. Each gear is weighted by its individual UDOI before normalizing to a joint probability mass. Script: `src/plot_combined_fishing_distribution.R`.
+
 ## Pipeline Stages
 
 ### 1. Data Preparation
@@ -84,6 +88,7 @@ Raw VMS trawler point count per KDE grid cell within the Mexican Pacific EEZ. Ma
 | `gfw_longline_in_grid.gpkg` | `src/export_gfw_longline_in_grid.R` | longline endpoints + KDE RDS | longline points per grid cell |
 | `gfw_longline_hotspot_all.gpkg` | `src/compute_gfw_longline_hotspot.R` | longline-in-grid gpkg | grid with Getis-Ord Gi* z-scores |
 | `ud_in_grid.gpkg` | `src/export_ud_in_grid.R` | representative assessment RDS | N_IND count per KDE grid cell |
+| `combined_fishing_distribution.gpkg` | `src/export_combined_fishing_distribution.R` | vms_longline_hotspot + vms_trawler_hotspot + eez_mask + longline_udoi + trawler_udoi | UDOI-weighted combined fishing intensity per cell |
 | `ud_vms_longline_udoi.gpkg` | `src/export_ud_vms_longline_udoi.R` | ud_in_grid + vms_longline_hotspot + eez_mask | joint normalized product per cell |
 | `udoi.json` | `src/compute_udoi.R` | ud_vms_longline_udoi gpkg | UDOI index and overlap statistics |
 
@@ -100,6 +105,7 @@ Raw VMS trawler point count per KDE grid cell within the Mexican Pacific EEZ. Ma
 | `ud_vms_longline_udoi_map.png` | `src/plot_ud_vms_longline_udoi.R` | ud_vms_longline_udoi gpkg + udoi json + eez + mpa | joint albatross-longline index map |
 | `vms_longline_n_points_map.png` | `src/plot_vms_longline_n_points.R` | vms_longline_hotspot gpkg + mpa + eez | raw VMS longline point count per grid cell |
 | `vms_trawler_n_points_map.png` | `src/plot_vms_trawler_n_points.R` | vms_trawler_hotspot gpkg + mpa + eez | raw VMS trawler point count per grid cell |
+| `combined_fishing_distribution_map.png` | `src/plot_combined_fishing_distribution.R` | combined_fishing_distribution gpkg + mpa + eez | UDOI-weighted combined fishing intensity per cell |
 
 ## Maps
 

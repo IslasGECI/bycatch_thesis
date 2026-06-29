@@ -26,6 +26,8 @@
 
 ![Number of VMS trawler points per grid cell within the Mexican Pacific EEZ.](reports/figures/vms_trawler_n_points_map.png)
 
+![UDOI-weighted combined fishing distribution (VMS longline and trawler) per grid cell within the Mexican Pacific EEZ.](reports/figures/combined_fishing_distribution_map.png)
+
 ![Overlay of the 50% potential KBA (Laysan Albatross) with radar signal hot-spot classification.](reports/figures/kba_and_radar_signal_hotspot_map.png)
 
 ![Radar signal geographic points of Laysan albatrosses from Guadalupe Island within the Mexican Pacific EEZ.](reports/figures/radar_signal_geographic_points_in_eez.png)
