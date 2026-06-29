@@ -562,14 +562,14 @@ reports/figures/ud_vms_all_gear_udoi_map.png: \
 	$(checkDirectories)
 	Rscript src/plot_ud_vms_all_gear_udoi.R
 
-# Clasifica el índice UDOI combinado en categorías por cuartiles
+# Clasifica el índice UDOI combinado en categorías por percentiles
 data/processed/ud_vms_all_gear_class.gpkg: \
   src/export_ud_vms_all_gear_class.R \
   data/processed/ud_vms_all_gear_udoi.gpkg
 	$(checkDirectories)
 	Rscript src/export_ud_vms_all_gear_class.R
 
-# Visualiza la clasificación por cuartiles del índice UDOI combinado
+# Visualiza la clasificación por percentiles del índice UDOI combinado
 reports/figures/ud_vms_all_gear_classification_map.png: \
   src/plot_ud_vms_all_gear_classification.R \
   data/processed/ud_vms_all_gear_class.gpkg \

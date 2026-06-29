@@ -1,5 +1,5 @@
 # ==========================================
-# Título: Clasifica el índice UDOI combinado en categorías por cuartiles
+# Título: Clasifica el índice UDOI combinado en categorías por percentiles
 #
 # Contexto (Por qué):
 # El índice UDOI combinado de albatros-palangre-arrastre es una
@@ -10,9 +10,9 @@
 # Descripción (Qué / Cómo):
 # Lee el GeoPackage con el producto normalizado de solapamiento por
 # celda. Extrae los valores positivos del índice y calcula sus tres
-# cuartiles (Q1, Q2, Q3). Asigna la clase 0 a las celdas sin
+# percentiles (p50, p75, p90). Asigna la clase 0 a las celdas sin
 # solapamiento (valor cero). Asigna las clases 1 a 4 a las celdas
-# con solapamiento según el cuartil al que pertenezcan. Escribe el
+# con solapamiento según el percentil al que pertenezcan. Escribe el
 # resultado como GeoPackage con una columna de clase entera.
 #
 # Entradas:
@@ -26,10 +26,12 @@
 # tidyverse
 #
 # Notas:
-# - Los cuartiles se calculan solo sobre valores positivos (> 0)
+# - Los percentiles se calculan solo sobre valores positivos (> 0)
 # - La clase 0 indica celda sin solapamiento albatros-pesca
-# - Clase 1: valores entre 0 y Q1; Clase 2: entre Q1 y Q2
-# - Clase 3: entre Q2 y Q3; Clase 4: mayores a Q3
+# - Clase 1: riesgo mínimo (50 % inferior, ≤ percentil 50)
+# - Clase 2: riesgo bajo (siguiente 25 %, percentil 50–75)
+# - Clase 3: riesgo medio (siguiente 15 %, percentil 75–90)
+# - Clase 4: riesgo alto (10 % superior, > percentil 90)
 # ==========================================
 
 
@@ -47,7 +49,7 @@ library(tidyverse)
 # de albatros con palangre y arrastre por celda de la rejilla KDE
 input_gpkg_path <- "data/processed/ud_vms_all_gear_udoi.gpkg"
 
-# Ruta del GeoPackage de salida con la clasificación por cuartiles
+# Ruta del GeoPackage de salida con la clasificación por percentiles
 # del índice UDOI combinado para las celdas dentro de la ZEE
 output_gpkg_path <- "data/processed/ud_vms_all_gear_class.gpkg"
 
@@ -72,25 +74,25 @@ udoi_values <- udoi_grid_sf$udoi_value
 is_positive_value <- udoi_values > 0
 
 # Extrae solo los valores positivos del índice UDOI para calcular
-# los cuartiles exclusivamente sobre la distribución de celdas con
+# los percentiles exclusivamente sobre la distribución de celdas con
 # solapamiento, excluyendo los ceros que distorsionarían los umbrales
 positive_udoi_values <- udoi_values[is_positive_value]
 
-# Calcula el primer cuartil (Q1) de los valores positivos para
-# definir el límite inferior de la categoría de solapamiento bajo
-first_quartile <- quantile(positive_udoi_values, probs = 0.25)
+# Calcula el percentil 50 (mediana) de los valores positivos para
+# definir el límite superior de la categoría de riesgo mínimo
+threshold_1 <- quantile(positive_udoi_values, probs = 0.50)
 
-# Calcula el segundo cuartil (Q2, mediana) de los valores positivos
-# para dividir la distribución en dos mitades iguales
-second_quartile <- quantile(positive_udoi_values, probs = 0.50)
+# Calcula el percentil 75 de los valores positivos para definir el
+# límite superior de la categoría de riesgo bajo
+threshold_2 <- quantile(positive_udoi_values, probs = 0.75)
 
-# Calcula el tercer cuartil (Q3) de los valores positivos para
-# definir el límite inferior de la categoría de solapamiento alto
-third_quartile <- quantile(positive_udoi_values, probs = 0.75)
+# Calcula el percentil 90 de los valores positivos para definir el
+# límite superior de la categoría de riesgo medio
+threshold_3 <- quantile(positive_udoi_values, probs = 0.90)
 
 # Construye la rejilla de clasificación asignando la clase 0 a
 # celdas sin solapamiento (valor cero) y las clases 1 a 4 según
-# el cuartil al que pertenece cada valor positivo dentro de la ZEE
+# el percentil al que pertenece cada valor positivo dentro de la ZEE
 udoi_classification_sf <- udoi_grid_sf |>
   mutate(
     udoi_class = case_when(
@@ -98,17 +100,17 @@ udoi_classification_sf <- udoi_grid_sf |>
       # distinguir las áreas donde no hay coincidencia de albatros
       # con palangre ni arrastre dentro de la ZEE
       udoi_value == 0 ~ 0L,
-      # Asigna clase 1 a valores positivos hasta el primer cuartil
-      # que representan el 25% inferior del solapamiento observado
-      udoi_value <= first_quartile ~ 1L,
-      # Asigna clase 2 a valores entre el primer y segundo cuartil
-      # que representan el segundo cuartil de solapamiento
-      udoi_value <= second_quartile ~ 2L,
-      # Asigna clase 3 a valores entre el segundo y tercer cuartil
-      # que representan el tercer cuartil de solapamiento
-      udoi_value <= third_quartile ~ 3L,
-      # Asigna clase 4 al resto de valores mayores al tercer
-      # cuartil que representan el 25% superior del solapamiento
+      # Asigna clase 1 (riesgo mínimo) a valores ≤ percentil 50
+      # que representan el 50 % inferior del solapamiento observado
+      udoi_value <= threshold_1 ~ 1L,
+      # Asigna clase 2 (riesgo bajo) a valores entre percentil 50 y 75
+      # que representan el siguiente 25 % del solapamiento observado
+      udoi_value <= threshold_2 ~ 2L,
+      # Asigna clase 3 (riesgo medio) a valores entre percentil 75 y 90
+      # que representan el siguiente 15 % del solapamiento observado
+      udoi_value <= threshold_3 ~ 3L,
+      # Asigna clase 4 (riesgo alto) al resto de valores mayores al
+      # percentil 90 que representan el 10 % superior del solapamiento
       TRUE ~ 4L
     )
   ) |>
@@ -117,7 +119,7 @@ udoi_classification_sf <- udoi_grid_sf |>
 
 # ==== SALIDA ====
 
-# Escribe el GeoPackage con la clasificación por cuartiles del
+# Escribe el GeoPackage con la clasificación por percentiles del
 # índice UDOI combinado para su uso en mapas discretos y análisis
 # de riesgo de captura incidental dentro de la ZEE
 st_write(udoi_classification_sf, output_gpkg_path, delete_dsn = TRUE)

@@ -1,9 +1,9 @@
 # ==========================================
-# Título: Grafica la clasificación por cuartiles del índice UDOI combinado
+# Título: Grafica la clasificación por percentiles del índice UDOI combinado
 #
 # Contexto (Por qué):
 # El índice UDOI combinado de albatros-palangre-arrastre está
-# discretizado en cuatro clases por cuartiles. Visualizar las clases
+# discretizado en cuatro clases por percentiles. Visualizar las clases
 # revela la gradación del riesgo de captura incidental de forma
 # inmediata sin necesidad de interpretar una escala continua.
 #
@@ -31,7 +31,7 @@
 # tidyverse
 #
 # Notas:
-# - Las clases 1 a 4 representan los cuatro cuartiles de UDOI > 0
+# - Las clases 1 a 4 representan los cuatro niveles de riesgo por percentiles de UDOI > 0
 # - La clase 0 se omite del mapa porque representa 99 % de las celdas
 # - Los colores siguen la secuencia verde (bajo) a rojo (alto)
 # - No se necesita archivo JSON porque el título es estático
@@ -56,7 +56,7 @@ library(sf)
 # (filtrado de celdas) y forcats (manejo de factores discretos)
 library(tidyverse)
 
-# Ruta del GeoPackage con la clasificación por cuartiles del índice
+# Ruta del GeoPackage con la clasificación por percentiles del índice
 # UDOI combinado generado por export_ud_vms_all_gear_class.R
 input_class_gpkg_path <- "data/processed/ud_vms_all_gear_class.gpkg"
 
@@ -69,7 +69,7 @@ input_mpa_path <- "data/processed/mexico_mpa.gpkg"
 input_eez_shapefile_path <- "data/external/Exclusive_economic_zone_Mexico.shp"
 
 # Ruta del archivo PNG que almacenará el mapa de clasificación por
-# cuartiles para el reporte del segundo artículo
+# percentiles para el reporte del segundo artículo
 output_figure_path <- "reports/figures/ud_vms_all_gear_classification_map.png"
 
 # Escala de la línea de costa mundial; "medium" balancea el detalle
@@ -98,11 +98,11 @@ mpa_line_width <- 0.3
 class_colors <- c("1" = "green", "2" = "yellow", "3" = "orange", "4" = "red")
 
 # Etiquetas descriptivas de cada clase para la leyenda del mapa que
-# explican el nivel de riesgo de cada cuartil de manera intuitiva
+# explican el nivel de riesgo de cada percentil de manera intuitiva
 class_labels <- c("Minimal", "Low", "Medium", "High")
 
 # Nombre de la leyenda de color que describe la escala discreta de
-# riesgo de captura incidental por cuartil del índice UDOI
+# riesgo de captura incidental por percentil del índice UDOI
 legend_title <- "Risk level"
 
 # Dimensiones y resolución de la figura de salida en ppp (puntos por
@@ -114,7 +114,7 @@ fig_dpi <- 300
 
 # ==== ENTRADAS ====
 
-# Importa la rejilla KDE con la clasificación por cuartiles desde el
+# Importa la rejilla KDE con la clasificación por percentiles desde el
 # GeoPackage generado por export_ud_vms_all_gear_class.R que
 # contiene la columna entera udoi_class con valores de 0 a 4
 class_grid_sf <- st_read(input_class_gpkg_path, quiet = TRUE)
@@ -136,7 +136,7 @@ world_coastline_sf <- ne_countries(scale = coastline_scale, returnclass = "sf")
 
 # Filtra la rejilla para conservar solo las celdas con clase mayor a
 # cero porque las 213 mil celdas sin solapamiento saturarían el mapa
-# sin agregar información sobre la gradación del riesgo por cuartil
+# sin agregar información sobre la gradación del riesgo por percentil
 class_positive_sf <- class_grid_sf |>
   filter(udoi_class > 0)
 
@@ -166,7 +166,7 @@ bbox_lat_min <- 15
 bbox_lat_max <- 35
 
 # Construye el mapa temático con las celdas de la rejilla KDE
-# coloreadas por la clase de cuartil sobre la costa, la ZEE y las
+# coloreadas por la clase de percentil sobre la costa, la ZEE y las
 # Áreas Marinas Protegidas como contexto geográfico regional
 plot_classification_grid <- ggplot() +
 
@@ -181,7 +181,7 @@ plot_classification_grid <- ggplot() +
   ) +
 
   # Capa principal de las celdas con udoi_class positivo coloreadas
-  # por el cuartil al que pertenecen para mostrar la distribución
+  # por el percentil al que pertenecen para mostrar la distribución
   # espacial del riesgo de captura incidental en la ZEE
   geom_sf(
     data = class_positive_sf,
@@ -190,7 +190,7 @@ plot_classification_grid <- ggplot() +
   ) +
 
   # Escala discreta de color con verde, amarillo, naranja y rojo que
-  # mapea las cuatro clases de cuartil del índice UDOI de menor a
+  # mapea las cuatro clases por percentil del índice UDOI de menor a
   # mayor riesgo para una interpretación intuitiva del mapa
   scale_fill_manual(
     values = class_colors,
@@ -251,7 +251,7 @@ plot_classification_grid <- ggplot() +
 
 # ==== SALIDA ====
 
-# Exporta el mapa de clasificación por cuartiles del índice UDOI
+# Exporta el mapa de clasificación por percentiles del índice UDOI
 # combinado como PNG con resolución de publicación para incluirlo en
 # el reporte del segundo artículo del proyecto
 ggsave(
