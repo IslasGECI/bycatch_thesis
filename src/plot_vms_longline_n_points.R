@@ -145,6 +145,25 @@ world_coastline_sf <- ne_countries(scale = coastline_scale, returnclass = "sf")
 grid_positive_sf <- vms_hotspot_sf |>
   filter(.data[[n_points_column_name]] > 0)
 
+# Calcula los percentiles 5 y 95 del conteo de puntos VMS solo entre
+# las celdas con al menos un punto para evitar que los ceros sesguen
+# los umbrales de la winsorización
+p5 <- quantile(grid_positive_sf[[n_points_column_name]], probs = 0.05)
+p95 <- quantile(grid_positive_sf[[n_points_column_name]], probs = 0.95)
+
+# Winsoriza el conteo de puntos: pisa los valores por debajo de p5
+# con 0 y recorta los valores por encima de p95 al valor de p95;
+# así la escala de color se concentra en el rango central 5-95%
+grid_positive_sf <- grid_positive_sf |>
+  mutate(
+    !!n_points_column_name := case_when(
+      .data[[n_points_column_name]] < p5 ~ 0,
+      .data[[n_points_column_name]] > p95 ~ p95,
+      TRUE ~ .data[[n_points_column_name]]
+    )
+  ) |>
+  filter(.data[[n_points_column_name]] > 0)
+
 # Transforma la ZEE de su proyección original CEA a coordenadas
 # geográficas WGS84 para que coincida con el sistema de referencia de
 # la costa, las AMP y el bounding box hardcodeado del mapa
