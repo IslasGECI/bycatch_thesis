@@ -4,18 +4,19 @@
 # Contexto (Por qué):
 # El GeoPackage con los z-scores de Getis-Ord Gi* contiene el conteo
 # de puntos VMS de palangre por celda de la rejilla del KDE individual.
-# El conteo abarca varios órdenes de magnitud (1 a 70 mil). Aplicar
-# log1p comprime la cola superior y revela la gradación en las celdas
-# con pocos puntos donde se concentra la mayoría de las observaciones.
+# El conteo abarca varios órdenes de magnitud (1 a 70 mil). Winsorizar
+# el conteo en p5 y p95 elimina la cola inferior y recorta la cola
+# superior para que la escala de color se concentre en el rango
+# central donde ocurre la mayor parte de la actividad pesquera.
 #
 # Descripción (Qué / Cómo):
 # Lee el GeoPackage con el conteo de puntos VMS de palangre y los
 # z-scores de Getis-Ord Gi* por celda. Lee la costa mundial, la ZEE
 # de México y las áreas marinas protegidas como contexto geográfico.
-# Filtra las celdas sin puntos VMS para evitar saturar el mapa. Mapea
-# el conteo con escala log1p y paleta inferno para revelar la
-# gradación en valores bajos y altos. Construye el mapa con ggplot2
-# y lo exporta como PNG.
+# Filtra las celdas sin puntos VMS. Winsoriza el conteo en p5 y p95,
+# re-filtra las celdas con valor cero tras la winsorización. Mapea
+# el conteo winsorizado con paleta inferno y escala lineal. Construye
+# el mapa con ggplot2 y lo exporta como PNG.
 #
 # Entradas:
 # data/processed/vms_longline_hotspot.gpkg
@@ -36,8 +37,8 @@
 #   Baja California donde se concentra el tráfico VMS
 # - La ZEE se transforma de CEA a WGS84 para compatibilidad espacial
 # - Solo se grafican celdas con al menos un punto VMS
-# - La escala de color usa log1p para comprimir la cola superior; la
-#   leyenda muestra los valores en la escala original sin mencionar log
+# - La winsorización elimina celdas por debajo del percentil 5 y
+#   recorta las celdas por encima del percentil 95
 # ==========================================
 
 
@@ -199,8 +200,8 @@ plot_vms_n_points <- ggplot() +
   ) +
 
   # Capa principal de las celdas con al menos un punto VMS coloreadas
-  # por el conteo de puntos de palangre con escala log1p que revela la
-  # congestión relativa de embarcaciones en cada celda de la rejilla
+  # por el conteo winsorizado de puntos de palangre con escala lineal
+  # que revela la congestión relativa en cada celda de la rejilla
   geom_sf(
     data = grid_positive_sf,
     mapping = aes(fill = .data[[n_points_column_name]]),
@@ -208,14 +209,11 @@ plot_vms_n_points <- ggplot() +
   ) +
 
   # Escala secuencial de color con paleta inferno que mapea el conteo
-  # de puntos VMS transformado con log1p (log(1+x)) para comprimir la
-  # cola superior y expandir la variación en valores bajos, mostrando
-  # las etiquetas de la leyenda en la escala original sin mencionar
-  # la transformación
+  # de puntos VMS winsorizado con escala lineal para revelar la
+  # congestión relativa de embarcaciones en cada celda de la rejilla
   scale_fill_viridis_c(
     option = viridis_option,
     direction = -1,
-    trans = "log1p",
     name = color_legend_name
   ) +
 
