@@ -54,6 +54,7 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	reports/figures/kba_and_vms_hotspot_map.png \
 	reports/figures/kba_and_vms_longline_hotspot_map.png \
 	reports/figures/kba_and_vms_trawler_hotspot_map.png \
+	reports/figures/kba_and_vms_union_hotspot_map.png \
 	reports/figures/kba_and_vms_purse_seine_hotspot_map.png \
 	reports/figures/kba_and_vms_other_hotspot_map.png \
 	reports/figures/vms_longline_n_points_map.png \
@@ -321,6 +322,13 @@ data/processed/vms_other_hotspot.gpkg: \
 	$(checkDirectories)
 	Rscript src/compute_vms_by_gear_hotspot.R other
 
+# Combina los hot spots de palangre y arrastre en una unión de dos artes
+data/processed/vms_union_hotspot.gpkg: \
+  data/processed/vms_longline_hotspot.gpkg \
+  data/processed/vms_trawler_hotspot.gpkg
+	$(checkDirectories)
+	Rscript src/create_vms_union_hotspot.R
+
 # Calcula la intersección entre el sitio potencial KBA y las celdas hot spot de congestión VMS, por tipo de arte de pesca
 data/processed/kba_vms_longline_hotspot_intersection.gpkg: \
   data/processed/kba_polygons_all.gpkg \
@@ -345,6 +353,12 @@ data/processed/kba_vms_other_hotspot_intersection.gpkg: \
   data/processed/vms_other_hotspot.gpkg
 	$(checkDirectories)
 	Rscript src/export_kba_vms_by_gear_hotspot_intersection.R other
+
+data/processed/kba_vms_union_hotspot_intersection.gpkg: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/vms_union_hotspot.gpkg
+	$(checkDirectories)
+	Rscript src/export_kba_vms_by_gear_hotspot_intersection.R union
 
 # Grafica el mapa combinado de KBA y hot spots de congestión VMS, por tipo de arte de pesca
 reports/figures/kba_and_vms_longline_hotspot_map.png: \
@@ -382,6 +396,15 @@ reports/figures/kba_and_vms_other_hotspot_map.png: \
   data/external/Exclusive_economic_zone_Mexico.shp
 	$(checkDirectories)
 	Rscript src/plot_kba_and_vms_by_gear_hotspot.R other
+
+reports/figures/kba_and_vms_union_hotspot_map.png: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/vms_union_hotspot.gpkg \
+  data/processed/kba_vms_union_hotspot_intersection.gpkg \
+  data/processed/mexico_mpa.gpkg \
+  data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_kba_and_vms_by_gear_hotspot.R union
 
 # Calcula la intersección entre el sitio potencial KBA y las celdas hot spot de señal de radar
 data/processed/kba_radar_signal_hotspot_intersection.gpkg: \

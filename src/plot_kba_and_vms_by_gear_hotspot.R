@@ -71,7 +71,8 @@ gear_display <- c(
   "longline" = "Longline",
   "trawler" = "Trawler",
   "purse_seine" = "Purse Seine",
-  "other" = "Other"
+  "other" = "Other",
+  "union" = "Longline or Trawler"
 )[gear]
 
 # Ruta del GeoPackage con los polígonos KBA originales para extraer el
