@@ -125,9 +125,10 @@ reports/figures/mexico_eez_bounding_box_zoom_in.png: \
 	Rscript src/plot_mexico_eez_bounding_box_intersection.R
 
 reports/figures/mexico_eez_bounding_box_zoom_out.png: \
-	data/external/Exclusive_economic_zone_Mexico.shp data/processed/bounding_box.json \
+	data/external/Exclusive_economic_zone_Mexico.shp \
 	data/processed/gps_albatross_all.csv \
-	data/processed/mexico_eez_bounding_box_zoom_in.json
+	data/processed/mexico_mpa.gpkg \
+	data/processed/bounding_box.json
 	$(checkDirectories)
 	Rscript src/plot_mexico_eez_bounding_box_union.R
 
