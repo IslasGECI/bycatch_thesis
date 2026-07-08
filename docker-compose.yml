@@ -11,11 +11,19 @@ services:
     volumes:
       - $PWD:/workdir
     depends_on:
-      data:
+      vessel_data:
+        condition: service_completed_successfully
+      bycatch_processed_data:
         condition: service_completed_successfully
 
-  data:
+  vessel_data:
     image: islasgeci/vessel_data:latest
     volumes:
       - ./data/external:/data_container
+    command: sh -c "mkdir --parents /data_container && cp --archive --verbose /data/. /data_container"
+
+  bycatch_processed_data:
+    image: islasgeci/bycatch_processed_data:latest
+    volumes:
+      - ./data/processed:/data_container
     command: sh -c "mkdir --parents /data_container && cp --archive --verbose /data/. /data_container"
