@@ -1,0 +1,6 @@
+*.docx
+*.mustache
+*.pdf
+data/
+reports/*.md
+reports/figures/*.png
