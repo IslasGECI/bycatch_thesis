@@ -63,3 +63,5 @@ These additions improve readability and geographic interpretability for publicat
 
 ![EEZ mask grid — Gulf of California excluded. Gray cells are outside the Pacific EEZ or inside the Gulf of California; blue cells are inside the Pacific EEZ and outside the Gulf.](reports/figures/eez_mask_in_grid.png)
 
+![GFW apparent fishing effort in the Pacific Mexico EEZ after spatial filtering. Points colored by apparent fishing hours with inferno palette.](reports/figures/gfw_fishing_effort_pacific_map.png)
+

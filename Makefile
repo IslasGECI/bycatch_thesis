@@ -100,7 +100,8 @@ reports/obsolete_results.docx reports/obsolete_results.pdf: \
 	reports/figures/radar_signal_geographic_points_albatross_guadalupe.png \
 	reports/figures/vms_hotspot_binary_map.png \
 	reports/figures/vms_hotspot_map.png \
-	reports/figures/eez_mask_in_grid.png
+	reports/figures/eez_mask_in_grid.png \
+	reports/figures/gfw_fishing_effort_pacific_map.png
 	$(checkDirectories)
 	pandoc --metadata-file=papers/obsolete-results/00_metadata.yaml --output=$@ papers/obsolete-results/obsolete-results.md
 
@@ -936,6 +937,13 @@ data/processed/gfw_apparent_fishing_effort_in_eez_without_gulf_of_california.csv
 	data/raw/gulf_of_california.kml
 	$(checkDirectories)
 	Rscript src/remove_gulf_of_california_from_gfw_fishing_effort.R
+
+reports/figures/gfw_fishing_effort_pacific_map.png: \
+	data/processed/gfw_apparent_fishing_effort_in_eez_without_gulf_of_california.csv \
+	data/processed/mexico_mpa.gpkg \
+	data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_gfw_fishing_effort_pacific.R
 
 reports/figures/longline_events_map.png: data/external/oorg_2025_geci_longline_events_v20260402.csv
 	$(checkDirectories)
