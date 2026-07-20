@@ -1,10 +1,31 @@
 # The Gold
 
-- (None)
+Filter GFW apparent fishing effort data to the Pacific Ocean EEZ (removing Gulf of California, Gulf of Mexico, Caribbean, Atlantic, etc.).
 
 ## Plan
 
-Issue #48 (VMS hot-spot analysis) is fully implemented: all three scripts (`export_vms_in_grid.R`, `compute_vms_hotspot.R`, `plot_vms_hotspot.R`) exist, Makefile rules are in place, and the output map is archived in `obsolete-results.md`.
+### Task 1: Create spatial filter script
+
+Create `src/remove_gulf_of_california_from_gfw_fishing_effort.R` following the same pattern as `src/remove_gulf_of_california_from_longline_events.R`.
+
+- **Input**: `data/external/gfw_apparent_fishing_effort_in_mx_eez.csv` (75,840 rows, columns: `Lat`, `Lon`, `Time Range`, `Vessel ID`, `Flag`, `Vessel Name`, `Entry Timestamp`, `Exit Timestamp`, `Gear Type`, `Vessel Type`, `MMSI`, `IMO`, `CallSign`, `First Transmission Date`, `Last Transmission Date`, `Apparent Fishing Hours`)
+- **Filter**: Keep only rows where the point falls inside polygons with `AREA_GEOGR == "OCEANO PACIFICO"` in `data/external/Exclusive_economic_zone_Mexico.shp`
+- **Do not filter by**: `Marine` column, `Gear Type`, or Gulf of California KML (the `AREA_GEOGR` filter already excludes Gulf of California)
+- **Keep original column names** (`Lat`, `Lon` — no renaming)
+- **Output**: `data/processed/gfw_apparent_fishing_effort_in_eez_without_gulf_of_california.csv`
+- **Dependencies**: `sf`, `tidyverse`
+
+### Task 2: Add Makefile rule
+
+```makefile
+data/processed/gfw_apparent_fishing_effort_in_eez_without_gulf_of_california.csv: \
+  data/external/gfw_apparent_fishing_effort_in_mx_eez.csv \
+  data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/remove_gulf_of_california_from_gfw_fishing_effort.R
+```
+
+No Gulf KML dependency for now (to be added later as belt-and-suspenders if needed).
 
 ---
 
@@ -12,5 +33,8 @@ Issue #48 (VMS hot-spot analysis) is fully implemented: all three scripts (`expo
 
 The items listed below are not part of the current Gold. They are backlog items kept for future cycles.
 
-- Extend VMS hot-spot analysis to all colonies (not just Guadalupe)
-- Behavioural classification of foraging versus transit events
+- GFW apparent fishing effort: grid counting per KDE cell (like `export_gfw_longline_in_grid.R`)
+- GFW apparent fishing effort: Getis-Ord Gi* hotspot computation
+- GFW apparent fishing effort: hotspot map visualization
+- GFW apparent fishing effort: filter by specific gear types (longline, trawler, etc.)
+- GFW apparent fishing effort: add Gulf of California KML as belt-and-suspenders dependency
