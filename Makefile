@@ -929,6 +929,14 @@ data/processed/longline_events_in_eez_without_gulf_of_california.csv: \
 	$(checkDirectories)
 	Rscript src/remove_gulf_of_california_from_longline_events.R
 
+# Elimina el esfuerzo pesquero aparente de GFW que cae dentro del Golfo de California y fuera de la ZEE de México
+data/processed/gfw_apparent_fishing_effort_in_eez_without_gulf_of_california.csv: \
+	data/external/gfw_apparent_fishing_effort_in_mx_eez.csv \
+	data/external/Exclusive_economic_zone_Mexico.shp \
+	data/raw/gulf_of_california.kml
+	$(checkDirectories)
+	Rscript src/remove_gulf_of_california_from_gfw_fishing_effort.R
+
 reports/figures/longline_events_map.png: data/external/oorg_2025_geci_longline_events_v20260402.csv
 	$(checkDirectories)
 	Rscript src/plot_longline_events.R
