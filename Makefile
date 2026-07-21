@@ -60,6 +60,7 @@ reports/second_paper.docx reports/second_paper.pdf: \
 	reports/figures/vms_longline_n_points_map.png \
 	reports/figures/vms_trawler_n_points_map.png \
 	reports/figures/combined_fishing_distribution_map.png \
+	reports/figures/kba_and_gfw_apparent_fishing_effort_hotspot_map.png \
 	reports/figures/kba_and_radar_signal_hotspot_map.png \
 	reports/figures/radar_signal_geographic_points_in_eez.png \
 	reports/figures/ud_vms_longline_udoi_map.png \
@@ -433,6 +434,16 @@ data/processed/kba_gfw_apparent_fishing_effort_hotspot_intersection.gpkg: \
   data/processed/gfw_apparent_fishing_effort_hotspot.gpkg
 	$(checkDirectories)
 	Rscript src/export_kba_fishing_effort_hotspot_intersection.R
+
+# Grafica el mapa combinado de KBA y hot spots de esfuerzo pesquero de GFW
+reports/figures/kba_and_gfw_apparent_fishing_effort_hotspot_map.png: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/gfw_apparent_fishing_effort_hotspot.gpkg \
+  data/processed/kba_gfw_apparent_fishing_effort_hotspot_intersection.gpkg \
+  data/processed/mexico_mpa.gpkg \
+  data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_kba_and_gfw_apparent_fishing_effort_hotspot.R
 
 # Grafica el mapa combinado de KBA y hot spots de señal de radar
 reports/figures/kba_and_radar_signal_hotspot_map.png: \
