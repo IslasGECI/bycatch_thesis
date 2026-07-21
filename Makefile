@@ -230,6 +230,12 @@ data/processed/gfw_apparent_fishing_hours_in_grid.gpkg: \
 	$(checkDirectories)
 	Rscript src/export_gfw_apparent_fishing_effort_in_grid.R
 
+# Aplica Getis-Ord Gi* a las sumas de horas de pesca aparente de GFW por celda
+data/processed/gfw_apparent_fishing_effort_hotspot.gpkg: \
+  data/processed/gfw_apparent_fishing_hours_in_grid.gpkg
+	$(checkDirectories)
+	Rscript src/compute_gfw_apparent_fishing_effort_hotspot.R
+
 # Aplica Getis-Ord Gi* a los conteos de palangre de GFW por celda
 data/processed/gfw_longline_hotspot_all.gpkg: \
   data/processed/gfw_longline_in_grid.gpkg

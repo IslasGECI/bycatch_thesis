@@ -1,29 +1,30 @@
 # The Gold
 
-Filter GFW apparent fishing effort data to the Pacific Ocean EEZ (removing Gulf of California, Gulf of Mexico, Caribbean, Atlantic, etc.).
+Visualize GFW apparent fishing effort hotspots as a binary map.
 
 ## Plan
 
-### Task 1: Create spatial filter script
+### Task 1: Create binary hotspot map script
 
-Create `src/remove_gulf_of_california_from_gfw_fishing_effort.R` following the same pattern as `src/remove_gulf_of_california_from_longline_events.R`.
+Create `src/plot_gfw_apparent_fishing_effort_hotspot_binary.R` following the same pattern as `src/plot_gfw_longline_hotspot_binary.R`.
 
-- **Input**: `data/external/gfw_apparent_fishing_effort_in_mx_eez.csv` (75,840 rows, columns: `Lat`, `Lon`, `Time Range`, `Vessel ID`, `Flag`, `Vessel Name`, `Entry Timestamp`, `Exit Timestamp`, `Gear Type`, `Vessel Type`, `MMSI`, `IMO`, `CallSign`, `First Transmission Date`, `Last Transmission Date`, `Apparent Fishing Hours`)
-- **Filter**: Keep only rows where the point falls inside layer 2 (NACIONAL, Marine=1) of `data/external/Exclusive_economic_zone_Mexico.shp` AND outside the Gulf of California polygon from `data/raw/gulf_of_california.kml`
-- **Do not filter by**: `Gear Type`
-- **Keep original column names** (`Lat`, `Lon` — no renaming)
-- **Output**: `data/processed/gfw_apparent_fishing_effort_in_eez_without_gulf_of_california.csv` (61,390 rows after filtering)
-- **Dependencies**: `sf`, `tidyverse`
+- **Input**: `data/processed/gfw_apparent_fishing_effort_hotspot.gpkg` (columns: `cell_id`, `geometry`, `sum_gfw_apparent_fishing_hours`, `gi_star_z_score`, `gi_star_p_value`)
+- **Filter**: Keep only cells where `sum_gfw_apparent_fishing_hours > 0`
+- **Classification**: `is_hot_spot = gi_star_z_score >= 1.96`
+- **Colors**: Orange (`#E67E22`) for hot spots, green (`#2ECC71`) for non-hot-spots
+- **Map context**: World coastline (Natural Earth), EEZ bounding box from `data/processed/mexico_eez_bounding_box_zoom_in.json`
+- **Output**: `reports/figures/gfw_apparent_fishing_effort_hotspot_binary_map.png`
+- **Dependencies**: `rnaturalearth`, `rnaturalearthdata`, `sf`, `tidyverse`
 
 ### Task 2: Add Makefile rule
 
 ```makefile
-data/processed/gfw_apparent_fishing_effort_in_eez_without_gulf_of_california.csv: \
-  data/external/gfw_apparent_fishing_effort_in_mx_eez.csv \
-  data/external/Exclusive_economic_zone_Mexico.shp \
-  data/raw/gulf_of_california.kml
+# Grafica el mapa binario de hot spots de esfuerzo pesquero de GFW
+reports/figures/gfw_apparent_fishing_effort_hotspot_binary_map.png: \
+  data/processed/gfw_apparent_fishing_effort_hotspot.gpkg \
+  data/processed/mexico_eez_bounding_box_zoom_in.json
 	$(checkDirectories)
-	Rscript src/remove_gulf_of_california_from_gfw_fishing_effort.R
+	Rscript src/plot_gfw_apparent_fishing_effort_hotspot_binary.R
 ```
 
 ---
@@ -32,7 +33,5 @@ data/processed/gfw_apparent_fishing_effort_in_eez_without_gulf_of_california.csv
 
 The items listed below are not part of the current Gold. They are backlog items kept for future cycles.
 
-- GFW apparent fishing effort: grid counting per KDE cell (like `export_gfw_longline_in_grid.R`)
-- GFW apparent fishing effort: Getis-Ord Gi* hotspot computation
-- GFW apparent fishing effort: hotspot map visualization
+- GFW apparent fishing effort: KBA + hotspot overlay map
 - GFW apparent fishing effort: filter by specific gear types (longline, trawler, etc.)
