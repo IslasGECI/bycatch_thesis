@@ -427,6 +427,13 @@ data/processed/kba_radar_signal_hotspot_intersection.gpkg: \
 	$(checkDirectories)
 	Rscript src/export_kba_radar_signal_hotspot_intersection.R
 
+# Calcula la intersección entre el sitio potencial KBA y las celdas hot spot de esfuerzo pesquero de GFW
+data/processed/kba_gfw_apparent_fishing_effort_hotspot_intersection.gpkg: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/gfw_apparent_fishing_effort_hotspot.gpkg
+	$(checkDirectories)
+	Rscript src/export_kba_fishing_effort_hotspot_intersection.R
+
 # Grafica el mapa combinado de KBA y hot spots de señal de radar
 reports/figures/kba_and_radar_signal_hotspot_map.png: \
   data/processed/kba_polygons_all.gpkg \

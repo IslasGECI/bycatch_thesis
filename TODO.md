@@ -1,6 +1,6 @@
 # The Gold
 
-Visualize GFW apparent fishing effort hotspots as a binary map.
+Create binary hotspot map and KBA + hotspot overlay map for GFW apparent fishing effort.
 
 ## Plan
 
@@ -16,7 +16,7 @@ Create `src/plot_gfw_apparent_fishing_effort_hotspot_binary.R` following the sam
 - **Output**: `reports/figures/gfw_apparent_fishing_effort_hotspot_binary_map.png`
 - **Dependencies**: `rnaturalearth`, `rnaturalearthdata`, `sf`, `tidyverse`
 
-### Task 2: Add Makefile rule
+### Task 2: Add Makefile rule for binary map
 
 ```makefile
 # Grafica el mapa binario de hot spots de esfuerzo pesquero de GFW
@@ -27,11 +27,37 @@ reports/figures/gfw_apparent_fishing_effort_hotspot_binary_map.png: \
 	Rscript src/plot_gfw_apparent_fishing_effort_hotspot_binary.R
 ```
 
+### Task 3: Create KBA + hotspot overlay map script
+
+Create `src/plot_kba_and_gfw_apparent_fishing_effort_hotspot.R` following the same pattern as `src/plot_kba_and_gfw_longline_hotspot.R`.
+
+- **Inputs**:
+  - `data/processed/kba_polygons_all.gpkg`
+  - `data/processed/gfw_apparent_fishing_effort_hotspot.gpkg`
+  - `data/processed/kba_gfw_apparent_fishing_effort_hotspot_intersection.gpkg`
+  - `data/processed/mexico_mpa.gpkg`
+  - `data/external/Exclusive_economic_zone_Mexico.shp`
+- **Output**: `reports/figures/kba_and_gfw_apparent_fishing_effort_hotspot_map.png`
+- **Dependencies**: `rnaturalearth`, `rnaturalearthdata`, `sf`, `tidyverse`
+
+### Task 4: Add Makefile rule for KBA overlay map
+
+```makefile
+# Grafica el mapa combinado de KBA y hot spots de esfuerzo pesquero de GFW
+reports/figures/kba_and_gfw_apparent_fishing_effort_hotspot_map.png: \
+  data/processed/kba_polygons_all.gpkg \
+  data/processed/gfw_apparent_fishing_effort_hotspot.gpkg \
+  data/processed/kba_gfw_apparent_fishing_effort_hotspot_intersection.gpkg \
+  data/processed/mexico_mpa.gpkg \
+  data/external/Exclusive_economic_zone_Mexico.shp
+	$(checkDirectories)
+	Rscript src/plot_kba_and_gfw_apparent_fishing_effort_hotspot.R
+```
+
 ---
 
 # Backlog not part of the current Gold
 
 The items listed below are not part of the current Gold. They are backlog items kept for future cycles.
 
-- GFW apparent fishing effort: KBA + hotspot overlay map
 - GFW apparent fishing effort: filter by specific gear types (longline, trawler, etc.)
