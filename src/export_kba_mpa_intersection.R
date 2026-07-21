@@ -84,5 +84,6 @@ st_write(
   obj = kba_mpa_intersection_sf,
   dsn = output_gpkg_path,
   driver = "GPKG",
+  delete_dsn = TRUE,
   quiet = TRUE
 )
