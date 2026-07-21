@@ -223,6 +223,13 @@ data/processed/gfw_longline_in_grid.gpkg: \
 	$(checkDirectories)
 	Rscript src/export_gfw_longline_in_grid.R
 
+# Suma horas de pesca aparente de GFW por celda de la rejilla del KDE
+data/processed/gfw_apparent_fishing_hours_in_grid.gpkg: \
+  data/processed/gfw_apparent_fishing_effort_in_eez_without_gulf_of_california.csv \
+  data/processed/individual_kde_all.rds
+	$(checkDirectories)
+	Rscript src/export_gfw_apparent_fishing_effort_in_grid.R
+
 # Aplica Getis-Ord Gi* a los conteos de palangre de GFW por celda
 data/processed/gfw_longline_hotspot_all.gpkg: \
   data/processed/gfw_longline_in_grid.gpkg
