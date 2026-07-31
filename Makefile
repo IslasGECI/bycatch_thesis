@@ -494,6 +494,11 @@ data/processed/kba_polygons_all.gpkg: \
 		--population-size 4437 \
 		--output-path $@
 
+data/processed/kba_potential_site_all.gpkg: \
+	data/processed/kba_polygons_all.gpkg
+	$(checkDirectories)
+	Rscript src/export_potential_kba_to_gpkg.R
+
 reports/figures/gps_albatross_50_percent_potential_kba_ars_all_without_mpa.png: \
 	data/processed/kba_polygons_all.gpkg \
 	data/external/Exclusive_economic_zone_Mexico.shp
