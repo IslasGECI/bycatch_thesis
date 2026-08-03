@@ -1041,12 +1041,38 @@ endef
 	check \
 	clean \
 	format \
-	init
+	init \
+	restore
 
 clean:
 	rm --force *.pdf
 	rm --force --recursive data
 	rm --force --recursive reports
+
+# Restaura data/processed desde la imagen de docker compose y la declara
+# autoritativa: toca todos los archivos con la misma marca de tiempo para que
+# make no los considere desactualizados. Los prerequisitos garantizan que las
+# entradas externas existan (descargas y descompresiones) antes de tocar.
+# Supone que docker compose copió data/processed desde bycatch_processed_data.
+# Para recomputar un artefacto: borrar el archivo y correr make all.
+# Para recomputar todo: make clean && make all.
+PROCESSED_INPUTS := $(shpLineaCostaMundial) \
+	data/raw/gps-albatros-guadalupe.csv \
+	data/raw/gps-albatros-clarion.csv \
+	data/raw/gps-albatros-san-benedicto.csv \
+	data/raw/radar-signal-albatros-guadalupe.csv \
+	data/raw/rosewind.png \
+	data/raw/gulf_of_california.kml \
+	data/external/Exclusive_economic_zone_Mexico.shp \
+	data/external/232_ANP-ITRF08_04072025.shp \
+	data/external/Mexico_e_islas_wgs84.shp \
+	data/external/gfw_apparent_fishing_effort_in_mx_eez.csv \
+	data/external/oorg_2025_geci_longline_events_v20260402.csv \
+	data/external/vessel_data_pacific.csv \
+	data/external/vessel_info.csv
+
+restore: $(PROCESSED_INPUTS)
+	find data/processed -type f -exec touch -d "@$$(date +%s)" {} +
 
 format:
 	R -e "library(styler)" \
