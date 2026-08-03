@@ -1,7 +1,7 @@
 
 # Introduction
 
-We aim to identify the core areas used by Laysan albatrosses in the Mexican Pacific.
+We aim to identify the core areas used by Laysan albatross in the Mexican Pacific.
 We also aim to determine whether these core areas overlap with existing ANPs.
 
 To identify core areas, we split the tracks into individual trips and perform kernel density estimations for each trip.

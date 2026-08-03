@@ -10,13 +10,13 @@ The islands are protected natural areas.
 
 ### Guadalupe Island
 
-Guadalupe Island hosts the largest breeding colony of Laysan albatrosses in the eastern Pacific [@hernandez2019sexual].
+Guadalupe Island hosts the largest breeding colony of Laysan albatross in the eastern Pacific [@hernandez2019sexual].
 Guadalupe Island is located 300 km west of the coast of Baja California.
 It is an oceanic island of volcanic origin.
 It has an area of 244 km$^2$.
 It measures 30 km at its longest part from the southern end to the northern end.
 Guadalupe Island hosts the biggest colony in the Mexican Pacific.
-This paper is about albatrosses in the Mexican EEZ.
+This paper is about Laysan albatross in the Mexican EEZ.
 The other colonies within the Mexican EEZ are smaller and not successful.
 To determine the core areas (and the overlap with MPA/ANP) we have to study the most relevant colonies.
 The most relevant colony is Guadalupe Island.
@@ -55,7 +55,7 @@ They are at the nest, make a foraging trip, and return to the nest.
 [[ How does the foraging-trip behavior enable GPS tracking to capture core areas? ]]
 [[ Transition: move from the species' general ecology to the specific study objective — mapping core areas and their overlap with ANPs. ]]
 
-We are studying the core area used by Laysan albatrosses in the Mexican Pacific and its overlap with protected natural areas (ANP).
+We are studying the core area used by Laysan albatross in the Mexican Pacific and its overlap with protected natural areas (ANP).
 In particular, we focus on the albatrosses that nest on Guadalupe Island and Clarion Island.
 Laysan albatross is an umbrella species.
 Seabirds are top predators and serve as umbrella species.
@@ -71,7 +71,7 @@ If the ANPs serve to protect these species, we can infer that they serve to prot
 The data were collected from 2014 to 2026.
 We want to determine the core areas that are constant over time.
 MPA (ANP) are constant over time.
-To evaluate how effectively MPAs protect the core areas for albatrosses, we need a long time period to obtain persistent patterns.
+To evaluate how effectively MPAs protect the core areas for Laysan albatross, we need a long time period to obtain persistent patterns.
 A 12-year period (2014–2026) is long enough to evaluate MPA (ANP) effectiveness.
 A shorter period might not be enough because of interannual variability.
 We assess the degree of representativeness of the data.
@@ -184,14 +184,14 @@ We based our methodology on [@beal2021track2kba].
 We used the R package track2KBA [@beal2021track2kba] to split individual tracks, calculate KDE, and find core areas (50% UD; potential KBA).
 We followed [@beal2021track2kba] without deviation.
 [[ Explanation: why was the Beal et al. (2021) methodology chosen? ]]
-[[ Transition: move from the general analytical approach to the specific analysis of core areas used by Laysan albatrosses. ]]
+[[ Transition: move from the general analytical approach to the specific analysis of core areas used by Laysan albatross. ]]
 
-### Core areas used by Laysan albatrosses
+### Core areas used by Laysan albatross
 
 **Measurements and Variables**
 
-The independent variable is the GPS locations of the albatrosses.
-The dependent variable is the core areas used by the albatrosses.
+The independent variable is the GPS locations of the Laysan albatross.
+The dependent variable is the core areas used by the Laysan albatross.
 
 **Analysis**
 
@@ -220,7 +220,7 @@ That indicates whether the sample size is sufficiently representative of the pop
 
 **Measurements and Variables**
 
-The independent variables are the core areas used by the albatrosses and the ANP polygons.
+The independent variables are the core areas used by the Laysan albatross and the ANP polygons.
 The dependent variable is the overlap index.
 
 **Analysis**
@@ -264,7 +264,7 @@ However, we are not distinguishing between years.
 
 The GPS logger only collects data during the breeding season, which does not cover the whole year.
 One limitation is that the GPS data only correspond to the reproductive season.
-We do not know if the core areas used by the albatrosses during the non-reproductive season are different.
+We do not know if the core areas used by the Laysan albatross during the non-reproductive season are different.
 However, it is during the reproductive season when the population could be most vulnerable.
 Because data were collected only during the breeding season, MPA protection effectiveness for the Laysan albatross is determined only for that period.
 We cannot speak of the protection provided by the MPA during the rest of the year.
