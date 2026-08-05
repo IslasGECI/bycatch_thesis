@@ -18,8 +18,14 @@ It measures 30 km at its longest part from the southern end to the northern end.
 Guadalupe Island hosts the biggest colony in the Mexican Pacific.
 This paper is about Laysan albatross in the Mexican EEZ.
 The other colonies within the Mexican EEZ are smaller and not successful.
+[[ From which perspective or in relation to what? i.e. number of successfull offspring ]]
+XXX
+[[ Agregar éxito reproductivo en I. Gpe. ]]
+Las otras colonias no son exitosas. En Clarión, los cuervos y serpientes depredan a huevos y pollos recién eclosionados y no han permitido que haya éxito reproductivo. En San Benedicto, recuerdo que Julio comentó que lo nidos llegan a quedar enterrados en cenizas por el sitio donde anidan y los cangrejos también se alimentan de los pollos. En esa isla no estoy segura si el éxito reproductivo ha sido 0%.
 To determine the core areas (and the overlap with MPA/ANP) we have to study the most relevant colonies.
 The most relevant colony is Guadalupe Island.
+[[ Why? Mention since when is a breeding colony, how many birds or breeding couples breed here in relation to the overall species pupulation in the eastern Pacific. ]]
+
 
 ### Clarion Island
 
@@ -30,16 +36,13 @@ It has a tropical climate.
 It has an area of 19.8 km$^2$.
 It measures 8.6 km at its longest part from the eastern end to the western end.
 [[ Why is Clarion Island relevant to this study despite having a smaller colony? ]]
+[[ The same as for GI, since when, and how many. ]]
 [[ Transition: move from site descriptions to the oceanographic factors that determine foraging areas. ]]
 
 ### Feeding areas
 
+[[ I think a specific "feeding areas" subsection in the methods is not entirely needed, just mention this in the perspective of what was made to obtain data. ]]
 The core areas were determined by tracking albatrosses during the reproductive season.
-During the breeding season, albatrosses leave their nest only to feed themselves and bring food for the chick.
-Their food availability and distribution (fish, squid, etc.) are determined by oceanographic factors.
-The California Current enriches the water with nutrients, which makes food more available.
-ENSO variability might increase or reduce food availability in certain areas.
-This food availability will affect where the albatrosses feed, which will determine what the core areas are.
 [[ Transition: move from the study area description to the study species — why Laysan albatross in particular. ]]
 
 ## Study Species
@@ -47,21 +50,11 @@ This food availability will affect where the albatrosses feed, which will determ
 Seabirds are marine organisms and are only found on land to reproduce.
 Tracking devices are installed while individuals are breeding on the island.
 
-Albatrosses are seabirds.
-Seabirds are marine organisms.
-They are on land only during their reproductive stage.
-During the reproductive and nesting season, they make foraging trips.
-They are at the nest, make a foraging trip, and return to the nest.
 [[ How does the foraging-trip behavior enable GPS tracking to capture core areas? ]]
 [[ Transition: move from the species' general ecology to the specific study objective — mapping core areas and their overlap with ANPs. ]]
 
 We are studying the core area used by Laysan albatross in the Mexican Pacific and its overlap with protected natural areas (ANP).
 In particular, we focus on the albatrosses that nest on Guadalupe Island and Clarion Island.
-Laysan albatross is an umbrella species.
-Seabirds are top predators and serve as umbrella species.
-If we find that MPA/ANP adequately protect the core areas of Laysan albatross, we can be sure that MPA/ANP also protect multiple species.
-Their trophic level tells us that if the Laysan albatross does well, the lower trophic levels are thriving.
-If the ANPs serve to protect these species, we can infer that they serve to protect the marine ecosystem.
 [[ Transition: move from the species rationale to the specific study design — the temporal scope of data collection. ]]
 
 ## Study Design
@@ -155,7 +148,7 @@ CatLog-S2, Perthold Engineering (USA).
 
 ## Data Processing
 
-We used the R package track2KBA.
+We used the R package track2KBA [@beal2021track2kba].
 We removed points within 60 km around the colony.
 We followed the track2KBA methodology, which called for removing incomplete trips.
 The following track2KBA functions were used:
@@ -198,6 +191,7 @@ The dependent variable is the core areas used by the Laysan albatross.
 The unit of analysis is the trip.
 Guadalupe Island is one colony, which has multiple individuals; each individual makes multiple trips per season.
 Each trip is the smallest unit of analysis.
+[[ It may be useful to mention how many trips does data from each island represents... ]]
 Core areas refer to the 50% Utilization Distribution (UD).
 From the GPS trajectories, we calculated kernel density estimation (KDE) to define the core areas.
 The UD level is 50%.
