@@ -5,8 +5,10 @@
 
 Seabirds nest on the islands.
 The islands are protected natural areas.
-[[ Why is the protected status of the islands relevant to seabird nesting? ]]
-[[ Transition: introduce Guadalupe Island as the primary study site. ]]
+The seabirds nest on islands.
+The islands are the terrestrial component of the protected areas.
+The study evaluates if the marine component of the protected area covers the foraging area during the nesting/breeding season.
+There are several islands on which the Laysan albatross nests: Guadalupe, Clarion and San Benedicto are the most relevant.
 
 ### Guadalupe Island
 
