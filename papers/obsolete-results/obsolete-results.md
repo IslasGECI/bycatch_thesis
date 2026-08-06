@@ -31,6 +31,16 @@ Each point represents a single GPS recording at 10-minute intervals during the b
 The figure shows the spatial distribution of raw GPS fixes from Laysan albatrosses breeding on Guadalupe, Clarion and San Benedicto islands across all tracking years.
 Each point represents a single GPS recording at 10-minute intervals during the breeding season.
 
+![Marine Protected Areas (MPAs) of Mexico.](reports/figures/mexico_mpa.png)
+
+The figure displays the Marine Protected Areas within Mexico's jurisdiction.
+These polygons represent the spatial intersection of Protected Natural Areas (ANPs) with marine waters, excluding terrestrial portions.
+
+![Protected Natural Areas (ANPs) of Mexico.](reports/figures/mexico_pna.png)
+
+The figure shows all 232 Protected Natural Areas of Mexico as defined by the National Commission for Protected Natural Areas.
+These areas form the legal framework for biodiversity conservation and are used as the reference layer for overlap analyses with albatross core areas.
+
 ![Mexico's Exclusive Economic Zone (EEZ).](reports/figures/mexico_eez.png)
 
 The figure displays the polygon of Mexico's Exclusive Economic Zone as defined by international law.

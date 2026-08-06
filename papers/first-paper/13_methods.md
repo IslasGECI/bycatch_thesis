@@ -152,6 +152,7 @@ We used the R package track2KBA [@beal2021track2kba].
 We removed points within 60 km around the colony.
 We followed the track2KBA methodology, which called for removing incomplete trips.
 The following track2KBA functions were used:
+
 - `formatFields()` to normalize GPS field names and date-time format
 - `tripSplit()` to split GPS fixes into individual foraging trips
 - `tripSummary()` to summarize trip metrics
@@ -160,6 +161,7 @@ The following track2KBA functions were used:
 - `estSpaceUse()` to compute kernel density estimates for each individual
 - `repAssess()` to bootstrap and assess sample representativeness
 - `findSite()` to identify potential KBA polygons meeting thresholds
+
 [[ Explanation: why was track2KBA chosen for processing the GPS data? ]]
 [[ Transition: move from the preprocessing pipeline to the recording frequency of the raw GPS data. ]]
 
