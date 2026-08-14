@@ -3,6 +3,7 @@
 
 ## Study Area
 
+This paper is about Laysan albatross in the Mexican EEZ.
 Seabirds nest on the islands.
 The islands are protected natural areas.
 The seabirds nest on islands.
@@ -18,15 +19,16 @@ It is an oceanic island of volcanic origin.
 It has an area of 244 km$^2$.
 It measures 30 km at its longest part from the southern end to the northern end.
 Guadalupe Island hosts the biggest colony in the Mexican Pacific.
-This paper is about Laysan albatross in the Mexican EEZ.
+In Guadalupe Island, there are 2,195 breeding pairs of Laysan albatross in 2025 [[ reference ]].
 The other colonies within the Mexican EEZ are smaller and not successful.
-[[ From which perspective or in relation to what? i.e. number of successfull offspring ]]
-XXX
-[[ Agregar éxito reproductivo en I. Gpe. ]]
-Las otras colonias no son exitosas. En Clarión, los cuervos y serpientes depredan a huevos y pollos recién eclosionados y no han permitido que haya éxito reproductivo. En San Benedicto, recuerdo que Julio comentó que lo nidos llegan a quedar enterrados en cenizas por el sitio donde anidan y los cangrejos también se alimentan de los pollos. En esa isla no estoy segura si el éxito reproductivo ha sido 0%.
-To determine the core areas (and the overlap with MPA/ANP) we have to study the most relevant colonies.
-The most relevant colony is Guadalupe Island.
-[[ Why? Mention since when is a breeding colony, how many birds or breeding couples breed here in relation to the overall species pupulation in the eastern Pacific. ]]
+In Clarion Island, crows and snakes prey on eggs and newly hatched chicks.
+In San Benedicto Island, crabs feed on the chicks, and nests can be buried in ash.
+In both islands, reproductive success is close to 0% and the number of nests is low (less than 40 for San Benedicto).
+
+
+The global population size it has been estimatied to be around 800,000 breeding pairs [[ reference ]].
+However, the bigest nesting colonies are low sites in risk due to sea-level rise asociated with climate change [[ reference ]].
+Guadalupe Island offer high nesting areas that are less affected by sea-level rise, offering a refuge for the species [[ reference ]].
 
 
 ### Clarion Island
