@@ -75,3 +75,4 @@ These additions improve readability and geographic interpretability for publicat
 
 ![GFW apparent fishing effort in the Pacific Mexico EEZ after spatial filtering. Points colored by apparent fishing hours with inferno palette.](reports/figures/gfw_fishing_effort_pacific_map.png)
 
+![50% potential KBA for the Guadalupe, Clarion and San Benedicto island colonies without the MPA overlay.](reports/figures/gps_albatross_50_percent_potential_kba_ars_all_without_mpa.png)
