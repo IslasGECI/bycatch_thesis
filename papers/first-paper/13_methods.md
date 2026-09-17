@@ -4,11 +4,15 @@
 ## Study Area
 
 This paper is about Laysan albatross in the Mexican EEZ.
+
+[[ Schimel: This paper is about is weak meta-writing. State the subject concretely, such as We studied the core areas that Laysan albatrosses use within the Mexican EEZ. ]]
 Seabirds nest on the islands.
 The islands are protected natural areas.
 The seabirds nest on islands.
 The islands are the terrestrial component of the protected areas.
 The study evaluates if the marine component of the protected area covers the foraging area during the nesting/breeding season.
+
+[[ Schimel: The islands sentences repeat, with islands and protected areas each stated twice. Keep the key idea once: the MPAs have a terrestrial and a marine component, and this study tests the marine one. Also, nesting and breeding appear together here; keep one term. ]]
 There are several islands on which the Laysan albatross nests: Guadalupe, Clarion and San Benedicto are the most relevant.
 
 ### Guadalupe Island
@@ -25,10 +29,14 @@ In Clarion Island, crows and snakes prey on eggs and newly hatched chicks.
 In San Benedicto Island, crabs feed on the chicks, and nests can be buried in ash.
 In both islands, reproductive success is close to 0% and the number of nests is low (less than 40 for San Benedicto).
 
+[[ Schimel: These facts about Clarion and San Benedicto sit inside the Guadalupe subsection and front-run the colony sections below. Move them to those subsections, or into one short comparative paragraph after the three islands. Consider also the link from low breeding success on Clarion and San Benedicto to why the Guadalupe colony anchors the study. ]]
+
 
 The global population size it has been estimatied to be around 800,000 breeding pairs [[ reference ]].
 However, the bigest nesting colonies are low sites in risk due to sea-level rise asociated with climate change [[ reference ]].
 Guadalupe Island offer high nesting areas that are less affected by sea-level rise, offering a refuge for the species [[ reference ]].
+
+[[ Schimel: The sea-level-rise refuge is a compelling conservation reason why Guadalupe matters. Consider whether it belongs in the Introduction as part of the stakes rather than in Methods. ]]
 
 
 ### Clarion Island
@@ -45,12 +53,16 @@ It measures 8.6 km at its longest part from the eastern end to the western end.
 
 [[ Add San Benedicto]]
 
+[[ When you draft it, mirror the Guadalupe and Clarion shape, location, remoteness, colony size, and breeding success, so readers can compare the three colonies at a glance. ]]
+
 [[ Transition: move from the study area description to the study species — why Laysan albatross in particular. ]]
 
 ## Study Species
 
 Seabirds are marine organisms and are only found on land to reproduce.
 Tracking devices are installed while individuals are breeding on the island.
+
+[[ Schimel: Seabirds are marine organisms only found on land to reproduce restates the Introduction. In Methods, skip the biology recap and move to what was done on the island. ]]
 
 [[ How does the foraging-trip behavior enable GPS tracking to capture core areas? ]]
 [[ Transition: move from the species' general ecology to the specific study objective — mapping core areas and their overlap with MPAs. ]]
@@ -74,6 +86,8 @@ We assess the degree of representativeness of the data.
 We do not consider the interannual variability directly.
 We verify that the time period is long enough to be representative despite the interannual variability.
 All the data are pooled together without accounting for the year.
+
+[[ Schimel: The a priori versus a posteriori reasoning is tangled: you state a long window is needed, then that representativeness is assessed a posteriori. State what was assumed before the analysis and what the data later verified, so the justification reads as one chain. ]]
 [[ Transition: move from the multi-year rationale to the seasonal coverage limitation. ]]
 
 [[ Topic: what seasonal coverage did the tracking data have? ]]
@@ -93,8 +107,12 @@ We attached GPS units to {{ guadalupe_n_total }} Laysan albatross individuals on
 Additionally, we attached GPS units to {{ clarion_n_total }} individuals on Clarion Island from {{ clarion_min_year }} to {{ clarion_max_year }}.
 
 A total of {{ guadalupe_n_total }} individuals were tracked in Guadalupe Island between {{ guadalupe_min_year }} and {{ guadalupe_max_year }}.
+
+[[ Schimel: The Guadalupe totals appear twice in a few lines with different phrasing. Keep one counts-and-period statement per colony; the season tables below carry the detail. ]]
 The number of individuals and the number of seasons were determined by the amount of resources available.
 The representativeness of the data was assessed a posteriori.
+
+[[ Schimel: Sampling determined by available resources can read as an apology. Frame it as a design decision and pair it with the a posteriori representativeness assessment that justifies it; consider echoing the caveat in the Discussion. ]]
 
 GPS loggers have the appropriate accuracy and precision for the study.
 Other devices, such as GLS loggers, are not accurate enough to determine core areas.
@@ -105,6 +123,8 @@ This frequency is low enough for the battery to last the whole season and track 
 [[ Transition: move from the rationale for GPS selection to the physical attachment procedure. ]]
 We attached the GPS to the albatrosses.
 The GPS loggers were attached to the albatross individuals with Tesa tape (#4651, Tesa AG, Hamburg, Germany).
+
+[[ Schimel: attached appears three times across these lines; merge the attachment and the tape detail into one sentence. Report device mass relative to body mass and handling time, which reviewers expect and which supports the no-harm claim later. ]]
 [[ Explain how the tape is attached. Is there a standard protocol for this? ]]
 [[ Explanation: why was Tesa tape chosen for attaching the GPS loggers? ]]
 [[ Transition: move from attachment method to the specific GPS models used across years and islands. ]]
@@ -167,6 +187,8 @@ The following track2KBA functions were used:
 - `repAssess()` to bootstrap and assess sample representativeness
 - `findSite()` to identify potential KBA polygons meeting thresholds
 
+[[ Schimel: track2KBA is introduced in Data Processing and again in Data Analysis with the same citation. Introduce the package once with its function list, then let the Analysis section reason about the specific analyses. ]]
+
 [[ Explanation: why was track2KBA chosen for processing the GPS data? ]]
 [[ Transition: move from the preprocessing pipeline to the recording frequency of the raw GPS data. ]]
 
@@ -199,6 +221,8 @@ To determine overlap, we intersect the core areas with the MPA polygons and quan
 
 The unit of analysis is the trip.
 Each colony has multiple individuals which has multiple individuals; each individual makes multiple trips per season.
+
+[[ The sentence Each colony has multiple individuals which has multiple individuals is garbled, likely a leftover from an earlier edit. Restate the nesting, colony to individuals to trips, with the trip as the unit, and add the per-colony trip counts the annotation below asks for. ]]
 [[ Reference to table with nuber of individuals per colony ]]
 Each trip is the smallest unit of analysis.
 [[ It may be useful to mention how many trips does data from each island represents... ]]
@@ -211,6 +235,8 @@ Peaks are selected by peakMethod (default "first").
 Then the median across individuals is taken.
 KDE has been widely used to determine Utilization Distribution (UD).
 KDE was selected because a wide range of users are familiar with its use, which facilitates the communication of results among decision makers.
+
+[[ Schimel: The KDE and ARS material reads as a list of facts. Consider reordering into a logic: estimator choice (KDE and why), smoothing scale (ARS via FPT), then pooling trips into the 50% UD core area. The peak-selection detail may belong in supplementary. ]]
 KDEs are calculated for individual trips.
 Then the KDEs from individual trips are combined to obtain a pooled density, from which the core area (50% UD) is obtained.
 
@@ -237,6 +263,8 @@ This index is directional: $HR_{i,j} \neq HR_{j,i}$.
 It ignores the utilization distribution and treats all space within the home range as equally used.
 Source: Kernohan et al. (2001); White & Garrott (1990).
 Area-based (proportional) overlap measures the proportion of core area that is overlapped by MPA area.
+
+[[ Schimel: Area-based proportional overlap is defined twice, here and above with the formula. Keep one definition plus the formula, then one interpretive sentence for what a value means for protection coverage. ]]
 This measure of core habitat protection coverage tells us what fraction of the animal's most intensively used space is inside the protected area.
 [[ Transition: move from the analytical results to the ethical framework under which the data were collected. ]]
 
@@ -262,3 +290,5 @@ We do not know if the core areas used by the Laysan albatross during the non-rep
 However, it is during the reproductive season when the population could be most vulnerable.
 Because data were collected only during the breeding season, MPA protection effectiveness for the Laysan albatross is determined only for that period.
 We cannot speak of the protection provided by the MPA during the rest of the year.
+
+[[ Schimel: The breeding-season limitation is stated twice here, once in line 259 and again in 260, and it also appears in the Discussion. Decide where limitations live, framed in Methods or interpreted in Discussion, and do not split the thinking between both. ]]
