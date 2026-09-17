@@ -1,18 +1,18 @@
 
 # Discussion
 
-Las MPA mexicanas no protegen el área nucleo en la EEZ usada por el albatros de Laysan que anida en México.
+Mexican MPAs do not protect the core area within the EEZ used by Laysan albatrosses nesting in Mexico.
 
-Queremos averiguar si las MPA Mexicanas protegen el área que usan los albatros de Laysan. Para ello, usamos 12 años de datos de seguimiento remoto mediante GPS para determinar el área núcleo usada por el albatros y calculamos el traslape con las MPA.
+We aimed to determine whether Mexican MPAs protect the areas used by Laysan albatrosses. To do this, we used 12 years of GPS tracking data to identify the albatrosses' core use areas and calculated the extent of their overlap with MPAs.
 
-[[ How do you primary result compare with the findings of previous studies? ]]
-[[ Do you primary result confirm, challenge, or extend prior knowkedge? ]]
-This study fills gaps in existing literature.
+[[ How do your primary results compare with the findings of previous studies? ]]
+[[ Do your primary results confirm, challenge, or extend prior knowledge? ]]
+This study fills gaps in the existing literature.
 
-La principal limitación está en que los datos son sólo de la temporada reproductiva. Las conclusiones sólo son válidas para esta temporada.
-Podríamos usar otro tipo de GPS para extender el estudio fuera de la temporada reproductiva.
-La aportación pricipal son los los datos de 12 años de seguimiento remoto del albatros de Laysan en México y su análisis usando trak2kba.
-En el contexto de los compromisis 30x30, basados en este estudio podemos recomendar extender las áreas protyegidas para que cubran las áreas núcleos encontradas en este trabajo.
+The main limitation is that the data cover only the breeding season; therefore, the conclusions apply only to that period.
+We could use a different type of GPS technology to extend the study beyond the breeding season.
+The study's primary contribution is the 12-year tracking dataset for Laysan albatrosses in Mexico and the analysis performed using *trak2kba*.
+In the context of "30x30" commitments, our findings support a recommendation to expand protected areas to encompass the core areas identified in this study.
 
-Las áreas usadas por los albatros no están protegidas pore las MPA, por lo que en una futura investigación  debe evaluar cuál es el tralape da las áreas núcleo con las áreas de pesca comercial en la EEZ mexicana para evaluar el riesgo de bycatch, una de las principales amenazas del albatros de Laysan.
+Since the areas used by the albatrosses are not currently protected by MPAs, future research should assess the overlap between these core areas and commercial fishing zones within the Mexican EEZ to evaluate the risk of bycatch—one of the primary threats to the Laysan albatross.
 

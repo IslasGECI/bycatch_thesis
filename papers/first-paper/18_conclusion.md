@@ -1,5 +1,5 @@
 
 # Conclusion
 
-La figura 4 muestra la intersección entre el área nucleo y las MPA es muy pequeña.
+Figure 4 shows that the intersection between the core area and the MPAs is very small.
 
