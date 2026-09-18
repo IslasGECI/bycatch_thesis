@@ -16,6 +16,15 @@
 [[ Identify and list key concepts your readers will need to understand your study. Be specific and do not list every key concept in your research field; limit the list of key concepts to those directly related to the objectives of your study. ]]
 [[ Provide a brief and clear definition or description of each key concept. ]]
 
+Albatrosses are seabirds.
+Seabirds are marine organisms.
+They are on land only during their reproductive stage.
+During the reproductive and nesting season, they make foraging trips.
+They are at the nest, make a foraging trip, and return to the nest.
+
+Laysan albatross is an umbrella species.
+Seabirds are top predators and serve as umbrella species.
+
 [[ Define your audience and write specifically for their level of understanding. You do not need to explain basic concepts to the readers of highly specialized journals. ]]
 [[ Are there any theories related to any key concept that your readers should understand? Are there any conflicting theories related to key concepts that are relevant to understanding your study? ]]
 [[ Which studies are essential for understanding each key concept? Identify a few foundational or seminal studies, some studies with key findings, and the most recent studies for each key concept. ]]
@@ -36,6 +45,9 @@
 
 [[ Clearly and concisely state the main objective of your study. ]]
 
+We aim to identify the core areas used by Laysan albatross in the Mexican Pacific.
+We also aim to determine whether these core areas overlap with existing ANPs.
+
 [[ Review the problem, key concepts, justification, and novelty of your study. Does the main objective follow logically from these elements? Are your readers missing anything to understand your main objective? ]]
 
 [[ State any hypotheses. ]]
@@ -54,24 +66,12 @@
 [[ What aspects of your results are most likely to guide the reader toward your final conclusions? ]]
 [[ Write a few sentences that give the reader a sense of where the study is headed. Avoid directly stating the conclusion; instead, provide a preview of what your primary results suggest. Keep in mind the problem your study addresses. ]]
 
-
-We aim to identify the core areas used by Laysan albatross in the Mexican Pacific.
-We also aim to determine whether these core areas overlap with existing ANPs.
-
 During the breeding season, albatrosses leave their nest only to feed themselves and bring food for the chick.
 Their food availability and distribution (fish, squid, etc.) are determined by oceanographic factors.
 The California Current enriches the water with nutrients, which makes food more available.
 ENSO variability might increase or reduce food availability in certain areas.
 This food availability will affect where the albatrosses feed, which will determine what the core areas are.
 
-Albatrosses are seabirds.
-Seabirds are marine organisms.
-They are on land only during their reproductive stage.
-During the reproductive and nesting season, they make foraging trips.
-They are at the nest, make a foraging trip, and return to the nest.
-
-Laysan albatross is an umbrella species.
-Seabirds are top predators and serve as umbrella species.
 If we find that MPAs/ANPs adequately protect the core areas of Laysan albatross, we can be sure that MPAs/ANPs also protect multiple species.
 Their trophic level tells us that if the Laysan albatross does well, the lower trophic levels are thriving.
 If the ANPs serve to protect these species, we can infer that they serve to protect the marine ecosystem.
