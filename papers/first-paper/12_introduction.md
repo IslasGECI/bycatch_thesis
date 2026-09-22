@@ -11,8 +11,11 @@ Tracking seabirds is a standard method for identifying important marine areas [@
 The Trilateral Bycatch Working Group was formed in 2022, comprising members from Mexico, the United States, and Canada.
 This group seeks joint action regarding incidental catch, thereby raising the political priority of obtaining spatial data [@trilateral2023meeting].
 In 2023, the trilateral framework explicitly proposed using bird tracking, satellite imagery, and cloud computing to overcome "long-standing information gaps" [@trilateral2023meeting].
-@phillips2024incidental concludes that there are "clear knowledge gaps" in the Northeast Pacific, the very region where the study is located.
-[[ Are any people, groups, or stakeholders affected by this problem? ]]
+@phillips2024incidental concludes that there are "clear knowledge gaps" in the Northeast Pacific, the region where this study is located.
+Stakeholders relevant to the issues addressed in this study include Mexican conservation and fisheries authorities, the fishing sector, and environmental civil society organizations (CSOs).
+The islands of Baja California lie within federal Protected Natural Areas (ANPs) managed by CONANP; as authorities issue permits for seabird management, information gaps hinder their management efforts [@mendez2022population].
+Seabirds are affected by bycatch in longline, trawl, and purse-seine fisheries, and these fleets are regulated by national (CONAPESCA) and regional (IATTC) institutions [@phillips2024incidental], [@morgan2016fourth].
+Environmental CSOs rely on spatial data to guide their actions and justify their restoration interventions [@trilateral2023meeting], [@mendez2022population].
 
 [[ What is the central question that you set out to answer in your study? ]]
 [[ What theoretical models, principles, or frameworks underpin this question? ]]
