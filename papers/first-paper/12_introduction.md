@@ -4,12 +4,14 @@
 There is a gap of knowledge about the core areas used by Laysan albatross in the Mexican Pacific and whether these areas are protected by existing Marine Protected Areas (MPAs).
 Without this information, it is not possible to determine if the existing MPAs are effective in protecting this and other species that share the same habitat.
 
-Seabirds are one of the most threatened groups of birds, with ~31% of species at risk and ~47% in decline [dias2019threats].
-Pelagic species, such as albatrosses, are less protected by MPAs than coastal species, with 13.2% of pelagic species covered by MPAs compared to 32.5% of coastal species [critchley2018marine].
-Seabirds are top predators and serve as umbrella species, meaning that if they are protected, other species in the same habitat are also protected [lascelles2016applying].
-Tracking seabirds is a standard method for identifying important marine areas [lascelles2016applying].
-
-[[ Are there any recent developments that highlight the importance of addressing this problem? ]]
+Seabirds are one of the most threatened groups of birds, with ~31% of species at risk and ~47% in decline [@dias2019threats].
+Pelagic species, such as albatrosses, are less protected by MPAs than coastal species, with 13.2% of pelagic species covered by MPAs compared to 32.5% of coastal species [@critchley2018marine].
+Seabirds are top predators and serve as umbrella species, meaning that if they are protected, other species in the same habitat are also protected [@lascelles2016applying].
+Tracking seabirds is a standard method for identifying important marine areas [@lascelles2016applying].
+The Trilateral Bycatch Working Group was formed in 2022, comprising members from Mexico, the United States, and Canada.
+This group seeks joint action regarding incidental catch, thereby raising the political priority of obtaining spatial data [@trilateral2023meeting].
+In 2023, the trilateral framework explicitly proposed using bird tracking, satellite imagery, and cloud computing to overcome "long-standing information gaps" [@trilateral2023meeting].
+@phillips2024incidental concludes that there are "clear knowledge gaps" in the Northeast Pacific, the very region where the study is located.
 [[ Are any people, groups, or stakeholders affected by this problem? ]]
 
 [[ What is the central question that you set out to answer in your study? ]]
