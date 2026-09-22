@@ -1,9 +1,14 @@
 
 # Introduction
 
-[[ Clearly describe the primary problem that your study addresses. Why is this problem important? ]]
+There is a gap of knowledge about the core areas used by Laysan albatross in the Mexican Pacific and whether these areas are protected by existing Marine Protected Areas (MPAs).
+Without this information, it is not possible to determine if the existing MPAs are effective in protecting this and other species that share the same habitat.
 
-[[ What is the broader context surrounding the problem that your study addresses? ]]
+Seabirds are one of the most threatened groups of birds, with ~31% of species at risk and ~47% in decline [dias2019threats].
+Pelagic species, such as albatrosses, are less protected by MPAs than coastal species, with 13.2% of pelagic species covered by MPAs compared to 32.5% of coastal species [critchley2018marine].
+Seabirds are top predators and serve as umbrella species, meaning that if they are protected, other species in the same habitat are also protected [lascelles2016applying].
+Tracking seabirds is a standard method for identifying important marine areas [lascelles2016applying].
+
 [[ Are there any recent developments that highlight the importance of addressing this problem? ]]
 [[ Are any people, groups, or stakeholders affected by this problem? ]]
 
