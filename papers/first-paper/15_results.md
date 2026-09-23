@@ -1,8 +1,6 @@
 
 # Results
 
-[[ Schimel: The Results rely entirely on self-contained captions. Consider a few orienting sentences so the reader traces the answer as it emerges: the 93.4% representativeness, the extent and count of the core area, and the overlap magnitude. Keep interpretation out of Results; just make the key numbers visible in prose. ]]
-
 \FloatBarrier
 
 ![
