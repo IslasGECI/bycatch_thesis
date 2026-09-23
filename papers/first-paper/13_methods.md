@@ -18,19 +18,23 @@ In Guadalupe Island, there are 2,195 breeding pairs of Laysan albatross in 2025 
 
 ### Clarion Island
 
-In Clarion Island, crows and snakes prey on eggs and newly hatched chicks.
-Clarion Island has the second largest colony.
-Clarion Island is the most remote of Mexico's Revillagigedo Islands.
-It is located 700 kilometers from the Mexican mainland.
+Clarion Island is part of the Revillagigedo Archipelago.
+Clarion is located 700 kilometers from the Mexican mainland.
 It has a tropical climate.
 It has an area of 19.8 km$^2$.
 It measures 8.6 km at its longest part from the eastern end to the western end.
+Clarion Island has the second largest Laysan albatoss colony in Mexico.
+In Clarion Island, crows and snakes prey on Laysan albatoss eggs and newly hatched chicks.
 
 ### San Benedicto
 
-[[ Add San Benedicto]]
+San Benedicto Island is also part of the Revillagigedo Archipelago and share the same tropical climate.
+San Benedicto is located 600 kilometers from the Mexican mainland.
+It has an area of 10 km$^2$.
+It measures 4.8 km at its longest part from the northern end to the southern end.
 In San Benedicto Island, crabs feed on the chicks, and nests can be buried in ash.
-In both, Clarion and San Benedicto islands, reproductive success is close to 0% and the number of nests is low (less than 40 for San Benedicto).
+
+In both, Clarion and San Benedicto islands, reproductive success for Layssan albatoss is close to 0% and the number of nests is low (less than 40 for San Benedicto).
 
 [[ When you draft it, mirror the Guadalupe and Clarion shape, location, remoteness, colony size, and breeding success, so readers can compare the three colonies at a glance. ]]
 
