@@ -12,3 +12,9 @@ Each colored point trail is one of 807 [[ check/mustache ]] foraging trips, from
 Each colored outline is one individual's 50% core utilization distribution.
 ](reports/figures/gps_albatross_50_percent_individual_kde_ars_all.png)
 
+## Area-Restricted Search peak selection
+
+FPT variance peaks are identified per individual.
+Peaks are selected by peakMethod (default "first").
+Then the median across individuals is taken.
+

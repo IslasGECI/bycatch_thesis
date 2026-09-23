@@ -3,67 +3,44 @@
 
 ## Study Area
 
-This paper is about Laysan albatross in the Mexican EEZ.
-
 We studied the core areas that Laysan albatrosses use within the Mexican EEZ.
-Seabirds nest on the islands.
-The islands are protected natural areas.
-The seabirds nest on islands.
-The islands are the terrestrial component of the protected areas.
-The study evaluates if the marine component of the protected area covers the foraging area during the nesting/breeding season.
 
 The protected areas relevant for this study have a terrestrial component (the island) and a marine component (the surrounding waters).
 This study evaluates whether the marine protected area covers the core area used by the Laysan albatross during its breeding season.
 There are several islands on which the Laysan albatross nests: Guadalupe, Clarion and San Benedicto are the most relevant.
-
-### Guadalupe Island
 
 Guadalupe Island hosts the largest breeding colony of Laysan albatross in the eastern Pacific [@hernandez2019sexual].
 Guadalupe Island is located 300 km west of the coast of Baja California.
 It is an oceanic island of volcanic origin.
 It has an area of 244 km$^2$.
 It measures 30 km at its longest part from the southern end to the northern end.
-Guadalupe Island hosts the biggest colony in the Mexican Pacific.
 In Guadalupe Island, there are 2,195 breeding pairs of Laysan albatross in 2025 [[ reference ]].
-The other colonies within the Mexican EEZ are smaller and not successful.
-In Clarion Island, crows and snakes prey on eggs and newly hatched chicks.
-In San Benedicto Island, crabs feed on the chicks, and nests can be buried in ash.
-In both islands, reproductive success is close to 0% and the number of nests is low (less than 40 for San Benedicto).
-
-[[ These facts about Clarion and San Benedicto sit inside the Guadalupe subsection and front-run the colony sections below. Move them to those subsections, or into one short comparative paragraph after the three islands. Consider also the link from low breeding success on Clarion and San Benedicto to why the Guadalupe colony anchors the study. ]]
-
-
-The global population size it has been estimatied to be around 800,000 breeding pairs [[ reference ]].
-However, the bigest nesting colonies are low sites in risk due to sea-level rise asociated with climate change [[ reference ]].
-Guadalupe Island offer high nesting areas that are less affected by sea-level rise, offering a refuge for the species [[ reference ]].
-
-[[ The sea-level-rise refuge is a compelling conservation reason why Guadalupe matters. Consider whether it belongs in the Introduction as part of the stakes rather than in Methods. ]]
-
 
 ### Clarion Island
 
+In Clarion Island, crows and snakes prey on eggs and newly hatched chicks.
 Clarion Island has the second largest colony.
 Clarion Island is the most remote of Mexico's Revillagigedo Islands.
 It is located 700 kilometers from the Mexican mainland.
 It has a tropical climate.
 It has an area of 19.8 km$^2$.
 It measures 8.6 km at its longest part from the eastern end to the western end.
-[[ Transition: move from site descriptions to the oceanographic factors that determine foraging areas. ]]
 
 ### San Benedicto
 
 [[ Add San Benedicto]]
+In San Benedicto Island, crabs feed on the chicks, and nests can be buried in ash.
+In both, Clarion and San Benedicto islands, reproductive success is close to 0% and the number of nests is low (less than 40 for San Benedicto).
 
 [[ When you draft it, mirror the Guadalupe and Clarion shape, location, remoteness, colony size, and breeding success, so readers can compare the three colonies at a glance. ]]
+
+[[ Transition: move from site descriptions to the oceanographic factors that determine foraging areas. ]]
 
 [[ Transition: move from the study area description to the study species — why Laysan albatross in particular. ]]
 
 ## Study Species
 
-Seabirds are marine organisms and are only found on land to reproduce.
 Tracking devices are installed while individuals are breeding on the island.
-
-[[ Seabirds are marine organisms only found on land to reproduce restates the Introduction. In Methods, skip the biology recap and move to what was done on the island. ]]
 
 [[ How does the foraging-trip behavior enable GPS tracking to capture core areas? ]]
 [[ Transition: move from the species' general ecology to the specific study objective — mapping core areas and their overlap with MPAs. ]]
@@ -107,9 +84,6 @@ All the data are pooled together without accounting for the year.
 We attached GPS units to {{ guadalupe_n_total }} Laysan albatross individuals on Guadalupe Island from {{ guadalupe_min_year }} to {{ guadalupe_max_year }}.
 Additionally, we attached GPS units to {{ clarion_n_total }} individuals on Clarion Island from {{ clarion_min_year }} to {{ clarion_max_year }}.
 
-A total of {{ guadalupe_n_total }} individuals were tracked in Guadalupe Island between {{ guadalupe_min_year }} and {{ guadalupe_max_year }}.
-
-[[ The Guadalupe totals appear twice in a few lines with different phrasing. Keep one counts-and-period statement per colony; the season tables below carry the detail. ]]
 The number of individuals and the number of seasons were determined by the amount of resources available.
 The representativeness of the data was assessed a posteriori.
 
@@ -193,9 +167,7 @@ The following track2KBA functions were used:
 [[ Explanation: why was track2KBA chosen for processing the GPS data? ]]
 [[ Transition: move from the preprocessing pipeline to the recording frequency of the raw GPS data. ]]
 
-Records are every 10 minutes.
 We did not do any resampling or consistency checks.
-All GPS were programmed to record one position every 10 minutes.
 [[ Explanation: why was no resampling or consistency check performed? ]]
 [[ Transition: move from data processing to the statistical analysis of the processed data. ]]
 
@@ -231,13 +203,10 @@ Core areas refer to the 50% Utilization Distribution (UD).
 From the GPS trajectories, we calculated kernel density estimation (KDE) to define the core areas.
 The UD level is 50%.
 The Area-Restricted Search scale uses First Passage Time analysis (adehabitatLT).
-FPT variance peaks are identified per individual.
-Peaks are selected by peakMethod (default "first").
-Then the median across individuals is taken.
 KDE has been widely used to determine Utilization Distribution (UD).
 KDE was selected because a wide range of users are familiar with its use, which facilitates the communication of results among decision makers.
 
-[[ The KDE and ARS material reads as a list of facts. Consider reordering into a logic: estimator choice (KDE and why), smoothing scale (ARS via FPT), then pooling trips into the 50% UD core area. The peak-selection detail may belong in supplementary. ]]
+[[ The KDE and ARS material reads as a list of facts. Consider reordering into a logic: estimator choice (KDE and why), smoothing scale (ARS via FPT), then pooling trips into the 50% UD core area. ]]
 KDEs are calculated for individual trips.
 Then the KDEs from individual trips are combined to obtain a pooled density, from which the core area (50% UD) is obtained.
 
@@ -285,11 +254,4 @@ No albatross individuals were harmed during the study.
 
 ## Methodological Considerations
 
-The GPS logger only collects data during the breeding season, which does not cover the whole year.
-One limitation is that the GPS data only correspond to the reproductive season.
-We do not know if the core areas used by the Laysan albatross during the non-reproductive season are different.
-However, it is during the reproductive season when the population could be most vulnerable.
-Because data were collected only during the breeding season, MPA protection effectiveness for the Laysan albatross is determined only for that period.
-We cannot speak of the protection provided by the MPA during the rest of the year.
-
-[[ The breeding-season limitation is stated twice here, once in line 259 and again in 260, and it also appears in the Discussion. Decide where limitations live, framed in Methods or interpreted in Discussion, and do not split the thinking between both. ]]
+The GPS logger collects data only during the breeding season, so the analysis is restricted to that period.

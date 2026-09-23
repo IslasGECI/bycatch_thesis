@@ -56,6 +56,9 @@ There is a gap of knowledge about this situation regarding the Laysan albatross 
 We need to evaluate whether the Mexican protected areas protect the Laysan albatross core areas in the Mexican Pacific [@critchley2018marine; @mendez2022population].
 It is unknown to what extent the Mexican protected areas cover the Laysan albatross core area in the Mexican Pacific [@critchley2018marine].
 There is a lack of GPS tracking data in the Mexican Pacific to determine core areas for pelagic species [@phillips2024incidental].
+The global population size has been estimated to be around 800,000 breeding pairs [[ reference ]].
+However, the biggest nesting colonies are low-lying sites at risk due to sea-level rise associated with climate change [[ reference ]].
+Guadalupe Island offers high nesting areas that are less affected by sea-level rise, offering a refuge for the species [[ reference ]].
 This study is based on GPS tracking, UD, and KBA methods to identify core areas, and it challenges the assumption that protected areas effectively cover the core areas of mobile pelagic species [@lascelles2016applying; @beal2021track2kba; @critchley2018marine].
 This study offers 12 years of GPS tracking data for the Laysan albatross breeding on Mexican islands [@hernandez2019sexual; @pitman2004population].
 We also identify for the first time the core area used by these seabirds [@beal2021track2kba].

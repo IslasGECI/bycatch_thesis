@@ -13,10 +13,11 @@ This study fills gaps in the existing literature.
 
 [[ When you fill the comparison annotations, structure the answer as confirm, challenge, or extend against specific studies. And This study fills gaps is unsupported; replace it with the concrete gap this paper closes, such as the first 12-year core-area analysis for Mexico's colonies. ]]
 
-The main limitation is that the data cover only the breeding season; therefore, the conclusions apply only to that period.
+The main limitation is that the data cover only the breeding season; therefore, the conclusions apply only to that period, and we cannot speak of MPA protection during the rest of the year.
+It is during the breeding season that the population could be most vulnerable, so this period is the most relevant for protection.
 We could use a different type of GPS technology to extend the study beyond the breeding season.
 
-[[ A limitation paired with a concrete remedy reads well. Consider how the extension proposal relates to the duplicate limitation text left in the Methods. ]]
+[[ A limitation paired with a concrete remedy reads well. ]]
 The study's primary contribution is the 12-year tracking dataset for Laysan albatrosses in Mexico and the analysis performed using *trak2kba*.
 
 [[ Minor: the package is written track2KBA elsewhere in the manuscript; keep the name identical here. ]]
