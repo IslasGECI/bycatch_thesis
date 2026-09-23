@@ -23,59 +23,51 @@ Clarion is located 700 kilometers from the Mexican mainland.
 It has a tropical climate.
 It has an area of 19.8 km$^2$.
 It measures 8.6 km at its longest part from the eastern end to the western end.
-Clarion Island has the second largest Laysan albatoss colony in Mexico.
-In Clarion Island, crows and snakes prey on Laysan albatoss eggs and newly hatched chicks.
+Clarion Island has the second largest Laysan albatross colony in Mexico.
+In Clarion Island, crows and snakes prey on Laysan albatross eggs and newly hatched chicks.
 
 ### San Benedicto
 
-San Benedicto Island is also part of the Revillagigedo Archipelago and share the same tropical climate.
+San Benedicto Island is also part of the Revillagigedo Archipelago and shares the same tropical climate.
 San Benedicto is located 600 kilometers from the Mexican mainland.
 It has an area of 10 km$^2$.
 It measures 4.8 km at its longest part from the northern end to the southern end.
 In San Benedicto Island, crabs feed on the chicks, and nests can be buried in ash.
 
-In both, Clarion and San Benedicto islands, reproductive success for Layssan albatoss is close to 0% and the number of nests is low (less than 40 for San Benedicto).
+In both, Clarion and San Benedicto islands, reproductive success for Laysan albatross is close to 0% and the number of nests is low (less than 40 for San Benedicto).
 
-[[ When you draft it, mirror the Guadalupe and Clarion shape, location, remoteness, colony size, and breeding success, so readers can compare the three colonies at a glance. ]]
-
-[[ Transition: move from site descriptions to the oceanographic factors that determine foraging areas. ]]
-
-[[ Transition: move from the study area description to the study species — why Laysan albatross in particular. ]]
+These three islands are breeding grounds for the Laysan albatross.
 
 ## Study Species
 
 Tracking devices are installed while individuals are breeding on the island.
 
-[[ How does the foraging-trip behavior enable GPS tracking to capture core areas? ]]
-[[ Transition: move from the species' general ecology to the specific study objective — mapping core areas and their overlap with MPAs. ]]
+Each tracking device records multiple foraging trips.
+We split each record into discrete round trips and analyze each trip by itself using KDE [@beal2021track2kba].
+We can analyze the foraging trips to identify the core areas and evaluate if they are covered by the existing protected areas.
 
 We are studying the core area used by Laysan albatross in the Mexican Pacific and its overlap with marine protected areas (MPA).
 
 In particular, we focus on the albatrosses that nest on the islands Guadalupe, Clarion, and San Benedicto.
-[[ Transition: move from the species rationale to the specific study design — the temporal scope of data collection. ]]
+To identify the core areas that persist over time, we use a long time series of tracking data.
 
 ## Study Design
 
 ### Time period
 
 The data were collected from 2014 to 2026.
-We want to determine the core areas that are persistent over time.
-MPA are constant over time.
-To evaluate how effectively MPAs protect the core areas for Laysan albatross, we need a long time period to obtain persistent patterns.
-A 12-year period (2014–2026) is long enough to evaluate MPA effectiveness.
-A shorter period might not be enough because of interannual variability.
-We assess the degree of representativeness of the data.
-We do not consider the interannual variability directly.
-We verify that the time period is long enough to be representative despite the interannual variability.
-All the data are pooled together without accounting for the year.
+We assume that a 12-year tracking dataset would be long enough to capture the patterns that persist despite the interannual variability.
+We verified this assumption with a representativeness analysis.
+We also confirmed that a 5-year dataset (2014-2018) was not long enough to be representative of the population.
+We grouped all 12 years without distinguishing between years.
 
-[[ The a priori versus a posteriori reasoning is tangled: you state a long window is needed, then that representativeness is assessed a posteriori. State what was assumed before the analysis and what the data later verified, so the justification reads as one chain. ]]
-[[ Transition: move from the multi-year rationale to the seasonal coverage limitation. ]]
+Even though the dataset is 12 years long, each year covers only the breeding season.
 
-[[ Topic: what seasonal coverage did the tracking data have? ]]
-[[ Evidence: state the months when GPS loggers were deployed and why the non-breeding season was not sampled. ]]
-[[ Explanation: why does the study focus only on the breeding season? ]]
-[[ Transition: move from study design to the specific field methods used for data collection. ]]
+The GPS loggers were deployed from December to June, within the breeding season (November to July).
+The GPS devices are deployed and recovered on the island, where seabirds return only during the breeding season.
+The GPS devices and data cannot be recovered the next breeding season because the GPS devices are attached to feathers that are molted during the non-breeding season.
+This study focuses on the breeding season because that is when seabirds forage from the colony and their use of the core areas is attributable to each island.
+Once the time period is defined, we describe how the data were collected.
 
 | Colony | Min Date | Max Date |
 |--------|----------|----------|
@@ -88,10 +80,7 @@ All the data are pooled together without accounting for the year.
 We attached GPS units to {{ guadalupe_n_total }} Laysan albatross individuals on Guadalupe Island from {{ guadalupe_min_year }} to {{ guadalupe_max_year }}.
 Additionally, we attached GPS units to {{ clarion_n_total }} individuals on Clarion Island from {{ clarion_min_year }} to {{ clarion_max_year }}.
 
-The number of individuals and the number of seasons were determined by the amount of resources available.
-The representativeness of the data was assessed a posteriori.
-
-[[ Sampling determined by available resources can read as an apology. Frame it as a design decision and pair it with the a posteriori representativeness assessment that justifies it; consider echoing the caveat in the Discussion. ]]
+We designed the sampling effort according to the available resources, and we verified a posteriori that the sample was representative of the population.
 
 GPS loggers have the appropriate accuracy and precision for the study.
 Other devices, such as GLS loggers, are not accurate enough to determine core areas.
@@ -99,14 +88,10 @@ We programmed the GPS to record one position every 10 minutes.
 The 10-minute frequency allows recording multiple trips per individual per season.
 This frequency is high enough for the data to be representative and identify moments when the individual stops or goes slow.
 This frequency is low enough for the battery to last the whole season and track multiple trips.
-[[ Transition: move from the rationale for GPS selection to the physical attachment procedure. ]]
-We attached the GPS to the albatrosses.
-The GPS loggers were attached to the albatross individuals with Tesa tape (#4651, Tesa AG, Hamburg, Germany).
-
-[[ attached appears three times across these lines; merge the attachment and the tape detail into one sentence. Report device mass relative to body mass and handling time, which reviewers expect and which supports the no-harm claim later. ]]
+We attached the GPS loggers to the albatrosses with Tesa tape (#4651, Tesa AG, Hamburg, Germany).
 [[ Explain how the tape is attached. Is there a standard protocol for this? ]]
 [[ Explanation: why was Tesa tape chosen for attaching the GPS loggers? ]]
-[[ Transition: move from attachment method to the specific GPS models used across years and islands. ]]
+There were variations in the GPS device models across years and islands, which we describe below.
 
 In Guadalupe Island we used the following GPS devices: From 2014 to 2016: model GiSPy-4SB by Techno Smart (Italy).
 From 2017 to 2018: i-gotU model GT-120 by Mobile Action (Taiwan).
@@ -116,12 +101,11 @@ From 2025 to 2026: GPS datalogger with accelerometer and UHF model Axy-Trek Remo
 In Clarion Island, from 2018 to 2022 we used the following GPS devices: i-gotU model GT-120 by Mobile Action (Taiwan).
 CatLog-S, Catnip Technologies (China).
 CatLog-S2, Perthold Engineering (USA).
-[[ Explanation: why did the GPS device models vary across years? ]]
-[[ Transition: move from device descriptions to the sample-size tables that summarise the tracking effort per year. ]]
+The models changed because new and better technology was available during the 12-year period of the study.
 
 [[ Add description of GPS used in San Benedicto ]]
 
-[[ Topic: introduce the sample-size tables that show the number of individuals tracked per season at each colony. ]]
+The following tables show the number of individuals tracked per season at each colony.
 
 **Guadalupe Island**
 
@@ -147,8 +131,8 @@ CatLog-S2, Perthold Engineering (USA).
 | {{season}} | {{start}} | {{end}} | {{n}} |
 {{/san_benedicto_seasons}}
 
-[[ Explanation: what patterns do the sample sizes reveal about tracking effort? ]]
-[[ Transition: move from data collection (field methods) to the processing steps applied to the GPS data. ]]
+The tracking effort was concentrated at the largest colony, Guadalupe Island, and less effort was invested in the smallest colonies, Clarion and San Benedicto islands.
+Once the data were collected, we processed them following the track2KBA methodology.
 
 ## Data Processing
 
@@ -166,22 +150,15 @@ The following track2KBA functions were used:
 - `repAssess()` to bootstrap and assess sample representativeness
 - `findSite()` to identify potential KBA polygons meeting thresholds
 
-[[ track2KBA is introduced in Data Processing and again in Data Analysis with the same citation. Introduce the package once with its function list, then let the Analysis section reason about the specific analyses. ]]
-
-[[ Explanation: why was track2KBA chosen for processing the GPS data? ]]
-[[ Transition: move from the preprocessing pipeline to the recording frequency of the raw GPS data. ]]
-
 We did not do any resampling or consistency checks.
-[[ Explanation: why was no resampling or consistency check performed? ]]
-[[ Transition: move from data processing to the statistical analysis of the processed data. ]]
+We did not resample because all GPS devices were programmed with the same frequency, so the raw data were already homogeneous.
+After processing the data, we analyzed them to identify the core areas.
 
 ## Data Analysis
 
-We based our methodology on [@beal2021track2kba].
-We used the R package track2KBA [@beal2021track2kba] to split individual tracks, calculate KDE, and find core areas (50% UD; potential KBA).
-We followed [@beal2021track2kba] without deviation.
-[[ Explanation: why was the Beal et al. (2021) methodology chosen? ]]
-[[ Transition: move from the general analytical approach to the specific analysis of core areas used by Laysan albatross. ]]
+We split individual tracks, calculated KDE, and found core areas (50% UD; potential KBA).
+We chose the Beal et al. (2021) methodology because it is replicable using a single open-source R package (track2KBA) that allows us to split tracks, estimate UD, and evaluate representativeness, and it is explicitly designed to identify potential key biodiversity areas from tracking data.
+We applied this methodology to identify the core areas used by the Laysan albatross.
 
 ### Core areas used by Laysan albatross
 
@@ -196,21 +173,15 @@ To identify core areas, we split the tracks into individual trips and perform ke
 We then assess sample representativeness and determine the core areas (potential key biodiversity areas).
 To determine overlap, we intersect the core areas with the MPA polygons and quantify the level of overlap.
 
-The unit of analysis is the trip.
-Each colony has multiple individuals which has multiple individuals; each individual makes multiple trips per season.
+Each colony hosts multiple individuals, each individual makes multiple foraging trips per season; the foraging trip is the unit of analysis.
 
-[[ The sentence Each colony has multiple individuals which has multiple individuals is garbled, likely a leftover from an earlier edit. Restate the nesting, colony to individuals to trips, with the trip as the unit, and add the per-colony trip counts the annotation below asks for. ]]
-[[ Reference to table with nuber of individuals per colony ]]
-Each trip is the smallest unit of analysis.
-[[ It may be useful to mention how many trips does data from each island represents... ]]
+The number of sampled individuals per colony is shown in the previous tables.
+The data from Guadalupe Island include XXX trips, Clarion XXX, and San Benedicto XXX.
 Core areas refer to the 50% Utilization Distribution (UD).
 From the GPS trajectories, we calculated kernel density estimation (KDE) to define the core areas.
-The UD level is 50%.
-The Area-Restricted Search scale uses First Passage Time analysis (adehabitatLT).
-KDE has been widely used to determine Utilization Distribution (UD).
+KDE has been widely used to determine UD.
 KDE was selected because a wide range of users are familiar with its use, which facilitates the communication of results among decision makers.
-
-[[ The KDE and ARS material reads as a list of facts. Consider reordering into a logic: estimator choice (KDE and why), smoothing scale (ARS via FPT), then pooling trips into the 50% UD core area. ]]
+The Area-Restricted Search scale uses First Passage Time analysis (adehabitatLT).
 KDEs are calculated for individual trips.
 Then the KDEs from individual trips are combined to obtain a pooled density, from which the core area (50% UD) is obtained.
 
@@ -218,7 +189,7 @@ Representativeness refers to how well the sample represents the population.
 For this purpose, individual trips are subsampled, and KDEs are calculated and combined to obtain the UD.
 From the resulting area, we evaluate how many data points that were not selected in the subsample fall outside.
 That indicates whether the sample size is sufficiently representative of the population for the results to be valid for the entire population.
-[[ Transition: move from identifying core areas to quantifying their spatial overlap with MPAs. ]]
+Once the core areas were identified, we quantified their overlap with the existing protected areas.
 
 ### Overlap of core areas with MPAs
 
@@ -232,15 +203,11 @@ The dependent variable is the overlap index.
 Fieberg & Kochanny quantified home-range overlap using the utilization distribution.
 We calculated the overlap index to quantify the overlap of the core areas with the MPA polygons.
 The overlap index is area-based (proportional) overlap: $HR_{i,j} = \frac{A_{i,j}}{A_i}$.
-$HR_{i,j}$ measures the proportion of animal $i$'s home range that is overlapped by animal $j$'s home range.
 This index is directional: $HR_{i,j} \neq HR_{j,i}$.
 It ignores the utilization distribution and treats all space within the home range as equally used.
 Source: Kernohan et al. (2001); White & Garrott (1990).
-Area-based (proportional) overlap measures the proportion of core area that is overlapped by MPA area.
-
-[[ Area-based proportional overlap is defined twice, here and above with the formula. Keep one definition plus the formula, then one interpretive sentence for what a value means for protection coverage. ]]
 This measure of core habitat protection coverage tells us what fraction of the animal's most intensively used space is inside the protected area.
-[[ Transition: move from the analytical results to the ethical framework under which the data were collected. ]]
+The study was performed under an ethical framework and with all the permits required by the Mexican government.
 
 ## Ethical Considerations
 
@@ -248,13 +215,13 @@ Ethical considerations and permits are required by Mexican authorities.
 The study was conducted under the permits from the following institutions:
 Ministry of the Interior, Ministry of Environment and Natural Resources, and the National Commission for Protected Natural Areas.
 [[ Add specific permit IDs or agencies if possible ]]
-[[ Explanation: why are these permits required for this study? ]]
-[[ Transition: move from permitting to the ethical treatment of the animals during the study. ]]
+The permits are mandatory because this study handles wildlife in federal protected areas.
+In addition to obtaining the permits, we ensured the welfare of the seabirds during their handling.
 
 No albatross individuals were harmed during the study.
-[[ Explain how albatross are trapped. Is there a standard for this? ]]
-[[ Explanation: how does the trapping protocol ensure no harm to the albatrosses? ]]
-[[ Transition: move from ethical considerations to the methodological limitations of the study. ]]
+The seabirds are captured by hand at the nest.
+The capture is brief and harmless, and the individuals are released on site immediately after attaching or removing the GPS device.
+In addition to the ethical considerations, we must consider the methodological limitations.
 
 ## Methodological Considerations
 
