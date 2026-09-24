@@ -3,12 +3,15 @@
 
 ## Study Area
 
+<!-- core-area study scope within the Mexican EEZ -->
 We studied the core areas that Laysan albatrosses use within the Mexican EEZ.
 
+<!-- protected areas and the marine-coverage question -->
 The protected areas relevant for this study have a terrestrial component (the island) and a marine component (the surrounding waters).
 This study evaluates whether the marine protected area covers the core area used by the Laysan albatross during its breeding season.
 There are several islands on which the Laysan albatross nests: Guadalupe, Clarion and San Benedicto are the most relevant.
 
+<!-- Guadalupe Island profile -->
 Guadalupe Island hosts the largest breeding colony of Laysan albatross in the eastern Pacific [@hernandez2019sexual].
 Guadalupe Island is located 300 km west of the coast of Baja California.
 It is an oceanic island of volcanic origin.
@@ -18,6 +21,7 @@ In Guadalupe Island, there are 2,195 breeding pairs of Laysan albatross in 2025 
 
 ### Clarion Island
 
+<!-- Clarion Island profile -->
 Clarion Island is part of the Revillagigedo Archipelago.
 Clarion is located 700 kilometers from the Mexican mainland.
 It has a tropical climate.
@@ -28,26 +32,33 @@ In Clarion Island, crows and snakes prey on Laysan albatross eggs and newly hatc
 
 ### San Benedicto
 
+<!-- San Benedicto profile -->
 San Benedicto Island is also part of the Revillagigedo Archipelago and shares the same tropical climate.
 San Benedicto is located 600 kilometers from the Mexican mainland.
 It has an area of 10 km$^2$.
 It measures 4.8 km at its longest part from the northern end to the southern end.
 In San Benedicto Island, crabs feed on the chicks, and nests can be buried in ash.
 
+<!-- low reproductive success at Clarion and San Benedicto -->
 In both, Clarion and San Benedicto islands, reproductive success for Laysan albatross is close to 0% and the number of nests is low (less than 40 for San Benedicto).
 
+<!-- the three islands as breeding grounds -->
 These three islands are breeding grounds for the Laysan albatross.
 
 ## Study Species
 
+<!-- tracking during the breeding season -->
 Tracking devices are installed while individuals are breeding on the island.
 
+<!-- trip segmentation and KDE -->
 Each tracking device records multiple foraging trips.
 We split each record into discrete round trips and analyze each trip by itself using KDE [@beal2021track2kba].
 We can analyze the foraging trips to identify the core areas and evaluate if they are covered by the existing protected areas.
 
+<!-- core area and MPA overlap as the study target -->
 We are studying the core area used by Laysan albatross in the Mexican Pacific and its overlap with marine protected areas (MPA).
 
+<!-- focus on the three colonies and a long time series -->
 In particular, we focus on the albatrosses that nest on the islands Guadalupe, Clarion, and San Benedicto.
 To identify the core areas that persist over time, we use a long time series of tracking data.
 
@@ -55,20 +66,24 @@ To identify the core areas that persist over time, we use a long time series of 
 
 ### Time period
 
+<!-- 12-year dataset and representativeness -->
 The data were collected from 2014 to 2026.
 We assume that a 12-year tracking dataset would be long enough to capture the patterns that persist despite the interannual variability.
 We verified this assumption with a representativeness analysis.
 We also confirmed that a 5-year dataset (2014-2018) was not long enough to be representative of the population.
 We grouped all 12 years without distinguishing between years.
 
+<!-- breeding-season-only coverage per year -->
 Even though the dataset is 12 years long, each year covers only the breeding season.
 
+<!-- deployment window and recovery constraints -->
 The GPS loggers were deployed from December to June, within the breeding season (November to July).
 The GPS devices are deployed and recovered on the island, where seabirds return only during the breeding season.
 The GPS devices and data cannot be recovered the next breeding season because the GPS devices are attached to feathers that are molted during the non-breeding season.
 This study focuses on the breeding season because that is when seabirds forage from the colony and their use of the core areas is attributable to each island.
 Once the time period is defined, we describe how the data were collected.
 
+<!-- deployment date ranges per colony -->
 | Colony | Min Date | Max Date |
 |--------|----------|----------|
 | Guadalupe | {{ guadalupe_min_date }} | {{ guadalupe_max_date }} |
@@ -77,11 +92,14 @@ Once the time period is defined, we describe how the data were collected.
 
 ## Field Methods
 
+<!-- tagged individuals per colony -->
 We attached GPS units to {{ guadalupe_n_total }} Laysan albatross individuals on Guadalupe Island from {{ guadalupe_min_year }} to {{ guadalupe_max_year }}.
 Additionally, we attached GPS units to {{ clarion_n_total }} individuals on Clarion Island from {{ clarion_min_year }} to {{ clarion_max_year }}.
 
+<!-- sampling effort and a posteriori representativeness -->
 We designed the sampling effort according to the available resources, and we verified a posteriori that the sample was representative of the population.
 
+<!-- GPS device choice, accuracy, and frequency -->
 GPS loggers have the appropriate accuracy and precision for the study.
 Other devices, such as GLS loggers, are not accurate enough to determine core areas.
 We programmed the GPS to record one position every 10 minutes.
@@ -91,6 +109,7 @@ This frequency is low enough for the battery to last the whole season and track 
 We attached the GPS loggers to the albatrosses with Tesa tape (#4651, Tesa AG, Hamburg, Germany).
 [[ Explain how the tape is attached. Is there a standard protocol for this? ]]
 [[ Explanation: why was Tesa tape chosen for attaching the GPS loggers? ]]
+<!-- device models by year and island -->
 There were variations in the GPS device models across years and islands, which we describe below.
 
 In Guadalupe Island we used the following GPS devices: From 2014 to 2016: model GiSPy-4SB by Techno Smart (Italy).
@@ -131,14 +150,17 @@ The following tables show the number of individuals tracked per season at each c
 | {{season}} | {{start}} | {{end}} | {{n}} |
 {{/san_benedicto_seasons}}
 
+<!-- tracking effort concentration across colonies -->
 The tracking effort was concentrated at the largest colony, Guadalupe Island, and less effort was invested in the smallest colonies, Clarion and San Benedicto islands.
 Once the data were collected, we processed them following the track2KBA methodology.
 
 ## Data Processing
 
+<!-- track2KBA workflow and filters -->
 We used the R package track2KBA [@beal2021track2kba].
 We removed points within 60 km around the colony.
 We followed the track2KBA methodology, which called for removing incomplete trips.
+<!-- track2KBA functions used -->
 The following track2KBA functions were used:
 
 - `formatFields()` to normalize GPS field names and date-time format
@@ -150,12 +172,14 @@ The following track2KBA functions were used:
 - `repAssess()` to bootstrap and assess sample representativeness
 - `findSite()` to identify potential KBA polygons meeting thresholds
 
+<!-- no resampling under uniform frequency -->
 We did not do any resampling or consistency checks.
 We did not resample because all GPS devices were programmed with the same frequency, so the raw data were already homogeneous.
 After processing the data, we analyzed them to identify the core areas.
 
 ## Data Analysis
 
+<!-- pipeline summary and Beal justification -->
 We split individual tracks, calculated KDE, and found core areas (50% UD; potential KBA).
 We chose the Beal et al. (2021) methodology because it is replicable using a single open-source R package (track2KBA) that allows us to split tracks, estimate UD, and evaluate representativeness, and it is explicitly designed to identify potential key biodiversity areas from tracking data.
 We applied this methodology to identify the core areas used by the Laysan albatross.
@@ -164,19 +188,24 @@ We applied this methodology to identify the core areas used by the Laysan albatr
 
 **Measurements and Variables**
 
+<!-- variables: GPS locations to core areas -->
 The independent variable is the GPS locations of the Laysan albatross.
 The dependent variable is the core areas used by the Laysan albatross.
 
 **Analysis**
 
+<!-- core-area identification and overlap procedure -->
 To identify core areas, we split the tracks into individual trips and perform kernel density estimations for each trip.
 We then assess sample representativeness and determine the core areas (potential key biodiversity areas).
 To determine overlap, we intersect the core areas with the MPA polygons and quantify the level of overlap.
 
+<!-- the foraging trip as unit of analysis -->
 Each colony hosts multiple individuals, each individual makes multiple foraging trips per season; the foraging trip is the unit of analysis.
 
+<!-- sampled individuals and trips -->
 The number of sampled individuals per colony is shown in the previous tables.
 The data from Guadalupe Island include XXX trips, Clarion XXX, and San Benedicto XXX.
+<!-- core-area definition, KDE rationale, ARS scale -->
 Core areas refer to the 50% Utilization Distribution (UD).
 From the GPS trajectories, we calculated kernel density estimation (KDE) to define the core areas.
 KDE has been widely used to determine UD.
@@ -185,6 +214,7 @@ The Area-Restricted Search scale uses First Passage Time analysis (adehabitatLT)
 KDEs are calculated for individual trips.
 Then the KDEs from individual trips are combined to obtain a pooled density, from which the core area (50% UD) is obtained.
 
+<!-- representativeness method -->
 Representativeness refers to how well the sample represents the population.
 For this purpose, individual trips are subsampled, and KDEs are calculated and combined to obtain the UD.
 From the resulting area, we evaluate how many data points that were not selected in the subsample fall outside.
@@ -195,22 +225,27 @@ Once the core areas were identified, we quantified their overlap with the existi
 
 **Measurements and Variables**
 
+<!-- variables: core areas and MPAs to overlap index -->
 The independent variables are the core areas used by the Laysan albatross and the MPA polygons.
 The dependent variable is the overlap index.
 
 **Analysis**
 
+<!-- overlap index definition and properties -->
 Fieberg & Kochanny quantified home-range overlap using the utilization distribution.
 We calculated the overlap index to quantify the overlap of the core areas with the MPA polygons.
 The overlap index is area-based (proportional) overlap: $HR_{i,j} = \frac{A_{i,j}}{A_i}$.
 This index is directional: $HR_{i,j} \neq HR_{j,i}$.
 It ignores the utilization distribution and treats all space within the home range as equally used.
 Source: Kernohan et al. (2001); White & Garrott (1990).
+<!-- protection-coverage interpretation -->
 This measure of core habitat protection coverage tells us what fraction of the animal's most intensively used space is inside the protected area.
+<!-- ethical framework (misplaced: flag for relocation to Ethical Considerations) -->
 The study was performed under an ethical framework and with all the permits required by the Mexican government.
 
 ## Ethical Considerations
 
+<!-- permits and institutions -->
 Ethical considerations and permits are required by Mexican authorities.
 The study was conducted under the permits from the following institutions:
 Ministry of the Interior, Ministry of Environment and Natural Resources, and the National Commission for Protected Natural Areas.
@@ -218,6 +253,7 @@ Ministry of the Interior, Ministry of Environment and Natural Resources, and the
 The permits are mandatory because this study handles wildlife in federal protected areas.
 In addition to obtaining the permits, we ensured the welfare of the seabirds during their handling.
 
+<!-- no harm and capture procedure -->
 No albatross individuals were harmed during the study.
 The seabirds are captured by hand at the nest.
 The capture is brief and harmless, and the individuals are released on site immediately after attaching or removing the GPS device.
@@ -225,4 +261,5 @@ In addition to the ethical considerations, we must consider the methodological l
 
 ## Methodological Considerations
 
+<!-- breeding-season-only restriction -->
 The GPS logger collects data only during the breeding season, so the analysis is restricted to that period.
