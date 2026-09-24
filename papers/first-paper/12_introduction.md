@@ -29,18 +29,17 @@ Without this information, it is not possible to determine if the existing MPAs a
 @phillips2024incidental concludes that there are "clear knowledge gaps" in the Northeast Pacific, the region where this study is located.
 
 <!-- the trilateral working group raised the political priority of spatial data -->
-This group seeks joint action regarding incidental catch, thereby raising the political priority of obtaining spatial data [@trilateral2023meeting].
-[[ This group lacks an antecedent; name the group before this sentence. ]]
 The Trilateral Bycatch Working Group was formed in 2022, comprising members from Mexico, the United States, and Canada.
+This group seeks joint action regarding incidental catch, thereby raising the political priority of obtaining spatial data [@trilateral2023meeting].
 In 2023, the trilateral framework explicitly proposed using bird tracking, satellite imagery, and cloud computing to overcome "long-standing information gaps" [@trilateral2023meeting].
 
 <!-- authorities, the fishing sector, and CSOs are stakeholders that rely on spatial data -->
 Stakeholders relevant to the issues addressed in this study include Mexican conservation and fisheries authorities, the fishing sector, and environmental civil society organizations (CSOs).
-Environmental CSOs rely on spatial data to guide their actions and justify their restoration interventions [@trilateral2023meeting], [@mendez2022population].
+Environmental CSOs rely on spatial data to guide their actions and justify their restoration interventions [@trilateral2023meeting; @mendez2022population].
 
 <!-- islands sit inside ANPs; gaps hinder management; bycatch fleets are regulated -->
 The islands of Baja California lie within federal Protected Natural Areas (ANPs) managed by CONANP; as authorities issue permits for seabird management, information gaps hinder their management efforts [@mendez2022population].
-Seabirds are affected by bycatch in longline, trawl, and purse-seine fisheries, and these fleets are regulated by national (CONAPESCA) and regional (IATTC) institutions [@phillips2024incidental], [@morgan2016fourth].
+Seabirds are affected by bycatch in longline, trawl, and purse-seine fisheries, and these fleets are regulated by national (CONAPESCA) and regional (IATTC) institutions [@phillips2024incidental; @morgan2016fourth].
 
 <!-- what is the core area, and how much of it is protected? -->
 What is the core area used by the Laysan albatross in the Mexican Pacific, and how much of it is covered by protected areas?
@@ -53,7 +52,7 @@ The key concepts are core area [@worton1989kernel], marine protected area [@crit
 A marine protected area is a spatially delimited marine zone designated to conserve biodiversity and regulate extractive activities such as fishing [@critchley2018marine; @afan2018adaptive].
 An umbrella species is a species whose protection indirectly protects other species sharing its habitat [@lascelles2016applying].
 GPS tracking is the recording of an animal's position over time to estimate its space use and identify important areas [@lascelles2016applying; @beal2021track2kba].
-[[ why are these concept definitions necessary for the core-area question? ]]
+These key concepts establish shared terminology to address the core-area question unambiguously.
 
 <!-- core area is the 50% UD, home range the 95% UD; standard but not universal -->
 A core area is the portion of an animal's utilization distribution that contains 50% of its space-use probability, in contrast to the 95% home range [@beal2021track2kba; @fieberg2005quantifying].
@@ -66,7 +65,7 @@ They are at the nest, make a foraging trip, and return to the nest.
 Albatrosses are seabirds.
 Seabirds are marine organisms.
 They are on land only during their reproductive stage.
-[[ why does the nest-based foraging behavior matter for the core-area analysis? ]]
+The colony is used to define what constitutes a complete trip, which is the unit of analysis in this study.
 
 <!-- oceanography drives food, which drives where core areas form -->
 Their food availability and distribution (fish, squid, etc.) are determined by oceanographic factors.
@@ -90,9 +89,9 @@ We need to evaluate whether the Mexican protected areas protect the Laysan albat
 The gap in knowledge this study addresses is identifying the core areas used by the Laysan albatross breeding in Mexico by analyzing 12 years of GPS tracking data that was not available before [@beal2021track2kba].
 
 <!-- ~800k breeding pairs; low-lying colonies at risk; Guadalupe as a refuge -->
-However, the biggest nesting colonies are low-lying sites at risk due to sea-level rise associated with climate change [[ reference ]].
-The global population size has been estimated to be around 800,000 breeding pairs [[ reference ]].
-Guadalupe Island offers high nesting areas that are less affected by sea-level rise, offering a refuge for the species [[ reference ]].
+However, the biggest nesting colonies are low-lying sites at risk due to sea-level rise associated with climate change [@birdlife2018phoebastria].
+The global population size has been estimated to be around 800,000 breeding pairs [@birdlife2018phoebastria].
+Guadalupe Island offers high nesting areas that are less affected by sea-level rise, offering a refuge for the species [@hernandez2019sexual].
 
 <!-- this study: 12-year GPS dataset + track2KBA, core areas, overlap quantification -->
 This study is based on GPS tracking, UD, and KBA methods to identify core areas, and it challenges the assumption that protected areas effectively cover the core areas of mobile pelagic species [@lascelles2016applying; @beal2021track2kba; @critchley2018marine].
@@ -101,11 +100,8 @@ We use GPS tracking data to identify the core areas and close the gap in knowled
 Finally, we compare this area with Mexican protected areas [@critchley2018marine; @mendez2022population].
 
 <!-- novelty: first 12-year core-area analysis; track2KBA never applied in Mexico -->
-This study is the first one to use 12 years of GPS tracking data for the Laysan albatrosses breeding in Mexico to identify their core area [@beal2021track2kba; @hernandez2019sexual].
-We also identify for the first time the core area used by these seabirds [@beal2021track2kba].
-[[ We also dangles after the preceding "This study" sentence; rephrase or merge with it. ]]
+This study is the first to use 12 years of GPS tracking data to identify the core area of Laysan albatrosses breeding in Mexico [@beal2021track2kba; @hernandez2019sexual].
 We are using track2KBA to identify the core areas, which has not been done for the Laysan albatross in Mexico [@beal2021track2kba].
-[[ how does being first change what the results allow? ]]
 
 <!-- previous studies: 5 years, Guadalupe only, no representativeness -->
 Previous studies used a shorter (5 years) GPS tracking dataset and calculated the 50%, 75%, and 95% UD using a different method than the newer method suggested by the track2KBA framework [@hernandez2019sexual; @beal2021track2kba].
@@ -130,8 +126,6 @@ The methodology described can be replicated for other species or geographic regi
 
 <!-- informs the 30x30 target; data released for reuse -->
 The practical application that could come from the results of this study is where to extend the protected areas in the context of the Kunming-Montreal 30x30 target [@critchley2018marine; @afan2018adaptive].
-Also, it provides information to make decisions regarding the 30x30 target.
-[[ Also, it dangles after the paragraph opener and duplicates the 30x30 mention; revise. ]]
 The results can guide decision making regarding the 30x30 target.
 The tracking data used by this study is made available for others to make their own analysis.
 
