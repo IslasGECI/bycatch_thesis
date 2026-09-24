@@ -9,6 +9,8 @@ We studied the core areas that Laysan albatrosses use within the Mexican EEZ.
 <!-- protected areas and the marine-coverage question -->
 The protected areas relevant for this study have a terrestrial component (the island) and a marine component (the surrounding waters).
 This study evaluates whether the marine protected area covers the core area used by the Laysan albatross during its breeding season.
+
+<!-- candidate nesting islands -->
 There are several islands on which the Laysan albatross nests: Guadalupe, Clarion and San Benedicto are the most relevant.
 
 <!-- Guadalupe Island profile -->
@@ -106,9 +108,11 @@ We programmed the GPS to record one position every 10 minutes.
 The 10-minute frequency allows recording multiple trips per individual per season.
 This frequency is high enough for the data to be representative and identify moments when the individual stops or goes slow.
 This frequency is low enough for the battery to last the whole season and track multiple trips.
+<!-- GPS attachment method -->
 We attached the GPS loggers to the albatrosses with Tesa tape (#4651, Tesa AG, Hamburg, Germany).
 [[ Explain how the tape is attached. Is there a standard protocol for this? ]]
 [[ Explanation: why was Tesa tape chosen for attaching the GPS loggers? ]]
+
 <!-- device models by year and island -->
 There were variations in the GPS device models across years and islands, which we describe below.
 
@@ -124,6 +128,7 @@ The models changed because new and better technology was available during the 12
 
 [[ Add description of GPS used in San Benedicto ]]
 
+<!-- individuals tracked per season -->
 The following tables show the number of individuals tracked per season at each colony.
 
 **Guadalupe Island**
@@ -160,6 +165,7 @@ Once the data were collected, we processed them following the track2KBA methodol
 We used the R package track2KBA [@beal2021track2kba].
 We removed points within 60 km around the colony.
 We followed the track2KBA methodology, which called for removing incomplete trips.
+
 <!-- track2KBA functions used -->
 The following track2KBA functions were used:
 
@@ -205,6 +211,7 @@ Each colony hosts multiple individuals, each individual makes multiple foraging 
 <!-- sampled individuals and trips -->
 The number of sampled individuals per colony is shown in the previous tables.
 The data from Guadalupe Island include XXX trips, Clarion XXX, and San Benedicto XXX.
+
 <!-- core-area definition, KDE rationale, ARS scale -->
 Core areas refer to the 50% Utilization Distribution (UD).
 From the GPS trajectories, we calculated kernel density estimation (KDE) to define the core areas.
@@ -238,14 +245,14 @@ The overlap index is area-based (proportional) overlap: $HR_{i,j} = \frac{A_{i,j
 This index is directional: $HR_{i,j} \neq HR_{j,i}$.
 It ignores the utilization distribution and treats all space within the home range as equally used.
 Source: Kernohan et al. (2001); White & Garrott (1990).
+
 <!-- protection-coverage interpretation -->
 This measure of core habitat protection coverage tells us what fraction of the animal's most intensively used space is inside the protected area.
-<!-- ethical framework (misplaced: flag for relocation to Ethical Considerations) -->
-The study was performed under an ethical framework and with all the permits required by the Mexican government.
 
 ## Ethical Considerations
 
 <!-- permits and institutions -->
+The study was performed under an ethical framework and with all the permits required by the Mexican government.
 Ethical considerations and permits are required by Mexican authorities.
 The study was conducted under the permits from the following institutions:
 Ministry of the Interior, Ministry of Environment and Natural Resources, and the National Commission for Protected Natural Areas.
