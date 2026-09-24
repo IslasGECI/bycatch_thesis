@@ -59,6 +59,57 @@ main idea replaces the removed prose sentence.
 - Source 90 "Also, it provides information..." — "it" requires the antecedent
   in the R2 group.
 
+## Step 3 — classify and sort within paragraphs
+
+### Completions inserted
+
+- None (0). Closed-form completions were not required in Steps 1-3.
+
+### Placeholders created (Step 3)
+
+`[[ question ]]` inserted (3) — author must supply the missing role's content:
+
+- After concepts definitions (k1): [[ why are these concept definitions necessary for the core-area question? ]]
+- After breeding-cycle behavior (k3): [[ why does the nest-based foraging behavior matter for the core-area analysis? ]]
+- After the novelty claims (A2): [[ how does being first change what the results allow? ]]
+
+### Reorders applied (Topic -> Evidence -> Explanation -> Link)
+
+| Paragraph | Order |
+|-----------|-------|
+| Opening b1 | 3, 1, 2 |
+| Opening b2 | 4, 5, 6, 9, 7, 8, 10 |
+| Policy p1 | 17, 16, 18 |
+| Concepts k3 | 36, 34, 35, 31, 32, 33 |
+| Gap g1 | 45, 47, 48, 46, 49 |
+| Gap g2 | 51, 50, 52 |
+| Action A1 | 53, 54, 56, 55 |
+| Action A2 | 58, 57, 59 |
+| Action A4 | 65, 63, 64, 66, 67 |
+| Action A5 | 69, 68 |
+| Resolution R1 | 72, 70, 71 |
+| Resolution R2 | 76, 73, 74, 75 |
+| Resolution R4 | 83, 82 |
+
+(Source numbering matches Step 2 ledger in git; the regrouped text is the
+record of record.)
+
+### Broken connectors (author work — text moved, connectors not repaired)
+
+- p1: "This group" (s17) now opens the paragraph; the trilateral group is
+  introduced only afterwards.
+- A2: "We also" (s57) dangles after s58.
+- R2: "Also, it provides..." (s73) dangles after s76.
+- k3: "they make foraging trips" (s34) relies on the subject established in s36.
+
+### Schimel mini-story disagreements reported
+
+- Single/two-sentence paragraphs cannot carry a full arc: b3, c2, c3, q1,
+  q2, m1, m2, A5, R4. Author decides to merge or accept the truncated arc.
+- p3 (21, 22): two parallel facts in one paragraph.
+- k3: encyclopedic exposition, not an argument; roles fuzzy.
+- g2: "However" (s51) was broken by topic-first order per author instruction.
+
 ## Duplicates flagged (deletion deferred to later steps)
 
 - 54 ~ 7 + 8
