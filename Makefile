@@ -8,7 +8,7 @@ all: \
 
 SHELL := /bin/bash
 
-reports/first_paper.docx reports/first_paper.pdf: \
+reports/first_paper.pdf: \
 	data/processed/individual_kde_guadalupe.rds \
 	data/processed/trips_summary_guadalupe.csv \
 	papers/first-paper/10_metadata.yaml \
@@ -24,6 +24,14 @@ reports/first_paper.docx reports/first_paper.pdf: \
 	reports/first_paper.md
 	$(checkDirectories)
 	pandoc --include-in-header=options.sty --metadata-file=papers/first-paper/10_metadata.yaml --metadata=documentclass:article --table-of-contents --citeproc --output=$@ reports/first_paper.md
+
+reports/first_paper_no_annotations.md: reports/first_paper.md
+	$(checkDirectories)
+	src/remove_annotations_from_paper_for_docx.sh
+
+reports/first_paper.docx: reports/first_paper.pdf reports/first_paper_no_annotations.md
+	$(checkDirectories)
+	pandoc --include-in-header=options.sty --metadata-file=papers/first-paper/10_metadata.yaml --metadata=documentclass:article --table-of-contents --citeproc --output=$@ reports/first_paper_no_annotations.md
 
 first_paper_sources := $(wildcard papers/first-paper/1?_*.md)
 
