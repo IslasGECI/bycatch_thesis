@@ -153,6 +153,11 @@ The following tables show the number of individuals tracked per season at each c
 <!-- tracking effort concentration across colonies -->
 [[ What do the per-season tables show about the effort split across colonies? ]]
 The tracking effort was concentrated at the largest colony, Guadalupe Island, and less effort was invested in the smallest colonies, Clarion and San Benedicto islands.
+
+<!-- sampled individuals and trips -->
+The number of sampled individuals per colony is shown in the previous tables.
+The data from Guadalupe Island include XXX trips, Clarion XXX, and San Benedicto XXX.
+[[ What does the trip count imply for the analysis? ]]
 Once the data were collected, we processed them following the track2KBA methodology.
 
 ## Data Processing
@@ -207,11 +212,6 @@ We then assess sample representativeness and determine the core areas (potential
 To determine overlap, we intersect the core areas with the MPA polygons and quantify the level of overlap.
 [[ Why is representativeness assessed before fixing the core areas? ]]
 [[ How does the unit of analysis carry into the pooled core-area estimate? ]]
-
-<!-- sampled individuals and trips -->
-The number of sampled individuals per colony is shown in the previous tables.
-The data from Guadalupe Island include XXX trips, Clarion XXX, and San Benedicto XXX.
-[[ What does the trip count imply for the analysis? ]]
 
 <!-- core-area definition, KDE rationale, ARS scale -->
 Core areas refer to the 50% Utilization Distribution (UD).
