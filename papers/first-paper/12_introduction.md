@@ -1,6 +1,52 @@
 
 # Introduction
 
+## Opening: the stakes
+<!-- seabirds are threatened; pelagic species are weakly protected by MPAs -->
+<!-- Laysan albatross is an umbrella species; protecting it implies ecosystem protection -->
+<!-- tracking seabirds is the standard method for finding important marine areas -->
+
+## Challenge: the gap
+<!-- the core areas used by Laysan albatross in the Mexican Pacific and their MPA coverage are unknown -->
+<!-- without that information MPA effectiveness cannot be evaluated -->
+<!-- knowledge gaps are declared for the Northeast Pacific -->
+
+## Policy context and stakeholders
+<!-- the trilateral working group raised the political priority of spatial data -->
+<!-- authorities, the fishing sector, and CSOs are stakeholders that rely on spatial data -->
+<!-- islands sit inside ANPs; gaps hinder management; bycatch fleets are regulated -->
+
+## The question
+<!-- what is the core area, and how much of it is protected? -->
+<!-- the question rests on UD/home-range theory and KBA/IBA criteria -->
+
+## Concepts
+<!-- key concepts: core area, MPA, umbrella species, GPS tracking -->
+<!-- core area is the 50% UD, home range the 95% UD; standard but not universal -->
+<!-- albatrosses are land-bound and leave the nest only for breeding-season foraging trips -->
+<!-- oceanography drives food, which drives where core areas form -->
+
+## The method in principle
+<!-- GPS tracking yields the UD by KDE; the UD identifies core areas -->
+<!-- overlapping core areas with protected areas evaluates umbrella-species protection -->
+
+## The gap restated for this study
+<!-- the Laysan albatross gap: short datasets, unknown representativeness -->
+<!-- ~800k breeding pairs; low-lying colonies at risk; Guadalupe as a refuge -->
+
+## Action: this study
+<!-- this study: 12-year GPS dataset + track2KBA, core areas, overlap quantification -->
+<!-- novelty: first 12-year core-area analysis; track2KBA never applied in Mexico -->
+<!-- previous studies: 5 years, Guadalupe only, no representativeness -->
+<!-- objectives: identify core areas; assess overlap with ANPs -->
+<!-- hypothesis: existing protected areas do not adequately cover the core area -->
+
+## Resolution: significance
+<!-- quantifies the overlap; extends the global MPA-effectiveness picture -->
+<!-- informs the 30x30 target; data released for reuse -->
+<!-- CONANP and the trilateral group could act on the results -->
+<!-- our results suggest inadequate coverage -->
+
 There is a gap of knowledge about the core areas used by Laysan albatross in the Mexican Pacific and whether these areas are protected by existing Marine Protected Areas (MPAs).
 Without this information, it is not possible to determine if the existing MPAs are effective in protecting this and other species that share the same habitat.
 
