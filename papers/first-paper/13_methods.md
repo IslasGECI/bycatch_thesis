@@ -80,6 +80,7 @@ Once the time period is defined, we describe how the data were collected.
 
 <!-- deployment date ranges per colony -->
 [[ What do these deployment date ranges show? ]]
+
 | Colony | Min Date | Max Date |
 |--------|----------|----------|
 | Guadalupe | {{ guadalupe_min_date }} | {{ guadalupe_max_date }} |
@@ -149,6 +150,7 @@ The following tables show the number of individuals tracked per season at each c
 {{#san_benedicto_seasons}}
 | {{season}} | {{start}} | {{end}} | {{n}} |
 {{/san_benedicto_seasons}}
+
 [[ What should the reader see in the per-season tracking effort? ]]
 
 <!-- tracking effort concentration across colonies -->
