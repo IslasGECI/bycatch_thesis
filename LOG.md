@@ -102,6 +102,34 @@ record of record.)
 - R2: "Also, it provides..." (s73) dangles after s76.
 - k3: "they make foraging trips" (s34) relies on the subject established in s36.
 
+## Step 4 — verify logical flow within paragraphs
+
+### Placeholders created (Step 4)
+
+`[[ ]]` note inserted in p1 after the dangling subject:
+
+- p1: [[ This group lacks an antecedent; name the group before this sentence. ]]
+
+Remaining broken connectors (A2 "We also", R2 "Also, it", k3 "they") carry no
+in-text note yet; awaiting the one-at-a-time resolution order.
+
+Step 4 broken-connector notes placed:
+
+- p1: [[ This group lacks an antecedent; name the group before this sentence. ]]
+- A2: [[ We also dangles after the preceding "This study" sentence; rephrase or merge with it. ]]
+- R2: [[ Also, it dangles after the paragraph opener and duplicates the 30x30 mention; revise. ]]
+- k3: no note needed — after the s36-first reorder, "they" (s34) has the
+  albatrosses of s36 as antecedent; the connector resolved itself.
+- p3: kept as one paragraph (both facts name institutional actors over the
+  species); split deferred to the final cross-section sweep.
+
+Step 4 deferred items (moved to the final cross-section check):
+
+- b1: topic sentence restates the two evidence stats (duplicate 54 ~ 7 + 8).
+- b2: two near-identical umbrella statements in one paragraph.
+- k3: paragraph closes on encyclopedic biology facts; explanation role is
+  covered by the [[ ]] prompt at the paragraph end.
+
 ### Schimel mini-story disagreements reported
 
 - Single/two-sentence paragraphs cannot carry a full arc: b3, c2, c3, q1,
@@ -119,3 +147,68 @@ record of record.)
 - 23 / 24 ~ 75 ~ 77 / 78
 - 90 ~ 91
 - 103 reports a result inside the Introduction; flagged for the final check.
+
+## Final check — logical flow across paragraphs
+
+Section arc: Opening -> Challenge -> Policy -> Question -> Concepts -> Method ->
+Gap restated -> Action -> Resolution. Story, not chronology; funnel
+general -> specific; no ordering defect found beyond the issues below.
+
+### Issue 1 — the Challenge is asserted twice (resolved: keep both)
+
+- Challenge (lines 25-32) states the general gap; Gap restated (lines 94-98)
+  narrows it to the Laysan albatross / Mexican Pacific before Action.
+- Decision A: keep both as the deliberate general -> specific funnel.
+- Registered duplicate: line 95 ~ line 25 ("It is unknown to what extent the
+  Mexican protected areas cover the Laysan albatross core area" duplicates
+  "whether these areas are protected by existing MPAs") — for the deletion sweep.
+
+### Issue 2 — Resolution pre-states the result (resolved: intentional foreshadowing)
+
+- Line 156 reads as a finding ("Our results suggest that the existing protected
+  areas do not adequately cover...") and duplicates the hypothesis (132-133).
+- Author confirms this is deliberate foreshadowing. Keep as-is; the lexical
+  overlap with the hypothesis is accepted. No duplicate registered.
+- Note for the author: if the wording is revised, keeping it in expect/foreshadow
+  tense preserves the intent.
+
+### Issue 3 — repeated "This study..." openers (resolved: keep + flag)
+
+- Six sentences open with "This study" (107, 108, 113, 137, 138, 149) plus two
+  mid-sentence (125, 126).
+- Registered near-duplicate for rephrase sweep: line 138 ~ line 149 ("This study
+  provides empirical evidence..." ~ "This study provides the scientific base...").
+- Registered overlap: line 113 novelty claim ~ lines 107-109.
+- Not deleted: line 149 carries the antecedent for "the results" at line 150.
+
+### Issue 4 — umbrella-species idea recurs across four subsections (resolved: keep + flag)
+
+- Asserted Opening b2 (10-12), defined Concepts (60), re-applied Method (89-90),
+  re-applied hypothesis (133), echoed Resolution (138).
+- Registered rephrase candidate: lines 89-90 ~ line 133.
+- b2 double-assertion already deferred from Step 4.
+
+### Issue 5 — missing main idea: empty audience paragraph (resolved: delete)
+
+- Decision B: deleted the comment-only audience placeholder (former lines 21-22).
+- The audience ("who cares") main idea is now absent from the section; the author
+  must re-add it as prose if wanted.
+
+### Issue 6 — OCAR at section scale (resolved: accept)
+
+- Opening supplies O; Challenge + Gap restated supply C; Question, Concepts,
+  Method, Action supply A; Resolution supplies R (complete).
+- Decision A: accept the what-we-ask -> what-we-mean -> how-we-measure ->
+  what-we-do ladder. Action is the heaviest cluster by design.
+- Outstanding: the section's Challenge still cannot be given as a single
+  <=15-word statement (already logged as a Step 1 gap); author work.
+
+### Final check — result
+
+- Story, not data chronology; funnel general -> specific is intact.
+- No ordering defect beyond the issues above.
+- Deletion/rephrase sweep now holds: line 95 ~ 25; lines 138 ~ 149; lines 113 ~
+  107-109; lines 89-90 ~ 133; plus the Step 4 deferred b1/b2 and the b2 double
+  assertion.
+- Structural change made this phase: deleted the empty audience placeholder.
+- Phase complete.

@@ -18,8 +18,6 @@ If the ANPs serve to protect these species, we can infer that they serve to prot
 <!-- tracking seabirds is the standard method for finding important marine areas -->
 Tracking seabirds is a standard method for identifying important marine areas [@lascelles2016applying].
 
-<!-- the audience: conservation scientists, spatial planners, protected-area managers, NGOs, and policy makers -->
-
 ## Challenge: the gap
 <!-- the core areas used by Laysan albatross in the Mexican Pacific and their MPA coverage are unknown -->
 There is a gap of knowledge about the core areas used by Laysan albatross in the Mexican Pacific and whether these areas are protected by existing Marine Protected Areas (MPAs).
@@ -34,6 +32,7 @@ Without this information, it is not possible to determine if the existing MPAs a
 ## Policy context and stakeholders
 <!-- the trilateral working group raised the political priority of spatial data -->
 This group seeks joint action regarding incidental catch, thereby raising the political priority of obtaining spatial data [@trilateral2023meeting].
+[[ This group lacks an antecedent; name the group before this sentence. ]]
 The Trilateral Bycatch Working Group was formed in 2022, comprising members from Mexico, the United States, and Canada.
 In 2023, the trilateral framework explicitly proposed using bird tracking, satellite imagery, and cloud computing to overcome "long-standing information gaps" [@trilateral2023meeting].
 
@@ -111,6 +110,7 @@ Finally, we compare this area with Mexican protected areas [@critchley2018marine
 <!-- novelty: first 12-year core-area analysis; track2KBA never applied in Mexico -->
 This study is the first one to use 12 years of GPS tracking data for the Laysan albatrosses breeding in Mexico to identify their core area [@beal2021track2kba; @hernandez2019sexual].
 We also identify for the first time the core area used by these seabirds [@beal2021track2kba].
+[[ We also dangles after the preceding "This study" sentence; rephrase or merge with it. ]]
 We are using track2KBA to identify the core areas, which has not been done for the Laysan albatross in Mexico [@beal2021track2kba].
 [[ how does being first change what the results allow? ]]
 
@@ -139,6 +139,7 @@ The methodology described can be replicated for other species or geographic regi
 <!-- informs the 30x30 target; data released for reuse -->
 The practical application that could come from the results of this study is where to extend the protected areas in the context of the Kunming-Montreal 30x30 target [@critchley2018marine; @afan2018adaptive].
 Also, it provides information to make decisions regarding the 30x30 target.
+[[ Also, it dangles after the paragraph opener and duplicates the 30x30 mention; revise. ]]
 The results can guide decision making regarding the 30x30 target.
 The tracking data used by this study is made available for others to make their own analysis.
 
