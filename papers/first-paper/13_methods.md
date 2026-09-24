@@ -11,6 +11,7 @@ The protected areas relevant for this study have a terrestrial component (the is
 There are several islands on which the Laysan albatross nests: Guadalupe, Clarion and San Benedicto are the most relevant.
 [[ How does the scope and question lead into the island profiles? ]]
 
+### Guadalupe Island
 <!-- Guadalupe Island profile -->
 Guadalupe Island hosts the largest breeding colony of Laysan albatross in the eastern Pacific [@hernandez2019sexual].
 Guadalupe Island is located 300 km west of the coast of Baja California.
@@ -272,3 +273,4 @@ In addition to the ethical considerations, we must consider the methodological l
 
 <!-- breeding-season-only restriction -->
 The GPS logger collects data only during the breeding season, so the analysis is restricted to that period.
+
