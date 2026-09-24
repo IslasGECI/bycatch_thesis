@@ -9,6 +9,7 @@ This study evaluates whether the marine protected area covers the core area used
 The protected areas relevant for this study have a terrestrial component (the island) and a marine component (the surrounding waters).
 [[ How does the coverage question narrow to specific islands? ]]
 There are several islands on which the Laysan albatross nests: Guadalupe, Clarion and San Benedicto are the most relevant.
+[[ How does the scope and question lead into the island profiles? ]]
 
 <!-- Guadalupe Island profile -->
 Guadalupe Island hosts the largest breeding colony of Laysan albatross in the eastern Pacific [@hernandez2019sexual].
@@ -40,7 +41,6 @@ It has an area of 10 km$^2$.
 It measures 4.8 km at its longest part from the northern end to the southern end.
 In San Benedicto Island, crabs feed on the chicks, and nests can be buried in ash.
 In both, Clarion and San Benedicto islands, reproductive success for Laysan albatross is close to 0% and the number of nests is low (less than 40 for San Benedicto).
-These three islands are breeding grounds for the Laysan albatross.
 [[ Why does the San Benedicto profile matter for the core-area analysis? ]]
 
 ## Study Species
@@ -50,7 +50,6 @@ Tracking devices are installed while individuals are breeding on the island.
 Each tracking device records multiple foraging trips.
 We split each record into discrete round trips and analyze each trip by itself using KDE [@beal2021track2kba].
 [[ Why is the individual trip the appropriate unit for KDE? ]]
-We can analyze the foraging trips to identify the core areas and evaluate if they are covered by the existing protected areas.
 
 <!-- core-area/MPA target, focal colonies, and long time series -->
 We are studying the core area used by Laysan albatross in the Mexican Pacific and its overlap with marine protected areas (MPA).
@@ -93,6 +92,7 @@ Once the time period is defined, we describe how the data were collected.
 We attached GPS units to {{ guadalupe_n_total }} Laysan albatross individuals on Guadalupe Island from {{ guadalupe_min_year }} to {{ guadalupe_max_year }}.
 Additionally, we attached GPS units to {{ clarion_n_total }} individuals on Clarion Island from {{ clarion_min_year }} to {{ clarion_max_year }}.
 We designed the sampling effort according to the available resources, and we verified a posteriori that the sample was representative of the population.
+[[ How does the tagging effort connect to the GPS devices used? ]]
 
 <!-- GPS devices: accuracy, frequency, and attachment -->
 GPS loggers have the appropriate accuracy and precision for the study.
@@ -151,6 +151,7 @@ The following tables show the number of individuals tracked per season at each c
 [[ What should the reader see in the per-season tracking effort? ]]
 
 <!-- tracking effort concentration across colonies -->
+[[ What do the per-season tables show about the effort split across colonies? ]]
 The tracking effort was concentrated at the largest colony, Guadalupe Island, and less effort was invested in the smallest colonies, Clarion and San Benedicto islands.
 Once the data were collected, we processed them following the track2KBA methodology.
 
@@ -185,7 +186,6 @@ After processing the data, we analyzed them to identify the core areas.
 
 <!-- pipeline summary and Beal justification -->
 We split individual tracks, calculated KDE, and found core areas (50% UD; potential KBA).
-We applied this methodology to identify the core areas used by the Laysan albatross.
 We chose the Beal et al. (2021) methodology because it is replicable using a single open-source R package (track2KBA) that allows us to split tracks, estimate UD, and evaluate representativeness, and it is explicitly designed to identify potential key biodiversity areas from tracking data.
 [[ Which pipeline step yields the final core-area surface? ]]
 
@@ -202,10 +202,10 @@ The dependent variable is the core areas used by the Laysan albatross.
 
 <!-- core-area identification, overlap procedure, and unit of analysis -->
 To identify core areas, we split the tracks into individual trips and perform kernel density estimations for each trip.
+Each colony hosts multiple individuals, each individual makes multiple foraging trips per season; the foraging trip is the unit of analysis.
 We then assess sample representativeness and determine the core areas (potential key biodiversity areas).
 To determine overlap, we intersect the core areas with the MPA polygons and quantify the level of overlap.
 [[ Why is representativeness assessed before fixing the core areas? ]]
-Each colony hosts multiple individuals, each individual makes multiple foraging trips per season; the foraging trip is the unit of analysis.
 [[ How does the unit of analysis carry into the pooled core-area estimate? ]]
 
 <!-- sampled individuals and trips -->
@@ -254,8 +254,8 @@ This measure of core habitat protection coverage tells us what fraction of the a
 ## Ethical Considerations
 
 <!-- permits and institutions -->
-The study was performed under an ethical framework and with all the permits required by the Mexican government.
 Ethical considerations and permits are required by Mexican authorities.
+The study was performed under an ethical framework and with all the permits required by the Mexican government.
 The study was conducted under the permits from the following institutions:
 Ministry of the Interior, Ministry of Environment and Natural Resources, and the National Commission for Protected Natural Areas.
 [[ Add specific permit IDs or agencies if possible ]]
