@@ -18,3 +18,29 @@ FPT variance peaks are identified per individual.
 Peaks are selected by peakMethod (default "first").
 Then the median across individuals is taken.
 
+## Permits
+
+| Island | Year | Permit |
+|--------|------|--------|
+| Guadalupe | 2014 | XXX |
+| Guadalupe | 2015 | XXX |
+| Guadalupe | 2016 | XXX |
+| Guadalupe | 2017 | SGPA/DGVS/03625/17 |
+| Guadalupe | 2018 | SGPA/DGVS/003135/18 |
+| Guadalupe | 2019 | XXX |
+| Guadalupe | 2020 | SGPA/DGVS/04050/20 |
+| Guadalupe | 2021 | SGPA/DGVS/06066/21 |
+| Guadalupe | 2022 | SGPA/DGVS/06066/22 |
+| Guadalupe | 2022 | SGPA/DGVS/03710/22 |
+| Guadalupe | 2023 | SPARN/DGVS/08650/23 |
+| Guadalupe | 2024 | SPARN/DGVS/11027/24 |
+| Guadalupe | 2025 | SBRA/DGVS/07112/25 |
+| Guadalupe | 2026 | In progress |
+| San Benedicto | 2020 | XXX |
+| Clarion | 2018 | SGPA/DGVS/003135/18 |
+| Clarion | 2019 | XXX |
+| Clarion | 2020 | XXX |
+| Clarion | 2021 | SGPA/DGVS/06066/21 |
+| Clarion | 2022 | SGPA/DGVS/06066/22 |
+| Clarion | 2022 | SGPA/DGVS/03710/22 |
+

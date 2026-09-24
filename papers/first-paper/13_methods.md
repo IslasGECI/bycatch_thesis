@@ -253,7 +253,7 @@ Ethical considerations and permits are required by Mexican authorities.
 The study was performed under an ethical framework and with all the permits required by the Mexican government.
 The study was conducted under the permits from the following institutions:
 Ministry of the Interior, Ministry of Environment and Natural Resources, and the National Commission for Protected Natural Areas.
-[[ Add specific permit IDs or agencies if possible ]]
+A complete list of permits by island and year is available in the Supplementary Information.
 The permits are mandatory because this study handles wildlife in federal protected areas.
 In addition to obtaining the permits, we ensured the welfare of the seabirds during their handling.
 
