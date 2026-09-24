@@ -31,7 +31,10 @@ data/processed/methods.json: \
 	src/export_tracking_dates.R \
 	data/raw/gps-albatros-guadalupe.csv \
 	data/raw/gps-albatros-clarion.csv \
-	data/raw/gps-albatros-san-benedicto.csv
+	data/raw/gps-albatros-san-benedicto.csv \
+	data/processed/trips_summary_guadalupe.csv \
+	data/processed/trips_summary_clarion.csv \
+	data/processed/trips_summary_san_benedicto.csv
 	$(checkDirectories)
 	Rscript src/export_tracking_dates.R
 

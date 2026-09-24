@@ -7,9 +7,10 @@
 We studied the core areas that Laysan albatrosses use within the Mexican EEZ.
 This study evaluates whether the marine protected area covers the core area used by the Laysan albatross during its breeding season.
 The protected areas relevant for this study have a terrestrial component (the island) and a marine component (the surrounding waters).
-[[ How does the coverage question narrow to specific islands? ]]
-There are several islands on which the Laysan albatross nests: Guadalupe, Clarion and San Benedicto are the most relevant.
-[[ How does the scope and question lead into the island profiles? ]]
+There are several islands on which the Laysan albatross breeds: Guadalupe, Clarion and San Benedicto are the relevant islands for the Mexican Pacific.
+The location of the islands is relevant to understand the surrounding oceanographic conditions, for instance, the California Current.
+These conditions help explain the location of the identified core areas.
+We describe each island in order of the relevance of the colonies.
 
 ### Guadalupe Island
 <!-- Guadalupe Island profile -->
@@ -18,8 +19,7 @@ Guadalupe Island is located 300 km west of the coast of Baja California.
 It is an oceanic island of volcanic origin.
 It has an area of 244 km$^2$.
 It measures 30 km at its longest part from the southern end to the northern end.
-In Guadalupe Island, there are 2,195 breeding pairs of Laysan albatross in 2025 [[ reference ]].
-[[ Why do these island attributes matter for the core-area analysis? ]]
+In Guadalupe Island, there are 2,195 breeding pairs of Laysan albatross in 2025 (unpublished authors' monitoring data).
 
 ### Clarion Island
 
@@ -31,7 +31,6 @@ It has an area of 19.8 km$^2$.
 It measures 8.6 km at its longest part from the eastern end to the western end.
 Clarion Island has the second largest Laysan albatross colony in Mexico.
 In Clarion Island, crows and snakes prey on Laysan albatross eggs and newly hatched chicks.
-[[ Why does the Clarion profile matter for the core-area analysis? ]]
 
 ### San Benedicto
 
@@ -42,7 +41,6 @@ It has an area of 10 km$^2$.
 It measures 4.8 km at its longest part from the northern end to the southern end.
 In San Benedicto Island, crabs feed on the chicks, and nests can be buried in ash.
 In both, Clarion and San Benedicto islands, reproductive success for Laysan albatross is close to 0% and the number of nests is low (less than 40 for San Benedicto).
-[[ Why does the San Benedicto profile matter for the core-area analysis? ]]
 
 ## Study Species
 
@@ -50,13 +48,13 @@ In both, Clarion and San Benedicto islands, reproductive success for Laysan alba
 Tracking devices are installed while individuals are breeding on the island.
 Each tracking device records multiple foraging trips.
 We split each record into discrete round trips and analyze each trip by itself using KDE [@beal2021track2kba].
-[[ Why is the individual trip the appropriate unit for KDE? ]]
+The individual trip is the independent tracking event in which the used space is estimated with KDE [@beal2021track2kba].
 
 <!-- core-area/MPA target, focal colonies, and long time series -->
 We are studying the core area used by Laysan albatross in the Mexican Pacific and its overlap with marine protected areas (MPA).
 In particular, we focus on the albatrosses that nest on the islands Guadalupe, Clarion, and San Benedicto.
 To identify the core areas that persist over time, we use a long time series of tracking data.
-[[ How does the long time series connect to the representativeness analysis? ]]
+The long series captures interannual variability and the representativeness assessment checks that the sample is sufficient.
 
 ## Study Design
 
@@ -68,7 +66,7 @@ We assume that a 12-year tracking dataset would be long enough to capture the pa
 We verified this assumption with a representativeness analysis.
 We also confirmed that a 5-year dataset (2014-2018) was not long enough to be representative of the population.
 We grouped all 12 years without distinguishing between years.
-[[ How does grouping the years relate to the breeding-season restriction? ]]
+Because every year covers only the breeding season, which occurs in the same time period, the years are comparable and can be pooled.
 
 <!-- breeding-season coverage and deployment window -->
 Even though the dataset is 12 years long, each year covers only the breeding season.
@@ -79,7 +77,7 @@ This study focuses on the breeding season because that is when seabirds forage f
 Once the time period is defined, we describe how the data were collected.
 
 <!-- deployment date ranges per colony -->
-[[ What do these deployment date ranges show? ]]
+The table shows each colony's deployment window.
 
 | Colony | Min Date | Max Date |
 |--------|----------|----------|
@@ -90,11 +88,10 @@ Once the time period is defined, we describe how the data were collected.
 ## Field Methods
 
 <!-- tagging effort and a posteriori representativeness -->
-[[ How many individuals were tagged at each colony, including San Benedicto? ]]
 We attached GPS units to {{ guadalupe_n_total }} Laysan albatross individuals on Guadalupe Island from {{ guadalupe_min_year }} to {{ guadalupe_max_year }}.
 Additionally, we attached GPS units to {{ clarion_n_total }} individuals on Clarion Island from {{ clarion_min_year }} to {{ clarion_max_year }}.
+We also attached GPS units to {{ san_benedicto_n_total }} individuals on San Benedicto Island in {{ san_benedicto_min_year }}.
 We designed the sampling effort according to the available resources, and we verified a posteriori that the sample was representative of the population.
-[[ How does the tagging effort connect to the GPS devices used? ]]
 
 <!-- GPS devices: accuracy, frequency, and attachment -->
 GPS loggers have the appropriate accuracy and precision for the study.
@@ -103,10 +100,9 @@ We programmed the GPS to record one position every 10 minutes.
 The 10-minute frequency allows recording multiple trips per individual per season.
 This frequency is high enough for the data to be representative and identify moments when the individual stops or goes slow.
 This frequency is low enough for the battery to last the whole season and track multiple trips.
-[[ How does the recording frequency connect to the attachment method? ]]
+The GPS needed to be securely attached during the whole breeding season.
 We attached the GPS loggers to the albatrosses with Tesa tape (#4651, Tesa AG, Hamburg, Germany).
-[[ Explain how the tape is attached. Is there a standard protocol for this? ]]
-[[ Explanation: why was Tesa tape chosen for attaching the GPS loggers? ]]
+The GPS was attached to the back feathers following [@hernandez2019sexual].
 
 <!-- device models by year and island -->
 There were variations in the GPS device models across years and islands, which we describe below.
@@ -122,45 +118,44 @@ CatLog-S2, Perthold Engineering (USA).
 The models changed because new and better technology was available during the 12-year period of the study.
 
 [[ Add description of GPS used in San Benedicto ]]
-[[ How do the device differences affect comparability across years and islands? ]]
+Despite model changes, all devices have similar accuracy and were programmed with the same frequency, so the data remain comparable.
 
 <!-- individuals tracked per season -->
 The following tables show the number of individuals tracked per season at each colony.
 
 **Guadalupe Island**
 
-| Season | Start date | End date | Number of individuals |
-|--------|------------|----------|----------------------|
+| Season | Start date | End date | Number of individuals | Number of trips |
+|--------|------------|----------|----------------------|-----------------|
 {{#guadalupe_seasons}}
-| {{season}} | {{start}} | {{end}} | {{n}} |
+| {{season}} | {{start}} | {{end}} | {{n}} | {{trips}} |
 {{/guadalupe_seasons}}
 
 **Clarion Island**
 
-| Season | Start date | End date | Number of individuals |
-|--------|------------|----------|----------------------|
+| Season | Start date | End date | Number of individuals | Number of trips |
+|--------|------------|----------|----------------------|-----------------|
 {{#clarion_seasons}}
-| {{season}} | {{start}} | {{end}} | {{n}} |
+| {{season}} | {{start}} | {{end}} | {{n}} | {{trips}} |
 {{/clarion_seasons}}
 
 **San Benedicto Island**
 
-| Season | Start date | End date | Number of individuals |
-|--------|------------|----------|----------------------|
+| Season | Start date | End date | Number of individuals | Number of trips |
+|--------|------------|----------|----------------------|-----------------|
 {{#san_benedicto_seasons}}
-| {{season}} | {{start}} | {{end}} | {{n}} |
+| {{season}} | {{start}} | {{end}} | {{n}} | {{trips}} |
 {{/san_benedicto_seasons}}
 
-[[ What should the reader see in the per-season tracking effort? ]]
+The tables show how many individuals were tracked each season and how that varies across years and islands.
 
 <!-- tracking effort concentration across colonies -->
-[[ What do the per-season tables show about the effort split across colonies? ]]
 The tracking effort was concentrated at the largest colony, Guadalupe Island, and less effort was invested in the smallest colonies, Clarion and San Benedicto islands.
 
 <!-- sampled individuals and trips -->
 The number of sampled individuals per colony is shown in the previous tables.
-The data from Guadalupe Island include XXX trips, Clarion XXX, and San Benedicto XXX.
-[[ What does the trip count imply for the analysis? ]]
+The data from Guadalupe Island include {{ guadalupe_n_trips }} complete trips, Clarion {{ clarion_n_trips }}, and San Benedicto {{ san_benedicto_n_trips }}.
+The number of complete trips is the sample size for the KDE and representativeness assessment.
 Once the data were collected, we processed them following the track2KBA methodology.
 
 ## Data Processing
@@ -169,7 +164,7 @@ Once the data were collected, we processed them following the track2KBA methodol
 We used the R package track2KBA [@beal2021track2kba].
 We removed points within 60 km around the colony.
 We followed the track2KBA methodology, which called for removing incomplete trips.
-[[ How do these filters prepare the tracks for KDE? ]]
+Incomplete trips are removed to avoid bias in the computed utilization distribution.
 
 <!-- track2KBA functions used -->
 The following track2KBA functions were used:
@@ -181,12 +176,9 @@ The following track2KBA functions were used:
 - `findScale()` to estimate the ARS smoothing scale via First Passage Time
 - `estSpaceUse()` to compute kernel density estimates for each individual
 - `repAssess()` to bootstrap and assess sample representativeness
-- `findSite()` to identify potential KBA polygons meeting thresholds
-[[ Which function yields the core areas used later? ]]
+- `findSite()` to identify potential KBA polygons (core areas) meeting thresholds.
 
 <!-- no resampling under uniform frequency -->
-We did not do any resampling or consistency checks.
-[[ What check confirms the raw data were homogeneous? ]]
 We did not resample because all GPS devices were programmed with the same frequency, so the raw data were already homogeneous.
 After processing the data, we analyzed them to identify the core areas.
 
@@ -195,7 +187,6 @@ After processing the data, we analyzed them to identify the core areas.
 <!-- pipeline summary and Beal justification -->
 We split individual tracks, calculated KDE, and found core areas (50% UD; potential KBA).
 We chose the Beal et al. (2021) methodology because it is replicable using a single open-source R package (track2KBA) that allows us to split tracks, estimate UD, and evaluate representativeness, and it is explicitly designed to identify potential key biodiversity areas from tracking data.
-[[ Which pipeline step yields the final core-area surface? ]]
 
 ### Core areas used by Laysan albatross
 
@@ -204,7 +195,8 @@ We chose the Beal et al. (2021) methodology because it is replicable using a sin
 <!-- variables: GPS locations to core areas -->
 The independent variable is the GPS locations of the Laysan albatross.
 The dependent variable is the core areas used by the Laysan albatross.
-[[ How do these variables feed the identification procedure? ]]
+The unit of analysis is an individual trip, which is a set of GPS locations.
+The individual trips are the input to KDE, and the core areas are the output of the UD analysis.
 
 **Analysis**
 
@@ -213,8 +205,16 @@ To identify core areas, we split the tracks into individual trips and perform ke
 Each colony hosts multiple individuals, each individual makes multiple foraging trips per season; the foraging trip is the unit of analysis.
 We then assess sample representativeness and determine the core areas (potential key biodiversity areas).
 To determine overlap, we intersect the core areas with the MPA polygons and quantify the level of overlap.
-[[ Why is representativeness assessed before fixing the core areas? ]]
-[[ How does the unit of analysis carry into the pooled core-area estimate? ]]
+The representativeness assessment tells us whether the core areas calculated from the sample are valid for the whole population.
+It would not make sense to calculate core areas if their results could not be inferred to the entire population.
+Each trip yields a KDE, and these trip KDEs are combined into the pooled density that defines the core area.
+
+<!-- representativeness method -->
+Representativeness refers to how well the sample represents the population.
+The representativeness assessment rebuilds the UD from a resampled subset of the KDEs and measures out-of-sample inclusion.
+For this purpose, individual trips are subsampled, and KDEs are calculated and combined to obtain the UD.
+From the resulting area, we evaluate how many data points that were not selected in the subsample fall outside.
+That indicates whether the sample size is sufficiently representative of the population for the results to be valid for the entire population.
 
 <!-- core-area definition, KDE rationale, ARS scale -->
 Core areas refer to the 50% Utilization Distribution (UD).
@@ -224,13 +224,6 @@ The Area-Restricted Search scale uses First Passage Time analysis (adehabitatLT)
 KDEs are calculated for individual trips.
 Then the KDEs from individual trips are combined to obtain a pooled density, from which the core area (50% UD) is obtained.
 KDE was selected because a wide range of users are familiar with its use, which facilitates the communication of results among decision makers.
-[[ How does the pooled density connect to the representativeness check? ]]
-
-<!-- representativeness method -->
-Representativeness refers to how well the sample represents the population.
-For this purpose, individual trips are subsampled, and KDEs are calculated and combined to obtain the UD.
-From the resulting area, we evaluate how many data points that were not selected in the subsample fall outside.
-That indicates whether the sample size is sufficiently representative of the population for the results to be valid for the entire population.
 Once the core areas were identified, we quantified their overlap with the existing protected areas.
 
 ### Overlap of core areas with MPAs
@@ -240,7 +233,7 @@ Once the core areas were identified, we quantified their overlap with the existi
 <!-- variables: core areas and MPAs to overlap index -->
 The independent variables are the core areas used by the Laysan albatross and the MPA polygons.
 The dependent variable is the overlap index.
-[[ How do these variables feed the overlap index? ]]
+The overlap index is a ratio between the two areas.
 
 **Analysis**
 
@@ -251,7 +244,6 @@ The overlap index is area-based (proportional) overlap: $HR_{i,j} = \frac{A_{i,j
 This index is directional: $HR_{i,j} \neq HR_{j,i}$.
 It ignores the utilization distribution and treats all space within the home range as equally used.
 Source: Kernohan et al. (2001); White & Garrott (1990).
-[[ How does the index translate into the protection-coverage statement? ]]
 This measure of core habitat protection coverage tells us what fraction of the animal's most intensively used space is inside the protected area.
 
 ## Ethical Considerations

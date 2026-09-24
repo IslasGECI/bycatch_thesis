@@ -1,17 +1,18 @@
 # ==========================================
-# Título: Exporta fechas extremas de rastreo y conteo de individuos por colonia
+# Título: Exporta fechas extremas, individuos y viajes completos por colonia
 #
 # Contexto (Por qué):
 # El manuscrito del primer artículo necesita las fechas de inicio y fin del
-# rastreo GPS para cada colonia, así como el número total de individuos
-# rastreados. Centralizar estos valores en un archivo JSON evita
+# rastreo GPS, el número total de individuos y el número de viajes completos
+# para cada colonia. Centralizar estos valores en un archivo JSON evita
 # discrepancias entre el texto del artículo y los datos fuente.
 #
 # Descripción (Qué / Cómo):
 # Lee los archivos CSV con registros GPS de las colonias Guadalupe, Clarion
 # y San Benedicto. Para cada colonia extrae las fechas mínima y máxima de
 # la columna date, deriva el año de cada fecha extrema y cuenta los
-# individuos únicos en la columna name. Combina todos los valores en un
+# individuos únicos en la columna name. Lee además el resumen de viajes y
+# cuenta los viajes completos por temporada. Combina todos los valores en un
 # único objeto JSON de estructura plana y lo escribe en
 # data/processed/methods.json.
 #
@@ -19,6 +20,9 @@
 # data/raw/gps-albatros-guadalupe.csv
 # data/raw/gps-albatros-clarion.csv
 # data/raw/gps-albatros-san-benedicto.csv
+# data/processed/trips_summary_guadalupe.csv
+# data/processed/trips_summary_clarion.csv
+# data/processed/trips_summary_san_benedicto.csv
 #
 # Salida:
 # data/processed/methods.json
@@ -31,6 +35,7 @@
 # - Las fechas deben estar en formato ISO 8601 (YYYY-MM-DD) para que el
 #   ordenamiento lexicográfico coincida con el orden cronológico
 # - El conteo de individuos usa la columna name como identificador único
+# - Solo se cuentan viajes con el valor "complete trip" en la columna complete
 # ==========================================
 
 
@@ -44,6 +49,12 @@ input_guadalupe_csv_path <- "data/raw/gps-albatros-guadalupe.csv"
 input_clarion_csv_path <- "data/raw/gps-albatros-clarion.csv"
 # Ruta del archivo CSV con los registros GPS de la colonia San Benedicto
 input_san_benedicto_csv_path <- "data/raw/gps-albatros-san-benedicto.csv"
+# Ruta del archivo CSV con el resumen de viajes de la colonia Guadalupe
+input_guadalupe_trips_path <- "data/processed/trips_summary_guadalupe.csv"
+# Ruta del archivo CSV con el resumen de viajes de la colonia Clarion
+input_clarion_trips_path <- "data/processed/trips_summary_clarion.csv"
+# Ruta del archivo CSV con el resumen de viajes de la colonia San Benedicto
+input_san_benedicto_trips_path <- "data/processed/trips_summary_san_benedicto.csv"
 # Ruta del archivo JSON que almacenará los metadatos del rastreo por colonia
 output_json_path <- "data/processed/methods.json"
 
@@ -68,6 +79,21 @@ clarion_data <- read_csv(
 san_benedicto_data <- read_csv(
   input_san_benedicto_csv_path,
   col_types = cols(date = col_character()),
+  show_col_types = FALSE
+)
+# Carga el resumen de viajes de Guadalupe para identificar los viajes completos
+guadalupe_trips <- read_csv(
+  input_guadalupe_trips_path,
+  show_col_types = FALSE
+)
+# Carga el resumen de viajes de Clarion para identificar los viajes completos
+clarion_trips <- read_csv(
+  input_clarion_trips_path,
+  show_col_types = FALSE
+)
+# Carga el resumen de viajes de San Benedicto para identificar los viajes completos
+san_benedicto_trips <- read_csv(
+  input_san_benedicto_trips_path,
   show_col_types = FALSE
 )
 
@@ -135,6 +161,19 @@ san_benedicto_n_total <- san_benedicto_data |>
   pull(name) |>
   n_distinct()
 
+# Cuenta los viajes completos de Guadalupe filtrando la columna complete
+guadalupe_n_trips <- guadalupe_trips |>
+  filter(complete == "complete trip") |>
+  nrow()
+# Cuenta los viajes completos de Clarion filtrando la columna complete
+clarion_n_trips <- clarion_trips |>
+  filter(complete == "complete trip") |>
+  nrow()
+# Cuenta los viajes completos de San Benedicto filtrando la columna complete
+san_benedicto_n_trips <- san_benedicto_trips |>
+  filter(complete == "complete trip") |>
+  nrow()
+
 # ==== PROCESAMIENTO DE TEMPORADAS ====
 # Prepara los registros de Guadalupe para agruparlos por temporada de
 # rastreo: octubre-septiembre en lugar de año calendario
@@ -174,10 +213,29 @@ guadalupe_season_stats <- guadalupe_with_season |>
     n = n_distinct(name),
     .groups = "drop"
   )
+# Asigna a cada viaje completo de Guadalupe su temporada según la salida
+guadalupe_trips_with_season <- guadalupe_trips |>
+  filter(complete == "complete trip") |>
+  mutate(
+    # Extrae el año numérico de los primeros cuatro caracteres de la salida
+    year = as.numeric(str_sub(departure, 1, 4)),
+    # Extrae el mes numérico de los caracteres 6 y 7 de la salida ISO
+    month = as.numeric(str_sub(departure, 6, 7)),
+    # Aplica la misma regla de temporada Oct-Sep que a los registros GPS
+    season_year = if_else(month >= 10, year, year - 1)
+  )
+# Cuenta los viajes completos de Guadalupe en cada temporada
+guadalupe_trips_stats <- guadalupe_trips_with_season |>
+  group_by(season_year) |>
+  summarise(
+    trips = n(),
+    .groups = "drop"
+  )
 # Combina la secuencia completa con las estadísticas calculadas para
 # rellenar las temporadas sin datos con valores de ausencia
 guadalupe_seasons_full <- guadalupe_season_complete |>
   left_join(guadalupe_season_stats, by = "season_year") |>
+  left_join(guadalupe_trips_stats, by = "season_year") |>
   mutate(
     # Usa "--" para la fecha de inicio en temporadas sin rastreo GPS
     start = if_else(is.na(start), "--", start),
@@ -185,6 +243,8 @@ guadalupe_seasons_full <- guadalupe_season_complete |>
     end = if_else(is.na(end), "--", end),
     # Usa cero para el conteo de individuos en temporadas sin rastreo
     n = if_else(is.na(n), 0L, n),
+    # Usa cero para el conteo de viajes completos en temporadas sin viajes
+    trips = if_else(is.na(trips), 0L, trips),
     # Crea la etiqueta de temporada con formato AAAA-AAAA para la tabla
     season = paste0(season_year, "-", season_year + 1)
   ) |>
@@ -192,7 +252,7 @@ guadalupe_seasons_full <- guadalupe_season_complete |>
   # descartar la columna season_year que solo sirve para el ordenamiento
   arrange(season_year) |>
   # Conserva solo las columnas que aparecerán en la tabla del artículo
-  select(season, start, end, n)
+  select(season, start, end, n, trips)
 
 
 # Prepara los registros de Clarion para el agrupamiento por temporada
@@ -226,18 +286,35 @@ clarion_season_stats <- clarion_with_season |>
     n = n_distinct(name),
     .groups = "drop"
   )
+# Asigna a cada viaje completo de Clarion su temporada según la salida
+clarion_trips_with_season <- clarion_trips |>
+  filter(complete == "complete trip") |>
+  mutate(
+    year = as.numeric(str_sub(departure, 1, 4)),
+    month = as.numeric(str_sub(departure, 6, 7)),
+    season_year = if_else(month >= 10, year, year - 1)
+  )
+# Cuenta los viajes completos de Clarion en cada temporada
+clarion_trips_stats <- clarion_trips_with_season |>
+  group_by(season_year) |>
+  summarise(
+    trips = n(),
+    .groups = "drop"
+  )
 # Combina la secuencia completa con las estadísticas para incluir
 # temporadas sin datos de Clarion en la tabla del artículo
 clarion_seasons_full <- clarion_season_complete |>
   left_join(clarion_season_stats, by = "season_year") |>
+  left_join(clarion_trips_stats, by = "season_year") |>
   mutate(
     start = if_else(is.na(start), "--", start),
     end = if_else(is.na(end), "--", end),
     n = if_else(is.na(n), 0L, n),
+    trips = if_else(is.na(trips), 0L, trips),
     season = paste0(season_year, "-", season_year + 1)
   ) |>
   arrange(season_year) |>
-  select(season, start, end, n)
+  select(season, start, end, n, trips)
 
 
 # Prepara los registros de San Benedicto para el agrupamiento por
@@ -271,18 +348,35 @@ san_benedicto_season_stats <- san_benedicto_with_season |>
     n = n_distinct(name),
     .groups = "drop"
   )
+# Asigna a cada viaje completo de San Benedicto su temporada según la salida
+san_benedicto_trips_with_season <- san_benedicto_trips |>
+  filter(complete == "complete trip") |>
+  mutate(
+    year = as.numeric(str_sub(departure, 1, 4)),
+    month = as.numeric(str_sub(departure, 6, 7)),
+    season_year = if_else(month >= 10, year, year - 1)
+  )
+# Cuenta los viajes completos de San Benedicto en cada temporada
+san_benedicto_trips_stats <- san_benedicto_trips_with_season |>
+  group_by(season_year) |>
+  summarise(
+    trips = n(),
+    .groups = "drop"
+  )
 # Combina la secuencia completa con las estadísticas para incluir
 # temporadas sin datos de San Benedicto en la tabla del artículo
 san_benedicto_seasons_full <- san_benedicto_season_complete |>
   left_join(san_benedicto_season_stats, by = "season_year") |>
+  left_join(san_benedicto_trips_stats, by = "season_year") |>
   mutate(
     start = if_else(is.na(start), "--", start),
     end = if_else(is.na(end), "--", end),
     n = if_else(is.na(n), 0L, n),
+    trips = if_else(is.na(trips), 0L, trips),
     season = paste0(season_year, "-", season_year + 1)
   ) |>
   arrange(season_year) |>
-  select(season, start, end, n)
+  select(season, start, end, n, trips)
 
 
 # ==== ENSAMBLE DE LA SALIDA ====
@@ -290,18 +384,21 @@ san_benedicto_seasons_full <- san_benedicto_season_complete |>
 # única que el motor de mustache usa para resolver todas las variables
 methods_list <- list(
   guadalupe_n_total = guadalupe_n_total,
+  guadalupe_n_trips = guadalupe_n_trips,
   guadalupe_min_date = guadalupe_min_date,
   guadalupe_max_date = guadalupe_max_date,
   guadalupe_min_year = guadalupe_min_year,
   guadalupe_max_year = guadalupe_max_year,
   guadalupe_seasons = guadalupe_seasons_full,
   clarion_n_total = clarion_n_total,
+  clarion_n_trips = clarion_n_trips,
   clarion_min_date = clarion_min_date,
   clarion_max_date = clarion_max_date,
   clarion_min_year = clarion_min_year,
   clarion_max_year = clarion_max_year,
   clarion_seasons = clarion_seasons_full,
   san_benedicto_n_total = san_benedicto_n_total,
+  san_benedicto_n_trips = san_benedicto_n_trips,
   san_benedicto_min_date = san_benedicto_min_date,
   san_benedicto_max_date = san_benedicto_max_date,
   san_benedicto_min_year = san_benedicto_min_year,
