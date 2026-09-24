@@ -39,9 +39,9 @@ San Benedicto is located 600 kilometers from the Mexican mainland.
 It has an area of 10 km$^2$.
 It measures 4.8 km at its longest part from the northern end to the southern end.
 In San Benedicto Island, crabs feed on the chicks, and nests can be buried in ash.
-[[ Why does the San Benedicto profile matter for the core-area analysis? ]]
 In both, Clarion and San Benedicto islands, reproductive success for Laysan albatross is close to 0% and the number of nests is low (less than 40 for San Benedicto).
 These three islands are breeding grounds for the Laysan albatross.
+[[ Why does the San Benedicto profile matter for the core-area analysis? ]]
 
 ## Study Species
 
@@ -49,8 +49,8 @@ These three islands are breeding grounds for the Laysan albatross.
 Tracking devices are installed while individuals are breeding on the island.
 Each tracking device records multiple foraging trips.
 We split each record into discrete round trips and analyze each trip by itself using KDE [@beal2021track2kba].
-We can analyze the foraging trips to identify the core areas and evaluate if they are covered by the existing protected areas.
 [[ Why is the individual trip the appropriate unit for KDE? ]]
+We can analyze the foraging trips to identify the core areas and evaluate if they are covered by the existing protected areas.
 
 <!-- core-area/MPA target, focal colonies, and long time series -->
 We are studying the core area used by Laysan albatross in the Mexican Pacific and its overlap with marine protected areas (MPA).
@@ -185,8 +185,8 @@ After processing the data, we analyzed them to identify the core areas.
 
 <!-- pipeline summary and Beal justification -->
 We split individual tracks, calculated KDE, and found core areas (50% UD; potential KBA).
-We chose the Beal et al. (2021) methodology because it is replicable using a single open-source R package (track2KBA) that allows us to split tracks, estimate UD, and evaluate representativeness, and it is explicitly designed to identify potential key biodiversity areas from tracking data.
 We applied this methodology to identify the core areas used by the Laysan albatross.
+We chose the Beal et al. (2021) methodology because it is replicable using a single open-source R package (track2KBA) that allows us to split tracks, estimate UD, and evaluate representativeness, and it is explicitly designed to identify potential key biodiversity areas from tracking data.
 [[ Which pipeline step yields the final core-area surface? ]]
 
 ### Core areas used by Laysan albatross
@@ -206,6 +206,7 @@ We then assess sample representativeness and determine the core areas (potential
 To determine overlap, we intersect the core areas with the MPA polygons and quantify the level of overlap.
 [[ Why is representativeness assessed before fixing the core areas? ]]
 Each colony hosts multiple individuals, each individual makes multiple foraging trips per season; the foraging trip is the unit of analysis.
+[[ How does the unit of analysis carry into the pooled core-area estimate? ]]
 
 <!-- sampled individuals and trips -->
 The number of sampled individuals per colony is shown in the previous tables.
@@ -216,10 +217,10 @@ The data from Guadalupe Island include XXX trips, Clarion XXX, and San Benedicto
 Core areas refer to the 50% Utilization Distribution (UD).
 From the GPS trajectories, we calculated kernel density estimation (KDE) to define the core areas.
 KDE has been widely used to determine UD.
-KDE was selected because a wide range of users are familiar with its use, which facilitates the communication of results among decision makers.
 The Area-Restricted Search scale uses First Passage Time analysis (adehabitatLT).
 KDEs are calculated for individual trips.
 Then the KDEs from individual trips are combined to obtain a pooled density, from which the core area (50% UD) is obtained.
+KDE was selected because a wide range of users are familiar with its use, which facilitates the communication of results among decision makers.
 [[ How does the pooled density connect to the representativeness check? ]]
 
 <!-- representativeness method -->
