@@ -9,6 +9,7 @@ Only XXX percent of the core area falls inside MPAs.
 
 <!-- main idea 2: why: MPA placement vs albatross habitat associations -->
 In Mexico, MPAs are associated with islands, while the albatrosses' core areas are associated with oceanographic conditions and food availability.
+[[ question: "What supports this generalization — does it come from this study's analysis or from a cited source? Supply the evidence." ]]
 
 <!-- main idea 3: study aim and approach -->
 We aimed to determine whether Mexican MPAs protect the areas used by Laysan albatrosses.
