@@ -7,7 +7,7 @@
 We studied the core areas that Laysan albatrosses use within the Mexican EEZ.
 This study evaluates whether the marine protected area covers the core area used by the Laysan albatross during its breeding season.
 The protected areas relevant for this study have a terrestrial component (the island) and a marine component (the surrounding waters).
-There are several islands on which the Laysan albatross breeds: Guadalupe, Clarion and San Benedicto are the relevant islands for the Mexican Pacific.
+There are several islands on which the Laysan albatross breeds: Guadalupe, Clarion, and San Benedicto are the relevant islands for the Mexican Pacific.
 The location of the islands is relevant to understand the surrounding oceanographic conditions, for instance, the California Current.
 These conditions help explain the location of the identified core areas.
 We describe each island in order of the relevance of the colonies.
@@ -15,11 +15,10 @@ We describe each island in order of the relevance of the colonies.
 ### Guadalupe Island
 <!-- Guadalupe Island profile -->
 Guadalupe Island hosts the largest breeding colony of Laysan albatross in the eastern Pacific [@hernandez2019sexual].
-Guadalupe Island is located 300 km west of the coast of Baja California.
-It is an oceanic island of volcanic origin.
+Guadalupe Island is an oceanic island of volcanic origin located 300 km west of the coast of Baja California.
 It has an area of 244 km$^2$.
 It measures 30 km at its longest part from the southern end to the northern end.
-In Guadalupe Island, there are 2,195 breeding pairs of Laysan albatross in 2025 (unpublished authors' monitoring data).
+On Guadalupe Island, there are 2,195 breeding pairs of Laysan albatross in 2025 (unpublished authors' monitoring data).
 
 ### Clarion Island
 
@@ -30,7 +29,7 @@ It has a tropical climate.
 It has an area of 19.8 km$^2$.
 It measures 8.6 km at its longest part from the eastern end to the western end.
 Clarion Island has the second largest Laysan albatross colony in Mexico.
-In Clarion Island, crows and snakes prey on Laysan albatross eggs and newly hatched chicks.
+On Clarion Island, crows and snakes prey on Laysan albatross eggs and newly hatched chicks.
 
 ### San Benedicto
 
@@ -39,20 +38,18 @@ San Benedicto Island is also part of the Revillagigedo Archipelago and shares th
 San Benedicto is located 600 kilometers from the Mexican mainland.
 It has an area of 10 km$^2$.
 It measures 4.8 km at its longest part from the northern end to the southern end.
-In San Benedicto Island, crabs feed on the chicks, and nests can be buried in ash.
-In both, Clarion and San Benedicto islands, reproductive success for Laysan albatross is close to 0% and the number of nests is low (less than 40 for San Benedicto).
+On San Benedicto Island, crabs feed on the chicks, and nests can be buried in ash.
+On both Clarion and San Benedicto islands, reproductive success for Laysan albatross is close to 0%. The number of nests is low (less than 40 for San Benedicto).
 
 ## Study Species
 
 <!-- tracking, trip segmentation, and KDE -->
 Tracking devices are installed while individuals are breeding on the island.
 Each tracking device records multiple foraging trips.
-We split each record into discrete round trips and analyze each trip by itself using KDE [@beal2021track2kba].
-The individual trip is the independent tracking event in which the used space is estimated with KDE [@beal2021track2kba].
+We split each record into discrete round trips and analyze each trip as an independent tracking event using KDE [@beal2021track2kba].
 
 <!-- core-area/MPA target, focal colonies, and long time series -->
-We are studying the core area used by Laysan albatross in the Mexican Pacific and its overlap with marine protected areas (MPA).
-In particular, we focus on the albatrosses that nest on the islands Guadalupe, Clarion, and San Benedicto.
+We focus on the albatrosses that nest on the islands Guadalupe, Clarion, and San Benedicto.
 To identify the core areas that persist over time, we use a long time series of tracking data.
 The long series captures interannual variability and the representativeness assessment checks that the sample is sufficient.
 
@@ -72,8 +69,8 @@ Because every year covers only the breeding season, which occurs in the same tim
 Even though the dataset is 12 years long, each year covers only the breeding season.
 The GPS loggers were deployed from December to June, within the breeding season (November to July).
 The GPS devices are deployed and recovered on the island, where seabirds return only during the breeding season.
-The GPS devices and data cannot be recovered the next breeding season because the GPS devices are attached to feathers that are molted during the non-breeding season.
-This study focuses on the breeding season because that is when seabirds forage from the colony and their use of the core areas is attributable to each island.
+The GPS devices and data cannot be recovered the next breeding season. The GPS devices are attached to feathers that are molted during the non-breeding season.
+This study focuses on the breeding season because that is when seabirds forage from the colony. Their use of the core areas is attributable to each island.
 Once the time period is defined, we describe how the data were collected.
 
 <!-- deployment date ranges per colony -->
@@ -107,12 +104,12 @@ The GPS was attached to the back feathers following [@hernandez2019sexual].
 <!-- device models by year and island -->
 There were variations in the GPS device models across years and islands, which we describe below.
 
-In Guadalupe Island we used the following GPS devices: From 2014 to 2016: model GiSPy-4SB by Techno Smart (Italy).
+On Guadalupe Island we used the following GPS devices: From 2014 to 2016: model GiSPy-4SB by Techno Smart (Italy).
 From 2017 to 2018: i-gotU model GT-120 by Mobile Action (Taiwan).
 From 2019 to 2023: ATS1 model Nodo-2018 by ACMOS (Mexico).
 From 2025 to 2026: GPS datalogger with accelerometer and UHF model Axy-Trek Remote by Techno Smart (Italy).
 
-In Clarion Island, from 2018 to 2022 we used the following GPS devices: i-gotU model GT-120 by Mobile Action (Taiwan).
+On Clarion Island, from 2018 to 2022 we used the following GPS devices: i-gotU model GT-120 by Mobile Action (Taiwan).
 CatLog-S, Catnip Technologies (China).
 CatLog-S2, Perthold Engineering (USA).
 The models changed because new and better technology was available during the 12-year period of the study.
@@ -147,13 +144,10 @@ The following tables show the number of individuals tracked per season at each c
 | {{season}} | {{start}} | {{end}} | {{n}} | {{trips}} |
 {{/san_benedicto_seasons}}
 
-The tables show how many individuals were tracked each season and how that varies across years and islands.
-
 <!-- tracking effort concentration across colonies -->
 The tracking effort was concentrated at the largest colony, Guadalupe Island, and less effort was invested in the smallest colonies, Clarion and San Benedicto islands.
 
 <!-- sampled individuals and trips -->
-The number of sampled individuals per colony is shown in the previous tables.
 The data from Guadalupe Island include {{ guadalupe_n_trips }} complete trips, Clarion {{ clarion_n_trips }}, and San Benedicto {{ san_benedicto_n_trips }}.
 The number of complete trips is the sample size for the KDE and representativeness assessment.
 Once the data were collected, we processed them following the track2KBA methodology.
@@ -186,7 +180,7 @@ After processing the data, we analyzed them to identify the core areas.
 
 <!-- pipeline summary and Beal justification -->
 We split individual tracks, calculated KDE, and found core areas (50% UD; potential KBA).
-We chose the Beal et al. (2021) methodology because it is replicable using a single open-source R package (track2KBA) that allows us to split tracks, estimate UD, and evaluate representativeness, and it is explicitly designed to identify potential key biodiversity areas from tracking data.
+We chose the @beal2021track2kba methodology because it is replicable using a single open-source R package (track2KBA). It allows us to split tracks, estimate UD, and evaluate representativeness, and is explicitly designed to identify potential key biodiversity areas from tracking data.
 
 ### Core areas used by Laysan albatross
 
@@ -202,18 +196,17 @@ The individual trips are the input to KDE, and the core areas are the output of 
 
 <!-- core-area identification, overlap procedure, and unit of analysis -->
 To identify core areas, we split the tracks into individual trips and perform kernel density estimations for each trip.
-Each colony hosts multiple individuals, each individual makes multiple foraging trips per season; the foraging trip is the unit of analysis.
+Each colony hosts multiple individuals; each individual makes multiple foraging trips per season; the foraging trip is the unit of analysis.
 We then assess sample representativeness and determine the core areas (potential key biodiversity areas).
 To determine overlap, we intersect the core areas with the MPA polygons and quantify the level of overlap.
 The representativeness assessment tells us whether the core areas calculated from the sample are valid for the whole population.
 It would not make sense to calculate core areas if their results could not be inferred to the entire population.
-Each trip yields a KDE, and these trip KDEs are combined into the pooled density that defines the core area.
 
 <!-- representativeness method -->
 Representativeness refers to how well the sample represents the population.
 The representativeness assessment rebuilds the UD from a resampled subset of the KDEs and measures out-of-sample inclusion.
 For this purpose, individual trips are subsampled, and KDEs are calculated and combined to obtain the UD.
-From the resulting area, we evaluate how many data points that were not selected in the subsample fall outside.
+From the resulting area, we evaluate how many data points not selected in the subsample fall outside.
 That indicates whether the sample size is sufficiently representative of the population for the results to be valid for the entire population.
 
 <!-- core-area definition, KDE rationale, ARS scale -->
@@ -240,10 +233,12 @@ The overlap index is a ratio between the two areas.
 <!-- overlap index definition, properties, and interpretation -->
 We calculated the overlap index to quantify the overlap of the core areas with the MPA polygons.
 Fieberg & Kochanny quantified home-range overlap using the utilization distribution.
+[[ rewrite: "Fieberg & Kochanny quantified home-range overlap using the utilization distribution." — uses author names without a citation key; align with the manuscript @key style. ]]
 The overlap index is area-based (proportional) overlap: $HR_{i,j} = \frac{A_{i,j}}{A_i}$.
 This index is directional: $HR_{i,j} \neq HR_{j,i}$.
 It ignores the utilization distribution and treats all space within the home range as equally used.
 Source: Kernohan et al. (2001); White & Garrott (1990).
+[[ rewrite: "Source: Kernohan et al. (2001); White & Garrott (1990)." — uses author-year without citation keys; align with the manuscript @key style. ]]
 This measure of core habitat protection coverage tells us what fraction of the animal's most intensively used space is inside the protected area.
 
 ## Ethical Considerations
