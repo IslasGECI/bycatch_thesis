@@ -4,20 +4,22 @@
 <!-- seabirds are threatened; pelagic species are weakly protected by MPAs -->
 In general, seabirds are threatened and pelagic species are poorly protected by protected areas [@dias2019threats; @critchley2018marine].
 Seabirds are one of the most threatened groups of birds, with ~31% of species at risk and ~47% in decline [@dias2019threats].
-Pelagic species, such as albatrosses, are less protected by MPAs than coastal species. 13.2% of pelagic species are covered by MPAs, compared to 32.5% of coastal species [@critchley2018marine].
+Pelagic species, such as albatrosses, are less protected by MPAs than coastal species.
+13.2% of pelagic species are covered by MPAs, compared to 32.5% of coastal species [@critchley2018marine].
 
 <!-- Laysan albatross is an umbrella species; protecting it implies ecosystem protection -->
 Seabirds are top predators and serve as umbrella species, meaning that if they are protected, other species in the same habitat are also protected [@lascelles2016applying].
 The Laysan albatross is an umbrella species.
-Their trophic level tells us that if the Laysan albatross does well, the lower trophic levels are thriving.
-[[ rewrite: "Their trophic level tells us that if the Laysan albatross does well, the lower trophic levels are thriving." — ambiguous plural pronoun: their may refer to seabirds (plural) or to the Laysan albatross (singular); the author must disambiguate. ]]
-Given that the Laysan albatross is an umbrella species, its protection by protected areas implies the protection of its ecosystem. Conversely, its lack of protection implies the lack of protection of its ecosystem [@lascelles2016applying].
+The top-predator trophic level of the Laysan albatross tells us that if this species does well, the lower trophic levels are thriving.
+Given that the Laysan albatross is an umbrella species, its protection by protected areas implies the protection of its ecosystem.
+Conversely, its lack of protection implies the lack of protection of its ecosystem [@lascelles2016applying].
 
 <!-- tracking seabirds is the standard method for finding important marine areas -->
 Tracking seabirds is a standard method for identifying important marine areas [@lascelles2016applying].
 
 <!-- the core areas used by Laysan albatross in the Mexican Pacific and their MPA coverage are unknown -->
-There is a gap of knowledge about the core areas used by Laysan albatross in the Mexican Pacific. It is also unknown whether these areas are protected by existing Marine Protected Areas (MPAs).
+There is a gap of knowledge about the core areas used by Laysan albatross in the Mexican Pacific.
+It is also unknown whether these areas are protected by existing Marine Protected Areas (MPAs).
 There is evidence that in some cases protected areas do not actually protect highly mobile pelagic species [@critchley2018marine].
 
 <!-- without that information MPA effectiveness cannot be evaluated -->
@@ -36,8 +38,8 @@ Stakeholders relevant to the issues addressed in this study include Mexican cons
 Environmental CSOs rely on spatial data to guide their actions and justify their restoration interventions [@trilateral2023meeting; @mendez2022population].
 
 <!-- islands sit inside ANPs; gaps hinder management; bycatch fleets are regulated -->
-The islands of Baja California lie within federal Protected Natural Areas (ANPs) managed by CONANP. As authorities issue permits for seabird management, information gaps hinder their efforts [@mendez2022population].
-[[ rewrite: "As authorities issue permits for seabird management, information gaps hinder their efforts [@mendez2022population]." — ambiguous pronoun: their may refer to the authorities or to CONANP; the author must disambiguate. ]]
+The islands of Baja California lie within federal Protected Natural Areas (ANPs) managed by CONANP.
+As authorities issue permits for seabird management, information gaps hinder the authorities' ability to be effective [@mendez2022population].
 Seabirds are affected by bycatch in longline, trawl, and purse-seine fisheries, and these fleets are regulated by national (CONAPESCA) and regional (IATTC) institutions [@phillips2024incidental; @morgan2016fourth].
 
 <!-- what is the core area, and how much of it is protected? -->
@@ -74,12 +76,14 @@ This food availability will affect where the albatrosses feed, which will determ
 GPS tracking allows finding the UD by means of kernel density estimation (KDE), and we use the UD to identify the core areas [@beal2021track2kba; @worton1989kernel].
 
 <!-- overlapping core areas with protected areas evaluates umbrella-species protection -->
-We overlap the core areas with the protected areas. This evaluates the effectiveness of a protected area to protect an umbrella species, such as the Laysan albatross [@critchley2018marine].
+We overlap the core areas with the protected areas.
+This evaluates the effectiveness of a protected area to protect an umbrella species, such as the Laysan albatross [@critchley2018marine].
 
 <!-- the Laysan albatross gap: short datasets, unknown representativeness -->
 It is unknown to what extent the Mexican protected areas cover the Laysan albatross core area in the Mexican Pacific [@critchley2018marine].
 There is a lack of GPS tracking data in the Mexican Pacific to determine core areas for pelagic species [@phillips2024incidental].
-The gap in knowledge this study addresses is identifying the core areas used by the Laysan albatross breeding in Mexico. This identification uses 12 years of GPS tracking data that was not available before [@beal2021track2kba].
+The gap in knowledge this study addresses is identifying the core areas used by the Laysan albatross breeding in Mexico.
+This identification uses 12 years of GPS tracking data that was not available before [@beal2021track2kba].
 
 <!-- ~800k breeding pairs; low-lying colonies at risk; Guadalupe as a refuge -->
 However, the biggest nesting colonies are low-lying sites at risk due to sea-level rise associated with climate change [@birdlife2018phoebastria].
@@ -87,7 +91,8 @@ The global population size has been estimated to be around 800,000 breeding pair
 Guadalupe Island has high nesting areas that are less affected by sea-level rise, offering a refuge for the species [@hernandez2019sexual].
 
 <!-- this study: 12-year GPS dataset + track2KBA, core areas, overlap quantification -->
-This study is based on GPS tracking, UD, and KBA methods to identify core areas. It challenges the assumption that protected areas effectively cover the core areas of mobile pelagic species [@lascelles2016applying; @beal2021track2kba; @critchley2018marine].
+This study is based on GPS tracking, UD, and KBA methods to identify core areas.
+It challenges the assumption that protected areas effectively cover the core areas of mobile pelagic species [@lascelles2016applying; @beal2021track2kba; @critchley2018marine].
 Finally, we compare this area with Mexican protected areas [@critchley2018marine; @mendez2022population].
 
 <!-- novelty: first 12-year core-area analysis; track2KBA never applied in Mexico -->
@@ -95,7 +100,8 @@ This study is the first to use 12 years of GPS tracking data to identify the cor
 We are using track2KBA to identify the core areas, which has not been done for the Laysan albatross in Mexico [@beal2021track2kba].
 
 <!-- previous studies: 5 years, Guadalupe only, no representativeness -->
-Previous studies used a shorter (5 years) GPS tracking dataset. They calculated the 50%, 75%, and 95% UD using a different method than the newer method suggested by the track2KBA framework [@hernandez2019sexual; @beal2021track2kba].
+Previous studies used a shorter (5 years) GPS tracking dataset.
+They calculated the 50%, 75%, and 95% UD using a different method than the newer method suggested by the track2KBA framework [@hernandez2019sexual; @beal2021track2kba].
 Previous studies do not address the population representativeness of the GPS-tracked sample relative to the total population, which we do consider [@beal2021track2kba].
 Also, previous studies used data only from Guadalupe Island, while this study includes data from the islands of Clarión and San Benedicto [@hernandez2019sexual; @pitman2004population].
 
@@ -108,11 +114,13 @@ Achieving the objective allows evaluating whether the existing protected areas e
 Our hypothesis is that the existing protected areas do not adequately cover the core area used by the Laysan albatross breeding in Mexico [@critchley2018marine].
 
 <!-- quantifies the overlap; extends the global MPA-effectiveness picture -->
-This study quantifies the degree of overlap between a pelagic core area and existing protected areas. It extends the global picture of the effectiveness of MPAs to protect pelagic species [@critchley2018marine].
+This study quantifies the degree of overlap between a pelagic core area and existing protected areas.
+It extends the global picture of the effectiveness of MPAs to protect pelagic species [@critchley2018marine].
 The methodology described can be replicated for other species or geographic regions [@beal2021track2kba].
 
 <!-- informs the 30x30 target; data released for reuse -->
-The practical application that could come from the results of this study is where to extend the protected areas. This is relevant in the context of the Kunming-Montreal 30x30 target [@critchley2018marine; @afan2018adaptive].
+The practical application that could come from the results of this study is where to extend the protected areas.
+This is relevant in the context of the Kunming-Montreal 30x30 target [@critchley2018marine; @afan2018adaptive].
 The tracking data used by this study are made available for others to make their own analysis.
 
 <!-- CONANP and the trilateral group could act on the results -->
