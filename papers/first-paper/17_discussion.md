@@ -23,6 +23,7 @@ The results of this study confirm what was found by @critchley2018marine and ext
 <!-- main idea 5: novelty: first long-term core-area analysis; dataset and analysis -->
 This is the first 12-year core-area analysis for Mexico's albatross colonies.
 [[ rewrite: "The study's primary contribution is the 12-year tracking dataset for Laysan albatrosses in Mexico and the analysis performed using *track2KBA*." — reason: joining this sentence to 'This is the first 12-year core-area analysis...' in one paragraph requires a connective (e.g. 'Specifically') that does not exist; inserting it is author work. ]]
+[[ rewrite: "The study's primary contribution is the 12-year tracking dataset for Laysan albatrosses in Mexico and the analysis performed using *track2KBA*." — reason: this sentence restates the novelty already claimed by the preceding sentence instead of supporting it; fold the two into a single claim, or replace this sentence with distinct evidence for the contribution. If folded, the connective noted above is no longer needed. ]]
 
 <!-- main idea 6: limitations: breeding season only -->
 The main limitation is that the data cover only the breeding season; therefore, the conclusions apply only to that period, and we cannot speak of MPA protection during the rest of the year.
