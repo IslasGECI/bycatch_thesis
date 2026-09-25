@@ -1,6 +1,7 @@
 [[ question: "This Discussion asserts no OCAR Challenge; the nearest element is the aim ('We aimed to determine whether Mexican MPAs protect the areas used by Laysan albatrosses'), which is a question, not a stated problem. What open problem does the research answer? Supply it." ]]
 
 # Discussion
+[[ question: "Should the Discussion restate the aim and approach, as the study aim and approach paragraph does, or interpret only? That recap duplicates the Methods; decide whether to keep, trim, or relocate it." ]]
 
 <!-- main idea 1: core areas unprotected by MPAs, quantified -->
 Mexican MPAs do not protect the core area within the EEZ used by Laysan albatrosses nesting in Mexico.
