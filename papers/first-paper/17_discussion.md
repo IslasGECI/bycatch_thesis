@@ -4,6 +4,7 @@
 
 <!-- main idea 1: core areas unprotected by MPAs, quantified -->
 Mexican MPAs do not protect the core area within the EEZ used by Laysan albatrosses nesting in Mexico.
+[[ question: "Once the overlap value replaces XXX, does the absolute claim still hold if that value is nonzero? Reconcile the claim with the number." ]]
 
 Only XXX percent of the core area falls inside MPAs.
 
