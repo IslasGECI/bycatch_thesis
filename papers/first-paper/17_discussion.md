@@ -35,3 +35,4 @@ In the context of "30x30" commitments, our findings support a recommendation to 
 
 <!-- main idea 8: future research: bycatch overlap with fishing -->
 Since the areas used by the albatrosses are not currently protected by MPAs, future research should assess the overlap between these core areas and commercial fishing zones within the Mexican EEZ to evaluate the risk of bycatch—one of the primary threats to the Laysan albatross [@dias2019threats; @phillips2024incidental].
+[[ question: "The opening already establishes that the core areas are unprotected, and this closing sentence repeats it as a premise. Should the recap be condensed or dropped now that the point is made?" ]]
