@@ -25,11 +25,11 @@
 
 [[ Q9. The most-shared cell reaches N_IND = 36, yet the largest polygons are the least shared (4,596 km2 at N_IND 13, against 127 km2 at N_IND 36). Is that inverse relationship a result in its own right? If so, write the sentence that states it without interpreting it. ]]
 
-![Number of tracked Laysan albatross (_Phoebastria immutabilis_) individuals (n = 121) whose 50% core utilization distributions overlap each grid cell (range 1–36).](reports/figures/ud_in_grid_map.png)
+![Number of tracked Laysan albatross (_Phoebastria immutabilis_) individuals (n = 121) whose 50% utilization distribution covers each grid cell (range 1–36).](reports/figures/ud_in_grid_map.png)
 
 [[ Q10. This is the sentence that introduces the term "core area" for the first time. Write it: how does moving from the continuous N_IND surface to the delineated purple polygons happen, and what is the core area? ]]
 
-[[ Q11. Write the headline. "Overall, ___% of the core area falls inside a Mexican marine protected area." Fill in the number and every qualifier that must travel with it — which colonies, which season, which spatial extent. ]]
+[[ Q11. Write the headline. "Overall, ___% of the core area falls inside a Mexican marine protected area." Fill in the number and every qualifier that must travel with it: that the core area is pooled across all three colonies, that it lies off Guadalupe, which season, and which spatial extent. ]]
 
 [[ Q12. Walk through the 10.43% in prose. What is in the numerator, what is in the denominator, and why was the 60 km ring added to both sides rather than only the protected part? (198.1 + 4,532.4 km2 over 34,056.2 + 11,304.6 km2) ]]
 
@@ -37,7 +37,7 @@
 
 [[ Q14. The 198.1 km2 that is protected sits at the island edge, 28.5–29.4N and −116 to −119W. What does the where of the overlap add to the number? ]]
 
-![Potential Key Biodiversity Area (purple) for Laysan Albatross (_Phoebastria immutabilis_) from the Guadalupe, Clarion and San Benedicto colonies (2014–2026). Green surfaces show Mexican Marine Protected Areas, and the brighter green marks where they overlap the potential Key Biodiversity Area. The blue line delimits Mexico's Exclusive Economic Zone.](reports/figures/gps_albatross_50_percent_potential_kba_ars_all_with_mpa.png)
+![The core area (purple) for Laysan Albatross (_Phoebastria immutabilis_) delineated from the pooled tracking data of 121 individuals breeding at Guadalupe, Clarion and San Benedicto (2014–2026). Green surfaces show Mexican Marine Protected Areas, and the brighter green marks where they overlap the core area. The blue line delimits Mexico's Exclusive Economic Zone.](reports/figures/gps_albatross_50_percent_potential_kba_ars_all_with_mpa.png)
 
 [[ Q15. Critchley reported 13.2% pelagic and 32.5% coastal coverage. Write the sentence that places 10.43% against those figures. Then state whether that sentence belongs in the Results or the Discussion — and why. ]]
 
@@ -45,7 +45,7 @@
 
 [[ Q17. What goes in the table? Give the rows, the columns, and the one number per colony you most want the reader to leave with. ]]
 
-[[ Q18. Clarion reaches max N_IND = 3 and San Benedicto max N_IND = 1, so neither produces a polygon. Write the sentence that explains this in data terms — not interpretation. ]]
+[[ Q18. Clarion reaches max N_IND = 3 and San Benedicto max N_IND = 1, so neither delineates a polygon of its own. Write the sentence that states this in data terms, making clear that their tracks still feed the pooled surface. ]]
 
 [[ Q19. Their 60 km rings are nonetheless 95% and 100% inside the Revillagigedo ANP. Write one sentence that reports this without it reading as a second conclusion competing with 10.43%. ]]
 
