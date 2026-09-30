@@ -2,5 +2,6 @@
 *.mustache
 *.pdf
 data/
+references/*.txt
 reports/*.md
 reports/figures/*.png
