@@ -35,7 +35,7 @@
 
 [[ Q13. Only 5 of the 22 polygons touch an MPA at all. Does that count deserve its own sentence, and does it come before or after the percentage? ]]
 
-[[ Q14. The 198.1 km2 that is protected sits at the island edge, 28.5–29.4N and −116 to −119W. What does the where of the overlap add to the number? ]]
+[[ Q14. The 198.1 km2 that is protected sits at the island edge, 28.5–29.4N and -116 to -119W. What does the where of the overlap add to the number? ]]
 
 ![The core area (purple) for Laysan Albatross (_Phoebastria immutabilis_) delineated from the pooled tracking data of 121 individuals breeding at Guadalupe, Clarion and San Benedicto (2014–2026). Green surfaces show Mexican Marine Protected Areas, and the brighter green marks where they overlap the core area. The blue line delimits Mexico's Exclusive Economic Zone.](reports/figures/gps_albatross_50_percent_potential_kba_ars_all_with_mpa.png)
 
