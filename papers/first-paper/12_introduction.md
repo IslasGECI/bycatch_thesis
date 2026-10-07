@@ -3,6 +3,9 @@
 
 <!-- main idea: pelagic species are far less MPA-covered than coastal ones -->
 Seabirds are one of the most threatened groups of birds, with ~31% of species at risk and ~47% in decline [@dias2019threats].
+State with studies why they are threatened (harvesting, over fishing, predation from invasive species, etc., indicate cause and consequence [[ citations for each ]].
+Given all these negative impacts, different strategies have been pursued to prevent seabird populations from collapsing and improving their conservation status [[ citation ]].
+In particular, marine protected areas are considered an efficient conservation strategy for seabird species [[ references ]].
 In general, seabirds are threatened and pelagic species are poorly protected by protected areas [@dias2019threats; @critchley2018marine].
 Pelagic species, such as albatrosses, are less protected by MPAs than coastal species.
 13.2% of pelagic species are covered by MPAs, compared to 32.5% of coastal species [@critchley2018marine].
