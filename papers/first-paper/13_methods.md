@@ -129,18 +129,17 @@ The tracking effort was concentrated at the largest colony, Guadalupe Island, an
 
 <!-- sampled individuals and trips -->
 The data from Guadalupe Island include {{ guadalupe_n_trips }} complete trips, Clarion {{ clarion_n_trips }}, and San Benedicto {{ san_benedicto_n_trips }}.
-The number of complete trips is the sample size for the KDE and representativeness assessment.
-Once the data were collected, we processed them following the track2KBA methodology.
 
 ## Data Processing
 
 <!-- track2KBA workflow and filters -->
-We used the R package track2KBA [@beal2021track2kba].
-We removed points within 60 km around the colony.
-We followed the track2KBA methodology, which called for removing incomplete trips.
-Incomplete trips are removed to avoid bias in the computed utilization distribution.
+We used the R package track2KBA [@beal2021track2kba] and followed the track2KBA methodology.
+We removed points within 60 km around the colony becasuse… .
+Our methodological approach called for removing incomplete trips to avoid bias in the computed utilization distribution that represents….
+
 
 <!-- track2KBA functions used -->
+[[ Narrate instead of bullet points ]]
 The following track2KBA functions were used:
 
 - `formatFields()` to normalize GPS field names and date-time format
@@ -158,16 +157,10 @@ After processing the data, we analyzed them to identify the core areas.
 
 ## Data Analysis
 
-<!-- tracking, trip segmentation, and KDE -->
-Tracking devices are installed while individuals are breeding on the island.
-Each tracking device records multiple foraging trips.
-We split each record into discrete round trips and analyze each trip as an independent tracking event using KDE [@beal2021track2kba].
-
-and we verified a posteriori that the sample was representative of the population
-
-<!-- pipeline summary and Beal justification -->
-We split individual tracks, calculated KDE, and found core areas (50% UD; potential KBA).
-We chose the @beal2021track2kba methodology because it is replicable using a single open-source R package (track2KBA). It allows us to split tracks, estimate UD, and evaluate representativeness, and is explicitly designed to identify potential key biodiversity areas from tracking data.
+We splitted all tracks into single tracks representing a departure and return of an individual to the nesting colony.
+We then calculated the Kernel Density Estimation (KDE), and found core areas (50% UD; potential KBA).
+We chose the [@beal2021track2kba] methodology because it is replicable using a single open-source R package (track2KBA).
+It allows us to split tracks, estimate UD, and evaluate representativeness, and is explicitly designed to identify potential key biodiversity areas from tracking data.
 
 ### Core areas used by Laysan albatross
 
@@ -181,22 +174,18 @@ The individual trips are the input to KDE, and the core areas are the output of 
 
 **Analysis**
 
-<!-- core-area identification, overlap procedure, and unit of analysis -->
 To identify core areas, we split the tracks into individual trips and perform kernel density estimations for each trip.
 Each colony hosts multiple individuals; each individual makes multiple foraging trips per season; the foraging trip is the unit of analysis.
-We then assess sample representativeness and determine the core areas (potential key biodiversity areas).
-To determine overlap, we intersect the core areas with the MPA polygons and quantify the level of overlap.
+We then assessed sample representativeness and determined the core areas (potential key biodiversity areas).
 The representativeness assessment tells us whether the core areas calculated from the sample are valid for the whole population.
 It would not make sense to calculate core areas if their results could not be inferred to the entire population.
 
-<!-- representativeness method -->
 Representativeness refers to how well the sample represents the population.
 The representativeness assessment rebuilds the UD from a resampled subset of the KDEs and measures out-of-sample inclusion.
 For this purpose, individual trips are subsampled, and KDEs are calculated and combined to obtain the UD.
 From the resulting area, we evaluate how many data points not selected in the subsample fall outside.
 That indicates whether the sample size is sufficiently representative of the population for the results to be valid for the entire population.
 
-<!-- core-area definition, KDE rationale, ARS scale -->
 Core areas refer to the 50% Utilization Distribution (UD).
 From the GPS trajectories, we calculated kernel density estimation (KDE) to define the core areas.
 KDE has been widely used to determine UD.
@@ -207,6 +196,8 @@ KDE was selected because a wide range of users are familiar with its use, which 
 Once the core areas were identified, we quantified their overlap with the existing protected areas.
 
 ### Overlap of core areas with MPAs
+
+To determine overlap, we intersect the core areas with the MPA polygons and quantify the level of overlap.
 
 **Measurements and Variables**
 
