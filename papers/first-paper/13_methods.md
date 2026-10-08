@@ -217,23 +217,8 @@ This measure of core habitat protection coverage tells us what fraction of the a
 
 ## Ethical Considerations
 
-<!-- permits and institutions -->
-Ethical considerations and permits are required by Mexican authorities.
-The study was performed under an ethical framework and with all the permits required by the Mexican government.
-The study was conducted under the permits from the following institutions:
-Ministry of the Interior, Ministry of Environment and Natural Resources, and the National Commission for Protected Natural Areas.
+Our study followed necessary ethical guidelines ensuring the welfare of the seabirds during their handling.
+We also had all the permits required by the Mexican government.
+The study was conducted under the permits from the following institutions: Ministry of the Interior, Ministry of Environment and Natural Resources, and the National Commission for Protected Natural Areas.
 A complete list of permits by island and year is available in the Supplementary Information.
-The permits are mandatory because this study handles wildlife in federal protected areas.
-In addition to obtaining the permits, we ensured the welfare of the seabirds during their handling.
-
-<!-- no harm and capture procedure -->
-No albatross individuals were harmed during the study.
-The seabirds are captured by hand at the nest.
-The capture is brief and harmless, and the individuals are released on site immediately after attaching or removing the GPS device.
-In addition to the ethical considerations, we must consider the methodological limitations.
-
-## Methodological Considerations
-
-<!-- breeding-season-only restriction -->
-The GPS logger collects data only during the breeding season, so the analysis is restricted to that period.
 
