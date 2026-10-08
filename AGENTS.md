@@ -111,14 +111,6 @@ Then: `# ==== CONFIGURACIÓN ====`, `# ==== ENTRADAS ====`, `# ==== PROCESAMIENT
 - Format: `[Emoji] [Imperative Verb] [Summary]` with blank line then body explaining why.
 - Emoji examples: ➕ feature, 🗺️ map, 🎨 style/format, ✅ task tracking, 📝 docs.
 
-## Task Management: The Gold Workflow
-
-GitHub Issues define Golds (collections of related tasks). TODO.md is the active workspace showing only the current Gold. Tasks are completed one at a time using TDD cycles (Red → Green → Refactor). Completed tasks are checked off in TODO.md and synced to the GitHub Issue.
-
-- **Gold**: A GitHub Issue with a set of related tasks.
-- **TODO.md**: Shows ONLY the current Gold's tasks.
-- **Switching Golds**: Replace TODO.md with the new issue's tasks after syncing completed ones.
-
 ## Documentation Map
 
 | File | Audience | Focus |
@@ -127,4 +119,4 @@ GitHub Issues define Golds (collections of related tasks). TODO.md is the active
 | `AGENTS.md` | Developers | How to build, code, and contribute (this file) |
 | `DOCS.md` | Developers | API, CLI, and data model reference |
 | `CHANGELOG.md` | Developers | Version history following SemVer |
-| `TODO.md` | Team | Current active Gold and backlog |
+| `TODO.md` | Team | Current backlog |

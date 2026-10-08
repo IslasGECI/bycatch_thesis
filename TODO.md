@@ -1,4 +1,4 @@
-# The Gold
+# Work In Progress
 
 Create binary hotspot map and KBA + hotspot overlay map for GFW apparent fishing effort.
 
@@ -19,8 +19,8 @@ Create binary hotspot map and KBA + hotspot overlay map for GFW apparent fishing
 
 ---
 
-# Backlog not part of the current Gold
+# Backlog
 
-The items listed below are not part of the current Gold. They are backlog items kept for future cycles.
+The items listed below are not part of the work in progress. They are backlog items kept for future cycles.
 
 - GFW apparent fishing effort: filter by specific gear types (longline, trawler, etc.)
